@@ -7,12 +7,12 @@
 <%@ page import="java.util.List"%>
 <%
 	User user = (User) request.getSession().getAttribute("user");
-	if (user == null) {
+	/*if (user == null) {
 		System.out.println("Utilisateur inexistant!!!");
 		response.sendRedirect("connexion");
 	} else {
 		System.out.println("Utilisateur existant!!!");
-	}
+	}*/
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -144,7 +144,7 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="panel panel-default">
-								<div class="panel-heading">Tableu des Activits</div>
+								<div class="panel-heading">Tableau des Activités</div>
 								<div class="panel-body">
 									<div class="table-responsive">
 										<table class="table table-striped table-bordered table-hover"

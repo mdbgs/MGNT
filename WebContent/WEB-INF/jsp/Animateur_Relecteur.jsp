@@ -7,12 +7,12 @@
 <%@ page import="java.util.List"%>
 <%
 	User user = (User) request.getSession().getAttribute("user");
-	if (user == null) {
+	/*if (user == null) {
 		System.out.println("Utilisateur inexistant!!!");
 		response.sendRedirect("connexion");
 	} else {
 		System.out.println("Utilisateur existant!!!");
-	}
+	}*/
 %>%>
 <!DOCTYPE html>
 <html>

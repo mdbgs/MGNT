@@ -182,6 +182,14 @@
 		<servlet-name>AuthenticationSecurity</servlet-name>
 		<url-pattern>/authentication</url-pattern>
 	</servlet-mapping>
+	<servlet>
+	 <servlet-name>responsableSE</servlet-name>
+    <servlet-class>ServletPackages.AccueilRespSuivuEvalServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>responsableSE</servlet-name>
+    <url-pattern>/responsableSE</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>ClickCounterFilter</filter-name>
     <filter-class>FilterPackage.ClickCounterFilter</filter-class>
