@@ -6,8 +6,4 @@
         driverClassName="com.mysql.jdbc.Driver"
         url="jdbc:mysql://localhost:3307/ceamitic"
         maxActive="30" maxIdle="4" />
- 	<Realm className="org.apache.catalina.realm.JAASRealm" 
-    appName="BytesLoungeLogin"
-    userClassNames="com.byteslounge.jaas.UserPrincipal"
-    roleClassNames="com.byteslounge.jaas.RolePrincipal" />
 </Context>

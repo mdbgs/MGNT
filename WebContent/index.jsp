@@ -6,7 +6,5 @@
 </head>
 <body>
 	<% response.sendRedirect("connexion"); %>
-	<%//c'est du commentaire %>
-	
 </body>
 </html>
