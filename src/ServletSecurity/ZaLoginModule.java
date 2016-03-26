@@ -12,6 +12,8 @@ import javax.security.auth.callback.UnsupportedCallbackException;
 import javax.security.auth.login.LoginException;
 import javax.security.auth.spi.LoginModule;
 
+import ServletPackages.ConnexionServlet;
+
 public class ZaLoginModule implements LoginModule {
 	private CallbackHandler callbackHandler=null;
 	private boolean authenticationFlag=false;
@@ -45,7 +47,9 @@ public class ZaLoginModule implements LoginModule {
 		}
 		String name=((NameCallback) callBackArray[0]).getName();
 		String password = new String (((PasswordCallback) callBackArray[1]).getPassword());
-		if(TEST_USERNAME.equals(name) && TEST_PASSWORD.equals(password)){
+		ConnexionServlet connexionServlet = new ConnexionServlet(); 
+		
+		if(connexionServlet.isUser(name, password)){
 			System.out.println("Authentication success ...");
 			authenticationFlag = true;
 		}else{
@@ -54,7 +58,6 @@ public class ZaLoginModule implements LoginModule {
 		}
 		return authenticationFlag;
 	}
-
 	@Override
 	public boolean logout() throws LoginException {
 		// TODO Auto-generated method stub

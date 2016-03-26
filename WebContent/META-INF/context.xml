@@ -6,4 +6,5 @@
         driverClassName="com.mysql.jdbc.Driver"
         url="jdbc:mysql://localhost:3307/ceamitic"
         maxActive="30" maxIdle="4" />
+    <!-- put your mysql username and password; in url put your port ex: my port is 3306 -->
 </Context>

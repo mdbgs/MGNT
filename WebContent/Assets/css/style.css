@@ -171,6 +171,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	padding: 5px;
 }
 /*TODO Moussa******************************************************************/
+
+element.style{
+	margin-bottom:0px;
+}
 #detailBtn {
 	overflow: hidden;
 	-webkit-border-radius: 50px;
@@ -373,9 +377,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 }
 
 .barreOutil {
-	padding-top: 15px;
+	padding-top:15px;
+	width:102.4%;
+	margin-bottom:0px;
+	margin-left:-12px;
 }
-
 .barreValue {
 	max-height: 40px;
 }
@@ -492,7 +498,6 @@ img {
 	float: left;
 	margin-left: 0px
 }
-
 .aligncenter {
 	display: block;
 	margin: 10px auto
@@ -512,8 +517,9 @@ img {
 }
 
 .center {
-	width: 984px;
-	margin: 0 auto
+	width:100%;
+	margin-right:25px;
+	margin-left:25px;
 }
 
 .fix {
@@ -792,18 +798,25 @@ ul {
 .content {
 	background: none repeat scroll 0 0 #fff;
 	border-radius: 6px;
-	margin-top: -461px;
+	margin-top: -495px;
+	margin-left: 25px;
+	margin-right: 15px;
+	
 }
 
 .main_menu {
-	
-}
+padding-bottom:-10px;
+	}
 
 .main_content_area {
 	border-left: 2px solid #ddd;
 	border-right: 2px solid #ddd;
 	border-bottom: 2px solid #ddd;
 	padding: 25px;
+	wdth:99.8%;
+	
+	
+	
 }
 
 .main_content_areaBis {
@@ -817,6 +830,7 @@ ul {
 
 #content_area {
 	position: relative;
+	
 }
 
 .slider_area {
@@ -1107,7 +1121,9 @@ ul {
 }
 
 .footer_top {
-	margin-top: 110px;
+	margin-top: 12px;
+	margin-bottom:-12px;
+	width:100%;
 }
 
 .footer_top_container {
@@ -1314,17 +1330,13 @@ ul {
 	
 }
 
-#content_area {
-	
-}
+
 
 #footer_top_area {
 	background: url("images/footer_bg.png") repeat scroll 0 0
 		rgba(0, 0, 0, 0);
-	border-bottom: 10px solid #31859C;
-	border-top: 10px solid #31859C;
-	margin-top: -90px;
-	padding-bottom: 30px;
+	border-bottom: 5px solid #31859C;
+	border-top: 5px solid #31859C;
 }
 
 #footer_bottom_area {

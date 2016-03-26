@@ -203,4 +203,12 @@
 		<filter-name>ClickCounterFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<servlet>
+	 <servlet-name>responsableSE</servlet-name>
+    <servlet-class>ServletPackages.AccueilRespSuivuEvalServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>responsableSE</servlet-name>
+    <url-pattern>/responsableSE</url-pattern>
+  </servlet-mapping>
 </web-app>

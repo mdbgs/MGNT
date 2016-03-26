@@ -9,6 +9,8 @@ import java.sql.Statement;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.security.auth.login.LoginContext;
+import javax.security.auth.login.LoginException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,7 @@ import javax.sql.DataSource;
 
 import BeanPackage.ComputeQueryBean;
 import ModelPackage.User;
+import ServletSecurity.ZaCallbackHandler;
 
 public class ConnexionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,6 +31,7 @@ public class ConnexionServlet extends HttpServlet {
 	private Statement statement;
 	private Connection connection;
 	private static DataSource dataSource;
+
 	//
 	// METHODS
 	//
@@ -41,6 +45,7 @@ public class ConnexionServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Connection.jsp").forward(request, response);
@@ -52,21 +57,39 @@ public class ConnexionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
- 		ResultSet resultSet = null;
+		ResultSet resultSet = null;
 		try {
 			// Get Connection and Statement
 			connection = this.getDataSource().getConnection();
-			pseudo = request.getParameter("pseudo");
-			password = request.getParameter("password");
-			int id = ComputeQueryBean.getIDUser(pseudo, password, connection);
-			if (id != 0) {
-				resultSet = ComputeQueryBean.selectAllByID("compte", id, connection);
-				while (resultSet.next()) {
-					request.getSession().setAttribute("user",new User(pseudo, password, id));
-					response.sendRedirect("home");
+			pseudo = request.getParameter("j_username");
+			password = request.getParameter("j_password");
+
+			if (!pseudo.isEmpty() && !password.isEmpty()) {
+				boolean authenticationFlag = true;
+				ZaCallbackHandler zaCallbackHandler = new ZaCallbackHandler(pseudo, password);
+				try {
+					LoginContext loginContext = new LoginContext("ZaJaas", zaCallbackHandler);
+					loginContext.login();
+				} catch (LoginException e) {
+					e.printStackTrace();
+					System.out.println("LoginContext failed");
+					authenticationFlag = false;
 				}
-			} else
+				if (authenticationFlag){
+					System.out.println("Authentication success ...");
+					int id = ComputeQueryBean.getIDUser(pseudo, password, connection);
+						resultSet = ComputeQueryBean.selectAllByID("compte", id, connection);
+						while (resultSet.next()) {
+							request.getSession().setAttribute("user", new User(pseudo, password, id));
+							response.sendRedirect("home");
+						}
+				}
+				else
+					System.out.println("Authentication failed ...");
 				response.sendRedirect("connexion");
+			} else {
+				response.getWriter().println(" Invalid Authentication ...");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -91,7 +114,23 @@ public class ConnexionServlet extends HttpServlet {
 		}
 
 	}
+	/** Called to get existing datasource*/
 	public DataSource getDataSource() {
-		return this.dataSource;
+		return dataSource;
+	}
+	/** Used to check if the customer is a user*/
+	public boolean isUser(String pseudo, String password) {
+		boolean flag = false;
+		try {
+			connection = this.getDataSource().getConnection();
+			int id = ComputeQueryBean.getIDUser(pseudo, password, connection);
+			if (id != 0)
+				flag = true;
+			else
+				flag = false;
+		} catch (SQLException e) {
+			flag = false;
+		}
+		return flag;
 	}
 }
