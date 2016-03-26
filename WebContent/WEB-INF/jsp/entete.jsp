@@ -5,6 +5,15 @@
 <%@ page import="ModelPackage.*"%>
 <%@ page import="BeanPackage.*"%>
 <%@ page import="java.util.List"%>
+<%
+	User user = (User) request.getSession().getAttribute("user");
+	/*if (user == null) {
+		System.out.println("Utilisateur inexistant!!!");
+		response.sendRedirect("connexion");
+	} else {
+		System.out.println("Utilisateur existant!!!");
+	}*/
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -72,7 +81,26 @@
 					<li><a href="reunion">Reunion</a></li>
 					<li><a href="formation">Formation</a></li>
 					<li><a href="programme">Programme</a></li>
-					<li><a href="animateur">Animat-Relecteur</a></li>
+					<li><a href="animateur">Animateur-Relecteur</a></li>
+					<div class="col-xs-2 ">
+					<%
+						if (user == null) {
+							System.out.println("Utilisateur inexistant!!!");
+					%>
+					<li><a href="deconnexion"> Hello <%= request.getUserPrincipal().getName().toString() %><span>.</span></a>
+					
+					   <ul>
+					   <li><a href="javascript:rechercheActivite()">Deconnexion</a></li>
+					   <li><a href="javascript:rechercheActivite()">Profil</a></li>
+					   </ul>
+					</li>
+					<%
+						} else {
+					%>
+					<li><a href="connection"> Se Connecter</a></li>
+					<%
+						}
+					%>
 				</div>
 				</ul>
 				</nav>
@@ -97,5 +125,6 @@
 
 		});
 	</script>
+
 </body>
 </html>
