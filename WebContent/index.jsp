@@ -5,7 +5,7 @@
 <head>
 </head>
 <body>
-	<% response.sendRedirect("connexion"); %>
+	<% response.sendRedirect("home"); %>
 	<%//c'est du commentaire %>
 	
 </body>

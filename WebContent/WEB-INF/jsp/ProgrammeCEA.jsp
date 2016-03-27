@@ -7,12 +7,12 @@
 <%@ page import="java.util.List"%>
 <%
 	User user = (User) request.getSession().getAttribute("user");
-	if (user == null) {
-		System.out.println("Utilisateur inexistant!!!");
-		response.sendRedirect("connexion");
-	} else {
-		System.out.println("Utilisateur existant!!!");
-	}
+// 	if (user == null) {
+// 		System.out.println("Utilisateur inexistant!!!");
+// 		response.sendRedirect("connexion");
+// 	} else {
+// 		System.out.println("Utilisateur existant!!!");
+// 	}
 %>
 <!DOCTYPE html>
 <html>
@@ -87,7 +87,7 @@
 										Formulaire des programmes CEA
 										</h2>
 								</div>
-								<form method="post" action="ActiviteFormulaire" class="myForm">
+								<form method="post" action="programme" class="myForm">
 									<h3>Programme</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
@@ -184,7 +184,7 @@
 												<label>Date d'accréditation</label>
 											</div>
 											<div class="row">
-												<input class="form-control" type="text" id="date_Acc"
+												<input class="form-control dateShow" type="text" id="date_Acc"
 													name="date_Acc" value="${param.date_Acc}" placeholder="Date" />
 											</div>
 											<span class="erreur">${errors['date_Acc']}</span>
@@ -194,7 +194,7 @@
 												<label>Date d'expiration</label>
 											</div>
 											<div class="row">
-												<input class="form-control" type="text" id="date_Expiration"
+												<input class="form-control dateShow" type="text" id="date_Expiration"
 													name="date_Expiration" value="${param.date_Expiration}" placeholder="Date" />
 											</div>
 											<span class="erreur">${errors['date_Expiration']}</span>
@@ -239,7 +239,7 @@
 												<label>Date de création</label>
 											</div>
 											<div class="row">
-												<input class="form-control" type="text" id="date_creation"
+												<input class="form-control dateShow" type="text" id="date_creation"
 													name="date_creation" value="${param.date_creation}" placeholder="Date" />
 											</div>
 											<span class="erreur">${errors['date_creation']}</span>
@@ -250,7 +250,7 @@
 											<input class="btn btn-danger " type="reset"
 												value="Annuler" />
 											<input class="btn btn-info " type="submit"
-												value="Inscription" />
+												value="Valider" />
 										
 									</div>
 									<p class="${empty errors ? 'succes' : 'erreur'}">${resultat}</p>
@@ -293,25 +293,21 @@
 			</div>
 		</div>
 	</section>
-	<script src="http://code.jquery.com/jquery.js"></script>
 	<!-- Jessor slider Start-->
+	<script src="Assets/plugins/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="Assets/js/bootstrap.min.js"></script>
+    <script src="Assets/plugins/jasny/js/bootstrap-fileupload.js"></script>
+	<script type="text/javascript"
+		src="Assets/plugins/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="Assets/js/jssor.core.js"></script>
 	<script type="text/javascript" src="Assets/js/jssor.utils.js"></script>
 	<script type="text/javascript" src="Assets/js/jssor.slider.js"></script>
 	<!-- JS -->
 	<script type="text/javascript" src="Assets/js/selectnav.min.js"></script>
-	<!-- 	<script type="text/javascript" src="Assets/js/jquery.min.js"></script> -->
-	<script type="text/javascript" src="Assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="Assets/js/myScript.js"></script>
-	<script src="Assets/plugins/jquery-2.0.3.min.js"></script>
-	<!-- END GLOBAL SCRIPTS -->
-	<!-- PAGE LEVEL SCRIPTS -->
 	<script src="Assets/plugins/dataTables/jquery.dataTables.js"></script>
 	<script src="Assets/plugins/dataTables/dataTables.bootstrap.js"></script>
 	<script>
-		$(document).ready(function() {
-			$('#myDataTable').dataTable();
-		});
 		$(function() {
 			$("#overlay").click(function() {
 				$("#cadre").fadeOut();
@@ -336,12 +332,6 @@
 	$(function getValueOption(valueOption) {
 		var selectedanswer = document.getElementById(valueOption).selectedIndex;
 		return document.getElementsByTagName("option")[selectedanswer].value;
-	});
-	$(document).ready(function() {
-
-		$('.date').datepicker({
-			format : "dd/mm/yyyy"
-		});
 	});
 </script>
 </html>

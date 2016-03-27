@@ -7,12 +7,12 @@
 <%@ page import="java.util.List"%>
 <%
 	User user = (User) request.getSession().getAttribute("user");
-	if (user == null) {
-		System.out.println("Utilisateur inexistant!!!");
-		response.sendRedirect("connexion");
-	} else {
-		System.out.println("Utilisateur existant!!!");
-	}
+// 	if (user == null) {
+// 		System.out.println("Utilisateur inexistant!!!");
+// 		response.sendRedirect("connexion");
+// 	} else {
+// 		System.out.println("Utilisateur existant!!!");
+// 	}
 %>
 <!DOCTYPE html>
 <html>
@@ -87,7 +87,7 @@
 										Formulaire des reunions
 										</h2>
 								</div>
-								<form method="post" action="Animateur_Relecteur" class="myForm">
+								<form method="post" action="reunion" class="myForm">
 									<h3>Information</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
@@ -118,7 +118,7 @@
 												<label>Date de début <span>*</span></label>
 											</div>
 											<div class="row">
-												<input class="form-control" type="text" id="dateDeb"
+												<input class="form-control dateShow" type="text" id="dateDeb"
 													name="dateDeb" value="${param.dateDeb}" placeholder="Date debut" />
 											</div>
 											<span class="erreur">${errors['dateDeb']}</span>
@@ -128,7 +128,7 @@
 												<label>Date de fin <span>*</span></label>
 											</div>
 											<div class="row">
-												<input class="form-control" type="text" id="dateFin"
+												<input class="form-control dateShow" type="text" id="dateFin"
 													name="dateFin" value="${param.dateFin}" placeholder="Date fin" />
 											</div>
 											<span class="erreur">${errors['dateFin']}</span>
@@ -180,7 +180,7 @@
 									</div>
 									<div class="row myBtn">
 										<input class="btn btn-danger " type="reset" value="Annuler" />
-										<input class="btn btn-info " type="submit" value="Inscription" />
+										<input class="btn btn-info " type="submit" value="Valider" />
 
 									</div>
 									<p class="${empty errors ? 'succes' : 'erreur'}">${resultat}</p>
@@ -223,25 +223,21 @@
 			</div>
 		</div>
 	</section>
-	<script src="http://code.jquery.com/jquery.js"></script>
 	<!-- Jessor slider Start-->
+	<script src="Assets/plugins/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="Assets/js/bootstrap.min.js"></script>
+    <script src="Assets/plugins/jasny/js/bootstrap-fileupload.js"></script>
+	<script type="text/javascript"
+		src="Assets/plugins/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="Assets/js/jssor.core.js"></script>
 	<script type="text/javascript" src="Assets/js/jssor.utils.js"></script>
 	<script type="text/javascript" src="Assets/js/jssor.slider.js"></script>
 	<!-- JS -->
 	<script type="text/javascript" src="Assets/js/selectnav.min.js"></script>
-	<!-- 	<script type="text/javascript" src="Assets/js/jquery.min.js"></script> -->
-	<script type="text/javascript" src="Assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="Assets/js/myScript.js"></script>
-	<script src="Assets/plugins/jquery-2.0.3.min.js"></script>
-	<!-- END GLOBAL SCRIPTS -->
-	<!-- PAGE LEVEL SCRIPTS -->
 	<script src="Assets/plugins/dataTables/jquery.dataTables.js"></script>
 	<script src="Assets/plugins/dataTables/dataTables.bootstrap.js"></script>
 	<script>
-		$(document).ready(function() {
-			$('#myDataTable').dataTable();
-		});
 		$(function() {
 			$("#overlay").click(function() {
 				$("#cadre").fadeOut();
@@ -266,12 +262,6 @@
 	$(function getValueOption(valueOption) {
 		var selectedanswer = document.getElementById(valueOption).selectedIndex;
 		return document.getElementsByTagName("option")[selectedanswer].value;
-	});
-	$(document).ready(function() {
-
-		$('.date').datepicker({
-			format : "dd/mm/yyyy"
-		});
 	});
 </script>
 </html>

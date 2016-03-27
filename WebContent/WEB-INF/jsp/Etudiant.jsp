@@ -143,7 +143,7 @@
 										</div>
 										<div class="formDroite col-xs-5">
 											<div class="row ">
-												<label>Lieu de naissance</label>
+												<label>Lieu de naissance<span>*</span></label>
 											</div>
 											<div class="row">
 												<input class="form-control" type="text" id="countryOfBirth"
@@ -201,12 +201,12 @@
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
 											<div class="row ">
-												<label>Sexe</label>
+												<label>Sexe<span>*</span></label>
 											</div>
 											<div class="row">
 												<select id="sexe"
 													<input class="form-control" type="text" name="gender" value=getValueOption(gender) />>
-													<option>sexe</option>
+													<option value="" disabled selected>sexe</option>
 													<option value="0">Masculin</option>
 													<option value="1">Féminin</option>
 												</select>
@@ -228,12 +228,12 @@
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
 											<div class="row ">
-												<label>Niveau</label>
+												<label>Niveau<span>*</span></label>
 											</div>
 											<div class="row">
 												<select id="level"
 													<input class="form-control" type="text" name="level" value="${param.level}" />>
-													<option>Choisir le niveau</option>
+													<option value="" disabled selected>Choisir le niveau</option>
 													<option>Master 1</option>
 													<option>Master 2</option>
 													<option>1er Année</option>
@@ -247,12 +247,12 @@
 										</div>
 										<div class="formDroite col-xs-5">
 											<div class="row">
-												<label>Programme</label>
+												<label>Programme<span>*</span></label>
 											</div>
 											<div class="row">
 												<select id="program"
 													<input class="form-control" type="text" name="program" value="${param.program}" />>
-													<option>Choisir le programme</option>
+													<option value="" disabled selected>Choisir le programme</option>
 													<option>M2ITIC/FOAD</option>
 													<option>Algébre Appliquée</option>
 													<option>DIETEL</option>
@@ -276,12 +276,12 @@
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
 											<div class="row">
-												<label>Semestre</label>
+												<label>Semestre<span>*</span></label>
 											</div>
 											<div class="row">
 												<select id="semester"
 													<input class="form-control" type="text" name="semester" value="${param.semester}" />>
-													<option>choisir le semestre</option>
+													<option value="" disabled selected>choisir le semestre</option>
 													<option>Semestre 1</option>
 													<option>Semestre 2</option>
 													<option>Autre</option>

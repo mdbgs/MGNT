@@ -7,12 +7,12 @@
 <%@ page import="java.util.List"%>
 <%
 	User user = (User) request.getSession().getAttribute("user");
-	if (user == null) {
-		System.out.println("Utilisateur inexistant!!!");
-		response.sendRedirect("connexion");
-	} else {
-		System.out.println("Utilisateur existant!!!");
-	}
+// 	if (user == null) {
+// 		System.out.println("Utilisateur inexistant!!!");
+// 		response.sendRedirect("connexion");
+// 	} else {
+// 		System.out.println("Utilisateur existant!!!");
+// 	}
 %>
 <!DOCTYPE html>
 <html>
@@ -87,7 +87,7 @@
 										Formulaire d'inscription Partenaire
 										</h2>
 								</div>
-								<form method="post" action="Partenaire" class="myForm">
+								<form method="post" action="partenaire" class="myForm">
 									<h3>Coordonnées Partenaire</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">

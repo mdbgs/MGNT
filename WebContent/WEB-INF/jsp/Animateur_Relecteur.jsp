@@ -7,12 +7,12 @@
 <%@ page import="java.util.List"%>
 <%
 	User user = (User) request.getSession().getAttribute("user");
-	if (user == null) {
-		System.out.println("Utilisateur inexistant!!!");
-		response.sendRedirect("connexion");
-	} else {
-		System.out.println("Utilisateur existant!!!");
-	}
+// 	if (user == null) {
+// 		System.out.println("Utilisateur inexistant!!!");
+// 		response.sendRedirect("connexion");
+// 	} else {
+// 		System.out.println("Utilisateur existant!!!");
+// 	}
 %>%>
 <!DOCTYPE html>
 <html>
@@ -84,10 +84,10 @@
 							<div class="myPanel panel-default">
 								<div class="panel-heading">
 									<h1>
-										Formulaire d'inscription Animateur ou relecteur
+										Formulaire d'ajout Animateur ou relecteur
 										</h2>
 								</div>
-								<form method="post" action="Animateur_Relecteur" class="myForm">
+								<form method="post" action="animateur" class="myForm">
 									<h3>Information</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
@@ -152,7 +152,7 @@
 											<div class="row">
 												<select id="level"
 													<input class="form-control" type="text" name="institutionAffiliation" value="${param.institutionAffiliation}" />>
-													<option>Choisir une institution</option>
+													<option value="" disabled selcted>Choisir une institution</option>
 													<option value="0">CEA</option>
 													<option value="1">IP</option>
 													<option value="2">REG</option>
@@ -163,7 +163,7 @@
 									</div>
 									<div class="row myBtn">
 										<input class="btn btn-danger " type="reset" value="Annuler" />
-										<input class="btn btn-info " type="submit" value="Inscription" />
+										<input class="btn btn-info " type="submit" value="Valider" />
 
 									</div>
 									<p class="${empty errors ? 'succes' : 'erreur'}">${resultat}</p>

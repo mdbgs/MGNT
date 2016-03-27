@@ -7,12 +7,12 @@
 <%@ page import="java.util.List"%>
 <%
 	User user = (User) request.getSession().getAttribute("user");
-	if (user == null) {
-		System.out.println("Utilisateur inexistant!!!");
-		response.sendRedirect("connexion");
-	} else {
-		System.out.println("Utilisateur existant!!!");
-	}
+// 	if (user == null) {
+// 		System.out.println("Utilisateur inexistant!!!");
+// 		response.sendRedirect("connexion");
+// 	} else {
+// 		System.out.println("Utilisateur existant!!!");
+// 	}
 %>
 <!DOCTYPE html>
 <html>
@@ -87,7 +87,7 @@
 										Formulaire d'inscription Enseignant
 										</h2>
 								</div>
-								<form method="post" action="Enseignant" class="myForm">
+								<form method="post" action="enseignant" class="myForm">
 									<h3>Coordonnées Enseignant</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
@@ -137,12 +137,12 @@
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
 											<div class="row ">
-												<label>Niveau</label>
+												<label>Niveau<span>*</span></label>
 											</div>
 											<div class="row">
 												<select id="level"
 													<input class="form-control" type="text" name="level" value="${param.level}" />>
-													<option>Choisir le niveau</option>
+													<option value="" disabled select>Choisir le niveau</option>
 													<option>Master 1</option>
 													<option>Master 2</option>
 													<option>Thèse</option>
@@ -164,12 +164,12 @@
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
 											<div class="row ">
-												<label>Sexe</label>
+												<label>Sexe<span>*</span></label>
 											</div>
 											<div class="row">
 												<select id="sexe"
 													<input class="form-control" type="text" name="gender" value=getValueOption(gender) />>
-													<option>sexe</option>
+													<option value="" disabled select>sexe</option>
 													<option value="0">Masculin</option>
 													<option value="1">Féminin</option>
 												</select>
@@ -192,7 +192,7 @@
 								<div class="row">
 											<div class="formDroite col-xs-5">
 											<div class="row">
-												<label>Boite Postale</label>
+												<label>Boite Postale<span>*</span></label>
 											</div>
 											<div class="row">
 												<input class="form-control" type="text" id="bp" name="bp"
@@ -203,12 +203,12 @@
 									
 										<div class="col-xs-5" id="formGauche">
 											<div class="row">
-												<label>Affiliation Institutionnelle</label>
+												<label>Affiliation Institutionnelle<span>*</span></label>
 											</div>
 											<div class="row">
 												<select id="institutionAffiliation"
 													<input class="form-control" type="text" name="institutionAffiliation" value="${param.institutionAffiliation}" />>
-													<option>Choix</option>
+													<option value="" disabled select>Choix</option>
 													<option>CEA</option>
 													<option>IP</option>
 													<option>REG</option>

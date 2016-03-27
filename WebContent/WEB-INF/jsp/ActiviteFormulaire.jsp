@@ -7,12 +7,12 @@
 <%@ page import="java.util.List"%>
 <%
 	User user = (User) request.getSession().getAttribute("user");
-	if (user == null) {
-		System.out.println("Utilisateur inexistant!!!");
-		response.sendRedirect("connexion");
-	} else {
-		System.out.println("Utilisateur existant!!!");
-	}
+// 	if (user == null) {
+// 		System.out.println("Utilisateur inexistant!!!");
+// 		response.sendRedirect("connexion");
+// 	} else {
+// 		System.out.println("Utilisateur existant!!!");
+// 	}
 %>
 <!DOCTYPE html>
 <html>
@@ -87,7 +87,7 @@
 										Formulaire des activités
 										</h2>
 								</div>
-								<form method="post" action="ActiviteFormulaire" class="myForm">
+								<form method="post" action="activiteFormulaire" class="myForm">
 									<h3>Activité</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
@@ -158,7 +158,7 @@
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
 											<div class="row ">
-												<label>Libelle de l'indicateur <span>*</span></label>
+												<label>Libelle de l'indicateur</label>
 											</div>
 											<div class="row">
 												<input class="form-control" type="text"
@@ -227,7 +227,7 @@
 											<input class="btn btn-danger " type="reset"
 												value="Annuler" />
 											<input class="btn btn-info " type="submit"
-												value="Inscription" />
+												value="Valider" />
 										
 									</div>
 									<p class="${empty errors ? 'succes' : 'erreur'}">${resultat}</p>

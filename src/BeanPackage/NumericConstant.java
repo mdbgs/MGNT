@@ -2,9 +2,9 @@ package BeanPackage;
 
 public interface NumericConstant {
 	// Connection constant
-	public static final String URL = "jdbc:mysql://localhost:3307/ceamitic?useSLL=false";
+	public static final String URL = "jdbc:mysql://localhost:3306/ceamitic?useSLL=false";
 	public static final String USER = "root";
-	public static final String DATABASEPASS = "CadreInfo1";
+	public static final String DATABASEPASS = "";
 	//Constant Etudiant
 	public static final String STUDENTNUMBER = "studentNumber";
 	public static final String FIRSTNAME = "firstName";
