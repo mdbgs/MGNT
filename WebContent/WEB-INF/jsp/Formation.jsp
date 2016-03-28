@@ -5,15 +5,6 @@
 <%@ page import="ModelPackage.*"%>
 <%@ page import="BeanPackage.*"%>
 <%@ page import="java.util.List"%>
-<%
-	/*User user = (User) request.getSession().getAttribute("user");
-	if (user == null) {
-		System.out.println("Utilisateur inexistant!!!");
-		response.sendRedirect("connexion");
-	} else {
-		System.out.println("Utilisateur existant!!!");
-	}*/
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +35,7 @@
 	<section id="header_bottom_area"></section>
 	<section id="content_area">
 		<div class="content ">
-				<%@ include file="entete.jsp" %>
+			<c:import url="entete.jsp"></c:import>
 			<div class="fix main_content_areaBis row ">
 				<div class="fix allSearch"></div>
 				<div class="fix single_sidebar">
@@ -56,7 +47,7 @@
 										Formation
 										</h2>
 								</div>
-								<form method="post" action="Animateur_Relecteur" class="myForm">
+								<form method="post" action="formation" class="myForm">
 									<h3>Information</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">

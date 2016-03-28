@@ -2,18 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ page import="ModelPackage.*"%>
-<%@ page import="BeanPackage.*"%>
-<%@ page import="java.util.List"%>
-<%
-	User user = (User) request.getSession().getAttribute("user");
-	/*if (user == null) {
-		System.out.println("Utilisateur inexistant!!!");
-		response.sendRedirect("connexion");
-	} else {
-		System.out.println("Utilisateur existant!!!");
-	}*/
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,36 +33,7 @@
 	<section id="content_area">
 		<div class="content center">
 			<div class="main_menu row">
-				<nav>
-					<ul id="nav2" class="barreOutil">
-						<div class="col-xs-10 barreValue">
-							<li><a href="home">Accueil</a></li>
-							<li><a href="javascript:allActivite()">Activités<span>.</span></a>
-								<ul>
-									<li><a href="javascript:apprentissageActivite()">Apprentissage</a></li>
-									<li><a href="javascript:rechercheActivite()">Recherche</a></li>
-									<li><a href="javascript:partenaireActivite()">Partenariat</a></li>
-									<li><a href="javascript:gouvernanceActivite()">Gouvernance</a></li>
-								</ul> </a></li>
-							<li><a href="indicateur">Indicateurs</li>
-							<li><a href="listeEtudiant">Etudiant</a></li>
-						</div>
-						<div class="row ">
-							<%
-								if (user == null) {
-									System.out.println("Utilisateur inexistant!!!");
-							%>
-							<li><a href="connexion"> Se connecter</a></li>
-							<%
-								} else {
-							%>
-							<li><a href="deconnection"> Se Déconnecter</a></li>
-							<%
-								}
-							%>
-						
-					</ul>
-				</nav>
+				<c:import url="entete.jsp"></c:import>
 			</div>
 			<div class="fix main_content_areaBis row ">
 				<div class="fix allSearch"></div>

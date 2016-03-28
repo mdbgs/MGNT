@@ -216,4 +216,29 @@
     <servlet-name>responsableSE</servlet-name>
     <url-pattern>/responsableSE</url-pattern>
   </servlet-mapping>
+ 
+  <servlet>
+    <servlet-name>Resultat</servlet-name>
+    <servlet-class>ServletPackages.ResultatServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Resultat</servlet-name>
+    <url-pattern>/resultat</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AuthenticationSecurity</servlet-name>
+    <servlet-class>ServletSecurity.AuthenticationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthenticationSecurity</servlet-name>
+    <url-pattern>/authentication</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ResponsableControle</servlet-name>
+    <servlet-class>ServletPackages.ResponsableControleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResponsableControle</servlet-name>
+    <url-pattern>/responsableControle</url-pattern>
+  </servlet-mapping>
 </web-app>

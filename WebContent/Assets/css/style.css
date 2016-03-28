@@ -434,6 +434,7 @@ element.style{
 
 .erreur {
 	height: 100%;
+	color:red;
 }
 
 #formGauche, #formDroite {

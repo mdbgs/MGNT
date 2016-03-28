@@ -4,15 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page import="ModelPackage.*"%>
 <%@ page import="BeanPackage.*"%>
-<%
-	/*User user = (User) request.getSession().getAttribute("user");
-	if (user == null) {
-		System.out.println("Utilisateur inexistant!!!");
-		response.sendRedirect("connexion");
-	} else {
-		System.out.println("Utilisateur existant!!!");
-	}*/
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -43,7 +34,7 @@
 	<section id="header_bottom_area"></section>
 	<section id="content_area">
 	<div class="content ">
-			<%@ include file="entete.jsp" %>
+			<c:import url="entete.jsp"></c:import>
 				<div class="fix main_content_area row ">
 			<div class="fix allSearch"></div>
 			<div class="fix single_sidebar">

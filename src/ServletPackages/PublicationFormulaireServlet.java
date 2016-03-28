@@ -34,6 +34,9 @@ public class PublicationFormulaireServlet extends ConnexionServlet implements Nu
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String resultat;
+		
+		Map<String, String> errors = new HashMap<String, String>();
 
 		/* Récupération des champs du formulaire. */
 		String titre = request.getParameter(TITLE);
@@ -54,6 +57,79 @@ public class PublicationFormulaireServlet extends ConnexionServlet implements Nu
 		} catch (SQLException | ParseException e) {
 			e.printStackTrace();
 		} 
+		
+		/* Validation du champ titre. */
+		try {
+
+			validationTitre(titre);
+
+		} catch (Exception e) {
+
+			errors.put(TITLE, e.getMessage());
+
+		}
+				
+		/* Validation du champ nom journal. */
+		try {
+
+			validationNomJournal(nomJournal);
+
+		} catch (Exception e) {
+
+			errors.put(NOMJOURNAL, e.getMessage());
+
+		}
+		
+		/* Validation du champ nom journal. */
+		try {
+
+			validationAuteur(auteur);
+
+		} catch (Exception e) {
+
+			errors.put(AUTHOR, e.getMessage());
+
+		}
+		if (errors.isEmpty()) {
+
+			resultat = "Succès de l'inscription.";
+
+		} else {
+
+			resultat = "Échec de l'inscription.";
+
+		}
+		/* Stockage du résultat et des messages d'erreur dans l'objet request */
+
+		request.setAttribute(ERRORS, errors);
+
+		request.setAttribute(RESULT, resultat);
+
+		/* Transmission de la paire d'objets request/response à notre JSP */
+
+		request.getRequestDispatcher("/WEB-INF/jsp/Publication.jsp").forward(request, response);
+
 	}
+	
+	
+	private void validationTitre(String titre) throws Exception{
+		if(titre.trim().length()==0)
+			throw new Exception("Veuillez saisir le titre svp");
+		
+	}
+	
+	private void validationNomJournal(String nomJournal) throws Exception{
+		if(nomJournal.trim().length()==0)
+			throw new Exception("Veuillez saisir le nom du journal svp");
+		
+	}
+	
+
+	private void validationAuteur(String auteur) throws Exception{
+		if(auteur.trim().length()==0)
+			throw new Exception("Veuillez saisir l'auteur svp");
+		
+	}
+	
 }
 

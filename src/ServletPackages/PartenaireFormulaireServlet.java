@@ -38,7 +38,7 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String resultat;
 
-		Map<String, String> erreurs = new HashMap<String, String>();
+		Map<String, String> errors = new HashMap<String, String>();
 
 		/* Récupération des champs du formulaire. */
 
@@ -88,18 +88,18 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 
 		} catch (Exception e) {
 
-			erreurs.put(NAME, e.getMessage());
+			errors.put(NAME, e.getMessage());
 
 		}
 		 
-		/* Validation du champ email. */
+		/* Validation du champ type. */
 		try {
 
 			validationType(type);
 
 		} catch (Exception e) {
 
-			erreurs.put(TYPE, e.getMessage());
+			errors.put(TYPE, e.getMessage());
 
 		}
  
@@ -111,7 +111,7 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 
 		} catch (Exception e) {
 
-			erreurs.put(MAIL, e.getMessage());
+			errors.put(MAIL, e.getMessage());
 
 		}
 		/* Validation du champ téléphone*/
@@ -120,7 +120,7 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 			
 		} catch(Exception e){
 			
-			erreurs.put(PHONE, e.getMessage());
+			errors.put(PHONE, e.getMessage());
 		}
 	
 		/* Validation du champ adresse*/
@@ -132,7 +132,7 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 
 		} catch (Exception e) {
 
-			erreurs.put(adresse, e.getMessage());
+			errors.put(adresse, e.getMessage());
 
 		}
 		/* Validation du champ boite postale*/
@@ -142,7 +142,7 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 
 		} catch (Exception e) {
 
-			erreurs.put(BP, e.getMessage());
+			errors.put(BP, e.getMessage());
 
 		}
 		
@@ -153,7 +153,7 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 
 		} catch (Exception e) {
 
-			erreurs.put(ACC_TITLE, e.getMessage());
+			errors.put(ACC_TITLE, e.getMessage());
 
 		}
 		
@@ -164,7 +164,7 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 
 		} catch (Exception e) {
 
-			erreurs.put(COLLABORATION_D, e.getMessage());
+			errors.put(COLLABORATION_D, e.getMessage());
 
 		}
 		
@@ -175,7 +175,7 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 
 		} catch (Exception e) {
 
-			erreurs.put(SIGNDATE, e.getMessage());
+			errors.put(SIGNDATE, e.getMessage());
 
 		}
 		
@@ -186,18 +186,18 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 
 		} catch (Exception e) {
 
-			erreurs.put(ACC_EXPIRATION, e.getMessage());
+			errors.put(ACC_EXPIRATION, e.getMessage());
 
 		}
 		
 		/* Validation du champ resultat attendu*/
 		try {
 
-			validationResultatAttendu(domaineDeCollaboration);
+			validationResultatAttendu(resultatAttendu);
 
 		} catch (Exception e) {
 
-			erreurs.put(RESULT, e.getMessage());
+			errors.put(ATT_RESULT, e.getMessage());
 
 		}
 		
@@ -208,12 +208,12 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 
 		} catch (Exception e) {
 
-			erreurs.put(CONJOINTPROJECT, e.getMessage());
+			errors.put(CONJOINTPROJECT, e.getMessage());
 
 		}
 
 		
-		if (erreurs.isEmpty()) {
+		if (errors.isEmpty()) {
 
 			resultat = "Succès de l'inscription.";
 
@@ -224,7 +224,7 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 		}
 		/* Stockage du résultat et des messages d'erreur dans l'objet request */
 
-		request.setAttribute(ERRORS, erreurs);
+		request.setAttribute(ERRORS, errors);
 
 		request.setAttribute(RESULT, resultat);
 
@@ -234,27 +234,16 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 
 	}
 	
-	
-	private void validationPartener(String numeroPartenaire) throws Exception {
-		 
-			
-		
-		
-	}
-
 	private void validationNom(String nom) throws Exception {
 		if(nom.trim().length()==0)
 			throw new Exception("Veuillez saisir le nom svp");
-			else
-				if (nom != null) {
-					if(!nom.matches("^\\D+$" ))
-						throw new Exception("Le nom doit uniquement contenir des lettres");
-
-		}
+			
 
 	}
 	
-	private void validationType(String type) {
+	private void validationType(String type) throws Exception {
+		if(type.trim().length()==0)
+			throw new Exception("Veuillez saisir le type svp");
 		
 	}
 	
@@ -297,31 +286,47 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 	}
 	
 	
-	private void validationAdresse(String adresse) {
+	private void validationAdresse(String adresse) throws Exception{
+		
+		if(adresse.trim().length()==0)
+			throw new Exception("Veuillez saisir l'adresse svp");
+	}
+	
+	private void validationBoitePostale(String boitePostale) throws Exception{
+		if(boitePostale.trim().length()==0)
+			throw new Exception("Veuillez saisir la boite postale svp");
+	}
+	
+	private void validationTitre(String titreAcc) throws Exception{
+		if(titreAcc.trim().length()==0)
+			throw new Exception("Veuillez saisir le titre svp");
 		
 	}
 	
-	private void validationBoitePostale(String boitePostale) {
+	private void validationExpirationDeLaccord(String expirationDeLaccord) throws Exception{
+		if(expirationDeLaccord.trim().length()==0)
+			throw new Exception("Veuillez saisir l'expiration de l'accord svp");
+		
 	}
-	
-	private void validationTitre(String titreAcc) {
+	private void validationDomaineCollaboration(String domaineDeCollaboration) throws Exception{
+		if(domaineDeCollaboration.trim().length()==0)
+			throw new Exception("Veuillez saisir le domaine de collaboration svp");
+		
+	}
+	private void validationDateSignature(String dateDeSignature) throws Exception{
+		if(dateDeSignature.trim().length()==0)
+			throw new Exception("Veuillez saisir la date de signature svp");
+		
+	}
+	private void validationResultatAttendu(String resultatAttendu) throws Exception {
+		if(resultatAttendu.trim().length()==0)
+			throw new Exception("Veuillez saisir le resultat attendu svp");
 		
 	}
 	
-	private void validationExpirationDeLaccord(String expirationDeLaccord) {
-		
-	}
-	private void validationDomaineCollaboration(String domaineDeCollaboration) {
-		
-	}
-	private void validationDateSignature(String dateDeSignature) {
-		
-	}
-	private void validationResultatAttendu(String domaineDeCollaboration) {
-		
-	}
-	
-	private void validationProjetConjoint(String projetConjoint) {
+	private void validationProjetConjoint(String projetConjoint) throws Exception{
+		if(projetConjoint.trim().length()==0)
+			throw new Exception("Veuillez saisir le projet conjoint svp");
 		
 	}
 

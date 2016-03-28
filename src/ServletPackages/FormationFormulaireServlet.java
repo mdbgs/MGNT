@@ -33,6 +33,10 @@ public class FormationFormulaireServlet extends ConnexionServlet implements Nume
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String resultat;
+		
+		Map<String, String> errors = new HashMap<String, String>();
+
 		/* Récupération des champs du formulaire. */
 		String titre = request.getParameter(TITLE);
 		String institution = request.getParameter(INSTITUTION);
@@ -48,6 +52,95 @@ public class FormationFormulaireServlet extends ConnexionServlet implements Nume
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} 
+		}
+		
+		/* Validation du champ titre. */
+		try {
+
+			validationTitre(titre);
+
+		} catch (Exception e) {
+
+			errors.put(TITLE, e.getMessage());
+
+		}
+		
+		/* Validation du champ position. */
+		try {
+
+			validationPosition(position);
+
+		} catch (Exception e) {
+
+			errors.put(POSITION, e.getMessage());
+
+		}
+		
+		/* Validation du champ institution. */
+		try {
+
+			validationInstitution(institution);
+
+		} catch (Exception e) {
+
+			errors.put(INSTITUTION, e.getMessage());
+
+		}
+		/* Validation du champ contenu*/
+		try{
+			validationContenu(contenu);
+			
+		} catch(Exception e){
+			
+			errors.put(CONTENU, e.getMessage());
+		}
+		
+		if (errors.isEmpty()) {
+
+			resultat = "Succès de l'inscription.";
+
+		} else {
+
+			resultat = "Échec de l'inscription.";
+
+		}
+
+
+		/* Stockage du résultat et des messages d'erreur dans l'objet request */
+
+		request.setAttribute(ERRORS, errors);
+
+		request.setAttribute(RESULT, resultat);
+
+		/* Transmission de la paire d'objets request/response à notre JSP */
+
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Formation.jsp").forward(request, response);
+
 	}
+	
+	private void validationTitre(String titre) throws Exception {
+		if(titre.trim().length()==0)
+			throw new Exception("Veuillez saisir le titre svp");
+		
+	}
+	
+	private void validationInstitution(String institution) throws Exception{
+		if(institution.trim().length()==0)
+			throw new Exception("Veuillez saisir l'institution svp");
+		
+	}
+	
+	private void validationPosition(String position) throws Exception {
+		if(position.trim().length()==0)
+			throw new Exception("Veuillez saisir la position svp");
+		
+	}
+	
+	private void validationContenu(String contenu) throws Exception{
+		if(contenu.trim().length()==0)
+			throw new Exception("Veuillez saisir le contenu svp");
+		
+	}
+	
+	
 }

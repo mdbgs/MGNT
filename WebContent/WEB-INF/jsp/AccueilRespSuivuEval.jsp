@@ -23,7 +23,7 @@
 	<section id="header_bottom_area"></section>
 	<section id="content_area">
 	<div class="content">
-	<%@ include file="entete.jsp" %>
+		<c:import url="entete.jsp"></c:import>
 		<div class="fix main_content_area row">
 			<p>Rappel important</p>
 			<p>Rappel important</p>
@@ -37,8 +37,6 @@
 			</div>
 		</div>
 	</section>
-	
-		<%@ include file="piedsPage.jsp" %>
-	
+	<c:import url="piedsPage.jsp"></c:import>
 </body>
 </html>

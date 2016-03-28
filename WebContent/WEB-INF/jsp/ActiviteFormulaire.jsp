@@ -7,12 +7,12 @@
 <%@ page import="java.util.List"%>
 <%
 	User user = (User) request.getSession().getAttribute("user");
-	if (user == null) {
-		System.out.println("Utilisateur inexistant!!!");
-		response.sendRedirect("connexion");
-	} else {
-		System.out.println("Utilisateur existant!!!");
-	}
+// 	if (user == null) {
+// 		System.out.println("Utilisateur inexistant!!!");
+// 		response.sendRedirect("connexion");
+// 	} else {
+// 		System.out.println("Utilisateur existant!!!");
+// 	}
 %>
 <!DOCTYPE html>
 <html>
@@ -45,36 +45,7 @@
 	<section id="content_area">
 		<div class="content center">
 			<div class="main_menu row">
-				<nav>
-					<ul id="nav2" class="barreOutil">
-						<div class="col-xs-10 barreValue">
-							<li><a href="home">Accueil</a></li>
-							<li><a href="javascript:allActivite()">Activités<span>.</span></a>
-								<ul>
-									<li><a href="javascript:apprentissageActivite()">Apprentissage</a></li>
-									<li><a href="javascript:rechercheActivite()">Recherche</a></li>
-									<li><a href="javascript:partenaireActivite()">Partenariat</a></li>
-									<li><a href="javascript:gouvernanceActivite()">Gouvernance</a></li>
-								</ul> </a></li>
-							<li><a href="">Indicateurs</li>
-							<li><a href="">Résultats</a></li>
-						</div>
-						<div class="row ">
-							<%
-								if (user == null) {
-									System.out.println("Utilisateur inexistant!!!");
-							%>
-							<li><a href="connexion"> Se connecter</a></li>
-							<%
-								} else {
-							%>
-							<li><a href="deconnection"> Se Déconnecter</a></li>
-							<%
-								}
-							%>
-						
-					</ul>
-				</nav>
+				<c:import url="entete.jsp"></c:import>
 			</div>
 			<div class="fix main_content_areaBis row ">
 				<div class="fix allSearch"></div>
@@ -87,7 +58,7 @@
 										Formulaire des activités
 										</h2>
 								</div>
-								<form method="post" action="ActiviteFormulaire" class="myForm">
+								<form method="post" action="activiteFormulaire" class="myForm">
 									<h3>Activité</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
@@ -158,7 +129,7 @@
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
 											<div class="row ">
-												<label>Libelle de l'indicateur <span>*</span></label>
+												<label>Libelle de l'indicateur</label>
 											</div>
 											<div class="row">
 												<input class="form-control" type="text"
@@ -227,7 +198,7 @@
 											<input class="btn btn-danger " type="reset"
 												value="Annuler" />
 											<input class="btn btn-info " type="submit"
-												value="Inscription" />
+												value="Valider" />
 										
 									</div>
 									<p class="${empty errors ? 'succes' : 'erreur'}">${resultat}</p>
@@ -257,48 +228,8 @@
 			</div>
 		</div>
 	</section>
-	<section id="footer_bottom_area">
-		<div class="fix footer_bottom center">
-			<div class="fix copyright floatleft">
-				<p>&#169 2015 CEAMITIC</p>
-			</div>
-			<div class="fix footer_bottom_text floatright">
-				<p>
-					<a href="http://www.ceamitic.sn" title="Site web du centre"
-						target="_blank">www.ceamitic.sn</a>
-				</p>
-			</div>
-		</div>
-	</section>
-	<script src="http://code.jquery.com/jquery.js"></script>
-	<!-- Jessor slider Start-->
-	<script type="text/javascript" src="Assets/js/jssor.core.js"></script>
-	<script type="text/javascript" src="Assets/js/jssor.utils.js"></script>
-	<script type="text/javascript" src="Assets/js/jssor.slider.js"></script>
-	<!-- JS -->
-	<script type="text/javascript" src="Assets/js/selectnav.min.js"></script>
-	<!-- 	<script type="text/javascript" src="Assets/js/jquery.min.js"></script> -->
-	<script type="text/javascript" src="Assets/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="Assets/js/myScript.js"></script>
-	<script src="Assets/plugins/jquery-2.0.3.min.js"></script>
-	<!-- END GLOBAL SCRIPTS -->
-	<!-- PAGE LEVEL SCRIPTS -->
-	<script src="Assets/plugins/dataTables/jquery.dataTables.js"></script>
-	<script src="Assets/plugins/dataTables/dataTables.bootstrap.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('#myDataTable').dataTable();
-		});
-		$(function() {
-			$("#overlay").click(function() {
-				$("#cadre").fadeOut();
-				$("#overlay").fadeOut();
-			});
-		});
-	</script>
 
-
-
+			<c:import url="piedsPage.jsp"></c:import>
 
 </body>
 <!-- JS -->

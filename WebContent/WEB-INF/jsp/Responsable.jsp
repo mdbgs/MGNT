@@ -7,12 +7,12 @@
 <%@ page import="java.util.List"%>
 <%
 	User user = (User) request.getSession().getAttribute("user");
-	if (user == null) {
-		System.out.println("Utilisateur inexistant!!!");
-		response.sendRedirect("connexion");
-	} else {
-		System.out.println("Utilisateur existant!!!");
-	}
+// 	if (user == null) {
+// 		System.out.println("Utilisateur inexistant!!!");
+// 		response.sendRedirect("connexion");
+// 	} else {
+// 		System.out.println("Utilisateur existant!!!");
+// 	}
 %>
 <!DOCTYPE html>
 <html>
@@ -87,7 +87,7 @@
 										Formulaire d'inscription Responsable
 										</h2>
 								</div>
-								<form method="post" action="Responsable" class="myForm">
+								<form method="post" action="responsable" class="myForm">
 									<h3>Coordonnées Responsable</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
@@ -142,7 +142,7 @@
 											<div class="row">
 												<select id="sexe"
 													<input class="form-control" type="text" name="gender" value=getValueOption(gender) />>
-													<option>sexe</option>
+													<option value="" disabled selected>sexe</option>
 													<option value="0">Masculin</option>
 													<option value="1">Féminin</option>
 												</select>
@@ -166,7 +166,15 @@
 												<label>Type</label>
 											</div>
 											<div class="row">
-												<input	class="form-control" type="text" id="type" name="type" value="${param.type}" placeholder="type"/>
+												<select id="type"
+													<input class="form-control" type="text" name="type" value="${param.type}" />>
+													<option value="" disabled selected>sélectionner</option>
+													<option>Responsable suivi-évaluation</option>
+													<option>Responsable de controle</option>
+													<option>Responsable de saisie</option>
+													<option>Coordonnateur</option>
+													<option>Coordonnateur adjoint</option>
+												</select>
 											</div>
 											<span class="erreur">${errors['type']}</span>
 										</div>

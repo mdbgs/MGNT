@@ -1,7 +1,6 @@
 package BeanPackage;
 
 public interface NumericConstant {
-	// Constant Etudiant
 	public static final String STUDENTNUMBER = "studentNumber";
 	public static final String FIRSTNAME = "firstName";
 	public static final String LASTNAME = "lastName";
