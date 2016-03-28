@@ -1,41 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
 <title>Formulaire Etudiant</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- Css include -->
-<link rel="stylesheet" href="Assets/css/font-awesome.min.css" />
-<link rel="shortcut icon" type="image/x-icon"
-	href="Assets/images/slideshow/logoceamitic.png" sizes="16x16" />
-<link rel="stylesheet" href="Assets/fonts/HelveticaNeue/font.css" />
-<link rel="stylesheet" href="Assets/css/style.css" media="screen" />
-<link rel="stylesheet" href="Assets/css/responsive.css" media="screen" />
-<link rel="stylesheet" href="Assets/css/bootstrap.css" rel="stylesheet" />
-<link rel="stylesheet" href="Assets/css/main.css" />
-
-<link rel="stylesheet" href="Assets/css/MoneAdmin.css" />
-<link rel="stylesheet"
-	href="assets/plugins/Font-Awesome/css/font-awesome.css" />
-<link rel="stylesheet"
-	href="Assets/plugins/Font-Awesome/css/font-awesome.css" />
-<link href="Assets/plugins/dataTables/dataTables.bootstrap.css"
-	rel="stylesheet" />
-<link rel="stylesheet" href="Assets/css/nexus.css" rel="stylesheet" />
-<link rel="stylesheet"
-	href="Assets/plugins/datepicker/css/datepicker.css" />
-<link rel="stylesheet" href="Assets/css/bootstrap-fileupload.min.css" />
 </head>
-
 <body id="scroll_top">
 	<section id="header_areaBis"></section>
 	<section id="header_bottom_area"></section>
 	<section id="content_area">
 		<div class="content ">
-			<%@ include file="entete.jsp"%>
+			<c:import url="entete.jsp"></c:import>
 			<div class="fix main_content_areaBis row ">
 				<div class="fix allSearch"></div>
 				<div class="fix single_sidebar">
@@ -43,9 +20,7 @@
 						<div class="row">
 							<div class="myPanel panel-default">
 								<div class="panel-heading">
-									<h1>
-										Formulaire d'inscription Etudiant
-										</h2>
+									<h2>Formulaire d'inscription Etudiant</h2>
 								</div>
 								<form method="post" action="etudiant" class="myForm">
 									<h3>Coordonnées Etudiant</h3>
@@ -189,7 +164,8 @@
 											<div class="row">
 												<select id="level"
 													<input class="form-control" type="text" name="level" value="${param.level}" />>
-													<option value="" disabled selected>Choisir le niveau</option>
+													<option value="" disabled selected>Choisir le
+														niveau</option>
 													<option>Master 1</option>
 													<option>Master 2</option>
 													<option>1er Année</option>
@@ -208,7 +184,8 @@
 											<div class="row">
 												<select id="program"
 													<input class="form-control" type="text" name="program" value="${param.program}" />>
-													<option value="" disabled selected>Choisir le programme</option>
+													<option value="" disabled selected>Choisir le
+														programme</option>
 													<option>M2ITIC/FOAD</option>
 													<option>Algébre Appliquée</option>
 													<option>DIETEL</option>
@@ -237,7 +214,8 @@
 											<div class="row">
 												<select id="semester"
 													<input class="form-control" type="text" name="semester" value="${param.semester}" />>
-													<option value="" disabled selected>choisir le semestre</option>
+													<option value="" disabled selected>choisir le
+														semestre</option>
 													<option>Semestre 1</option>
 													<option>Semestre 2</option>
 													<option>Autre</option>

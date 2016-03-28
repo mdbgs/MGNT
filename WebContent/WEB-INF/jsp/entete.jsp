@@ -24,6 +24,7 @@
 <!-- Css include -->
 <link rel="stylesheet" href="Assets/css/font-awesome.min.css" />
 <link rel="stylesheet" href="Assets/fonts/HelveticaNeue/font.css" />
+<link rel="stylesheet" href="Assets/css/style.css" media="screen" />
 <link rel="shortcut icon" type="image/x-icon"
 	href="Assets/images/slideshow/logoceamitic.png" sizes="16x16" />
 <link rel="stylesheet" href="Assets/css/responsive.css" media="screen" />
@@ -31,7 +32,7 @@
 <link rel="stylesheet" href="Assets/css/main.css" />
 <link rel="stylesheet" href="Assets/css/MoneAdmin.css" />
 <link rel="stylesheet"
-	href="assets/plugins/Font-Awesome/css/font-awesome.css" />
+	href="Assets/plugins/Font-Awesome/css/font-awesome.css" />
 <link rel="stylesheet"
 	href="Assets/plugins/Font-Awesome/css/font-awesome.css" />
 <link href="Assets/plugins/dataTables/dataTables.bootstrap.css"
@@ -78,7 +79,6 @@
 								<li><a href="javascript:partenaireActivite()">Féminins</a></li>
 								<li><a href="javascript:gouvernanceActivite()">Tous</a></li>
 							</ul></li>
-
 						<li><a href="enseignant">Enseignant</a></li>
 						<li><a href="activite">Activités<span>.</span></a>
 							<ul>
@@ -149,6 +149,5 @@
 
 		});
 	</script>
-
 </body>
 </html>
