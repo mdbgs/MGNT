@@ -5,7 +5,7 @@ public class Student {
 	//FIELDS
 	//
 	private int idStudent;
-	private int idCompte;
+	private String pseudo;
 	private String lastName;
 	private String firstName;
 	private String birthday;
@@ -31,10 +31,10 @@ public class Student {
 	}public void setIdStudent(int idStudent) {
 		this.idStudent = idStudent;
 	}
-	public int getIdCompte() {
-		return idCompte;
-	}public void setIdCompte(int idCompte) {
-		this.idCompte = idCompte;
+	public String getPseudo() {
+		return pseudo;
+	}public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
 	}
 	public String getStudentNumber() {
 		return studentNumber;
@@ -144,13 +144,13 @@ public class Student {
 	public void setBp(String bp) {
 		this.bp = bp;
 	}
-	public Student(int idStudent, int idCompte, String lastName, String firstName, String birthday,
+	public Student(int idStudent, String pseudo, String lastName, String firstName, String birthday,
 			String countryOfBirth, String level, String nationality, String adress, String mail, String phone,
 			String bp, String gender, String studentNumber, String lastNamePAC, String firstNamePAC, String phonePAC,
 			String adressPAC, String program, String semester) {
 		super();
 		this.idStudent = idStudent;
-		this.idCompte = idCompte;
+		this.pseudo = pseudo;
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.birthday = birthday;

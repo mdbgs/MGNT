@@ -34,9 +34,6 @@ public class PublicationFormulaireServlet extends ConnexionServlet implements Nu
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String resultat;
-		
-		Map<String, String> erreurs = new HashMap<String, String>();
 
 		/* Récupération des champs du formulaire. */
 		String titre = request.getParameter(TITLE);

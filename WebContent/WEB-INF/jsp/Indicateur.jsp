@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page import="ModelPackage.*"%>
 <%@ page import="BeanPackage.*"%>
 <%
-	User user = (User) request.getSession().getAttribute("user");
+	/*User user = (User) request.getSession().getAttribute("user");
 	if (user == null) {
 		System.out.println("Utilisateur inexistant!!!");
 		response.sendRedirect("connexion");
 	} else {
 		System.out.println("Utilisateur existant!!!");
-	}
+	}*/
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -42,41 +42,16 @@
 	<section id="header_areaBis"> </section>
 	<section id="header_bottom_area"></section>
 	<section id="content_area">
-	<div class="content center">
-		<div class="main_menu row">
-			<nav>
-			<ul id="nav2" class="barreOutil">
-				<div class="col-xs-10 barreValue">
-					<li><a href="home">Accueil</a></li>
-					<li><a href="activite">Activités</a></li>
-					<li><a href="indicateur" class="active">Indicateurs</a></li>
-					<li><a href="listeEtudiant">Etudiant</a></li>
-				</div>
-				<div class="col-xs-2 ">
-					<%
-						if (user == null) {
-							System.out.println("Utilisateur inexistant!!!");
-					%>
-					<li><a href="connexion"> Se connecter</a></li>
-					<%
-						} else {
-					%>
-					<li><a href="deconnection"> Se Déconnecter</a></li>
-					<%
-						}
-					%>
-				</div>
-			</ul>
-			</nav>
-		</div>
-		<div class="fix main_content_area row ">
+	<div class="content ">
+			<%@ include file="entete.jsp" %>
+				<div class="fix main_content_area row ">
 			<div class="fix allSearch"></div>
 			<div class="fix single_sidebar">
 				<div class="inner">
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="panel panel-default">
-								<div class="panel-heading">Tableu des Indicateurs</div>
+								<div class="panel-heading">Tableau des Indicateurs</div>
 								<div class="panel-body">
 									<div class="table-responsive">
 										<table class="table table-striped table-bordered table-hover"
@@ -130,51 +105,8 @@
 			</div>
 		</div>
 	</section>
-	<section id="footer_top_area">
-	<div class="fix footer_top center">
-		<div class="fix footer_top_container">
-			<div>
-				<ul class="col-xs-12">
-					<li class="col-xs-2 myFooter"><a href=""><span>A
-								propos</span></a></li>
-					<li class="col-xs-2 myFooter"><a href=""><span>Nous
-								contacter</span></a></li>
-					<li class="col-xs-2 myFooter"><a href=""><span>Aide</span></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	</section>
-	<section id="footer_bottom_area">
-	<div class="fix footer_bottom center">
-		<div class="fix copyright floatleft">
-			<p>&#169 2015 CEAMITIC</p>
-		</div>
-		<div class="fix footer_bottom_text floatright">
-			<p>
-				<a href="http://www.ceamitic.sn" title="Site web du centre"
-					target="_blank">www.ceamitic.sn</a>
-			</p>
-		</div>
-	</div>
-	</section>
-	<script src="http://code.jquery.com/jquery.js"></script>
-	<!-- Jessor slider Start-->
-	<script type="text/javascript" src="Assets/js/jssor.core.js"></script>
-	<script type="text/javascript" src="Assets/js/jssor.utils.js"></script>
-	<script type="text/javascript" src="Assets/js/jssor.slider.js"></script>
-	<!-- JS -->
-	<script type="text/javascript" src="Assets/js/selectnav.min.js"></script>
-	<!-- 	<script type="text/javascript" src="Assets/js/jquery.min.js"></script> -->
-	<script type="text/javascript" src="Assets/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="Assets/js/myScript.js"></script>
-	<script src="Assets/plugins/jquery-2.0.3.min.js"></script>
-	<!-- END GLOBAL SCRIPTS -->
-	<!-- PAGE LEVEL SCRIPTS -->
-	<script src="Assets/plugins/dataTables/jquery.dataTables.js"></script>
-	<script src="Assets/plugins/dataTables/dataTables.bootstrap.js"></script>
-	<script src="Assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-	<script src="Assets/js/notifications.js"></script>
+	<%@ include file="piedsPage.jsp" %>
+	
 	<script>
 		$(document).ready(function() {
 			$('#myDataTable').dataTable();

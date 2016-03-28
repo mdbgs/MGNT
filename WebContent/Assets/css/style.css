@@ -330,7 +330,6 @@ element.style{
 	margin-top: 125px;
 	background-color: #31859C;
 }
-
 .form-signin-heading {
 	text-align: center;
 	color: white;
@@ -378,14 +377,19 @@ element.style{
 
 .barreOutil {
 	padding-top:15px;
-	width:102.4%;
 	margin-bottom:0px;
 	margin-left:-12px;
 }
 .barreValue {
 	max-height: 40px;
 }
-
+.barreValue img {
+	margin-top:-8px;
+	margin-left:-25px;
+	margin-right:20px;
+	width : 85px;
+	border-radius:4px;
+}
 .composant {
 	padding-left: 50px;
 	text-decoration: underline;
@@ -449,6 +453,7 @@ element.style{
 /*Fnish TODO Moussa************************************************************************/
 #header_areaBis {
 	margin-top: 40px;
+	margin-left:0px;
 }
 
 * {
@@ -671,7 +676,7 @@ ul {
 	left: -999999px;
 	border-top: 5px solid #f38430;
 	z-index: 2000;
-	min-width: 100px;
+	min-width: 160px;
 }
 
 #nav2 div li:hover ul {
@@ -801,6 +806,7 @@ ul {
 	margin-top: -495px;
 	margin-left: 25px;
 	margin-right: 15px;
+	min-height:600px;
 	
 }
 
@@ -813,10 +819,6 @@ padding-bottom:-10px;
 	border-right: 2px solid #ddd;
 	border-bottom: 2px solid #ddd;
 	padding: 25px;
-	wdth:99.8%;
-	
-	
-	
 }
 
 .main_content_areaBis {
@@ -1337,6 +1339,8 @@ padding-bottom:-10px;
 		rgba(0, 0, 0, 0);
 	border-bottom: 5px solid #31859C;
 	border-top: 5px solid #31859C;
+	margin-left:10px;
+	width:100%;
 }
 
 #footer_bottom_area {

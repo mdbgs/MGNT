@@ -40,14 +40,6 @@
 		<url-pattern>/home</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>Resultat</servlet-name>
-		<servlet-class>ServletPackages.ResultatServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Resultat</servlet-name>
-		<url-pattern>/resultat</url-pattern>
-	</servlet-mapping>
-	<servlet>
 		<servlet-name>Activite</servlet-name>
 		<servlet-class>ServletPackages.ActiviteServlet</servlet-class>
 	</servlet>
@@ -160,16 +152,6 @@
 		<url-pattern>/programme</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<description>Get Information about Country - jQuery Ajax Request</description>
-		<display-name>CountryInformation</display-name>
-		<servlet-name>CountryInformation</servlet-name>
-		<servlet-class>com.as400samplecode.CountryInformation</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>CountryInformation</servlet-name>
-		<url-pattern>/CountryInformation</url-pattern>
-	</servlet-mapping>
-	<servlet>
 		<servlet-name>GrapheIndicateur</servlet-name>
 		<servlet-class>ServletPackages.GrapheServlet</servlet-class>
 	</servlet>
@@ -177,14 +159,38 @@
 		<servlet-name>GrapheIndicateur</servlet-name>
 		<url-pattern>/graphe</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>AdminAccueil</servlet-name>
+		<servlet-class>ServletPackages.AdminAccueilServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminAccueil</servlet-name>
+		<url-pattern>/administrator</url-pattern>
+	</servlet-mapping>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Page de l'administrateur</web-resource-name>
+			<url-pattern>/administrators</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Connection page</web-resource-name>
-			<url-pattern>/connexion</url-pattern>
+			<url-pattern>/stage</url-pattern>
+			<url-pattern>/publication</url-pattern>
+			<url-pattern>/reunion</url-pattern>
+			<url-pattern>/partenaire</url-pattern>
+			<url-pattern>/etudiant</url-pattern>
+			<url-pattern>/enseignat</url-pattern>
+			<url-pattern>/responsable</url-pattern>
+			<url-pattern>/enseignat</url-pattern>
+			<url-pattern>/index.jsp</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<description>Athentification des utilisateurs</description>
-			<role-name>users</role-name>
+			<role-name>responsable_Suivi_Evaluation</role-name>
 		</auth-constraint>
 	</security-constraint>
 	<login-config>
@@ -193,8 +199,7 @@
 			<form-login-page>/connexion</form-login-page>
 			<form-error-page>/connexion</form-error-page>
 		</form-login-config>
-
-	</login-config>
+	</login-config>	
 	<filter>
 		<filter-name>ClickCounterFilter</filter-name>
 		<filter-class>FilterPackage.ClickCounterFilter</filter-class>

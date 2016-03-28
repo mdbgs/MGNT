@@ -32,10 +32,6 @@ public class StageFormulaireServlet extends ConnexionServlet implements NumericC
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String resultat;
-		
-		Map<String, String> erreurs = new HashMap<String, String>();
-
 		/* Récupération des champs du formulaire. */
 		String programmeDpt = request.getParameter(PROGRAMDEPARTMENT);
 		String dateDeb = request.getParameter(DATEDEB);
@@ -51,14 +47,5 @@ public class StageFormulaireServlet extends ConnexionServlet implements NumericC
 		 Date date = new Date();
 		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		HomeServlet servlet = new HomeServlet();
-		/*try {
-			connection = servlet.getDataSource().getConnection();
-			//date = dateFormat.parse(dateN);
-			String valueFormation="'"+titre+"'%'"+institution+"'%"+"%'"+position+"'%'"+contenu+"'%'";
-			int rs= ComputeQueryBean.insertDatabase(valueFormation, "Etudiant",connection);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} */
 	}
 }

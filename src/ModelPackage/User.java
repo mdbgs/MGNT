@@ -1,30 +1,14 @@
 package ModelPackage;
 
-import java.sql.Timestamp;
-
 public class User {
 	//
 	// FIELDS
 	//
 	private String pseudo;
 	private String password;
-	private Timestamp inscriptionDate;
-	private Integer id;
 	//
 	// GETTERS & SETTERS
 	//
-	;public void setId(Integer id) {
-		this.id = id;
-	}
-	public Integer getId() {
-		return id;
-	}
-	public Timestamp getInscriptionDate() {
-		return inscriptionDate;
-	}
-	public void setInscriptionDate(Timestamp inscriptionDate) {
-		this.inscriptionDate = inscriptionDate;
-	}
 	public String getPassword() {
 		return password;
 	}
@@ -40,9 +24,8 @@ public class User {
 	//
 	// CONSTRUCTOR
 	//
-	public User(String pseudo, String password,Integer id) {
+	public User(String pseudo, String password) {
 		this.pseudo = pseudo;
 		this.password = password;
-		this.id = id;
 	}
 }

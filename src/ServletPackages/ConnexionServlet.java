@@ -9,8 +9,6 @@ import java.sql.Statement;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.security.auth.login.LoginContext;
-import javax.security.auth.login.LoginException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +17,6 @@ import javax.sql.DataSource;
 
 import BeanPackage.ComputeQueryBean;
 import ModelPackage.User;
-import ServletSecurity.ZaCallbackHandler;
 
 public class ConnexionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -59,37 +56,64 @@ public class ConnexionServlet extends HttpServlet {
 			throws ServletException, IOException {
 		ResultSet resultSet = null;
 		try {
+			String role = "";
 			// Get Connection and Statement
 			connection = this.getDataSource().getConnection();
 			pseudo = request.getParameter("j_username");
 			password = request.getParameter("j_password");
-
-			if (!pseudo.isEmpty() && !password.isEmpty()) {
-				boolean authenticationFlag = true;
-				ZaCallbackHandler zaCallbackHandler = new ZaCallbackHandler(pseudo, password);
-				try {
-					LoginContext loginContext = new LoginContext("ZaJaas", zaCallbackHandler);
-					loginContext.login();
-				} catch (LoginException e) {
-					e.printStackTrace();
-					System.out.println("LoginContext failed");
-					authenticationFlag = false;
+			System.out.println("ConnexionServlet.doPost()");
+			if (ComputeQueryBean.isUser(pseudo, password, connection)) {
+				resultSet = ComputeQueryBean.userRole(pseudo, connection);
+				while (resultSet.next()) {
+					role = resultSet.getString("rolename");
 				}
-				if (authenticationFlag){
-					System.out.println("Authentication success ...");
-					int id = ComputeQueryBean.getIDUser(pseudo, password, connection);
-						resultSet = ComputeQueryBean.selectAllByID("compte", id, connection);
-						while (resultSet.next()) {
-							request.getSession().setAttribute("user", new User(pseudo, password, id));
-							response.sendRedirect("home");
-						}
-				}
-				else
-					System.out.println("Authentication failed ...");
-				response.sendRedirect("connexion");
-			} else {
-				response.getWriter().println(" Invalid Authentication ...");
 			}
+			request.getSession().setAttribute("user", new User(pseudo, password));
+			request.getSession().setAttribute("rolename", role);
+			switch (role) {
+			case "admin": {
+				response.sendRedirect("administrator");
+			}
+				break;
+			case "etudiant": {
+				response.sendRedirect("etudiant");
+			}
+				break;
+			case "enseignat": {
+				response.sendRedirect("enseignant");
+			}
+				break;
+			case "coordonnateur": {
+				response.sendRedirect("coordonnateur");
+
+			}
+				break;
+			case "responsable_Suivi_Evaluation": {
+				response.sendRedirect("responsable_Suivi_Evaluation");
+			}
+				break;
+			case "responsable_Saisie": {
+				response.sendRedirect("responsable_Saisie");
+			}
+				break;
+			case "responsable_Controle": {
+				response.sendRedirect("responsable_Controle");
+			}
+				break;
+			case "partenaire": {
+				response.sendRedirect("partenaire");
+			}
+				break;
+			case "BanqueMondial": {
+				response.sendRedirect("BanqueMondial");
+			}
+				break;
+			case "viceCoordonnateur": {
+				response.sendRedirect("viceCoordonnateur");
+			}
+				break;
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -112,25 +136,10 @@ public class ConnexionServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-
 	}
-	/** Called to get existing datasource*/
+
+	/** Called to get existing datasource */
 	public DataSource getDataSource() {
 		return dataSource;
-	}
-	/** Used to check if the customer is a user*/
-	public boolean isUser(String pseudo, String password) {
-		boolean flag = false;
-		try {
-			connection = this.getDataSource().getConnection();
-			int id = ComputeQueryBean.getIDUser(pseudo, password, connection);
-			if (id != 0)
-				flag = true;
-			else
-				flag = false;
-		} catch (SQLException e) {
-			flag = false;
-		}
-		return flag;
 	}
 }

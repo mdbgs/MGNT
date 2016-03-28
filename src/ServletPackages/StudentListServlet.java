@@ -37,7 +37,7 @@ public class StudentListServlet extends ConnexionServlet {
 			connection = this.getDataSource().getConnection();
 			ResultSet result = ComputeQueryBean.selectAll("Etudiant", connection);
 			while (result.next()) {
-				student.AddStudent(new Student(result.getInt(1), result.getInt(2),result.getString(3), result.getString(4), Integer.toString(result.getInt(5)), result.getString(6),
+				student.AddStudent(new Student(result.getInt(1), result.getString(2),result.getString(3), result.getString(4), Integer.toString(result.getInt(5)), result.getString(6),
 						result.getString(7), result.getString(8), result.getString(9), result.getString(10),
 						result.getString(11), result.getString(12), Integer.toString(result.getInt(13)), result.getString(14), result.getString(15), result.getString(16), result.getString(17), result.getString(18), result.getString(19), result.getString(20)));
 			}

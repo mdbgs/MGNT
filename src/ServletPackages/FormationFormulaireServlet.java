@@ -33,19 +33,13 @@ public class FormationFormulaireServlet extends ConnexionServlet implements Nume
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String resultat;
-		
-		Map<String, String> erreurs = new HashMap<String, String>();
-
 		/* Récupération des champs du formulaire. */
 		String titre = request.getParameter(TITLE);
 		String institution = request.getParameter(INSTITUTION);
 		String position = request.getParameter(POSITION);
 		String contenu=request.getParameter(CONTENU);
 		
-		 Date date = new Date();
-		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		HomeServlet servlet = new HomeServlet();
+		ConnexionServlet servlet = new ConnexionServlet();
 		try {
 			connection = servlet.getDataSource().getConnection();
 			//date = dateFormat.parse(dateN);

@@ -144,7 +144,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		String dateNow = dateFormat.format(date);
 		String pseudo = ("'"+nom+"."+prenom).replaceAll("\\s", "_");
-		String valueEtudiant= "@ceamitic.sn'"+"%'ceamitic2016'%"+dateNow+"%'Etudiant'%'Inconnue'";
+		String valueEtudiant= "'%'ceamitic2016'%"+dateNow+"%'Etudiant'%'Inconnue'";
 		HomeServlet servlet = new HomeServlet();
 		try {
 			connection = servlet.getDataSource().getConnection();
@@ -156,8 +156,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				rs = ComputeQueryBean.insertDatabase(pseudo+valueEtudiant, "compte",connection);
 			}
 			date = dateFormat.parse(dateN);
-			int idCompte =  ComputeQueryBean.getIDUser(nom+"."+prenom+"@ceamitic.sn", "ceamitic2016", connection);
-			valueEtudiant=idCompte+"%" + "'"+nom+"'%'"+prenom+"'%" + dateFormat.format(date) + "%'"+lieuDeNaiss+"'%'"+niveau+"'%'"+nationalite+"'%'" +adresse+"'%'"+email+"'%'" +telephone+"'%'" +boitePostale+"'%" +sexe+"%" + "'"+numeroEtudiant+"'%"
+			valueEtudiant=pseudo+"%" + "'"+nom+"'%'"+prenom+"'%" + dateFormat.format(date) + "%'"+lieuDeNaiss+"'%'"+niveau+"'%'"+nationalite+"'%'" +adresse+"'%'"+email+"'%'" +telephone+"'%'" +boitePostale+"'%" +sexe+"%" + "'"+numeroEtudiant+"'%"
 			+ "'"+nomPAC+"'%" + "'"+prenomPAC+"'%'"+phonePAC+"'%'"+adressePAC+"'%'"+programme+"'%'"+semestre+"'";
 			rs= ComputeQueryBean.insertDatabase(valueEtudiant, "Etudiant",connection);
 			

@@ -45,7 +45,6 @@ public class GrapheIndicateurActivite extends ConnexionServlet {
 			while (result.next()) {
 				value = result.getString(9).split("%");
 				indic ="indicateur "+myID;
-				System.out.println(indic+" this is my value!!!!!!!!!!");
 				if (value[0].equals(indic)){
 					activite.addActiviteinList(new Activite(result.getInt(1), result.getString(2),
 							Integer.toString(result.getInt(3)), result.getString(4), result.getString(5),

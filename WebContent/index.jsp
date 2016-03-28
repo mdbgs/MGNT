@@ -5,6 +5,5 @@
 <head>
 </head>
 <body>
-	<% response.sendRedirect("connexion"); %>
 </body>
 </html>

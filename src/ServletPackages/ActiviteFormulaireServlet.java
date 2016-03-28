@@ -48,7 +48,7 @@ public class ActiviteFormulaireServlet extends ConnexionServlet implements Numer
 		
 		
 		Date date = new Date();
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("YYYY/MM/DD");
 		HomeServlet servlet = new HomeServlet();
 		try {
 			

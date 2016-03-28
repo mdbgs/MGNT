@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Server port="8005" shutdown="SHUTDOWN">
+	<Service name="Catalina">
+		<Engine defaultHost="localhost" name="Catalina">
+			<Host appBase="webapps" autoDeploy="true" name="localhost"
+				unpackWARs="true">
+
+				<Realm className="org.apache.catalina.realm.JDBCRealm"
+					connectionName="root" connectionPassword="CadreInfo1"
+					connectionURL="jdbc:mysql://localhost:3307/ceamitic" driverName="com.mysql.jdbc.Driver"
+					roleNameCol="rolename" userCredCol="password" userNameCol="pseudo"
+					userRoleTable="users_roles" userTable="compte" />
+			</Host>
+		</Engine>
+	</Service>
+</Server>
