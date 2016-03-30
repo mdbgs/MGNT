@@ -37,11 +37,9 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String resultat;
 
-		Map<String, String> erreurs = new HashMap<String, String>();
+		Map<String, String> errors = new HashMap<String, String>();
 
 		/* Récupération des champs du formulaire. */
-
-		String numeroEnseignant=request.getParameter(TEACHERNUMBER);
 		String prenom = request.getParameter(FIRSTNAME);
 		String nom = request.getParameter(LASTNAME);
 		String email = request.getParameter(MAIL);
@@ -58,7 +56,7 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		 String dateNow = dateFormat.format(date);
 		 String pseudo = "'"+nom+"."+prenom;
-		String valueEnseignant= "@ceamitic.sn'"+"%'ceamitic2016'%"+dateNow+"%'Enseignant'%'Inconnue'";
+		String valueEnseignant="%'ceamitic2016'%"+dateNow+"%'Enseignant'%'Inconnue'";
 		HomeServlet servlet = new HomeServlet();
 		try {
 			connection = servlet.getDataSource().getConnection();
@@ -69,8 +67,7 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 				pseudo+=number;
 				rs = ComputeQueryBean.insertDatabase(pseudo+valueEnseignant, "compte",connection);
 			}
-			int idCompte =  ComputeQueryBean.getIDUser(nom+"."+prenom+"@ceamitic.sn", "ceamitic2016", connection);
-			valueEnseignant=idCompte+"%" + "'"+nom+"'%" + "'"+prenom+"'%" + "'"+niveau+"'%" + "'"+nationalite+"'%"
+			valueEnseignant=pseudo+"%" + "'"+nom+"'%" + "'"+prenom+"'%" + "'"+niveau+"'%" + "'"+nationalite+"'%"
 					 + "'"+adresse+"'%" + "'"+email+"'%" + "'"+telephone+"'%" +
 					 "'"+boitePostale+"'%" + ""+sexe+"%" +"'"+affliationIns+"'%";
 			rs= ComputeQueryBean.insertDatabase(valueEnseignant, "Enseignant",connection);
@@ -86,7 +83,7 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 
 		} catch (Exception e) {
 
-			erreurs.put(FIRSTNAME, e.getMessage());
+			errors.put(FIRSTNAME, e.getMessage());
 
 		}
 		
@@ -97,19 +94,10 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 
 		} catch (Exception e) {
 
-			erreurs.put(LASTNAME, e.getMessage());
+			errors.put(LASTNAME, e.getMessage());
 
 		}
-		/* Validation du champ nom. */
-		try {
-
-			validationNumEnseignant(numeroEnseignant);
-
-		} catch (Exception e) {
-
-			erreurs.put(TEACHERNUMBER, e.getMessage());
-
-		}
+		
 		/* Validation du champ email. */
 		try {
 
@@ -117,7 +105,7 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 
 		} catch (Exception e) {
 
-			erreurs.put(MAIL, e.getMessage());
+			errors.put(MAIL, e.getMessage());
 
 		}
 		/* Validation du champ téléphone*/
@@ -126,7 +114,7 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 			
 		} catch(Exception e){
 			
-			erreurs.put(PHONE, e.getMessage());
+			errors.put(PHONE, e.getMessage());
 		}
 		
 		try {
@@ -135,17 +123,17 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 
 		} catch (Exception e) {
 
-			erreurs.put(LEVEL, e.getMessage());
+			errors.put(LEVEL, e.getMessage());
 
 		}
 		
 		try {
 
-			validationProgramme(programme);
+			validationSexe(sexe);
 
 		} catch (Exception e) {
 
-			erreurs.put(PROGRAM, e.getMessage());
+			errors.put(GENDER, e.getMessage());
 
 		}
 	
@@ -156,7 +144,7 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 
 		} catch (Exception e) {
 
-			erreurs.put(NATIONALITY, e.getMessage());
+			errors.put(NATIONALITY, e.getMessage());
 
 		}
 		
@@ -166,7 +154,7 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 
 		} catch (Exception e) {
 
-			erreurs.put(adresse, e.getMessage());
+			errors.put(ADRESS, e.getMessage());
 
 		}
 		
@@ -176,12 +164,21 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 
 		} catch (Exception e) {
 
-			erreurs.put(BP, e.getMessage());
+			errors.put(BP, e.getMessage());
+
+		}
+		try {
+
+			validationAffiliationIns(affliationIns);
+
+		} catch (Exception e) {
+
+			errors.put(INSTITUTIONAFFILIATION, e.getMessage());
 
 		}
 
 		
-		if (erreurs.isEmpty()) {
+		if (errors.isEmpty()) {
 
 			resultat = "Succès de l'inscription.";
 
@@ -192,7 +189,7 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 		}
 		/* Stockage du résultat et des messages d'erreur dans l'objet request */
 
-		request.setAttribute(ERRORS, erreurs);
+		request.setAttribute(ERRORS, errors);
 
 		request.setAttribute(RESULT, resultat);
 
@@ -202,14 +199,6 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 
 	}
 	
-	
-
-	
-
-	
-
-	
-
 	private void validationPrenom(String prenom) throws Exception {
 		if(prenom.trim().length()==0)
 			throw new Exception("Veuillez saisir le prénom svp");
@@ -235,9 +224,6 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 
 	}
 	
-	public void validationNumEnseignant(String numeroEnseignant){
-		
-	}
 	
 	private void validationEmail(String email) throws Exception {
 
@@ -256,12 +242,12 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 		}
 
 	}
-	public void validationTelephone(String telephone) throws Exception{
+	private void validationTelephone(String telephone) throws Exception{
 		if ( telephone != null ) {
 
             if ( !telephone.matches( "^\\d+$" ) ) {
 
-                throw new Exception( "Le numéro de téléphone doit uniquement contenir des chiffres." );
+                throw new Exception( "Le numéro de téléphone est incorrect." );
 
             } else if ( telephone.length() < 9 ) {
 
@@ -269,41 +255,49 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 
             }
 
-        } else {
-
+       } else 
             throw new Exception( "Merci d'entrer un numéro de téléphone." );
-        }
-		
-	}
-	
-	
-	public void validationNiveau(String niveau){
-		
-	}
-	
-	public void validationProgramme(String programme){
-		
-	}
-	private void validationRegion(String region) {
+        
 		
 	}
 
-	private void validationNationalite(String nationalite) {
+	private void validationSexe(String sexe) throws Exception{
+		if(sexe.trim().length()==0)
+			throw new Exception("Veuillez saisir le sexe svp");
+			
 		
 	}
 
-	private void validationProgrammeLieuDeNaissance(String programme) {
+	private void validationAffiliationIns(String affliationIns) throws Exception{
+		if(affliationIns.trim().length()==0)
+			throw new Exception("Veuillez saisir l'affiliation institutionnelle svp");
 		
 	}
 	
-	private void validationSemestre(String semestre) {
-	}
 	
-	private void validationAdresse(String adresse) {
+	private void validationNiveau(String niveau) throws Exception{
+		if(niveau.trim().length()==0)
+			throw new Exception("Veuillez saisir le niveau svp");
 		
 	}
 	
-	private void validationBoitePostale(String boitePostale) {
+	private void validationNationalite(String nationalite)throws Exception {
+		if(nationalite.trim().length()==0)
+			throw new Exception("Veuillez saisir la nationalité svp");
+		
+	}
+
+	
+	
+	private void validationAdresse(String adresse)throws Exception {
+		if(adresse.trim().length()==0)
+			throw new Exception("Veuillez saisir  une adresse svp");
+		
+	}
+	
+	private void validationBoitePostale(String boitePostale) throws Exception{
+		if(boitePostale.trim().length()==0)
+			throw new Exception("Veuillez saisir la boite postale svp");
 		
 	}
 	

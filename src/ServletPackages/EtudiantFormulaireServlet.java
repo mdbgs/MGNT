@@ -43,7 +43,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String resultat;
 		
-		Map<String, String> erreurs = new HashMap<String, String>();
+		Map<String, String> errors = new HashMap<String, String>();
 
 		/* Récupération des champs du formulaire. */
 //		try {
@@ -144,7 +144,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		String dateNow = dateFormat.format(date);
 		String pseudo = ("'"+nom+"."+prenom).replaceAll("\\s", "_");
-		String valueEtudiant= "@ceamitic.sn'"+"%'ceamitic2016'%"+dateNow+"%'Etudiant'%'Inconnue'";
+		String valueEtudiant= "'%'ceamitic2016'%"+dateNow+"%'Etudiant'%'Inconnue'";
 		HomeServlet servlet = new HomeServlet();
 		try {
 			connection = servlet.getDataSource().getConnection();
@@ -156,8 +156,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				rs = ComputeQueryBean.insertDatabase(pseudo+valueEtudiant, "compte",connection);
 			}
 			date = dateFormat.parse(dateN);
-			int idCompte =  ComputeQueryBean.getIDUser(nom+"."+prenom+"@ceamitic.sn", "ceamitic2016", connection);
-			valueEtudiant=idCompte+"%" + "'"+nom+"'%'"+prenom+"'%" + dateFormat.format(date) + "%'"+lieuDeNaiss+"'%'"+niveau+"'%'"+nationalite+"'%'" +adresse+"'%'"+email+"'%'" +telephone+"'%'" +boitePostale+"'%" +sexe+"%" + "'"+numeroEtudiant+"'%"
+			valueEtudiant=pseudo+"%" + "'"+nom+"'%'"+prenom+"'%" + dateFormat.format(date) + "%'"+lieuDeNaiss+"'%'"+niveau+"'%'"+nationalite+"'%'" +adresse+"'%'"+email+"'%'" +telephone+"'%'" +boitePostale+"'%" +sexe+"%" + "'"+numeroEtudiant+"'%"
 			+ "'"+nomPAC+"'%" + "'"+prenomPAC+"'%'"+phonePAC+"'%'"+adressePAC+"'%'"+programme+"'%'"+semestre+"'";
 			rs= ComputeQueryBean.insertDatabase(valueEtudiant, "Etudiant",connection);
 			
@@ -170,7 +169,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 		} catch (Exception e) {
 
-			erreurs.put(FIRSTNAME, e.getMessage());
+			errors.put(FIRSTNAME, e.getMessage());
 
 		}
 		
@@ -181,17 +180,17 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 		} catch (Exception e) {
 
-			erreurs.put(LASTNAME, e.getMessage());
+	errors.put(LASTNAME, e.getMessage());
 
 		}
-		/* Validation du champ nom. */
+		/* Validation du champ numero etudiant. */
 		try {
 
 			validationNumEtudiant(numeroEtudiant);
 
 		} catch (Exception e) {
 
-			erreurs.put(STUDENTNUMBER, e.getMessage());
+			errors.put(STUDENTNUMBER, e.getMessage());
 
 		}
 		/* Validation du champ email. */
@@ -201,7 +200,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 		} catch (Exception e) {
 
-			erreurs.put(MAIL, e.getMessage());
+			errors.put(MAIL, e.getMessage());
 
 		}
 		/* Validation du champ téléphone*/
@@ -210,9 +209,9 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			
 		} catch(Exception e){
 			
-			erreurs.put(PHONE, e.getMessage());
+			errors.put(PHONE, e.getMessage());
 		}
-		/* Validation du champ Personne à contacter. */
+		/* Validation du champ niveau. */
 		
 		try {
 
@@ -220,7 +219,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 		} catch (Exception e) {
 
-			erreurs.put(LEVEL, e.getMessage());
+			errors.put(LEVEL, e.getMessage());
 
 		}
 		
@@ -230,7 +229,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 		} catch (Exception e) {
 
-			erreurs.put(PROGRAM, e.getMessage());
+			errors.put(PROGRAM, e.getMessage());
 
 		}
 		try {
@@ -239,16 +238,16 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 		} catch (Exception e) {
 
-			erreurs.put(SEMESTER, e.getMessage());
+			errors.put(SEMESTER, e.getMessage());
 
 		}
 		try {
 
-			validationProgrammeLieuDeNaissance(programme);
+			validationLieuDeNaissance(lieuDeNaiss);
 
 		} catch (Exception e) {
 
-			erreurs.put(COUNTRYOFBIRTH, e.getMessage());
+			errors.put(COUNTRYOFBIRTH, e.getMessage());
 
 		}
 		try {
@@ -257,21 +256,11 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 		} catch (Exception e) {
 
-			erreurs.put(NATIONALITY, e.getMessage());
+			errors.put(NATIONALITY, e.getMessage());
 
 		}
 		
-		/*try {
-
-			validationRegion(region);
-
-		} catch (Exception e) {
-
-			erreurs.put(area, e.getMessage());
-
-		}*/
-		
-		if (erreurs.isEmpty()) {
+		if (errors.isEmpty()) {
 
 			resultat = "Succès de l'inscription.";
 
@@ -282,20 +271,17 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		}
 		/* Stockage du résultat et des messages d'erreur dans l'objet request */
 
-		request.setAttribute(ERRORS, erreurs);
+		request.setAttribute(ERRORS, errors);
 
 		request.setAttribute(RESULT, resultat);
 
 		/* Transmission de la paire d'objets request/response à notre JSP */
 
-		request.getRequestDispatcher("/WEB-INF/jsp/ListEtudiant.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/Etudiant.jsp").forward(request, response);
 
 	}
 	
 	
-
-	
-
 	private void validationPrenom(String prenom) throws Exception {
 		if(prenom.trim().length()==0)
 			throw new Exception("Veuillez saisir le prénom svp");
@@ -305,7 +291,6 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 						throw new Exception("Le prenom doit uniquement contenir des lettres");
 				
 			}
-		
 		
 	}
 
@@ -321,7 +306,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 	}
 	
-	public void validationNumEtudiant(String numeroEtudiant){
+	private void validationNumEtudiant(String numeroEtudiant){
 		
 	}
 	
@@ -342,15 +327,15 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		}
 
 	}
-	public void validationTelephone(String telephone) throws Exception{
+	private void validationTelephone(String telephone) throws Exception{
 		if ( telephone != null ) {
 
             if ( !telephone.matches( "^\\d+$" ) ) {
 
-                throw new Exception( "Le numéro de téléphone doit uniquement contenir des chiffres." );
+                throw new Exception( "Le numéro de téléphone est incorrect." );
 
-            } else if ( telephone.length() < 4 ) {
-                throw new Exception( "Le numéro de téléphone doit contenir au moins 4 chiffres." );
+            } else if ( telephone.length() < 9 ) {
+                throw new Exception( "Le numéro de téléphone doit contenir au moins 9 chiffres." );
 
             }
 
@@ -361,39 +346,33 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		
 	}
 	
-	public void validationPersonneContacter(String personneContacter)throws Exception{
-		if(personneContacter.trim().length()==0)
-			throw new Exception("Veuillez saisir le nom svp");
-			else
-				if (personneContacter != null) {
-					if(!personneContacter.matches("^\\D+$" ))
-						throw new Exception("Ce champs doit uniquement contenir des lettres");
-
-		}
+	private void validationNiveau(String niveau) throws Exception{
+		if(niveau.trim().length()==0)
+			throw new Exception("Veuillez saisir le niveau svp");
 		
 	}
 	
-	public void validationNiveau(String niveau){
+	private void validationProgramme(String programme) throws Exception{
+		if(programme.trim().length()==0)
+			throw new Exception("Veuillez saisir le programme svp");
 		
 	}
 	
-	public void validationProgramme(String programme){
-		
-	}
-	private void validationRegion(String region) {
-		
-	}
-
-	private void validationNationalite(String nationalite) {
+	private void validationNationalite(String nationalite) throws Exception{
+		if(nationalite.trim().length()==0)
+			throw new Exception("Veuillez saisir la nationalité svp");
 		
 	}
 
-	private void validationProgrammeLieuDeNaissance(String programme) {
-		
+	private void validationLieuDeNaissance(String lieuDeNaiss) throws Exception{
+		if(lieuDeNaiss.trim().length()==0)
+			throw new Exception("Veuillez saisir le lieu de naissance svp");
 	}
 	
-	private void validationSemestre(String semestre) {
-		
+	
+	private void validationSemestre(String semestre) throws Exception{
+		if(semestre.trim().length()==0)
+			throw new Exception("Veuillez saisir le semestre svp");
 	}
 	
 }

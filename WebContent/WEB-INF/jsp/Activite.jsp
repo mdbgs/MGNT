@@ -2,22 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ page import="ModelPackage.*"%>
-<%@ page import="BeanPackage.*"%>
-<%@ page import="java.util.List"%>
-<%
-	//User user = (User) request.getSession().getAttribute("user");
-	/*if (user == null) {
-		System.out.println("Utilisateur inexistant!!!");
-		response.sendRedirect("connexion");
-	} else {
-		System.out.println("Utilisateur existant!!!");
-	}*/
-%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <body id="scroll_top">
 	<section id="header_areaBis"> </section>
 	<div id="overlay"></div>
@@ -85,7 +71,7 @@
 	<section id="header_bottom_area"></section>
 	<section id="content_area">
 	<div class="content ">			
-					<%@ include file="entete.jsp" %>
+		<c:import url="entete.jsp"></c:import>
 		<div class="fix main_content_area row ">
 			<div class="fix allSearch"></div>
 			<div class="fix single_sidebar">
@@ -217,11 +203,10 @@
 			</div>
 		</div>
 	</section>
-		<%@ include file="piedsPage.jsp" %>
+		<c:import url="piedsPage.jsp"></c:import>
 	<script>
 		$(document).ready(function() {
 			$('#myDataTable').dataTable();
-			
 		});
 		$(function(){
 			$("#overlay").click(function(){

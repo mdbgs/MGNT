@@ -7,36 +7,47 @@ import java.sql.Statement;
 
 public class ComputeQueryBean implements NumericConstant {
 	//
-	//FUNCTIONS
+	// FUNCTIONS
 	//
-	/** Insertion in database 
-	 * @throws SQLException */
-	public static int insertDatabase(String value, String table,Connection connexion) throws SQLException {
+	/**
+	 * Insertion in database
+	 * 
+	 * @throws SQLException
+	 */
+	public static int insertDatabase(String value, String table, Connection connexion) throws SQLException {
 		String[] listRequest = value.split("%");
 		int nbre = listRequest.length;
 		int result = 0;
-		Statement statement=null;
+		Statement statement = null;
 		try {
+			System.err.println();
 			statement = connexion.createStatement();
-			String request = "INSERT INTO " + table + " values(null";
-			for (int i = 0; i < nbre; i++) {
+			String request = "INSERT INTO " + table + " values(";
+			if (!table.equals("compte"))
+				request += "null";
+			request += listRequest[0];
+			for (int i = 1; i < nbre; i++) {
 				request += "," + listRequest[i];
 			}
 			request += ");";
-//			System.out.println(request);
+			// System.out.println(request);
 			result = statement.executeUpdate(request);
-//			System.out.println("Nombre de lignes insérées : " + result);
+			// System.out.println("Nombre de lignes insérées : " + result);
 		} catch (SQLException e) {
 			System.err.println("Insertion impossible");
 		} finally {
-			if(statement!=null) statement.close();
+			if (statement != null)
+				statement.close();
 		}
 		return result;
 	}
 
-	/** updateDatabase: met à jour les champs d'une table donnée en entrée 
-	 * @throws SQLException */
-	public static int updateDatabase(String value, String table,Connection connexion) throws SQLException {
+	/**
+	 * updateDatabase: met à jour les champs d'une table donnée en entrée
+	 * 
+	 * @throws SQLException
+	 */
+	public static int updateDatabase(String value, String table, Connection connexion) throws SQLException {
 		int result = 0;
 		String[] listRequest = value.split("%");
 		Statement statement = null;
@@ -45,13 +56,13 @@ public class ComputeQueryBean implements NumericConstant {
 			statement = connexion.createStatement();
 
 			String request = selectQueryID(table, listRequest[0]);
-//			System.out.println(request);
+			// System.out.println(request);
 			response = statement.executeQuery(request);
 			while (response.next()) {
-//				System.out.print(response.getString(getAttributID(table)));
+				// System.out.print(response.getString(getAttributID(table)));
 				if (listRequest[0].equals(response.getString(getAttributID(table)))) {
 					request = computeUpdateQuery(listRequest, table);
-//					System.out.println("request for update : " + request);
+					// System.out.println("request for update : " + request);
 					try {
 						result = statement.executeUpdate(request);
 						System.out.println("Update ok!");
@@ -66,39 +77,20 @@ public class ComputeQueryBean implements NumericConstant {
 		} catch (Exception e) {
 			System.err.println("Select impossible!");
 		} finally {
-			if(response!=null) statement.close();
-			if(statement!=null) statement.close();
+			if (response != null)
+				statement.close();
+			if (statement != null)
+				statement.close();
 		}
 		return result;
 	}
 
-	public static int getIDUser(String email, String password,Connection connection) throws SQLException {
-		int returned = 0;
-		ResultSet result =null;
-		Statement statement = null;
+	/** Select All rows of table by ID */
+	public static ResultSet selectAll(String table, Connection connection) {
+		ResultSet result = null;
 		try {
-			statement = connection.createStatement();
-			String query = "SELECT IDcompte FROM compte WHERE pseudo='" + email + "' and password='" + password + "';";
-			result = statement.executeQuery(query);
-			while(result.next()){
-				returned = result.getInt("IDcompte");
-			}
-			result.close();
-			statement.close();
-		} catch (SQLException e) {
-			System.err.println("Resultat non disponible");
-		}finally {
-			if(result!=null) statement.close();
-			if(statement!=null) statement.close();
-		}
-		return returned;
-	}
-	/** Select All rows of table by ID*/
-	public static ResultSet selectAll(String table,Connection connection){
-		ResultSet result=null;
-		try {
-			Statement statement=connection.createStatement();
-			String query = "SELECT * FROM "+table+";";
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM " + table + ";";
 			System.out.println(query);
 			result = statement.executeQuery(query);
 		} catch (SQLException e) {
@@ -106,37 +98,39 @@ public class ComputeQueryBean implements NumericConstant {
 		}
 		return result;
 	}
-	/** Select one rows of table by ID*/
-	public static ResultSet selectAllByID(String table,int id,Connection connection){
-		ResultSet result=null;
+
+	/** Select one rows of table by ID */
+	public static ResultSet selectAllByID(String table, int id, Connection connection) {
+		ResultSet result = null;
 		try {
-			Statement statement=connection.createStatement();
-			String query = "SELECT * FROM "+table+" WHERE "+getAttributID(table)+"="+id+";";
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM " + table + " WHERE " + getAttributID(table) + "=" + id + ";";
 			result = statement.executeQuery(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
-	/** Select one rows of table by ID*/
-	public static ResultSet selectIndicateurByNumero(int id,Connection connection){
-		ResultSet result=null;
+
+	/** Select one rows of table by ID */
+	public static ResultSet selectIndicateurByNumero(int id, Connection connection) {
+		ResultSet result = null;
 		try {
-			Statement statement=connection.createStatement();
-			String query = "SELECT * FROM indicateur WHERE numero="+id+";";
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM indicateur WHERE numero=" + id + ";";
 			result = statement.executeQuery(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
-	
+
 	/** getAttributID: Retourne l'attribut en String de l'ID de la table */
 	public static String getAttributID(String table) {
 		String attribut = "";
 		switch (table) {
 		case "compte":
-			attribut = "IDcompte";
+			attribut = "pseudo";
 			break;
 		case "etudiant":
 			attribut = "IDetudiant";
@@ -183,7 +177,7 @@ public class ComputeQueryBean implements NumericConstant {
 		String query = "";
 		switch (table) {
 		case "compte":
-			query = "SELECT IDcompte FROM compte WHERE IDcompte=" + ID + ";";
+			query = "SELECT pseudo FROM compte WHERE pseudo	=" + ID + ";";
 			break;
 		case "etudiant":
 			query = "SELECT IDetudiant FROM etudiant WHERE IDetudiant=" + ID + ";";
@@ -230,8 +224,7 @@ public class ComputeQueryBean implements NumericConstant {
 		String query = "UPDATE " + table + " SET ";
 		switch (table) {
 		case "compte": {
-			query += "pseudo='" + listValue[1] + "',password='" + listValue[2] + "' WHERE IDcompte = " + listValue[0]
-					+ ";";
+			query += "',password='" + listValue[1] + "' WHERE pseudo = " + listValue[0] + ";";
 		}
 			break;
 		case "activite":
@@ -246,14 +239,14 @@ public class ComputeQueryBean implements NumericConstant {
 					+ "',affliationInstitutionnel='" + listValue[7] + "' WHERE IDanimateur = " + listValue[0] + ";";
 			break;
 		case "enseignant":
-			query += "iDcompte=" + listValue[1] + ",nom='" + listValue[2] + "',prenom='" + listValue[3] + "',niveau='"
+			query += "pseudo='" + listValue[1] + "',nom='" + listValue[2] + "',prenom='" + listValue[3] + "',niveau='"
 					+ listValue[4] + "',nationalite='" + listValue[5] + "',adresse='" + listValue[6] + "',email='"
 					+ listValue[7] + "',telephone='" + listValue[8] + "',bp='" + listValue[9] + "',sexe='"
 					+ listValue[10] + "',affliationInstitutionnel='" + listValue[11] + "' WHERE IDenseignat = "
 					+ listValue[0] + ";";
 			break;
 		case "etudiant":
-			query += "iDcompte=" + listValue[1] + ",nom='" + listValue[2] + "',prenom='" + listValue[3]
+			query += "pseudo='" + listValue[1] + "',nom='" + listValue[2] + "',prenom='" + listValue[3]
 					+ "',dateNaissance=" + listValue[4] + ",lieuNaissance='" + listValue[5] + "',niveau='"
 					+ listValue[6] + "',nationalite='" + listValue[7] + "',adresse='" + listValue[8] + "',email='"
 					+ listValue[9] + "',telephone='" + listValue[10] + "',bp='" + listValue[11] + "',sexe="
@@ -271,12 +264,12 @@ public class ComputeQueryBean implements NumericConstant {
 					+ "',sigle='" + listValue[4] + "' WHERE IdIndicateur = " + listValue[0] + ";";
 			break;
 		case "responsable":
-			query += "iDcompte=" + listValue[1] + ",nom='" + listValue[2] + "',prenom='" + listValue[3] + "',adresse='"
+			query += "pseudo='" + listValue[1] + "',nom='" + listValue[2] + "',prenom='" + listValue[3] + "',adresse='"
 					+ listValue[4] + "',telephone='" + listValue[5] + "',mail='" + listValue[6] + "',sexe='"
 					+ listValue[7] + "',poste='" + listValue[8] + "' WHERE IDresponsable = " + listValue[0] + ";";
 			break;
 		case "partenaires":
-			query += "iDcompte=" + listValue[1] + ",nom='" + listValue[2] + "',type='" + listValue[3] + "',adresse='"
+			query += "pseudo='" + listValue[1] + "',nom='" + listValue[2] + "',type='" + listValue[3] + "',adresse='"
 					+ listValue[4] + "',telephone='" + listValue[5] + "',email='" + listValue[6] + "',boitePostale='"
 					+ listValue[7] + "',titreAccord='" + listValue[8] + "',domaineDeCollaboration='" + listValue[9]
 					+ "',dateSignature=" + listValue[10] + ",expirationAccord=" + listValue[11] + ",resultatAttendu='"
@@ -314,46 +307,82 @@ public class ComputeQueryBean implements NumericConstant {
 		return query;
 	}
 
-	/** Delete in the database 
-	 * @throws SQLException */
-	public static int deleteRowIndatabase(int id, String table,Connection connexion) throws SQLException {
+	public static boolean isUser(String pseudo, String password, Connection connection) {
+		Boolean result = false;
+		try {
+			Statement statement = connection.createStatement();
+			System.out.println("ComputeQueryBean.isUser()" +"select pseudo from compte where pseudo=" + pseudo + " and password=" + password + ";");
+			if (statement.executeQuery("select pseudo from compte where pseudo='" + pseudo + "' and password='" + password + "';") != null)
+				result = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("ComputeQueryBean.isUser() : "+result);
+		return result;
+	}
+	public static ResultSet userRole(String pseudo,Connection connection){
+		Statement statement;
+		ResultSet result = null;
+		try{
+			statement = connection.createStatement();
+			result= statement.executeQuery("Select rolename from users_roles where pseudo='"+pseudo+"';");
+			System.out.println("ComputeQueryBean.userRole() :"+result);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+	/**
+	 * Delete in the database
+	 * 
+	 * @throws SQLException
+	 */
+	public static int deleteRowIndatabase(int id, String table, Connection connexion) throws SQLException {
 		int result = 0;
 		Statement statement = null;
 		try {
 			statement = connexion.createStatement();
 			String query = "DELETE FROM " + table + " WHERE " + getAttributID(table) + "=" + id + ";";
 			result = statement.executeUpdate(query);
-		} catch (Exception e){}
-		finally{
-			if(statement!=null) statement.close();
+		} catch (Exception e) {
+		} finally {
+			if (statement != null)
+				statement.close();
 		}
 		return result;
 	}
 
-//	public static void main(String[] args) {
-//	 ConnexionBean connect = new ConnexionBean();
-//	 String request = "";
-//	 String requestUpdate;
-//	 int result;
-//	 Date actuelle = new Date();
-//	 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-//	 String date = dateFormat.format(actuelle);
-	
+	// public static void main(String[] args) {
+	// String requete = "";
+	// String requestUpdate;
+	// int result;
+	// Date actuelle = new Date();
+	// DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+	// String date = dateFormat.format(actuelle);
+	// try {
+	// connection = this.getDataSource().getConnection();
 	// /** Test d'accés sur la table Compte */
-	// request = "'test2'%'test3'%'test3'";
-	// result = connect.insertDatabase(request, "compte");
-	// requestUpdate = "1%moussa1%moussa1";
-	// result = connect.updateDatabase(requestUpdate, "compte");
+	// requete = "'moussa.sall@sanarsoft.com'%'mypassword'%'"+date+"'%'ma photo
+	// ici'";
+	// result = ComputeQueryBean.insertDatabase(requete, "compte",connection);
+	// requestUpdate = "'moussa.sall@sanarsoft.com'%'mypassword'%"+date+"ma
+	// photo ici";;
+	// result = ComputeQueryBean.updateDatabase(requestUpdate,
+	// "compte",connection);
+	// } catch (SQLException e) {
+	// System.out.println("ComputeQueryBean.main(): erreur sur la test de
+	// d'insertion ou de update");
+	// }
 	//
 	// /** Test d'accés sur la table Activite */
 	// request = "'libelle'%" + date + "%'10-12-2015'" + "%'10-12-2016'" +
 	// "%'Active'" + "%'First Nature'"
 	// + "%'libelle Indicateur'" + "%'reference Tableau'" + "%null";
-	// result = connect.insertDatabase(request, "activite");
+	// result = computeQuery.insertDatabase(request, "activite");
 	// requestUpdate = "1%libelle%" + date + "%10-12-2015" + "%10-12-2016" +
 	// "%Active" + "%First Nature"
 	// + "%libelle Indicateur" + "%reference Tableau" + "%null";
-	// result = connect.updateDatabase(requestUpdate, "activite");
+	// result = computeQuery.updateDatabase(requestUpdate, "activite");
 	//
 	// /** Test d'accés sur la table Partenaires */
 	// request = "1%" + "'Orange'%" + "'entreprise'%" + "'Thiaroye Gare'%" +
@@ -361,33 +390,34 @@ public class ComputeQueryBean implements NumericConstant {
 	// + "'dk125'%" + "'partenariat'%" + "'financement'%" + date +
 	// "%'12/12/2017'%"
 	// + "'Améliorer la formation'%" + "'formation'%";
-	// result = connect.insertDatabase(request, "partenaires");
+	// result = computeQuery.insertDatabase(request, "partenaires");
 	// requestUpdate = "1%" + "1%" + "Orange%" + "entreprise%" + "Thiaroye
 	// Gare%" + "771321556%" + "orange@orange.sn%"
 	// + "dk125%" + "partenariat%" + "financement%" + date + "%12/12/2017%" +
 	// "Améliorer la formation%"
 	// + "formation";
-	// result = connect.updateDatabase(requestUpdate, "partenaires");
+	// result = computeQuery.updateDatabase(requestUpdate, "partenaires");
 	//
 	// /** Test d'accés sur la table Animateur_Relecteur */
 	// request = "1%" + "'Diack'%" + "'Seydou'%" + "'Sdiack@sanarsoft.com'%" +
 	// "'771321556'%" + "'SL234'%" + "'UGB'%"
 	// + "'animateur'";
-	// result = connect.insertDatabase(request, "animateur_relecteur");
+	// result = computeQuery.insertDatabase(request, "animateur_relecteur");
 	// requestUpdate = "1%" + "1%" + "Diack%" + "Seydou%" +
 	// "Sdiack@sanarsoft.com%" + "771321556%" + "SL234%" + "UGB%"
 	// + "animateur";
-	// result = connect.updateDatabase(requestUpdate, "animateur_relecteur");
+	// result = computeQuery.updateDatabase(requestUpdate,
+	// "animateur_relecteur");
 	// /** Test d'accés sur la table Enseignant */
 	// request = "1%" + "'Mar'%" + "'Abdou'%" + "'Professeur Titulaire'%" +
 	// "'Sénégalaise'%" + "'Aïnoumady 5'%"
 	// + "'mar.abdou@sanarsoft.com'%" + "'772316584'%" + "'TH456'%" + "1%" +
 	// "'UGB'";
-	// result = connect.insertDatabase(request, "enseignant");
+	// result = computeQuery.insertDatabase(request, "enseignant");
 	// requestUpdate = "1%" + "1%" + "Mar%" + "Abdou%" + "Professeur Titulaire%"
 	// + "Sénégalaise%" + "Aïnoumady 5%"
 	// + "mar.abdou@sanarsoft.com%" + "772316584%" + "TH456%" + "1%" + "UGB";
-	// result = connect.updateDatabase(requestUpdate, "enseignant");
+	// result = computeQuery.updateDatabase(requestUpdate, "enseignant");
 	//
 	// /** Test d'accés sur la table Etudiant */
 	// request = "1%" + "'Sall'%" + "'Modou'%" + date + "%'Yeumbeul'%" +
@@ -396,31 +426,31 @@ public class ComputeQueryBean implements NumericConstant {
 	// "'UGB234'%" + "0%" + "'P26201'%"
 	// + "'sall'%" + "'Momar'%" + "'774521685'%" + "'Aïnoumady 5'%" +
 	// "'Master'%" + "'2nd Semestre'";
-	// result = connect.insertDatabase(request, "etudiant");
+	// result = computeQuery.insertDatabase(request, "etudiant");
 	// requestUpdate = "1%" + "1%" + "Sall%" + "Modou%" + date + "%Yeumbeul%" +
 	// "Master 2%" + "Sénégalaise%"
 	// + "Aïnoumady 5%" + "sall.modou@sanarsoft.com%" + "772346156%" + "UGB234%"
 	// + "0%" + "P26201%" + "sall%"
 	// + "Momar%" + "774521685%" + "Aïnoumady 5%" + "Master%" + "2nd Semestre";
-	// result = connect.updateDatabase(requestUpdate, "etudiant");
+	// result = computeQuery.updateDatabase(requestUpdate, "etudiant");
 	//
 	// /** Test d'accés sur la table Formation */
 	// request = "'SIBD2'%" + "'UGB'%" + "'second semestre'%"
 	// + "'former les étudiants en système à base de connaissance'";
-	// result = connect.insertDatabase(request, "formation");
+	// result = computeQuery.insertDatabase(request, "formation");
 	// requestUpdate = "1%" + "SIBD2%" + "UGB%" + "second semestre%"
 	// + "former les étudiants en système à base de connaissance";
-	// result = connect.updateDatabase(requestUpdate, "formation");
+	// result = computeQuery.updateDatabase(requestUpdate, "formation");
 	//
 	// /** Test d'accés sur la table Responsable */
 	// request = "1%" + "'SY'%" + "'Mme'%" + "'15.Rue Felix'%" + "'775468254'%"
 	// + "'mail'%" + "0" + "%'responsable'%"
 	// + "'responsableCeaMitic'";
-	// result = connect.insertDatabase(request, "responsable");
+	// result = computeQuery.insertDatabase(request, "responsable");
 	// requestUpdate = "1%" + "1%" + "SY%" + "Mme%" + "15.Rue Felix%" +
 	// "775468254%" + "mail%" + "0" + "%responsable%"
 	// + "responsableCeaMitic";
-	// result = connect.updateDatabase(requestUpdate, "responsable");
+	// result = computeQuery.updateDatabase(requestUpdate, "responsable");
 	// System.out.println(result);
 	//
 	// /** Test d'accés sur la table Programmecea */
@@ -429,45 +459,46 @@ public class ComputeQueryBean implements NumericConstant {
 	// + "'cames@cames.sn'%" + "'771548620'%" + "'sn451'%" + date + "%" + date +
 	// "%" + "'permanent'%"
 	// + "'Accept'%" + "'Orange'%" + date;
-	// result = connect.insertDatabase(request, "programmecea");
+	// result = computeQuery.insertDatabase(request, "programmecea");
 	// requestUpdate = "1%" + "Programme1%" + "Master%" + "Accreditation%" +
 	// "refAccreditation%" + "CAMES%"
 	// + "cames@cames.sn%" + "771548620%" + "sn451%" + date + "%" + date + "%" +
 	// "permanent%" + "Accept%"
 	// + "Orange%" + date;
-	// result = connect.updateDatabase(requestUpdate, "programmecea");
+	// result = computeQuery.updateDatabase(requestUpdate, "programmecea");
 	// System.out.println(result);
 	//
 	// /** Test d'accés sur la table publication */
 	// request = "1%" + "'Gerbille'%" + date + "%" + "'Cisco'%" + "'Moussa'%" +
 	// "'Développement durable'";
-	// result = connect.insertDatabase(request, "publication");
+	// result = computeQuery.insertDatabase(request, "publication");
 	// requestUpdate = "1%" + "1%" + "Gerbille%" + date + "%" + "Cisco%" +
 	// "Moussa%" + "Développement durable";
-	// result = connect.updateDatabase(requestUpdate, "publication");
+	// result = computeQuery.updateDatabase(requestUpdate, "publication");
 	// System.out.println(result);
 	//
 	// /** Test d'accés sur la table Reunion */
 	// request = "1%" + "'Administrative'%" + date + "%" + date + "%" + "'Bilan
 	// annuel'%" + "12%" + "'Siège social'%"
 	// + "'Voici le compte rendu'";
-	// result = connect.insertDatabase(request, "reunion");
+	// result = computeQuery.insertDatabase(request, "reunion");
 	// requestUpdate = "1%" + "1%" + "Administrative%" + date + "%" + date + "%"
 	// + "Bilan annuel%" + "12%"
 	// + "Siège social%" + "Voici le compte rendu";
-	// result = connect.updateDatabase(requestUpdate, "reunion");
+	// result = computeQuery.updateDatabase(requestUpdate, "reunion");
 	// System.out.println(result);
 	//
 	// /** Test d'accés sur la table Stage */
-//	 request = "null%" + "1%" + "null%" + "'Science et Technologie'%" + date +
-//	 "%" + date + "%" + "'Certificat'%"
-//	 + "'IRD'%" + "'Institution'%" + "'LeFur'%" + "'Jean'%" +
-//	 "'jean.lefur@ird.fr'%" + "'772568475'";
-//	 result = connect.insertDatabase(request, "stage");
-//	 requestUpdate = "1%" + "null%" + "1%" + "null%" + "Science et Technologie%" + date + "%" + date + "%"
-//	 + "Certificat%" + "IRD%" + "Institution%" + "LeFur%" + "Jean%" +
-//	 "jean.lefur@ird.fr%" + "772568475";
-//	 result = connect.updateDatabase(requestUpdate, "stage");
-//	 System.out.println(result);
-//	 }
+	// request = "null%" + "1%" + "null%" + "'Science et Technologie'%" + date +
+	// "%" + date + "%" + "'Certificat'%"
+	// + "'IRD'%" + "'Institution'%" + "'LeFur'%" + "'Jean'%" +
+	// "'jean.lefur@ird.fr'%" + "'772568475'";
+	// result = computeQuery.insertDatabase(request, "stage");
+	// requestUpdate = "1%" + "null%" + "1%" + "null%" + "Science et
+	// Technologie%" + date + "%" + date + "%"
+	// + "Certificat%" + "IRD%" + "Institution%" + "LeFur%" + "Jean%" +
+	// "jean.lefur@ird.fr%" + "772568475";
+	// result = computeQuery.updateDatabase(requestUpdate, "stage");
+	// System.out.println(result);
+	// }
 }

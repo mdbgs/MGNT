@@ -55,7 +55,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		 String dateNow = dateFormat.format(date);
 		 String pseudo = "'"+nom+"."+prenom;
-		String valueResponsable= "@ceamitic.sn'"+"%'ceamitic2016'%"+dateNow+"%'Reponsable'%'Inconnue'";
+		String valueResponsable="'%'ceamitic2016'%"+dateNow+"%'Reponsable'%'Inconnue'";
 		HomeServlet servlet = new HomeServlet();
 		try {
 			connection = servlet.getDataSource().getConnection();
@@ -66,8 +66,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				pseudo+=number;
 				rs = ComputeQueryBean.insertDatabase(pseudo+valueResponsable, "compte",connection);
 			}
-			int idCompte =  ComputeQueryBean.getIDUser(nom+"."+prenom+"@ceamitic.sn", "ceamitic2016", connection);
-			valueResponsable=idCompte+"%" + "'"+nom+"'%" + "'"+prenom+"'%" + "'"+adresse+"'%" + "'"+telephone+"'%"
+			valueResponsable=pseudo+"%" + "'"+nom+"'%" + "'"+prenom+"'%" + "'"+adresse+"'%" + "'"+telephone+"'%"
 					 + "'"+email+"'%" + "'"+sexe+"'%" + "'"+poste+"'%" + "'"+type+"'%";
 			rs= ComputeQueryBean.insertDatabase(valueResponsable, "Responsable",connection);
 			
@@ -116,17 +115,6 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			erreurs.put(PHONE, e.getMessage());
 		}
 		
-		try {
-
-			validationNiveau(poste);
-
-		} catch (Exception e) {
-
-			erreurs.put(POST, e.getMessage());
-
-		}
-		
-
 		
 		try {
 
@@ -134,19 +122,21 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 		} catch (Exception e) {
 
-			erreurs.put(adresse, e.getMessage());
+			erreurs.put(ADRESS, e.getMessage());
 
 		}
 		
 		try {
 
-			validationBoitePostale(type);
+			validationPoste(poste);
 
 		} catch (Exception e) {
 
-			erreurs.put(TYPE, e.getMessage());
+			erreurs.put(POST, e.getMessage());
 
 		}
+		
+		
 
 		
 		if (erreurs.isEmpty()) {
@@ -169,15 +159,6 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Responsable.jsp").forward(request, response);
 
 	}
-	
-	
-
-	
-
-	
-
-	
-
 	private void validationPrenom(String prenom) throws Exception {
 		if(prenom.trim().length()==0)
 			throw new Exception("Veuillez saisir le prénom svp");
@@ -221,12 +202,12 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		}
 
 	}
-	public void validationTelephone(String telephone) throws Exception{
+	private void validationTelephone(String telephone) throws Exception{
 		if ( telephone != null ) {
 
             if ( !telephone.matches( "^\\d+$" ) ) {
 
-                throw new Exception( "Le numéro de téléphone doit uniquement contenir des chiffres." );
+                throw new Exception( "Le numéro de téléphone est incorrect." );
 
             } else if ( telephone.length() < 9 ) {
 
@@ -242,38 +223,16 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	}
 	
 	
-	
-	public void validationNiveau(String niveau){
+	private void validationAdresse(String adresse) throws Exception{
+		if(adresse.trim().length()==0)
+			throw new Exception("Veuillez saisir  une adresse svp");
 		
 	}
 	
-	public void validationProgramme(String programme){
+	private void validationPoste(String poste) throws Exception{
+		if(poste.trim().length()==0)
+			throw new Exception("Veuillez saisir le poste svp");
 		
 	}
-	private void validationRegion(String region) {
-		
-	}
-
-	private void validationNationalite(String nationalite) {
-		
-	}
-
-	private void validationProgrammeLieuDeNaissance(String programme) {
-		
-	}
-	
-	private void validationSemestre(String semestre) {
-		
-	}
-	
-	private void validationAdresse(String adresse) {
-		
-	}
-	
-	private void validationBoitePostale(String boitePostale) {
-		
-	}
-	
-
 
 }

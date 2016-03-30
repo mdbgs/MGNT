@@ -28,6 +28,7 @@ public class ConnexionServlet extends HttpServlet {
 	private Statement statement;
 	private Connection connection;
 	private static DataSource dataSource;
+
 	//
 	// METHODS
 	//
@@ -41,6 +42,7 @@ public class ConnexionServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Connection.jsp").forward(request, response);
@@ -52,21 +54,66 @@ public class ConnexionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
- 		ResultSet resultSet = null;
+		ResultSet resultSet = null;
 		try {
+			String role = "";
 			// Get Connection and Statement
 			connection = this.getDataSource().getConnection();
-			pseudo = request.getParameter("pseudo");
-			password = request.getParameter("password");
-			int id = ComputeQueryBean.getIDUser(pseudo, password, connection);
-			if (id != 0) {
-				resultSet = ComputeQueryBean.selectAllByID("compte", id, connection);
+			pseudo = request.getParameter("j_username");
+			password = request.getParameter("j_password");
+			System.out.println("ConnexionServlet.doPost()");
+			if (ComputeQueryBean.isUser(pseudo, password, connection)) {
+				resultSet = ComputeQueryBean.userRole(pseudo, connection);
 				while (resultSet.next()) {
-					request.getSession().setAttribute("user",new User(pseudo, password, id));
-					response.sendRedirect("home");
+					role = resultSet.getString("rolename");
 				}
-			} else
-				response.sendRedirect("connexion");
+			}
+			request.getSession().setAttribute("user", new User(pseudo, password));
+			request.getSession().setAttribute("rolename", role);
+			switch (role) {
+			case "admin": {
+				response.sendRedirect("administrator");
+			}
+				break;
+			case "etudiant": {
+				response.sendRedirect("etudiant");
+			}
+				break;
+			case "enseignat": {
+				response.sendRedirect("enseignant");
+			}
+				break;
+			case "coordonnateur": {
+				response.sendRedirect("coordonnateur");
+
+			}
+				break;
+			case "responsable_Suivi_Evaluation": {
+				response.sendRedirect("responsable_Suivi_Evaluation");
+			}
+				break;
+			case "responsable_Saisie": {
+				response.sendRedirect("responsable_Saisie");
+			}
+				break;
+			case "responsable_Controle": {
+				response.sendRedirect("responsable_Controle");
+			}
+				break;
+			case "partenaire": {
+				response.sendRedirect("partenaire");
+			}
+				break;
+			case "BanqueMondial": {
+				response.sendRedirect("BanqueMondial");
+			}
+				break;
+			case "viceCoordonnateur": {
+				response.sendRedirect("viceCoordonnateur");
+			}
+				break;
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -89,9 +136,10 @@ public class ConnexionServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-
 	}
+
+	/** Called to get existing datasource */
 	public DataSource getDataSource() {
-		return this.dataSource;
+		return dataSource;
 	}
 }
