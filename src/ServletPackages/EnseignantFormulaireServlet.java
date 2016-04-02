@@ -55,19 +55,19 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 		Date date = new Date();
 		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		 String dateNow = dateFormat.format(date);
-		 String pseudo = "'"+nom+"."+prenom;
-		String valueEnseignant="%'ceamitic2016'%"+dateNow+"%'Enseignant'%'Inconnue'";
+		 String pseudo = "'"+nom+"."+prenom+"'";
+		String valueEnseignant="%'ceamitic2016'%"+dateNow+"%'inconnu'%";
 		HomeServlet servlet = new HomeServlet();
 		try {
 			connection = servlet.getDataSource().getConnection();
 			int rs = ComputeQueryBean.insertDatabase(pseudo+valueEnseignant, "compte",connection);
-			int number = 0;
-			while(rs==0){
-				number++;
-				pseudo+=number;
-				rs = ComputeQueryBean.insertDatabase(pseudo+valueEnseignant, "compte",connection);
-			}
-			valueEnseignant=pseudo+"%" + "'"+nom+"'%" + "'"+prenom+"'%" + "'"+niveau+"'%" + "'"+nationalite+"'%"
+//			int number = 0;
+//			while(rs==0){
+//				number++;
+//				pseudo+=number;
+//				rs = ComputeQueryBean.insertDatabase(pseudo+valueEnseignant, "compte",connection);
+//			}
+			valueEnseignant="%"+pseudo+"%" + "'"+nom+"'%" + "'"+prenom+"'%" + "'"+niveau+"'%" + "'"+nationalite+"'%"
 					 + "'"+adresse+"'%" + "'"+email+"'%" + "'"+telephone+"'%" +
 					 "'"+boitePostale+"'%" + ""+sexe+"%" +"'"+affliationIns+"'%";
 			rs= ComputeQueryBean.insertDatabase(valueEnseignant, "Enseignant",connection);

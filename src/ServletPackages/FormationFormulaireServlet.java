@@ -47,7 +47,7 @@ public class FormationFormulaireServlet extends ConnexionServlet implements Nume
 		try {
 			connection = servlet.getDataSource().getConnection();
 			//date = dateFormat.parse(dateN);
-			String valueFormation="'"+titre+"'%'"+institution+"'%'"+position+"'%'"+contenu+"'%";
+			String valueFormation="%'"+titre+"'%'"+institution+"'%'"+position+"'%'"+contenu+"'%";
 			int rs= ComputeQueryBean.insertDatabase(valueFormation, "Formation",connection);
 			
 		} catch (SQLException e) {

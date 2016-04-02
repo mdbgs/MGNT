@@ -32,10 +32,10 @@
 												<label>Nom <span>*</span></label>
 											</div>
 											<div class="row">
-												<input class="form-control" type="text" id="lastName"
-													name="lastName" value="${param.lastName}" placeholder="Nom" />
+												<input class="form-control" type="text" id="name"
+													name="name" value="${param.name}" placeholder="Nom" />
 											</div>
-											<span class="erreur">${errors['lastName']}</span>
+											<span class="erreur">${errors['name']}</span>
 										</div>
 										<div class="formDroite col-xs-5">
 											<div class="row">

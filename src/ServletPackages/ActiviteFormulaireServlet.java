@@ -59,7 +59,7 @@ public class ActiviteFormulaireServlet extends ConnexionServlet implements Numer
 			
 			connection = servlet.getDataSource().getConnection();
 			date = dateFormat.parse(periode);
-			String valueActivite="'"+libelle+"'%'"+dateFormat.format(date)+"'%'"+echeancePrevu+"'%'"+echeanceRealise+"'%'"+statutActivite+"'%'" +natureIndicateur+"'%'"+libelleIndicateur+"'%'" +referenceTabSaisie+"'%'" +pieceJustificatif+"'%'" +composant+"'%'"+objectif+"'%"
+			String valueActivite="%'"+libelle+"'%"+dateFormat.format(date)+"%'"+echeancePrevu+"'%'"+echeanceRealise+"'%'"+statutActivite+"'%'" +natureIndicateur+"'%'"+libelleIndicateur+"'%'" +referenceTabSaisie+"'%'" +pieceJustificatif+"'%'" +composant+"'%'"+objectif+"'%"
 			+ "'"+resultatAttendu+"'%"; 
 			int rs= ComputeQueryBean.insertDatabase(valueActivite, "Activite",connection);
 			

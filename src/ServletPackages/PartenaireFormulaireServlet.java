@@ -56,23 +56,23 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 		String projetConjoint=request.getParameter(CONJOINTPROJECT);
 		
 		Date date = new Date();
-		 DateFormat dateFormat = new SimpleDateFormat("YYYY/MM/DD");
+		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		 String dateNow = dateFormat.format(date);
 		 String pseudo = "'"+nom;
-		String valuePartenaire= "'%'ceamitic2016'%'"+dateNow+"'%'Partenaires'%'Inconnue'";
+		String valuePartenaire="'%'ceamitic2016'%"+dateNow+"%'inconnu'%";
 		HomeServlet servlet = new HomeServlet();
 		try {
 			connection = servlet.getDataSource().getConnection();
-			int rs = ComputeQueryBean.insertDatabase(pseudo+valuePartenaire, "compte",connection);
-			int number = 0;
-			while(rs==0){
-				number++;
-				pseudo+=number;
-				rs = ComputeQueryBean.insertDatabase(pseudo+valuePartenaire, "compte",connection);
-			}
+			int rs = ComputeQueryBean.insertDatabase(pseudo+valuePartenaire,"compte",connection);
+//			int number = 0;
+//			while(rs==0){
+//				number++;
+//				pseudo+=number;
+//				rs = ComputeQueryBean.insertDatabase(pseudo+valuePartenaire, "compte",connection);
+//			}
 			date = dateFormat.parse(dateDeSignature);
 			date=dateFormat.parse(expirationDeLaccord);
-			valuePartenaire=pseudo+"%" + "'"+nom+"'%" + "'"+type+"'%" + "'"+adresse+"'%" + "'"+telephone+"'%"
+			valuePartenaire="%"+pseudo+"'%" + "'"+nom+"'%" + "'"+type+"'%" + "'"+adresse+"'%" + "'"+telephone+"'%"
 					 + "'"+email+"'%" + "'"+boitePostale+"'%" + "'"+titreAcc+"'%" +
 					 "'"+domaineDeCollaboration+"'%" + dateFormat.format(date)+"%" +dateFormat.format(date)+"%"+"'"+resultatAttendu+"'%" +"'"+projetConjoint+"'%";
 			rs= ComputeQueryBean.insertDatabase(valuePartenaire, "Partenaires",connection);
