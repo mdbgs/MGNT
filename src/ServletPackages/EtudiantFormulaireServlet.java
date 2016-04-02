@@ -2,7 +2,9 @@ package ServletPackages;
 
 
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -10,6 +12,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -17,6 +21,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import BeanPackage.ComputeQueryBean;
 import BeanPackage.NumericConstant;
@@ -87,6 +95,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		String telephone=  "null";
 		String nomPAC=  "null";
 		String prenomPAC=  "null";
+	    String photo="null";
+		
 
 		if(request.getParameter(FIRSTNAME)!=""){
 			prenom=request.getParameter(FIRSTNAME);
@@ -140,11 +150,61 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			boitePostale=request.getParameter(BP);
 			System.out.println();
 		}
+		
+		boolean isMultipart;
+		String filePath;
+		int maxFile=5000*1024;
+		int maxMem=5*1024;
+		String namePhoto="";
+		filePath=getServletContext().getInitParameter("file_upload");
+		isMultipart=ServletFileUpload.isMultipartContent(request);
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		if(!isMultipart){
+			out.print("file not upload");
+			return;
+		}
+		DiskFileItemFactory factory=new DiskFileItemFactory();
+		factory.setSizeThreshold(maxFile);
+		factory.setRepository(new File("C:\\temp"));
+		ServletFileUpload upload= new ServletFileUpload(factory);
+		upload.setSizeMax(maxFile);
+		try{
+			List fileItems=upload.parseRequest(request);
+			Iterator i= fileItems.iterator();
+			 while(i.hasNext()){
+				 FileItem fi=(FileItem)i.next();
+				 if(!fi.isFormField()){
+					 String fieldName=fi.getFieldName();
+					 String fileName=fi.getName();
+					 String contentType=fi.getContentType();
+					 boolean isInMemory=fi.isInMemory();
+					 long sizeInBytes=fi.getSize();
+					 namePhoto=fileName;
+				File file;
+				if(fileName.lastIndexOf("\\")>=0){
+					file =new File(filePath+fileName.substring(fileName.lastIndexOf("\\")));
+				}else
+				{
+					 file =new File(filePath+fileName.substring(fileName.lastIndexOf("\\")+1));	
+				}
+				fi.write(file);
+				out.println("file uploaded "+fileName);
+				 }
+			 }
+			 		}
+		catch(Exception e){
+			out.println(e);
+		}
+		
+		System.err.println(namePhoto);
+		
 		Date date = new Date();
 	    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		String dateNow = dateFormat.format(date);
 		String pseudo = ("'"+nom+"."+prenom).replaceAll("\\s", "_");
-		String valueEtudiant= "'%'ceamitic2016'%"+dateNow+"%'inconnu'%";
+//		String valueEtudiant= "'%'ceamitic2016'%"+dateNow+"%'inconnu'%";
+		String valueEtudiant= "%'ceamitic2016'%"+dateNow+"%'"+namePhoto+"'%";
 		HomeServlet servlet = new HomeServlet();
 		try {
 			connection = servlet.getDataSource().getConnection();

@@ -148,6 +148,6 @@
 			$('#myDataTable').dataTable();
 
 		});
-	</script>
+	</script>	
 </body>
 </html>

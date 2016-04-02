@@ -6,8 +6,8 @@
 				unpackWARs="true">
 
 				<Realm className="org.apache.catalina.realm.JDBCRealm"
-					connectionName="root" connectionPassword="CadreInfo1"
-					connectionURL="jdbc:mysql://localhost:3307/ceamitic" driverName="com.mysql.jdbc.Driver"
+					connectionName="root" connectionPassword=""
+					connectionURL="jdbc:mysql://localhost:3306/ceamitic" driverName="com.mysql.jdbc.Driver"
 					roleNameCol="rolename" userCredCol="password" userNameCol="pseudo"
 					userRoleTable="users_roles" userTable="compte" />
 			</Host>

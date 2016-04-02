@@ -39,6 +39,7 @@ public class PublicationFormulaireServlet extends ConnexionServlet implements Nu
 		Map<String, String> errors = new HashMap<String, String>();
 
 		/* Récupération des champs du formulaire. */
+		String responsable=request.getParameter(RESPONSABLE);
 		String titre = request.getParameter(TITLE);
 		String datePub = request.getParameter(DATEPUB);
 		String nomJournal = request.getParameter(NOMJOURNAL);
@@ -51,8 +52,8 @@ public class PublicationFormulaireServlet extends ConnexionServlet implements Nu
 		try {
 			connection = servlet.getDataSource().getConnection();
 			date = dateFormat.parse(datePub);
-			String valuePublication="'"+titre+"'%'"+dateFormat.format(date)+"'%"+"%'"+nomJournal+"'%'"+facteurImpact+"'%'";
-			int rs= ComputeQueryBean.insertDatabase(valuePublication, "Etudiant",connection);
+			String valuePublication="%'"+responsable+"'%"+"'"+titre+"'%"+dateFormat.format(date)+"%'"+nomJournal+"'%"+"'"+auteur+"'%'"+facteurImpact+"'";
+			int rs= ComputeQueryBean.insertDatabase(valuePublication, "Publication",connection);
 			
 		} catch (SQLException | ParseException e) {
 			e.printStackTrace();
