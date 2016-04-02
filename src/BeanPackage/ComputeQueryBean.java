@@ -30,9 +30,9 @@ public class ComputeQueryBean implements NumericConstant {
 				request += "," + listRequest[i];
 			}
 			request += ");";
-			// System.out.println(request);
+			System.out.println(request);
 			result = statement.executeUpdate(request);
-			// System.out.println("Nombre de lignes insérées : " + result);
+			System.out.println("Nombre de lignes insérées : " + result);
 		} catch (SQLException e) {
 			System.err.println("Insertion impossible");
 		} finally {
