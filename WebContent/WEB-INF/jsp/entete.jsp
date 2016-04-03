@@ -57,7 +57,14 @@
 								<li><a href="javascript:coordonnateur()">Coordonnateur</a></li>
 								<li><a href="javascript:viceCoordonnateur()">Vice Coordonnateur</a></li>
 							</ul></li>
-						<li><a href="reunion">Liste des comptes</a></li>
+						<li><a href="reunion">Liste des comptes<span>.</span></a>
+							<ul>
+								<li><a href="javascript:responsableSuivi()">Etudiant</a></li>
+								<li><a href="javascript:responsableSaisie()">Responsable</a></li>
+								<li><a href="javascript:responsableControle()">Enseignant</a></li>
+								<li><a href="javascript:coordonnateur()">Partenaire</a></li>
+								<li><a href="javascript:viceCoordonnateur()">Animateur relecteur</a></li>
+							</ul></li>
 					</c:when>
 					<c:when test="${rolename=='etudiant'}">
 						<li><a href="administrator"><img alt="Accueil"

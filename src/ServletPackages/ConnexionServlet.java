@@ -28,7 +28,6 @@ public class ConnexionServlet extends HttpServlet {
 	private Statement statement;
 	private Connection connection;
 	private static DataSource dataSource;
-
 	//
 	// METHODS
 	//
@@ -42,16 +41,11 @@ public class ConnexionServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Connection.jsp").forward(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	/** Verify the pseudo and password of the user */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ResultSet resultSet = null;

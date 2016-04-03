@@ -312,8 +312,11 @@ public class ComputeQueryBean implements NumericConstant {
 		try {
 			Statement statement = connection.createStatement();
 			System.out.println("ComputeQueryBean.isUser()" +"select pseudo from compte where pseudo=" + pseudo + " and password=" + password + ";");
+			ResultSet resultSet = statement.executeQuery("select pseudo from compte where pseudo='" + pseudo + "' and password='" + password + "';");
 			if (statement.executeQuery("select pseudo from compte where pseudo='" + pseudo + "' and password='" + password + "';") != null)
-				result = true;
+				{
+					result = true;
+				}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
