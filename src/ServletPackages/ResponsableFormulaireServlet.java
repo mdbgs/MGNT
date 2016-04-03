@@ -55,18 +55,18 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		 String dateNow = dateFormat.format(date);
 		 String pseudo = "'"+nom+"."+prenom;
-		String valueResponsable="'%'ceamitic2016'%"+dateNow+"%'Reponsable'%'Inconnue'";
+		String valueResponsable="'%'ceamitic2016'%"+dateNow+"%'inconnu'%";
 		HomeServlet servlet = new HomeServlet();
 		try {
 			connection = servlet.getDataSource().getConnection();
 			int rs = ComputeQueryBean.insertDatabase(pseudo+valueResponsable, "compte",connection);
-			int number = 0;
-			while(rs==0){
-				number++;
-				pseudo+=number;
-				rs = ComputeQueryBean.insertDatabase(pseudo+valueResponsable, "compte",connection);
-			}
-			valueResponsable=pseudo+"%" + "'"+nom+"'%" + "'"+prenom+"'%" + "'"+adresse+"'%" + "'"+telephone+"'%"
+//			int number = 0;
+//			while(rs==0){
+//				number++;
+//				pseudo+=number;
+//				rs = ComputeQueryBean.insertDatabase(pseudo+valueResponsable, "compte",connection);
+//			}
+			valueResponsable="%"+pseudo+"'%" + "'"+nom+"'%" + "'"+prenom+"'%" + "'"+adresse+"'%" + "'"+telephone+"'%"
 					 + "'"+email+"'%" + "'"+sexe+"'%" + "'"+poste+"'%" + "'"+type+"'%";
 			rs= ComputeQueryBean.insertDatabase(valueResponsable, "Responsable",connection);
 			

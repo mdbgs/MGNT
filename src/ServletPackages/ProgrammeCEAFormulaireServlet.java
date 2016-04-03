@@ -63,7 +63,7 @@ public class ProgrammeCEAFormulaireServlet extends ConnexionServlet implements N
 			Date date = new Date();
 			Date date1 = new Date();
 			Date date2 = new Date();
-			DateFormat dateFormat = new SimpleDateFormat("YYYY/MM/DD");
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			HomeServlet servlet = new HomeServlet();
 			try {
 				
@@ -71,8 +71,8 @@ public class ProgrammeCEAFormulaireServlet extends ConnexionServlet implements N
 				date = dateFormat.parse(date_Acc);
 				date1 = dateFormat.parse(date_Exp);
 				date2 = dateFormat.parse(date_Creation);
-				String valueProgramme="'"+titre+"'%'"+niveau+"'%'"+type_Acc+"'%'"+ref_Acc+"'%'"+nom_Agence+"'%'" +email_Agence+"'%'"+tel_Agence+"'%'" +bp_Agence+"'%'" +dateFormat.format(date)+"'%'" +dateFormat.format(date1)+"'%'"+type+"'%"
-				+ "'"+statut+"'%'"+offert_Par+"'%'"+dateFormat.format(date2)+"'" ; 
+				String valueProgramme="%'"+titre+"'%'"+niveau+"'%'"+type_Acc+"'%'"+ref_Acc+"'%'"+nom_Agence+"'%'" +email_Agence+"'%'"+tel_Agence+"'%'" +bp_Agence+"'%" +dateFormat.format(date)+"%" +dateFormat.format(date1)+"%'"+type+"'%"
+				+ "'"+statut+"'%'"+offert_Par+"'%"+dateFormat.format(date2); 
 				int rs= ComputeQueryBean.insertDatabase(valueProgramme, "ProgrammeCEA",connection);
 				
 			} catch (SQLException | ParseException e) {
