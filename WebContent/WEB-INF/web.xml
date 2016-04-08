@@ -241,4 +241,22 @@
     <servlet-name>ResponsableControle</servlet-name>
     <url-pattern>/responsableControle</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>Upload</servlet-name>
+    <servlet-class>ServletPackages.EtudiantServletForm</servlet-class>
+    <init-param>
+      <param-name>chemin</param-name>
+      <param-value>C:\fic/</param-value>
+    </init-param>
+    <multipart-config>
+      <location>C:\fic/</location>
+      <max-file-size>10485760</max-file-size>
+      <max-request-size>52428800</max-request-size>
+      <file-size-threshold>1048576</file-size-threshold>
+    </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Upload</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
 </web-app>
