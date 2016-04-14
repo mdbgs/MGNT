@@ -24,6 +24,14 @@
 		<url-pattern>/indicateurActivite</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>itex</servlet-name>
+		<servlet-class>ServletPackages.ItexServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>itex</servlet-name>
+		<url-pattern>/itex</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>Connexion</servlet-name>
 		<servlet-class>ServletPackages.ConnexionServlet</servlet-class>
 	</servlet>
@@ -183,7 +191,7 @@
 			<url-pattern>/publication</url-pattern>
 			<url-pattern>/reunion</url-pattern>
 			<url-pattern>/partenaire</url-pattern>
-			<url-pattern>/etudiant</url-pattern>
+			<url-pattern>/etudiat</url-pattern>
 			<url-pattern>/enseignat</url-pattern>
 			<url-pattern>/responsable</url-pattern>
 			<url-pattern>/enseignat</url-pattern>
