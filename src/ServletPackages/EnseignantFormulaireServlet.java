@@ -57,7 +57,7 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 		 String dateNow = dateFormat.format(date);
 		 String pseudo = "'"+nom+"."+prenom+"'";
 		String valueEnseignant="%'ceamitic2016'%"+dateNow+"%'inconnu'%";
-		HomeServlet servlet = new HomeServlet();
+		ConnexionServlet servlet = new ConnexionServlet();
 		try {
 			connection = servlet.getDataSource().getConnection();
 			int rs = ComputeQueryBean.insertDatabase(pseudo+valueEnseignant, "compte",connection);

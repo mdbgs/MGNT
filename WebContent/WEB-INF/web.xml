@@ -165,12 +165,12 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AdminAccueil</servlet-name>
-		<url-pattern>/administrator</url-pattern>
+		<url-pattern>/adminHome</url-pattern>
 	</servlet-mapping>
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Page de l'administrateur</web-resource-name>
-			<url-pattern>/administrators</url-pattern>
+			<url-pattern>//adminHome</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>admin</role-name>
@@ -178,7 +178,72 @@
 	</security-constraint>
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>Connection page</web-resource-name>
+			<web-resource-name>Page de l'etudiant</web-resource-name>
+			<url-pattern>/studentHome</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>etudiant</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Page de la banque mondiale</web-resource-name>
+			<url-pattern>/worldBankHome</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>BanqueMondial</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Page du coordonnateur</web-resource-name>
+			<url-pattern>/coordinatorHome</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>coordonnateur</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Page du responsable de saisie</web-resource-name>
+			<url-pattern>/RSHome</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>responsable_Saisie</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Page du responsable de contrôle</web-resource-name>
+			<url-pattern>/RCHome</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>responsable_Controle</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Page du vice coordonnateur</web-resource-name>
+			<url-pattern>/viceCoordinatorHome</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>viceCoordonnateur</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Page de l'enseignant</web-resource-name>
+			<url-pattern>/teacherHome</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>enseignat</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<!-- responsable suivi et évaluation -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>page d'accueil du responsable de suivi et
+				évaluation</web-resource-name>
 			<url-pattern>/stage</url-pattern>
 			<url-pattern>/publication</url-pattern>
 			<url-pattern>/reunion</url-pattern>
@@ -199,7 +264,7 @@
 			<form-login-page>/connexion</form-login-page>
 			<form-error-page>/connexion</form-error-page>
 		</form-login-config>
-	</login-config>	
+	</login-config>
 	<filter>
 		<filter-name>ClickCounterFilter</filter-name>
 		<filter-class>FilterPackage.ClickCounterFilter</filter-class>
@@ -209,36 +274,20 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	<servlet>
-	 <servlet-name>responsableSE</servlet-name>
-    <servlet-class>ServletPackages.AccueilRespSuivuEvalServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>responsableSE</servlet-name>
-    <url-pattern>/responsableSE</url-pattern>
-  </servlet-mapping>
- 
-  <servlet>
-    <servlet-name>Resultat</servlet-name>
-    <servlet-class>ServletPackages.ResultatServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Resultat</servlet-name>
-    <url-pattern>/resultat</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>AuthenticationSecurity</servlet-name>
-    <servlet-class>ServletSecurity.AuthenticationServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AuthenticationSecurity</servlet-name>
-    <url-pattern>/authentication</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>ResponsableControle</servlet-name>
-    <servlet-class>ServletPackages.ResponsableControleServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ResponsableControle</servlet-name>
-    <url-pattern>/responsableControle</url-pattern>
-  </servlet-mapping>
+		<servlet-name>responsableSE</servlet-name>
+		<servlet-class>ServletPackages.AccueilRespSuivuEvalServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>responsableSE</servlet-name>
+		<url-pattern>/RSEHome</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ResponsableControle</servlet-name>
+		<servlet-class>ServletPackages.ResponsableControleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ResponsableControle</servlet-name>
+		<url-pattern>/RCHome</url-pattern>
+	</servlet-mapping>
 </web-app>

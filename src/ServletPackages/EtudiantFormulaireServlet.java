@@ -145,7 +145,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		String dateNow = dateFormat.format(date);
 		String pseudo = ("'"+nom+"."+prenom).replaceAll("\\s", "_");
 		String valueEtudiant= "'%'ceamitic2016'%"+dateNow+"%'inconnu'%";
-		HomeServlet servlet = new HomeServlet();
+		ConnexionServlet servlet = new ConnexionServlet();
 		try {
 			connection = servlet.getDataSource().getConnection();
 			int rs = ComputeQueryBean.insertDatabase(pseudo+valueEtudiant, "compte",connection);
