@@ -26,26 +26,30 @@
 												<tr>
 													<th>Nom</th>
 													<th>Prénom</th>
-													<th>Adresse</th>
 													<th>Telephone</th>
-													<th>Mail</th>
+													<th>Adresse</th>
 													<th>Sexe</th>
+													<th>Email</th>
 													<th>Poste</th>
 													<th>Type</th>
 													
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach items="${studentRecu.studentList}" var="student">
+												<c:forEach items="${responsableRecu.responsableList}" var="responsable">
 													<tr>
-														<td><c:out value="${student.studentNumber}"></c:out></td>
-														<td><c:out value="${student.lastName}"></c:out></td>
-														<td><c:out value="${student.firstName}"></c:out></td>
-														<td><c:out value="${student.level}"></c:out></td>
+														<td><c:out value="${responsable.lastName}"></c:out></td>
+														<td><c:out value="${responsable.firstName}"></c:out></td>
+														<td><c:out value="${responsable.mail}"></c:out></td>
+														<td><c:out value="${responsable.adress}"></c:out></td>
+														<td><c:out value="${responsable.gender}"></c:out></td>
+														<td><c:out value="${responsable.phone}"></c:out></td>
+														<td><c:out value="${responsable.type}"></c:out></td>
+														<td><c:out value="${responsable.post}"></c:out></td>
 														<td>
 															<button type="submit" class=" btn btn-info"
 																id="detailBtn"
-																onclick="location.href = 'detail?studentSending=${student.idStudent}';">
+																onclick="location.href = 'detail?responsableSending=${responsable.idResponsable}';">
 																<img alt="action" src="Assets/images/icons/editer.jpg">
 															</button>
 														</td>
@@ -60,7 +64,7 @@
 					</div>
 				</div>
 				<input class="btn btn-info myBtnDetail"
-					onclick="location.href = 'etudiant';" value="Ajouter" />
+					onclick="location.href = 'responsable';" value="Ajouter" />
 				<div class="fix scroll_to_top">
 					<a href="#scroll_top" class="floatright">Remonter </a>
 				</div>

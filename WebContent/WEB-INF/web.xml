@@ -80,6 +80,14 @@
 		<url-pattern>/listeEtudiant</url-pattern>
 	</servlet-mapping>
 	<servlet>
+    	<servlet-name>ResponsableList</servlet-name>
+    	<servlet-class>ServletPackages.ResponsableListServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>ResponsableList</servlet-name>
+    	<url-pattern>/listeResponsable</url-pattern>
+  	</servlet-mapping>
+	<servlet>
 		<servlet-name>Enseignant</servlet-name>
 		<servlet-class>ServletPackages.EnseignantFormulaireServlet</servlet-class>
 	</servlet>
