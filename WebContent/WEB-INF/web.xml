@@ -179,14 +179,14 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Connection page</web-resource-name>
-			<url-pattern>/stage</url-pattern>
-			<url-pattern>/publication</url-pattern>
-			<url-pattern>/reunion</url-pattern>
-			<url-pattern>/partenaire</url-pattern>
-			<url-pattern>/etudiant</url-pattern>
-			<url-pattern>/enseignat</url-pattern>
-			<url-pattern>/responsable</url-pattern>
-			<url-pattern>/enseignat</url-pattern>
+<!-- 			<url-pattern>/stage</url-pattern> -->
+<!-- 			<url-pattern>/publication</url-pattern> -->
+<!-- 			<url-pattern>/reunion</url-pattern> -->
+<!-- 			<url-pattern>/partenaire</url-pattern> -->
+<!-- 			<url-pattern>/etudiant</url-pattern> --> 
+<!-- 			<url-pattern>/enseignat</url-pattern> -->
+<!-- 			<url-pattern>/responsable</url-pattern> -->
+<!-- 			<url-pattern>/enseignant</url-pattern> -->
 			<url-pattern>/index.jsp</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
@@ -214,7 +214,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>responsableSE</servlet-name>
-    <url-pattern>/responsableSE</url-pattern>
+    <url-pattern>/responsable_Suivi_Evaluation</url-pattern>
   </servlet-mapping>
  
   <servlet>
@@ -259,4 +259,24 @@
     <servlet-name>Upload</servlet-name>
     <url-pattern>/upload</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>ImageServlet</servlet-name>
+    <servlet-class>ServletPackages.ImageServlet</servlet-class>
+      <init-param>
+      <param-name>chemin</param-name>
+      <param-value>C:\fic/</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageServlet</servlet-name>
+    <url-pattern>/image</url-pattern>
+  </servlet-mapping>
+  <servlet>
+		<servlet-name>ListEnseignant</servlet-name>
+		<servlet-class>ServletPackages.TeacherList</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListEnseignant</servlet-name>
+		<url-pattern>/listEnseignant</url-pattern>
+	</servlet-mapping>
 </web-app>

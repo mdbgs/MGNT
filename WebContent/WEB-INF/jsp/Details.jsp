@@ -141,6 +141,159 @@
 												onclick="location.href = 'activite';" value="Retour" />
 										</div>
 									</c:if>
+									<c:set scope="session" var="thd" value="${teacherRecu}"></c:set>
+									<c:if test="${thd!=null}">
+										<div class="panel-heading">
+											<h2>
+												Détail de l'enseignant
+												</h2>
+										</div>
+										<div class="formulDetail">
+											<div class="row">
+												<div class="col-xs-5" id="formeGauche">
+													<div class="row ">
+														<label>Nom <span>:</span></label>
+													</div>
+													<div class="row">
+														<b>${thd.lastName}</b>
+													</div>
+												</div>
+												<div class="formeDroite col-xs-5">
+													<div class="row">
+														<label>Prenom <span>:</span></label>
+													</div>
+													<div class="row">
+														<b>${thd.firstName}</b>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+											<div class="formeDroite col-xs-5">
+													<div class="row">
+														<label>Adresse <span>:</span></label>
+													</div>
+													<div class="row">
+														<b>${thd.adress}</b>
+													</div>
+												</div>
+												<div class="col-xs-5" id="formeGauche">
+													<div class="row ">
+														<label>Email <span>:</span></label>
+													</div>
+													<div class="row">
+														<b>${thd.mail}</b>
+													</div>
+												</div>
+												
+											</div>
+											<div class="row">
+												<div class="col-xs-5" id="formeGauche">
+													<div class="row ">
+														<label>Niveau <span>:</span></label>
+													</div>
+													<div class="row">
+														<b>${thd.level}</b>
+													</div>
+												</div>
+												<div class="col-xs-5" id="formeGauche">
+													<div class="row ">
+														<label>Nationnalité <span>:</span></label>
+													</div>
+													<div class="row">
+														<b>${thd.nationality}</b>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-5" id="formeGauche">
+													<div class="row ">
+														<label>Numéro de téléphone <span>:</span></label>
+													</div>
+													<div class="row">
+														<b>${thd.phoneNumber}</b>
+													</div>
+												</div>
+												<div class="formeDroite col-xs-5">
+													<div class="row">
+														<label>sexe <span>:</span></label>
+													</div>
+													<div class="row">
+														<b>${thd.gender}</b>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												
+											</div>
+											<div class="row">
+												<div class="col-xs-5" id="formeGauche">
+													<div class="row ">
+														<label>Boite postale <span>:</span></label>
+													</div>
+													<div class="row">
+														<b>${thd.bp}</b>
+													</div>
+												</div>
+												<div class="formeDroite col-xs-5">
+													<div class="row">
+														<label>Affiliation Institutionnelle <span>:</span></label>
+													</div>
+													<div class="row">
+														<b>${thd.affiliation}</b>
+													</div>
+												</div>
+											</div>
+											
+										<input class="btn btn-danger myBtnDetail"
+												onclick="location.href = 'listEnseignant';" value="Retour" />
+										</div>
+									</c:if>
+									<c:set scope="session" var="indic" value="${indicateurRecu}"></c:set>
+									<c:if test="${indic!=null}">
+										<div class="panel-heading">
+											<h1>Détail de l'indicateur</h1>
+										</div>
+										<div class="formulDetail">
+											<div class="row">
+												<div class="col-xs-5" id="formeGauche">
+													<div class="row ">
+														<label>Numero <span>:</span></label>
+													</div>
+													<div class="row">
+														<b>${indic.numero}</b>
+													</div>
+												</div>
+												<div class="formeDroite col-xs-5">
+													<div class="row">
+														<label>libelle <span>:</span></label>
+													</div>
+													<div class="row">
+														<b>${indic.libelle}</b>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-5" id="formeGauche">
+													<div class="row ">
+														<label>Objectif <span>:</span></label>
+													</div>
+													<div class="row">
+														<b>${indic.objectif}</b>
+													</div>
+												</div>
+												<div class="formeDroite col-xs-5">
+													<div class="row">
+														<label>Sigle <span>:</span></label>
+													</div>
+													<div class="row">
+														<b>${indic.sigle}</b>
+													</div>
+												</div>
+											</div>
+										</div>
+										<input class="btn btn-danger myBtnDetail"
+											onclick="location.href = 'indicateur';" value="Retour" />
+									</c:if>
 									<c:set scope="session" var="std" value="${etudiantRecu}"></c:set>
 									<c:if test="${std!=null}">
 										<div class="panel-heading">
@@ -149,8 +302,12 @@
 												</h2>
 										</div>
 										<div class="formulDetail">
+										<div class="col-xs-5" id="formeGauche">
+							<img src="<c:url value="/image?imageId=${mapBadges.value.id}"/>" class="photoDetail"/>
+										</div>
 											<div class="row">
 												<div class="col-xs-5" id="formeGauche">
+												
 													<div class="row ">
 														<label>Numéro d'étudiant <span>:</span></label>
 													</div>
@@ -316,52 +473,6 @@
 											<input class="btn btn-danger myBtnDetail"
 												onclick="location.href = 'listeEtudiant';" value="Retour" />
 										</div>
-									</c:if>
-									<c:set scope="session" var="indic" value="${indicateurRecu}"></c:set>
-									<c:if test="${indic!=null}">
-										<div class="panel-heading">
-											<h1>Détail de l'indicateur</h1>
-										</div>
-										<div class="formulDetail">
-											<div class="row">
-												<div class="col-xs-5" id="formeGauche">
-													<div class="row ">
-														<label>Numero <span>:</span></label>
-													</div>
-													<div class="row">
-														<b>${indic.numero}</b>
-													</div>
-												</div>
-												<div class="formeDroite col-xs-5">
-													<div class="row">
-														<label>libelle <span>:</span></label>
-													</div>
-													<div class="row">
-														<b>${indic.libelle}</b>
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-xs-5" id="formeGauche">
-													<div class="row ">
-														<label>Objectif <span>:</span></label>
-													</div>
-													<div class="row">
-														<b>${indic.objectif}</b>
-													</div>
-												</div>
-												<div class="formeDroite col-xs-5">
-													<div class="row">
-														<label>Sigle <span>:</span></label>
-													</div>
-													<div class="row">
-														<b>${indic.sigle}</b>
-													</div>
-												</div>
-											</div>
-										</div>
-										<input class="btn btn-danger myBtnDetail"
-											onclick="location.href = 'indicateur';" value="Retour" />
 									</c:if>
 								</div>
 								<div class="fix scroll_to_top">

@@ -87,7 +87,34 @@ function gouvernanceActivite(){
 	$("#gouvAct").fadeIn();
 
 };
+function allEtudiant(){
+	$("#allEtud").fadeIn();
+	$("#natEtud").fadeOut();
+	$("#femEtud").fadeOut();
+	$("#regEtud").fadeOut();
+};
+function natEtudiant(){
+	$("#allEtud").fadeOut();
+	$("#natEtud").fadeIn();
+	$("#femEtud").fadeOut();
+	$("#regEtud").fadeOut();
+};
+function regEtudiant(){
+	$("#allEtud").fadeOut();
+	$("#natEtud").fadeOut();
+	$("#femEtud").fadeOut();
+	$("#regEtud").fadeIn();
+};
+function femEtudiant(){
+	$("#allEtud").fadeOut();
+	$("#natEtud").fadeOut();
+	$("#femEtud").fadeIn();
+	$("#regEtud").fadeOut();
+};
 /*End my code*/
+
+
+
 $(function() {
 	$('a[href*=#]:not([href=#])').click(
 			function() {

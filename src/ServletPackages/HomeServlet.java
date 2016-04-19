@@ -14,6 +14,7 @@ public class HomeServlet extends ConnexionServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Home.jsp").forward(req, resp);
+	   req.getSession().invalidate();
 	}
 
 }

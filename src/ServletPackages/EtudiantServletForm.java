@@ -16,6 +16,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -43,6 +45,8 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 		 * Lecture du paramètre 'chemin' passé à la servlet via la déclaration
 		 * dans le web.xml
 		 */
+		String resultat;
+		Map<String, String> errors = new HashMap<String, String>();
 		String chemin = this.getServletConfig().getInitParameter(CHEMIN);
 
 		/* Récupération du contenu du champ de description */
@@ -132,7 +136,7 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 		Part part = request.getPart(CHAMP_FICHIER);
 		// String valueEtudiant=
 		// "'%'ceamitic2016'%"+dateNow+"%'Etudiant'%'Inconnue'";
-		String valueEtudiant = "'%'ceamitic2016'%" + dateNow + "%'" + chemin + getNomFichier(part) + "'";
+		String valueEtudiant = "'%'ceamitic2016'%" + dateNow + "%'"+getNomFichier(part) + "'";
 		System.out.println(valueEtudiant);
 		/*
 		 * Les données reçues sont multipart, on doit donc utiliser la méthode
@@ -144,7 +148,8 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 
 			System.out.println();
 			connection = this.getDataSource().getConnection();
-			int rs = ComputeQueryBean.insertDatabase(pseudo + valueEtudiant, "compte", connection);
+		  int  rs = ComputeQueryBean.insertDatabase(pseudo + valueEtudiant, "compte", connection);
+		  
 			// int number = 0;
 			// while(rs==0){
 			// number++;
@@ -152,18 +157,133 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 			// rs = ComputeQueryBean.insertDatabase(pseudo+valueEtudiant,
 			// "compte",connection);
 			// }
+			
 			date = dateFormat.parse(dateN);
 			valueEtudiant = "%" + pseudo + "'%" + "'" + nom + "'%'" + prenom + "'%" + dateFormat.format(date) + "%'"
 					+ lieuDeNaiss + "'%'" + niveau + "'%'" + nationalite + "'%'" + adresse + "'%'" + email + "'%'"
 					+ telephone + "'%'" + boitePostale + "'%" + sexe + "%" + "'" + numeroEtudiant + "'%" + "'" + nomPAC
 					+ "'%" + "'" + prenomPAC + "'%'" + phonePAC + "'%'" + adressePAC + "'%'" + programme + "'%'"
 					+ semestre + "'";
-			System.out.print(valueEtudiant);
-			rs = ComputeQueryBean.insertDatabase(valueEtudiant, "Etudiant", connection);
-
+			if(rs==1)
+			{ //si la création de compte a reussi alors insérer l'étudiant et users_roles
+				rs = ComputeQueryBean.insertDatabase(valueEtudiant, "Etudiant", connection);
+				valueEtudiant=pseudo + "'%" + "'etudiant'";
+				rs = ComputeQueryBean.insertUsersRoles(valueEtudiant,"users_roles", connection);
+			}
 		} catch (SQLException | ParseException e) {
 			e.printStackTrace();
 		}
+		/* Validation du champ prenom. */
+		try {
+			validationPrenom(prenom);
+
+		} catch (Exception e) {
+
+			errors.put(FIRSTNAME, e.getMessage());
+
+		}
+		
+		/* Validation du champ nom. */
+		try {
+
+			validationNom(nom);
+
+		} catch (Exception e) {
+
+	errors.put(LASTNAME, e.getMessage());
+
+		}
+		/* Validation du champ numero etudiant. */
+		try {
+
+			validationNumEtudiant(numeroEtudiant);
+
+		} catch (Exception e) {
+
+			errors.put(STUDENTNUMBER, e.getMessage());
+
+		}
+		/* Validation du champ email. */
+		try {
+
+			validationEmail(email);
+
+		} catch (Exception e) {
+
+			errors.put(MAIL, e.getMessage());
+
+		}
+		/* Validation du champ téléphone*/
+		try{
+			validationTelephone(telephone);
+			
+		} catch(Exception e){
+			
+			errors.put(PHONE, e.getMessage());
+		}
+		/* Validation du champ niveau. */
+		
+		try {
+
+			validationNiveau(niveau);
+
+		} catch (Exception e) {
+
+			errors.put(LEVEL, e.getMessage());
+
+		}
+		
+		try {
+
+			validationProgramme(programme);
+
+		} catch (Exception e) {
+
+			errors.put(PROGRAM, e.getMessage());
+
+		}
+		try {
+
+			validationSemestre(semestre);
+
+		} catch (Exception e) {
+
+			errors.put(SEMESTER, e.getMessage());
+
+		}
+		try {
+
+			validationLieuDeNaissance(lieuDeNaiss);
+
+		} catch (Exception e) {
+
+			errors.put(COUNTRYOFBIRTH, e.getMessage());
+
+		}
+		try {
+
+			validationNationalite(nationalite);
+
+		} catch (Exception e) {
+
+			errors.put(NATIONALITY, e.getMessage());
+
+		}
+		
+		if (errors.isEmpty()) {
+
+			resultat = "Succès de l'inscription.";
+
+		} else {
+
+			resultat = "Échec de l'inscription.";
+
+		}
+		/* Stockage du résultat et des messages d'erreur dans l'objet request */
+
+		request.setAttribute(ERRORS, errors);
+
+		request.setAttribute(RESULT, resultat);
 
 		/*
 		 * Il faut déterminer s'il s'agit d'un champ classique ou d'un champ de
@@ -206,6 +326,99 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 	 * retourne son nom, sinon il s'agit d'un champ de formulaire classique et
 	 * la méthode retourne null.
 	 */
+	private void validationPrenom(String prenom) throws Exception {
+		if(prenom.trim().length()==0)
+			throw new Exception("Veuillez saisir le prénom svp");
+			else
+				if (prenom != null) {
+					if(!prenom.matches("^\\D+$" ))
+						throw new Exception("Le prenom doit uniquement contenir des lettres");
+				
+			}
+		
+	}
+
+	private void validationNom(String nom) throws Exception {
+		if(nom.trim().length()==0)
+			throw new Exception("Veuillez saisir le nom svp");
+			else
+				if (nom != null) {
+					if(!nom.matches("^\\D+$" ))
+						throw new Exception("Le nom doit uniquement contenir des lettres");
+
+		}
+
+	}
+	
+	private void validationNumEtudiant(String numeroEtudiant){
+		
+	}
+	
+	private void validationEmail(String email) throws Exception {
+
+		if (email != null && email.trim().length() != 0) {
+
+			if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
+
+				throw new Exception("Merci de saisir une adresse mail valide.");
+
+			}
+
+		} else {
+
+			throw new Exception("Merci de saisir une adresse mail.");
+
+		}
+
+	}
+	private void validationTelephone(String telephone) throws Exception{
+		if ( telephone != null ) {
+
+            if ( !telephone.matches( "^\\d+$" ) ) {
+
+                throw new Exception( "Le numéro de téléphone est incorrect." );
+
+            } else if ( telephone.length() < 9 ) {
+                throw new Exception( "Le numéro de téléphone doit contenir au moins 9 chiffres." );
+
+            }
+
+        } else {
+
+            throw new Exception( "Merci d'entrer un numéro de téléphone." );
+            }
+		
+	}
+	
+	private void validationNiveau(String niveau) throws Exception{
+		if(niveau.trim().length()==0)
+			throw new Exception("Veuillez saisir le niveau svp");
+		
+	}
+	
+	private void validationProgramme(String programme) throws Exception{
+		if(programme.trim().length()==0)
+			throw new Exception("Veuillez saisir le programme svp");
+		
+	}
+	
+	private void validationNationalite(String nationalite) throws Exception{
+		if(nationalite.trim().length()==0)
+			throw new Exception("Veuillez saisir la nationalité svp");
+		
+	}
+
+	private void validationLieuDeNaissance(String lieuDeNaiss) throws Exception{
+		if(lieuDeNaiss.trim().length()==0)
+			throw new Exception("Veuillez saisir le lieu de naissance svp");
+	}
+	
+	
+	private void validationSemestre(String semestre) throws Exception{
+		if(semestre.trim().length()==0)
+			throw new Exception("Veuillez saisir le semestre svp");
+	}
+	
 	public String getNomFichier(Part part) {
 		/*
 		 * Boucle sur chacun des paramètres de l'en-tête "content-disposition".
