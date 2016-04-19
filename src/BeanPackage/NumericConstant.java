@@ -42,6 +42,7 @@ public interface NumericConstant {
 	// Constant Responsable
 
 	public static final String POST = "post";
+	public static final String RESPONSABLE = "resp";
 
 	// Constant Activité
 

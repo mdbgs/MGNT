@@ -24,6 +24,14 @@
 		<url-pattern>/indicateurActivite</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>itex</servlet-name>
+		<servlet-class>ServletPackages.ItexServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>itex</servlet-name>
+		<url-pattern>/itex</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>Connexion</servlet-name>
 		<servlet-class>ServletPackages.ConnexionServlet</servlet-class>
 	</servlet>
@@ -71,6 +79,14 @@
 		<servlet-name>EtudiantList</servlet-name>
 		<url-pattern>/listeEtudiant</url-pattern>
 	</servlet-mapping>
+	<servlet>
+    	<servlet-name>ResponsableList</servlet-name>
+    	<servlet-class>ServletPackages.ResponsableListServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>ResponsableList</servlet-name>
+    	<url-pattern>/listeResponsable</url-pattern>
+  	</servlet-mapping>
 	<servlet>
 		<servlet-name>Enseignant</servlet-name>
 		<servlet-class>ServletPackages.EnseignantFormulaireServlet</servlet-class>
@@ -179,14 +195,14 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Connection page</web-resource-name>
-<!-- 			<url-pattern>/stage</url-pattern> -->
-<!-- 			<url-pattern>/publication</url-pattern> -->
-<!-- 			<url-pattern>/reunion</url-pattern> -->
-<!-- 			<url-pattern>/partenaire</url-pattern> -->
-<!-- 			<url-pattern>/etudiant</url-pattern> --> 
-<!-- 			<url-pattern>/enseignat</url-pattern> -->
-<!-- 			<url-pattern>/responsable</url-pattern> -->
-<!-- 			<url-pattern>/enseignant</url-pattern> -->
+			<url-pattern>/stage</url-pattern>
+			<url-pattern>/publication</url-pattern>
+			<url-pattern>/reunion</url-pattern>
+			<url-pattern>/partenaire</url-pattern>
+			<url-pattern>/etudiat</url-pattern>
+			<url-pattern>/enseignat</url-pattern>
+			<url-pattern>/responsable</url-pattern>
+			<url-pattern>/enseignat</url-pattern>
 			<url-pattern>/index.jsp</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
@@ -216,7 +232,6 @@
     <servlet-name>responsableSE</servlet-name>
     <url-pattern>/responsable_Suivi_Evaluation</url-pattern>
   </servlet-mapping>
- 
   <servlet>
     <servlet-name>Resultat</servlet-name>
     <servlet-class>ServletPackages.ResultatServlet</servlet-class>
@@ -235,7 +250,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>ResponsableControle</servlet-name>
-    <servlet-class>ServletPackages.ResponsableControleServlet</servlet-class>
+    <servlet-class>ServletPackages.AccueilResponsableControleServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ResponsableControle</servlet-name>

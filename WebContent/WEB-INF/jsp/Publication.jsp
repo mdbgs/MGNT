@@ -97,8 +97,22 @@
 											</div>
 											<span class="erreur">${errors['impactFactor']}</span>
 										</div>
-										<div class="col-xs-5" id="formGauche">
-									  <input type="file">
+										
+										<div class="formDroite col-xs-5">
+											<div class="row">
+												<label>Responsable</label>
+											</div>
+											<div class="row">
+												<select id="resp"
+													<input class="form-control" type="text" name="resp" value=getValueOption(resp) />>
+													<option value="" disabled selected>Choisir le responsable</option>
+													<option value="0">Responsable suivi</option>
+													<option value="1">Responsable saisi</option>
+													<option value="2">Responsable controle</option>
+												</select>
+											</div>
+											<span class="erreur">${errors['resp']}</span>
+										</div>
 									</div>
 									</div>
 									
