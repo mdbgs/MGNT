@@ -14,6 +14,7 @@ import BeanPackage.ComputeQueryBean;
 import ModelPackage.Activite;
 import ModelPackage.Indicateur;
 import ModelPackage.Student;
+import ModelPackage.Teacher;
 
 /**
  * Servlet implementation class detailActivite
@@ -33,9 +34,11 @@ public class DetailActivite extends ConnexionServlet {
 		int myID=0;
 		String activ=req.getParameter("activiteSending");
 		String std=req.getParameter("studentSending");
+		String thd=req.getParameter("teacherSending");
 		Student student=null;
 		Activite activite =null;
 		Indicateur indicateur=null;
+		Teacher teacher=null;
 		ResultSet result=null;
 		try {
 			connection = this.getDataSource().getConnection();
@@ -71,6 +74,17 @@ public class DetailActivite extends ConnexionServlet {
 							result.getString(11), result.getString(12), result.getString(13));
 				}
 				req.setAttribute("activiteRecu", activite);
+			}
+			//Enseignant
+			if(thd!=null){
+				myID=Integer.parseInt(thd);
+				result = ComputeQueryBean.selectAllByID("enseignant", myID, connection);
+				while (result.next()) {
+					teacher=new Teacher(result.getInt(1), result.getString(2),result.getString(3), result.getString(4), result.getString(9), result.getString(5),
+							result.getString(6), result.getString(7), result.getString(8), result.getString(10),
+							result.getString(11),result.getString(12));
+				}
+				req.setAttribute("teacherRecu", teacher);
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();

@@ -70,7 +70,13 @@ public class EnseignantFormulaireServlet extends ConnexionServlet implements  Nu
 			valueEnseignant="%"+pseudo+"%" + "'"+nom+"'%" + "'"+prenom+"'%" + "'"+niveau+"'%" + "'"+nationalite+"'%"
 					 + "'"+adresse+"'%" + "'"+email+"'%" + "'"+telephone+"'%" +
 					 "'"+boitePostale+"'%" + ""+sexe+"%" +"'"+affliationIns+"'%";
-			rs= ComputeQueryBean.insertDatabase(valueEnseignant, "Enseignant",connection);
+			if(rs==1)
+			{ //si la création de compte a reussi alors insérer l'étudiant et users_roles
+				rs= ComputeQueryBean.insertDatabase(valueEnseignant, "Enseignant",connection);
+				valueEnseignant=pseudo + "%" + "'enseignant'";
+				rs = ComputeQueryBean.insertUsersRoles(valueEnseignant,"users_roles", connection);
+			}
+		
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

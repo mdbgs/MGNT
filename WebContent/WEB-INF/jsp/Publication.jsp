@@ -24,8 +24,23 @@
 								</div>
 								<form method="post" action="publication" class="myForm">
 									<h3>Information</h3>
+									<div class="col-xs-5" id="formGauche">
+											<div class="row ">
+												<label>Type <span>*</span></label>
+											</div>
+											<div class="row">
+												<select id="type"
+													<input class="form-control" type="text"  />>
+													<option value="" disabled selected></option>
+													<option value="0">Mémoire</option>
+													<option value="1">Thèse</option>
+													<option value="1">Article</option>
+												</select>
+											</div>
+											<span class="erreur">${errors['type']}</span>
+										</div>
 									<div class="row">
-										<div class="col-xs-5" id="formGauche">
+										<div class="col-xs-5" id="formDroite">
 											<div class="row ">
 												<label>Titre <span>*</span></label>
 											</div>
@@ -82,7 +97,25 @@
 											</div>
 											<span class="erreur">${errors['impactFactor']}</span>
 										</div>
+										
+										<div class="formDroite col-xs-5">
+											<div class="row">
+												<label>Responsable</label>
+											</div>
+											<div class="row">
+												<select id="resp"
+													<input class="form-control" type="text" name="resp" value=getValueOption(resp) />>
+													<option value="" disabled selected>Choisir le responsable</option>
+													<option value="0">Responsable suivi</option>
+													<option value="1">Responsable saisi</option>
+													<option value="2">Responsable controle</option>
+												</select>
+											</div>
+											<span class="erreur">${errors['resp']}</span>
+										</div>
 									</div>
+									</div>
+									
 									<div class="row myBtn">
 										<input class="btn btn-danger " type="reset" value="Annuler" />
 										<input class="btn btn-info " type="submit" value="Valider" />

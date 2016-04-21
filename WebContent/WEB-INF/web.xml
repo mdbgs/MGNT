@@ -94,6 +94,14 @@
 		<url-pattern>/listeEtudiant</url-pattern>
 	</servlet-mapping>
 	<servlet>
+    	<servlet-name>ResponsableList</servlet-name>
+    	<servlet-class>ServletPackages.ResponsableListServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>ResponsableList</servlet-name>
+    	<url-pattern>/listeResponsable</url-pattern>
+  	</servlet-mapping>
+	<servlet>
 		<servlet-name>Enseignant</servlet-name>
 		<servlet-class>ServletPackages.EnseignantFormulaireServlet</servlet-class>
 	</servlet>
@@ -236,9 +244,8 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>responsableSE</servlet-name>
-    <url-pattern>/responsableSE</url-pattern>
+    <url-pattern>/responsable_Suivi_Evaluation</url-pattern>
   </servlet-mapping>
- 
   <servlet>
     <servlet-name>Resultat</servlet-name>
     <servlet-class>ServletPackages.ResultatServlet</servlet-class>
@@ -257,7 +264,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>ResponsableControle</servlet-name>
-    <servlet-class>ServletPackages.ResponsableControleServlet</servlet-class>
+    <servlet-class>ServletPackages.AccueilResponsableControleServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ResponsableControle</servlet-name>
@@ -281,4 +288,24 @@
     <servlet-name>Upload</servlet-name>
     <url-pattern>/upload</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>ImageServlet</servlet-name>
+    <servlet-class>ServletPackages.ImageServlet</servlet-class>
+      <init-param>
+      <param-name>chemin</param-name>
+      <param-value>C:\fic/</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageServlet</servlet-name>
+    <url-pattern>/image</url-pattern>
+  </servlet-mapping>
+  <servlet>
+		<servlet-name>ListEnseignant</servlet-name>
+		<servlet-class>ServletPackages.TeacherList</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListEnseignant</servlet-name>
+		<url-pattern>/listEnseignant</url-pattern>
+	</servlet-mapping>
 </web-app>

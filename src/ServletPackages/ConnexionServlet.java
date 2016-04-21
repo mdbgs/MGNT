@@ -32,6 +32,7 @@ public class ConnexionServlet extends HttpServlet {
 	//
 	// METHODS
 	//
+	
 	public void init() throws ServletException {
 		try {
 			// Get DataSource
@@ -41,6 +42,22 @@ public class ConnexionServlet extends HttpServlet {
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public String getPseudo() {
+		return pseudo;
+	}
+
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
