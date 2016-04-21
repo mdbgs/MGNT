@@ -319,7 +319,7 @@ element.style{
 .imgConnextion{
 	width:100%;
 	border-radius:5px;
-	margin-bottom:15px;
+	margin-bottom:17px;
 }
 .errorConnected{
 	color:#ff0000;
@@ -347,7 +347,7 @@ element.style{
 }
 .form-signin-heading {
 	text-align: center;
-	color: #ffffff;
+	color: #000000;
 	size:24px;
 }
 

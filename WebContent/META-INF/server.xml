@@ -4,7 +4,6 @@
 		<Engine defaultHost="localhost" name="Catalina">
 			<Host appBase="webapps" autoDeploy="true" name="localhost"
 				unpackWARs="true">
-
 				<Realm className="org.apache.catalina.realm.JDBCRealm"
 					connectionName="root" connectionPassword="CadreInfo1"
 					connectionURL="jdbc:mysql://localhost:3306/ceamitic" driverName="com.mysql.jdbc.Driver"

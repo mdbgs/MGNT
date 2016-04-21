@@ -42,9 +42,7 @@
 			<button id="connexion" class="btn btn-lg btn-primary btn-block"
 				type="submit">Connecter</button>
 		</form>
-
 	</div>
-	
 <div class="col-xs-4"></div>
 </body>
 <!-- JS -->
