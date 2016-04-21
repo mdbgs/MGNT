@@ -24,7 +24,7 @@
 	<section id="content_area">
 	<div class="content">
 		<c:import url="entete.jsp"></c:import>
-		<div class="fix main_content_area row">
+		<div class="fix main_content_area">
 			<p>Rappel important</p>
 			<p>Rappel important</p>
 			<p>Rappel important</p>
@@ -36,7 +36,7 @@
 			<p>Rappel important</p>
 			</div>
 		</div>
-	</section>
 	<c:import url="piedsPage.jsp"></c:import>
+	</section>
 </body>
 </html>

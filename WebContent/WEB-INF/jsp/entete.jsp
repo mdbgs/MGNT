@@ -7,12 +7,9 @@
 <%@ page import="java.util.List"%>
 <%
 	User user = (User) request.getSession().getAttribute("user");
-	// 	if (user == null) {
-	// 		System.out.println("Utilisateur inexistant!!!");
-	// 		response.sendRedirect("connexion");
-	// 	} else {
-	// 		System.out.println("Utilisateur existant!!!");
-	// 	}
+		if (user == null) {
+			response.sendRedirect("connexion");
+		} 
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -41,7 +38,7 @@
 </head>
 <body>
 	<!-- First image in the header -->
-	<div class="main_menu">
+	<div class="main_;enu">
 		<ul id="nav2" class="barreOutil">
 			<div class="col-xs-12 barreValue">
 				<c:set scope="session" var="rolename" value="${rolename}"></c:set>
@@ -57,7 +54,14 @@
 								<li><a href="javascript:coordonnateur()">Coordonnateur</a></li>
 								<li><a href="javascript:viceCoordonnateur()">Vice Coordonnateur</a></li>
 							</ul></li>
-						<li><a href="reunion">Liste des comptes</a></li>
+						<li><a href="reunion">Liste des comptes<span>.</span></a>
+							<ul>
+								<li><a href="javascript:responsableSuivi()">Etudiant</a></li>
+								<li><a href="javascript:responsableSaisie()">Responsable</a></li>
+								<li><a href="javascript:responsableControle()">Enseignant</a></li>
+								<li><a href="javascript:coordonnateur()">Partenaire</a></li>
+								<li><a href="javascript:viceCoordonnateur()">Animateur relecteur</a></li>
+							</ul></li>
 					</c:when>
 					<c:when test="${rolename=='etudiant'}">
 						<li><a href="administrator"><img alt="Accueil"

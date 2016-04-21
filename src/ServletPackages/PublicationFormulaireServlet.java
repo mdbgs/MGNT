@@ -62,8 +62,6 @@ public class PublicationFormulaireServlet extends ConnexionServlet implements Nu
          System.out.println(getNomFichier(part)+"kk ");		
 		Date date = new Date();
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		//HomeServlet servlet = new HomeServlet();
-		
 		try {
 			connection = this.getDataSource().getConnection();
 			date = dateFormat.parse(datePub);

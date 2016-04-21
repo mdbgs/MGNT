@@ -384,7 +384,19 @@ alter table enseignantFormation
       references Formation (IDFormation)
       on update cascade
       on delete cascade;
-insert into compte values('sall.moussa@sanarsoft.com','moussa',12/10/5015,'');
+      
+/*Insertion des comptes d'utilisateur de la plateforme */
+insert into compte values('m.sall','ceamitic2016',2016/04/04,'');
+insert into compte values('mme.sy','ceamitic2016',2016/04/04,'');
+insert into compte values('mlle.thiam','ceamitic2016',2016/04/04,'');
+insert into compte values('m.dembele','ceamitic2016',2016/04/04,'');
+insert into compte values('m.lo','ceamitic2016',2016/04/04,'');
+insert into compte values('m.diop','ceamitic2016',2016/04/04,'');
+insert into compte values('m.ndiaye','ceamitic2016',2016/04/04,'');
+insert into compte values('ucad','ceamitic2016',2016/04/04,'');
+insert into compte values('woldBank','ceamitic2016',2016/04/04,'');
+insert into compte values('m.maiga','ceamitic2016',2016/04/04,'');
+/*Insertion des differentes roles de l'application*/
 INSERT INTO roles VALUES ('admin');
 INSERT INTO roles VALUES ('etudiant');
 INSERT INTO roles VALUES ('enseignat');
@@ -395,9 +407,17 @@ INSERT INTO roles VALUES ('responsable_Controle');
 INSERT INTO roles VALUES ('partenaire');
 INSERT INTO roles VALUES ('BanqueMondial');
 INSERT INTO roles VALUES ('viceCoordonnateur');
-INSERT INTO users_roles  VALUES ('sall.moussa@sanarsoft.com', 'admin');
-insert into compte values('thiam.awa@ceamitic.com','awa',12/10/5015,'');
-INSERT INTO users_roles  VALUES ('thiam.awa@ceamitic.com', 'etudiant');
+/*Attribution des rôles aux utilisateurs */
+INSERT INTO users_roles  VALUES ('m.sall', 'admin');
+INSERT INTO users_roles  VALUES ('mme.sy', 'responsable_Suivi_Evaluation');
+INSERT INTO users_roles  VALUES ('m.dembele', 'enseignat');
+INSERT INTO users_roles  VALUES ('m.lo', 'coordonnateur');
+INSERT INTO users_roles  VALUES ('m.ndiaye', 'responsable_Saisie');
+INSERT INTO users_roles  VALUES ('m.diop', 'responsable_Controle');
+INSERT INTO users_roles  VALUES ('ucad', 'partenaire');
+INSERT INTO users_roles  VALUES ('woldBank', 'BanqueMondial');
+INSERT INTO users_roles  VALUES ('m.maiga', 'viceCoordonnateur');
+INSERT INTO users_roles  VALUES ('mlle.thiam', 'etudiant');
 
 INSERT INTO Activite VALUES
 	(null,

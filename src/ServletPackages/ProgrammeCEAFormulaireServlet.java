@@ -64,7 +64,7 @@ public class ProgrammeCEAFormulaireServlet extends ConnexionServlet implements N
 			Date date1 = new Date();
 			Date date2 = new Date();
 			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-			HomeServlet servlet = new HomeServlet();
+			ConnexionServlet servlet = new ConnexionServlet();
 			try {
 				
 				connection = servlet.getDataSource().getConnection();

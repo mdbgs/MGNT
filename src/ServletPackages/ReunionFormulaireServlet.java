@@ -45,7 +45,6 @@ public class ReunionFormulaireServlet extends ConnexionServlet implements Numeri
 		String pieceJustificatif= request.getParameter(PIECEJUSTIFICATIF);
 		Date date = new Date();
 		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		//HomeServlet servlet = new HomeServlet();
 		try {
 			connection = this.getDataSource().getConnection();
 			//date = dateFormat.parse(dateN);

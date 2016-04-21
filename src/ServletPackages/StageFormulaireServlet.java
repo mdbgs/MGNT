@@ -51,7 +51,6 @@ public class StageFormulaireServlet extends ConnexionServlet implements NumericC
 		
 		 Date date = new Date();
 		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		//HomeServlet servlet = new HomeServlet();
 		try {
 			connection = this.getDataSource().getConnection();
 			//date = dateFormat.parse(dateN);

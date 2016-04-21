@@ -352,27 +352,36 @@ public class ComputeQueryBean implements NumericConstant {
 		Boolean result = false;
 		try {
 			Statement statement = connection.createStatement();
-			System.out.println("ComputeQueryBean.isUser()" +"select pseudo from compte where pseudo=" + pseudo + " and password=" + password + ";");
-			if (statement.executeQuery("select pseudo from compte where pseudo='" + pseudo + "' and password='" + password + "';") != null)
+			System.out.println("ComputeQueryBean.isUser()" + "select pseudo from compte where pseudo='" + pseudo
+					+ "' and password='" + password + "';");
+			ResultSet resultSet = statement.executeQuery(
+					"select pseudo from compte where pseudo='" + pseudo + "' and password='" + password + "';");
+			if (resultSet.next()) {
 				result = true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("ComputeQueryBean.isUser() : "+result);
+		System.out.println("ComputeQueryBean.isUser() : " + result);
 		return result;
 	}
-	public static ResultSet userRole(String pseudo,Connection connection){
+
+	public static String userRole(String pseudo, Connection connection) {
 		Statement statement;
-		ResultSet result = null;
-		try{
+		String result = null;
+		try {
 			statement = connection.createStatement();
-			result= statement.executeQuery("Select rolename from users_roles where pseudo='"+pseudo+"';");
-			System.out.println("ComputeQueryBean.userRole() :"+result);
-		}catch(SQLException e){
+			ResultSet resultSet = statement.executeQuery("Select rolename from users_roles where pseudo='" + pseudo + "';");
+			System.out.println("ComputeQueryBean.userRole() :" + "Select rolename from users_roles where pseudo='" + pseudo + "';");
+			while(resultSet.next()){
+				result = resultSet.getString("rolename");
+			}
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
+
 	/**
 	 * Delete in the database
 	 * 

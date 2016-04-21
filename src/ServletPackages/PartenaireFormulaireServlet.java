@@ -60,7 +60,7 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 		 String dateNow = dateFormat.format(date);
 		 String pseudo = "'"+nom;
 		String valuePartenaire="'%'ceamitic2016'%"+dateNow+"%'inconnu'%";
-		HomeServlet servlet = new HomeServlet();
+		ConnexionServlet servlet = new ConnexionServlet();
 		try {
 			connection = servlet.getDataSource().getConnection();
 			int rs = ComputeQueryBean.insertDatabase(pseudo+valuePartenaire,"compte",connection);

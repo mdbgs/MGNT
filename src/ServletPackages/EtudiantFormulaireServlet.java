@@ -203,7 +203,6 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		String dateNow = dateFormat.format(date);
 		String pseudo = ("'"+nom+"."+prenom).replaceAll("\\s", "_");
-//		String valueEtudiant= "'%'ceamitic2016'%"+dateNow+"%'inconnu'%";
 		String valueEtudiant= "%'ceamitic2016'%"+dateNow+"%'"+namePhoto+"'%";
 		HomeServlet servlet = new HomeServlet();
 		try {

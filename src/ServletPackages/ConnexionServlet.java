@@ -2,7 +2,6 @@ package ServletPackages;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -28,7 +27,6 @@ public class ConnexionServlet extends HttpServlet {
 	private Statement statement;
 	private Connection connection;
 	private static DataSource dataSource;
-
 	//
 	// METHODS
 	//
@@ -65,81 +63,65 @@ public class ConnexionServlet extends HttpServlet {
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Connection.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	/** Verify the pseudo and password of the user */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ResultSet resultSet = null;
 		try {
 			String role = "";
 			// Get Connection and Statement
 			connection = this.getDataSource().getConnection();
+			Boolean connectionError = true;
 			pseudo = request.getParameter("j_username");
 			password = request.getParameter("j_password");
 			System.out.println("ConnexionServlet.doPost()");
 			if (ComputeQueryBean.isUser(pseudo, password, connection)) {
-				resultSet = ComputeQueryBean.userRole(pseudo, connection);
-				while (resultSet.next()) {
-					role = resultSet.getString("rolename");
+				role = ComputeQueryBean.userRole(pseudo, connection);
+				if(!role.isEmpty()){
+						request.getSession().setAttribute("user", new User(pseudo, password));
+						request.getSession().setAttribute("rolename", role);
+						switch (role) {
+						case "admin": 
+							response.sendRedirect("adminHome");
+						break;
+						case "etudiant": 
+							response.sendRedirect("studentHome");
+						break;
+						case "enseignat": 
+							response.sendRedirect("teacherHome");
+						break;
+						case "coordonnateur": 
+							response.sendRedirect("coordonatorHome");
+						break;
+						case "responsable_Suivi_Evaluation": 
+							response.sendRedirect("RSEHome");
+						break;
+						case "responsable_Saisie": 
+							response.sendRedirect("RSHome");
+						break;
+						case "responsable_Controle": 
+							response.sendRedirect("RCHome");
+						break;
+						case "partenaire": 
+							response.sendRedirect("partenerHome");
+						break;
+						case "BanqueMondial": 
+							response.sendRedirect("worldBankHome");
+						break;
+						case "viceCoordonnateur": 
+							response.sendRedirect("viceCoordonatorHome");
+						break;
+					}
 				}
-			}
-			request.getSession().setAttribute("user", new User(pseudo, password));
-			request.getSession().setAttribute("rolename", role);
-			switch (role) {
-			case "admin": {
-				response.sendRedirect("administrator");
-			}
-				break;
-			case "etudiant": {
-				response.sendRedirect("etudiant");
-			}
-				break;
-			case "enseignat": {
-				response.sendRedirect("enseignant");
-			}
-				break;
-			case "coordonnateur": {
-				response.sendRedirect("coordonnateur");
-
-			}
-				break;
-			case "responsable_Suivi_Evaluation": {
-				response.sendRedirect("responsable_Suivi_Evaluation");
-			}
-				break;
-			case "responsable_Saisie": {
-				response.sendRedirect("responsable_Saisie");
-			}
-				break;
-			case "responsable_Controle": {
-				response.sendRedirect("responsable_Controle");
-			}
-				break;
-			case "partenaire": {
-				response.sendRedirect("partenaire");
-			}
-				break;
-			case "BanqueMondial": {
-				response.sendRedirect("BanqueMondial");
-			}
-				break;
-			case "viceCoordonnateur": {
-				response.sendRedirect("viceCoordonnateur");
-			}
-				break;
+				connectionError = false;
+					
+			} else {
+				response.sendRedirect("connexion");
+				request.getSession().setAttribute("connectionError", connectionError);
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("ConnexionServlet.doPost() : Erreur pour l'admin");
 		} finally {
-			try {
-				if (null != resultSet)
-					resultSet.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 			try {
 				if (null != statement)
 					statement.close();
