@@ -16,6 +16,9 @@
 			<c:import url="entete.jsp"></c:import>
 		</div>
 	</section>
+	        <form  enctype="multipart/form-data"  method="post" action= "importExcel">
+			<input type="file" id="source" name="source">
+			<input type="submit" name="valider class="btn-btn-success"></form> 
 	<c:import url="piedsPage.jsp"></c:import>
 </body>
 </html>
