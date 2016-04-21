@@ -250,31 +250,7 @@
 			<role-name>admin</role-name>
 		</auth-constraint>
 	</security-constraint>
-<!-- 	<security-constraint> -->
-<!-- 		<web-resource-collection> -->
-<!-- 			<web-resource-name>Connection page</web-resource-name> -->
-<!-- 			<url-pattern>/stage</url-pattern> -->
-<!-- 			<url-pattern>/publication</url-pattern> -->
-<!-- 			<url-pattern>/reunion</url-pattern> -->
-<!-- 			<url-pattern>/partenaire</url-pattern> -->
-<!-- 			<url-pattern>/etudiat</url-pattern> -->
-<!-- 			<url-pattern>/enseignat</url-pattern> -->
-<!-- 			<url-pattern>/responsable</url-pattern> -->
-<!-- 			<url-pattern>/enseignat</url-pattern> -->
-<!-- 			<url-pattern>/index.jsp</url-pattern> -->
-<!-- 		</web-resource-collection> -->
-<!-- 		<auth-constraint> -->
-<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
-<!-- 		</auth-constraint> -->
-<!-- 	</security-constraint> -->
-<!-- 	<login-config> -->
-<!-- 		<auth-method>FORM</auth-method> -->
-<!-- 		<form-login-config> -->
-<!-- 			<form-login-page>/connexion</form-login-page> -->
-<!-- 			<form-error-page>/connexion</form-error-page> -->
-<!-- 		</form-login-config> -->
-<!-- 	</login-config>	 -->
-	
+
 	<servlet>
 	 <servlet-name>responsableSE</servlet-name>
     <servlet-class>ServletPackages.AccueilRespSuivuEvalServlet</servlet-class>
