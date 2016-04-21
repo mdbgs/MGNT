@@ -24,7 +24,35 @@ public class ComputeQueryBean implements NumericConstant {
 			statement = connexion.createStatement();
 			String request = "INSERT INTO " + table + " values(";
 			if (!table.equals("compte"))
-				request += "null";
+			request += "null";
+			request += listRequest[0];
+			for (int i = 1; i < nbre; i++) {
+				request += "," + listRequest[i];
+			}
+			request += ");";
+			System.out.println(request);
+			result = statement.executeUpdate(request);
+			System.out.println("Nombre de lignes insérées : " + result);
+		} catch (SQLException e) {
+			System.err.println(e);
+		} finally {
+			if (statement != null)
+				statement.close();
+		}
+		return result;
+	}
+	//methode pour inserer dans users roles
+	public static int insertUsersRoles(String value, String table, Connection connexion) throws SQLException {
+		String[] listRequest = value.split("%");
+		int nbre = listRequest.length;
+		int result = 0;
+		Statement statement = null;
+		try {
+			System.err.println();
+			statement = connexion.createStatement();
+			String request = "INSERT INTO " + table + " values(";
+			if (!table.equals("users_roles"))
+			request += "null";
 			request += listRequest[0];
 			for (int i = 1; i < nbre; i++) {
 				request += "," + listRequest[i];
@@ -91,6 +119,19 @@ public class ComputeQueryBean implements NumericConstant {
 		try {
 			Statement statement = connection.createStatement();
 			String query = "SELECT * FROM " + table + ";";
+			System.out.println(query);
+			result = statement.executeQuery(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	//selectionne le nom du photo de 
+	public static ResultSet selectPseudo(Connection connection,String pseudo) {
+		ResultSet result = null;
+		try {
+			Statement statement = connection.createStatement();
+			String query = "SELECT photo FROM compte where pseudo="+"'"+pseudo+"';";
 			System.out.println(query);
 			result = statement.executeQuery(query);
 		} catch (SQLException e) {

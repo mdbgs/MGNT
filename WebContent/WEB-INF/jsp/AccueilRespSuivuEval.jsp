@@ -6,7 +6,7 @@
 <%@ page import="BeanPackage.*"%>
 <%@ page import="java.util.List"%>
 <%
-	//User user = (User) request.getSession().getAttribute("user");
+	User user = (User) request.getSession().getAttribute("user");
 // 	if (user == null) {
 // 		System.out.println("Utilisateur inexistant!!!");
 // 		response.sendRedirect("connexion");

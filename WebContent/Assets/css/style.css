@@ -663,7 +663,9 @@ ul {
 	font-size: 13px;
 	font-weight: bold;
 	padding: 13.2px;
+/* 	background-color:#8080c0; */
 }
+
 
 #nav2  div li a span {
 	color: #31859C;
@@ -677,6 +679,7 @@ ul {
 	padding-bottom: 5px;
 	margin-top: -5px;
 	border-radius: 5px 5px 0 0;
+/*   	background-color:#254b4b; */
 }
 
 #myDataTable {
@@ -1549,4 +1552,21 @@ padding-bottom:-10px;
 
 .post_meta a:hover {
 	color: #000;
+}
+.photoDetail{
+	width:120px;
+	height:130px;
+}
+.imageDiv{
+	width:100%;
+}
+.photoEntete{
+	width:30px;
+	margin-left:90%;
+	margin-top:0%;
+}
+.DeconProfil{
+	margin-left:83%;
+	margin-top:-0.4%;
+	
 }

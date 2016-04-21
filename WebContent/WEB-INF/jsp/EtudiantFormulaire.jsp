@@ -23,19 +23,13 @@
 								<div class="panel-heading">
 									<h2>Formulaire d'inscription Etudiant</h2>
 								</div>
-   <form  action="upload" method="post" enctype="multipart/form-data" class="myForm">
-<!-- <legend>Envoi de fichier</legend> -->
-<!-- <label for="description">Description du fichier</label> -->
-<!-- <input type="text" id="description"name="description" value="" /> -->
-<%-- <span class="succes"><c:out value="${description}"/></span> --%>
-<!-- <br /> -->
-<!-- <label for="fichier">Emplacement du fichier <span class="requis">*</span></label> -->
-<div class="fileupload fileupload-new"data-provides="fileupload">
-<div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
-		<input type="file" id="fichier" name="fichier"  />
-<%-- 		<span class="succes"><c:out value="${fichier}"/></span> --%>
-		<br />
-		<div class="col-xs-5" id="formGauche">
+                      <form  action="upload" method="post" enctype="multipart/form-data" class="myForm">
+                        <div class="fileupload fileupload-new"data-provides="fileupload" >
+                        <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
+		                <input type="file" id="fichier" name="fichier"/> 
+		                <span class="erreur">${errors['fichier']}</span>
+		                   <div class="row">
+		                        <div class="col-xs-5" id="formGauche">
 											<div class="row ">
 												<label>Nom <span>*</span></label>
 											</div>
@@ -57,7 +51,8 @@
 											<span class="erreur">${errors['firstName']}</span>
 										</div>
 										</div>
-									<div class="row ">
+										</div>
+									<div class="row">
 										<div class="col-xs-5" id="formGauche">
 											<div class="row ">
 												<label>Date de naissance <span>*</span></label>

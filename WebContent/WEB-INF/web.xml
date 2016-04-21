@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
@@ -29,7 +30,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>itex</servlet-name>
-		<url-pattern>/itex</url-pattern>
+		<url-pattern>/pdf</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>Connexion</servlet-name>
@@ -69,7 +70,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Etudiant</servlet-name>
-		<url-pattern>/etudiant</url-pattern>
+		<url-pattern>/etudiantFormulaire</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>EtudiantList</servlet-name>
@@ -80,12 +81,20 @@
 		<url-pattern>/listeEtudiant</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>ResponsableList</servlet-name>
+		<servlet-class>ServletPackages.ResponsableListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ResponsableList</servlet-name>
+		<url-pattern>/listeResponsable</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>Enseignant</servlet-name>
 		<servlet-class>ServletPackages.EnseignantFormulaireServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Enseignant</servlet-name>
-		<url-pattern>/enseignant</url-pattern>
+		<url-pattern>/enseignantFormulaire</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>Partenaire</servlet-name>
@@ -101,7 +110,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Responsable</servlet-name>
-		<url-pattern>/responsable</url-pattern>
+		<url-pattern>/responsableFormulaire</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>ActiviteFormulaire</servlet-name>
@@ -125,7 +134,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Stage</servlet-name>
-		<url-pattern>/stage</url-pattern>
+		<url-pattern>/stageFormulaire</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>Reunion</servlet-name>
@@ -133,15 +142,25 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Reunion</servlet-name>
-		<url-pattern>/reunion</url-pattern>
+		<url-pattern>/reunionFormulaire</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>Publication</servlet-name>
 		<servlet-class>ServletPackages.PublicationFormulaireServlet</servlet-class>
+		<init-param>
+			<param-name>chemin</param-name>
+			<param-value>C:\fic/</param-value>
+		</init-param>
+		<multipart-config>
+			<location>C:\fic/</location>
+			<max-file-size>10485760</max-file-size>
+			<max-request-size>52428800</max-request-size>
+			<file-size-threshold>1048576</file-size-threshold>
+		</multipart-config>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Publication</servlet-name>
-		<url-pattern>/publication</url-pattern>
+		<url-pattern>/publicationFormulaire</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>Animateur_Relecteur</servlet-name>
@@ -149,7 +168,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Animateur_Relecteur</servlet-name>
-		<url-pattern>/animateur</url-pattern>
+		<url-pattern>/animateurFormulaire</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>ProgrammeCEA</servlet-name>
@@ -157,7 +176,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ProgrammeCEA</servlet-name>
-		<url-pattern>/programme</url-pattern>
+		<url-pattern>/programmeFormulaire</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>GrapheIndicateur</servlet-name>
@@ -167,6 +186,37 @@
 		<servlet-name>GrapheIndicateur</servlet-name>
 		<url-pattern>/graphe</url-pattern>
 	</servlet-mapping>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/connexion</form-login-page>
+			<form-error-page>/connexion</form-error-page>
+		</form-login-config>
+	</login-config>
+	<filter>
+		<filter-name>ClickCounterFilter</filter-name>
+		<filter-class>FilterPackage.ClickCounterFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ClickCounterFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>Excel</servlet-name>
+		<servlet-class>ServletPackages.ImportExcelServlet</servlet-class>
+		<multipart-config>
+			<location>/D:/fichiers/</location> <!-- A adapter chez vous -->
+			<max-file-size>10485760</max-file-size> <!-- 10 Mo -->
+			<max-request-size>52428800</max-request-size> <!-- 5 x 10 Mo -->
+			<file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
+		</multipart-config>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Excel</servlet-name>
+		<url-pattern>/importExcel</url-pattern>
+	</servlet-mapping>
+	
+	<!--"""""""""""""" Administrateur """"""""""""""""""-->
 	<servlet>
 		<servlet-name>AdminAccueil</servlet-name>
 		<servlet-class>ServletPackages.AdminAccueilServlet</servlet-class>
@@ -178,12 +228,14 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Page de l'administrateur</web-resource-name>
-			<url-pattern>//adminHome</url-pattern>
+			<url-pattern>/adminHome</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>admin</role-name>
 		</auth-constraint>
 	</security-constraint>
+	
+	<!--""""""""""""""""""""""""" Etudiant """""""""""""""""""""""""-->
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Page de l'etudiant</web-resource-name>
@@ -193,6 +245,7 @@
 			<role-name>etudiant</role-name>
 		</auth-constraint>
 	</security-constraint>
+	<!-- Banque mondiale -->
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Page de la banque mondiale</web-resource-name>
@@ -202,6 +255,7 @@
 			<role-name>BanqueMondial</role-name>
 		</auth-constraint>
 	</security-constraint>
+	<!-- Coordonnateur -->
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Page du coordonnateur</web-resource-name>
@@ -211,6 +265,7 @@
 			<role-name>coordonnateur</role-name>
 		</auth-constraint>
 	</security-constraint>
+	<!-- Responsable de saisie -->
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Page du responsable de saisie</web-resource-name>
@@ -220,6 +275,7 @@
 			<role-name>responsable_Saisie</role-name>
 		</auth-constraint>
 	</security-constraint>
+	<!-- Responsable de controle -->
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Page du responsable de contrôle</web-resource-name>
@@ -229,6 +285,7 @@
 			<role-name>responsable_Controle</role-name>
 		</auth-constraint>
 	</security-constraint>
+	<!-- Vice coordonnateur -->
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Page du vice coordonnateur</web-resource-name>
@@ -238,6 +295,7 @@
 			<role-name>viceCoordonnateur</role-name>
 		</auth-constraint>
 	</security-constraint>
+	<!-- Enseignant -->
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Page de l'enseignant</web-resource-name>
@@ -266,21 +324,6 @@
 			<role-name>responsable_Suivi_Evaluation</role-name>
 		</auth-constraint>
 	</security-constraint>
-	<login-config>
-		<auth-method>FORM</auth-method>
-		<form-login-config>
-			<form-login-page>/connexion</form-login-page>
-			<form-error-page>/connexion</form-error-page>
-		</form-login-config>
-	</login-config>
-	<filter>
-		<filter-name>ClickCounterFilter</filter-name>
-		<filter-class>FilterPackage.ClickCounterFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>ClickCounterFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
 	<servlet>
 		<servlet-name>responsableSE</servlet-name>
 		<servlet-class>ServletPackages.AccueilRespSuivuEvalServlet</servlet-class>
@@ -289,7 +332,6 @@
 		<servlet-name>responsableSE</servlet-name>
 		<url-pattern>/RSEHome</url-pattern>
 	</servlet-mapping>
-
 	<servlet>
 		<servlet-name>ResponsableControle</servlet-name>
 		<servlet-class>ServletPackages.ResponsableControleServlet</servlet-class>
@@ -298,38 +340,42 @@
 		<servlet-name>ResponsableControle</servlet-name>
 		<url-pattern>/RCHome</url-pattern>
 	</servlet-mapping>
-  <servlet>
-    <servlet-name>Resultat</servlet-name>
-    <servlet-class>ServletPackages.ResultatServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Resultat</servlet-name>
-    <url-pattern>/resultat</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>AuthenticationSecurity</servlet-name>
-    <servlet-class>ServletSecurity.AuthenticationServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AuthenticationSecurity</servlet-name>
-    <url-pattern>/authentication</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>Upload</servlet-name>
-    <servlet-class>ServletPackages.EtudiantServletForm</servlet-class>
-    <init-param>
-      <param-name>chemin</param-name>
-      <param-value>C:\fic/</param-value>
-    </init-param>
-    <multipart-config>
-      <location>C:\fic/</location>
-      <max-file-size>10485760</max-file-size>
-      <max-request-size>52428800</max-request-size>
-      <file-size-threshold>1048576</file-size-threshold>
-    </multipart-config>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Upload</servlet-name>
-    <url-pattern>/upload</url-pattern>
-  </servlet-mapping>
+	<servlet>
+		<servlet-name>Upload</servlet-name>
+		<servlet-class>ServletPackages.EtudiantServletForm</servlet-class>
+		<init-param>
+			<param-name>chemin</param-name>
+			<param-value>C:\fic/</param-value>
+		</init-param>
+		<multipart-config>
+			<location>C:\fic/</location>
+			<max-file-size>10485760</max-file-size>
+			<max-request-size>52428800</max-request-size>
+			<file-size-threshold>1048576</file-size-threshold>
+		</multipart-config>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Upload</servlet-name>
+		<url-pattern>/upload</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ImageServlet</servlet-name>
+		<servlet-class>ServletPackages.ImageServlet</servlet-class>
+		<init-param>
+			<param-name>chemin</param-name>
+			<param-value>C:\fic/</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ImageServlet</servlet-name>
+		<url-pattern>/image</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ListEnseignant</servlet-name>
+		<servlet-class>ServletPackages.TeacherList</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListEnseignant</servlet-name>
+		<url-pattern>/listEnseignant</url-pattern>
+	</servlet-mapping>
 </web-app>

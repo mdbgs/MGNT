@@ -2,50 +2,54 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta charset="utf-8" />
-<title>Accueil Administrateur</title>
-</head>
 <body id="scroll_top">
-	<section id="header_areaBis"></section>
+	<section id="header_areaBis"> </section>
 	<section id="header_bottom_area"></section>
 	<section id="content_area">
-		<div class="content center">
-			<c:import url="entete.jsp"></c:import>
-			<div class="fix main_content_area row ">
+	<div class="content ">
+		<c:import url="entete.jsp"></c:import>
+		<div class="fix main_content_area row ">
 			<div class="fix allSearch"></div>
 			<div class="fix single_sidebar">
 				<div class="inner">
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="panel panel-default">
-								<div class="panel-heading">Liste des étudiants</div>
+								<div class="panel-heading">Liste des responsables</div>
 								<div class="panel-body">
 									<div class="table-responsive">
 										<table class="table table-striped table-bordered table-hover"
 											id="myDataTable">
 											<thead>
 												<tr>
-													<th>Numéro étudiant</th>
 													<th>Nom</th>
 													<th>Prénom</th>
-													<th>Niveau</th>
-													<th>Détails</th>
+													<th>Telephone</th>
+													<th>Adresse</th>
+													<th>Sexe</th>
+													<th>Email</th>
+													<th>Poste</th>
+													<th>Type</th>
+													
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach items="${studentRecu.studentList}" var="student">
+												<c:forEach items="${responsableRecu.responsableList}" var="responsable">
 													<tr>
-														<td><c:out value="${student.studentNumber}"></c:out></td>
-														<td><c:out value="${student.lastName}"></c:out></td>
-														<td><c:out value="${student.firstName}"></c:out></td>
-														<td><c:out value="${student.level}"></c:out></td>
+														<td><c:out value="${responsable.lastName}"></c:out></td>
+														<td><c:out value="${responsable.firstName}"></c:out></td>
+														<td><c:out value="${responsable.mail}"></c:out></td>
+														<td><c:out value="${responsable.adress}"></c:out></td>
+														<td><c:out value="${responsable.gender}"></c:out></td>
+														<td><c:out value="${responsable.phone}"></c:out></td>
+														<td><c:out value="${responsable.type}"></c:out></td>
+														<td><c:out value="${responsable.post}"></c:out></td>
 														<td>
 															<button type="submit" class=" btn btn-info"
 																id="detailBtn"
-																onclick="location.href = 'detail?studentSending=${student.idStudent}';">
+																onclick="location.href = 'detail?responsableSending=${responsable.idResponsable}';">
 																<img alt="action" src="Assets/images/icons/editer.jpg">
 															</button>
 														</td>
@@ -60,17 +64,19 @@
 					</div>
 				</div>
 				<input class="btn btn-info myBtnDetail"
-					onclick="location.href = 'etudiant';" value="Ajouter" />
+					onclick="location.href = 'responsable';" value="Ajouter" />
 				<div class="fix scroll_to_top">
 					<a href="#scroll_top" class="floatright">Remonter </a>
 				</div>
 			</div>
 		</div>
-		</div>
+	</div>
 	</section>
-	        <form  enctype="multipart/form-data"  method="post" action= "importExcel">
-			<input type="file" id="source" name="source">
-			<input type="submit" name="valider class="btn-btn-success"></form> 
 	<c:import url="piedsPage.jsp"></c:import>
+	<script>
+		$(document).ready(function() {
+			$('#myDataTable').dataTable();
+		});
+	</script>
 </body>
 </html>

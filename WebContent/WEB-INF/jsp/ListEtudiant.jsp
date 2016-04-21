@@ -31,7 +31,7 @@
 													<th>Détails</th>
 												</tr>
 											</thead>
-											<tbody>
+											<tbody id="allEtud">
 												<c:forEach items="${studentRecu.studentList}" var="student">
 													<tr>
 														<td><c:out value="${student.studentNumber}"></c:out></td>
@@ -48,6 +48,63 @@
 													</tr>
 												</c:forEach>
 											</tbody>
+											<tbody id="natEtud">
+												<c:forEach items="${studentRecu.studentList}" var="student">
+													<c:if test="${student.nationality== 'sÃ©nÃ©galaise'}">
+														<tr>
+															<td><c:out value="${student.studentNumber}"></c:out></td>
+														<td><c:out value="${student.lastName}"></c:out></td>
+														<td><c:out value="${student.firstName}"></c:out></td>
+														<td><c:out value="${student.level}"></c:out></td>
+														<td>
+															<button type="submit" class=" btn btn-info"
+																id="detailBtn"
+																onclick="location.href = 'detail?studentSending=${student.idStudent}';">
+																<img alt="action" src="Assets/images/icons/editer.jpg">
+															</button>
+														</td>
+														</tr>
+													</c:if>
+												</c:forEach>
+											</tbody>
+											<tbody id="regEtud">
+												<c:forEach items="${studentRecu.studentList}" var="student">
+													<c:if test="${student.nationality== 'gambie'}">
+														<tr>
+															<td><c:out value="${student.studentNumber}"></c:out></td>
+														<td><c:out value="${student.lastName}"></c:out></td>
+														<td><c:out value="${student.firstName}"></c:out></td>
+														<td><c:out value="${student.level}"></c:out></td>
+														<td>
+															<button type="submit" class=" btn btn-info"
+																id="detailBtn"
+																onclick="location.href = 'detail?studentSending=${student.idStudent}';">
+																<img alt="action" src="Assets/images/icons/editer.jpg">
+															</button>
+														</td>
+														</tr>
+													</c:if>
+												</c:forEach>
+											</tbody>
+											<tbody id="femEtud">
+												<c:forEach items="${studentRecu.studentList}" var="student">
+													<c:if test="${student.gender== '1'}">
+													 <tr>
+														<td><c:out value="${student.studentNumber}"></c:out></td>
+														<td><c:out value="${student.lastName}"></c:out></td>
+														<td><c:out value="${student.firstName}"></c:out></td>
+														<td><c:out value="${student.level}"></c:out></td>
+														 <td>
+															<button type="submit" class=" btn btn-info"
+																id="detailBtn"
+																onclick="location.href = 'detail?studentSending=${student.idStudent}';">
+																<img alt="action" src="Assets/images/icons/editer.jpg">
+															</button>
+														 </td>
+														</tr>
+													</c:if>
+												</c:forEach>
+											</tbody>
 										</table>
 									</div>
 								</div>
@@ -56,7 +113,7 @@
 					</div>
 				</div>
 				<input class="btn btn-info myBtnDetail"
-					onclick="location.href = 'etudiant';" value="Ajouter" />
+					onclick="location.href = 'upload';" value="Ajouter" />
 				<div class="fix scroll_to_top">
 					<a href="#scroll_top" class="floatright">Remonter </a>
 				</div>
@@ -68,6 +125,12 @@
 	<script>
 		$(document).ready(function() {
 			$('#myDataTable').dataTable();
+		});
+		$(function(){
+			$("#overlay").click(function(){
+				$("#cadre").fadeOut();
+				$("#overlay").fadeOut();
+			});
 		});
 	</script>
 </body>

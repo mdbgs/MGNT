@@ -384,6 +384,7 @@ alter table enseignantFormation
       references Formation (IDFormation)
       on update cascade
       on delete cascade;
+      
 /*Insertion des comptes d'utilisateur de la plateforme */
 insert into compte values('m.sall','ceamitic2016',2016/04/04,'');
 insert into compte values('mme.sy','ceamitic2016',2016/04/04,'');

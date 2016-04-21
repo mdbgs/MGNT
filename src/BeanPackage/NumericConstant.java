@@ -1,6 +1,7 @@
 package BeanPackage;
 
 public interface NumericConstant {
+	public static final String FICHIER = "fichier";
 	public static final String STUDENTNUMBER = "studentNumber";
 	public static final String FIRSTNAME = "firstName";
 	public static final String LASTNAME = "lastName";
@@ -42,6 +43,7 @@ public interface NumericConstant {
 	// Constant Responsable
 
 	public static final String POST = "post";
+	public static final String RESPONSABLE = "resp";
 
 	// Constant Activité
 
@@ -91,6 +93,10 @@ public interface NumericConstant {
 	public static final String NOMJOURNAL = "nomJournal";
 	public static final String AUTHOR = "author";
 	public static final String IMPACTFACTOR = "impactFactor";
+	public static final String MONTYPE = "montype";
+	public static final String FILEUPLOAD = "fileupoad";
+	
+	
 
 	// Constant Animateur_Relecteur
 

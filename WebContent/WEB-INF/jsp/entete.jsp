@@ -75,22 +75,24 @@
 						<li><a href="administrator"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
 					</c:when>
-					<c:when test="${rolename=='responsable_Suivi_Evaluation'}">
+					
+					<c:when test="${rolename=='responsable_Suivi_Evaluation'}" >
 						<li><a href="listeEtudiant">Etudiant<span>.</span></a>
 							<ul>
-								<li><a href="javascript:apprentissageActivite()">Régionaux</a></li>
-								<li><a href="javascript:rechercheActivite()">Nationaux</a></li>
-								<li><a href="javascript:partenaireActivite()">Féminins</a></li>
-								<li><a href="javascript:gouvernanceActivite()">Tous</a></li>
+								<li><a href="javascript:regEtudiant()">Régionaux</a></li>
+								<li><a href="javascript:natEtudiant()">Nationaux</a></li>
+								<li><a href="javascript:femEtudiant()">Féminins</a></li>
+								<li><a href="javascript:allEtudiant()">Tous</a></li>
 							</ul></li>
-						<li><a href="enseignant">Enseignant</a></li>
+						<li><a href="listEnseignant">Enseignant</a></li>
 						<li><a href="activite">Activités<span>.</span></a>
 							<ul>
 								<li><a href="javascript:apprentissageActivite()">Apprentissage</a></li>
 								<li><a href="javascript:rechercheActivite()">Recherche</a></li>
 								<li><a href="javascript:partenaireActivite()">Partenariat</a></li>
 								<li><a href="javascript:gouvernanceActivite()">Gouvernance</a></li>
-							</ul></li>
+							</ul>
+						</li>
 						<li><a href="indicateur">Indicateur</a></li>
 						<li><a href="publication">Publication<span>.</span></a>
 							<ul>
@@ -107,7 +109,19 @@
 						<li><a href="formation">Formation</a></li>
 						<li><a href="programme">Programme</a></li>
 						<li><a href="animateur">Animateur-Relecteur</a></li>
+						
+					   <div class="DeconProfil">
+					    <li >
+					    <a href="">Hello <%= user.getPseudo() %><span>.</span></a>
+					      <ul>
+					      <c:set scope="session" var="student" value="${etudiantRecu}"></c:set>
+ 					           <li><a href="detail?studentSending=47">Profil</a></li> 
+							   <li><a href="home">Déconnexion</a></li>
+							</ul>
+					     </li>
+					    </div> 
 					</c:when>
+					
 					<c:when test="${rolename=='responsable_Saisie'}">
 						<li><a href="administrator"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
@@ -142,6 +156,8 @@
 	<script type="text/javascript" src="Assets/js/selectnav.min.js"></script>
 	<script type="text/javascript" src="Assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="Assets/js/myScript.js"></script>
+<!-- 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
+<!-- 	<script type="text/javascript" src="Assets/js/main.js"></script> -->
 	<script src="Assets/plugins/jquery-2.0.3.min.js"></script>
 	<!-- END GLOBAL SCRIPTS -->
 	<!-- PAGE LEVEL SCRIPTS -->
@@ -152,6 +168,6 @@
 			$('#myDataTable').dataTable();
 
 		});
-	</script>
+	</script>	
 </body>
 </html>

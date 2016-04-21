@@ -45,9 +45,8 @@ public class ReunionFormulaireServlet extends ConnexionServlet implements Numeri
 		String pieceJustificatif= request.getParameter(PIECEJUSTIFICATIF);
 		Date date = new Date();
 		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		 ConnexionServlet servlet = new ConnexionServlet();
 		try {
-			connection = servlet.getDataSource().getConnection();
+			connection = this.getDataSource().getConnection();
 			//date = dateFormat.parse(dateN);
 			String valueEtudiant="'"+type+"'%'"+dateDeb+"'%"+"%'"+dateFin+"'%'"+objet+"'%'"+nbreParticipant+"'%'" +lieu+"'%'"+compteRendu+"'%'" +pieceJustificatif+"'%'" +pieceJustificatif+"'%"; 
 			int rs= ComputeQueryBean.insertDatabase(valueEtudiant, "Reunion",connection);
