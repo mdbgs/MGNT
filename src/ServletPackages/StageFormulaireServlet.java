@@ -51,12 +51,12 @@ public class StageFormulaireServlet extends ConnexionServlet implements NumericC
 		
 		 Date date = new Date();
 		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		HomeServlet servlet = new HomeServlet();
+		//HomeServlet servlet = new HomeServlet();
 		try {
-			connection = servlet.getDataSource().getConnection();
+			connection = this.getDataSource().getConnection();
 			//date = dateFormat.parse(dateN);
-			String valueFormation="'"+programmeDpt+"'%'"+dateDeb+"'%"+"%'"+dateFin+"'%'"+certificat+"'%'"+
-			"'%'"+nomIns+"'%"+"%'"+statutIns+"'%'"+nomDirect+"'%'"+prenomDirect+"'%"+"%'"+emailDirect+"'%'"+telDirect+"'%'";
+			String valueFormation="%'"+programmeDpt+"'%'"+dateDeb+"'%'"+dateFin+"'%'"+certificat+"'%'"+
+			nomIns+"'%'"+statutIns+"'%'"+nomDirect+"'%'"+prenomDirect+"'%'"+emailDirect+"'%'"+telDirect+"'";
 			int rs= ComputeQueryBean.insertDatabase(valueFormation, "Stage",connection);
 			
 		} catch (SQLException e) {

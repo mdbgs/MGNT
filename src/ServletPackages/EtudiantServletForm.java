@@ -48,7 +48,7 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 		String resultat;
 		Map<String, String> errors = new HashMap<String, String>();
 		String chemin = this.getServletConfig().getInitParameter(CHEMIN);
-
+		Part part = request.getPart(CHAMP_FICHIER);
 		/* Récupération du contenu du champ de description */
 		String description = request.getParameter(CHAMP_DESCRIPTION);
 		request.setAttribute(CHAMP_DESCRIPTION, description);
@@ -73,6 +73,7 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 		String telephone = "null";
 		String nomPAC = "null";
 		String prenomPAC = "null";
+		String fichier="null";
 
 		if (request.getParameter(FIRSTNAME) != "") {
 			prenom = request.getParameter(FIRSTNAME);
@@ -126,6 +127,7 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 			boitePostale = request.getParameter(BP);
 			System.out.println();
 		}
+		fichier=getNomFichier(part);
 
 		Date date = new Date();
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -133,10 +135,10 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 		String pseudo = ("'" + nom + "." + prenom).replaceAll("\\s", "_");
 		System.out.println(pseudo);
 
-		Part part = request.getPart(CHAMP_FICHIER);
+		
 		// String valueEtudiant=
 		// "'%'ceamitic2016'%"+dateNow+"%'Etudiant'%'Inconnue'";
-		String valueEtudiant = "'%'ceamitic2016'%" + dateNow + "%'"+getNomFichier(part) + "'";
+		String valueEtudiant = "'%'ceamitic2016'%" + dateNow + "%'"+fichier+ "'";
 		System.out.println(valueEtudiant);
 		/*
 		 * Les données reçues sont multipart, on doit donc utiliser la méthode
@@ -173,6 +175,13 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 		} catch (SQLException | ParseException e) {
 			e.printStackTrace();
 		}
+		//validation photo
+		try {
+			validationPhoto(part);
+
+		} catch (Exception g) {
+
+			errors.put(FICHIER, g.getMessage());}
 		/* Validation du champ prenom. */
 		try {
 			validationPrenom(prenom);
@@ -298,6 +307,7 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 		 */
 		if (nomFichier != null && !nomFichier.isEmpty()) {
 			String nomChamp = part.getName();
+			
 			/*
 			 * Antibug pour Internet Explorer, qui transmet pour une raison
 			 * mystique le chemin du fichier local à la machine du client...
@@ -319,13 +329,12 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 	}
 
-	/*
-	 * Méthode utilitaire qui a pour unique but d'analyser l'en-tête
-	 * "content-disposition", et de vérifier si le paramètre "filename" y est
-	 * présent. Si oui, alors le champ traité est de type File et la méthode
-	 * retourne son nom, sinon il s'agit d'un champ de formulaire classique et
-	 * la méthode retourne null.
-	 */
+	private void validationPhoto( Part part)throws Exception{
+		if(!part.getContentType().substring(0, 5).equals("image")){
+			throw new Exception("format invalide :veuillez choisir une image");
+		
+		}
+	}
 	private void validationPrenom(String prenom) throws Exception {
 		if(prenom.trim().length()==0)
 			throw new Exception("Veuillez saisir le prénom svp");

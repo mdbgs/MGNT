@@ -24,9 +24,10 @@
 									<h2>Formulaire d'inscription Etudiant</h2>
 								</div>
                       <form  action="upload" method="post" enctype="multipart/form-data" class="myForm">
-                        <div class="fileupload fileupload-new"data-provides="fileupload">
+                        <div class="fileupload fileupload-new"data-provides="fileupload" >
                         <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
-		                <input type="file" id="fichier" name="fichier"  /> 
+		                <input type="file" id="fichier" name="fichier"/> 
+		                <span class="erreur">${errors['fichier']}</span>
 		                   <div class="row">
 		                        <div class="col-xs-5" id="formGauche">
 											<div class="row ">
