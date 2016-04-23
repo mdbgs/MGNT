@@ -98,7 +98,7 @@ public class ConnexionServlet extends HttpServlet {
 				connectionError = false;
 					
 			} else {
-				response.sendRedirect("connexion");
+				response.sendRedirect("connection");
 				request.getSession().setAttribute("connectionError", connectionError);
 			}
 
