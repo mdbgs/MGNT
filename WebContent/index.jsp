@@ -5,11 +5,6 @@
 <head>
 </head>
 <body>
-<<<<<<< HEAD
-=======
-	<% response.sendRedirect("home"); %>
-	<%//c'est du commentaire %>
-	
->>>>>>> branch 'master' of https://github.com/mdbgs/MGNT.git
+	<%response.sendRedirect("connection"); %>
 </body>
 </html>

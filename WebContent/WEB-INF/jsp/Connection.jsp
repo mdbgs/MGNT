@@ -40,7 +40,7 @@
 				type="password" name="j_password" class="form-control"
 				placeholder="Mot de passe" required>
 			<button id="connexion" class="btn btn-lg btn-primary btn-block"
-				type="submit">Connectez-vous!</button>
+				type="submit">Connectez-vous</button>
 		</form>
 	</div>
 <div class="col-xs-4"></div>

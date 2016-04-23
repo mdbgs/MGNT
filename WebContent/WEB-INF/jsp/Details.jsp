@@ -138,7 +138,7 @@
 												</div>
 											</div>
 											<input class="btn btn-danger myBtnDetail"
-												onclick="location.href = 'activite';" value="Retour" />
+												onclick="location.href = 'activityList';" value="Retour" />
 										</div>
 									</c:if>
 									<c:set scope="session" var="thd" value="${teacherRecu}"></c:set>
@@ -245,7 +245,7 @@
 											</div>
 											
 										<input class="btn btn-danger myBtnDetail"
-												onclick="location.href = 'listEnseignant';" value="Retour" />
+												onclick="location.href = 'teacherList';" value="Retour" />
 										</div>
 									</c:if>
 									<c:set scope="session" var="indic" value="${indicateurRecu}"></c:set>
@@ -471,7 +471,7 @@
 												</div>
 											</div>
 											<input class="btn btn-danger myBtnDetail"
-												onclick="location.href = 'listeEtudiant';" value="Retour" />
+												onclick="location.href = 'studentList';" value="Retour" />
 										</div>
 									</c:if>
 								</div>

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <body id="scroll_top">
@@ -64,7 +63,7 @@
 					</div>
 				</div>
 				<input class="btn btn-info myBtnDetail"
-					onclick="location.href = 'responsable';" value="Ajouter" />
+					onclick="location.href = 'responsableForm';" value="Ajouter" />
 				<div class="fix scroll_to_top">
 					<a href="#scroll_top" class="floatright">Remonter </a>
 				</div>

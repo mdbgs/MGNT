@@ -1,5 +1,5 @@
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +8,7 @@
 <link type="text/css" rel="stylesheet" href="form.css">
 </head>
 <body>
-
-    <section id="header_areaBis"></section>
+	<section id="header_areaBis"></section>
 	<section id="header_bottom_area"></section>
 	<section id="content_area">
 		<div class="content ">
@@ -23,35 +22,39 @@
 								<div class="panel-heading">
 									<h2>Formulaire d'inscription Etudiant</h2>
 								</div>
-                      <form  action="upload" method="post" enctype="multipart/form-data" class="myForm">
-                        <div class="fileupload fileupload-new"data-provides="fileupload" >
-                        <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
-		                <input type="file" id="fichier" name="fichier"/> 
-		                <span class="erreur">${errors['fichier']}</span>
-		                   <div class="row">
-		                        <div class="col-xs-5" id="formGauche">
-											<div class="row ">
-												<label>Nom <span>*</span></label>
+								<form action="upload" method="post"
+									enctype="multipart/form-data" class="myForm">
+									<div class="fileupload fileupload-new"
+										data-provides="fileupload">
+										<div class="fileupload-preview thumbnail"
+											style="width: 200px; height: 150px;"></div>
+										<input type="file" id="fichier" name="fichier" /> <span
+											class="erreur">${errors['fichier']}</span>
+										<div class="row">
+											<div class="col-xs-5" id="formGauche">
+												<div class="row ">
+													<label>Nom <span>*</span></label>
+												</div>
+												<div class="row">
+													<input class="form-control" type="text" id="lastName"
+														name="lastName" value="${param.lastName}"
+														placeholder="Nom" />
+												</div>
+												<span class="erreur">${errors['lastName']}</span>
 											</div>
-											<div class="row">
-												<input class="form-control" type="text" id="lastName"
-													name="lastName" value="${param.lastName}" placeholder="Nom" />
+											<div class="formDroite col-xs-5">
+												<div class="row">
+													<label>Prénom<span>*</span></label>
+												</div>
+												<div class="row">
+													<input class="form-control" type="text" id="firstName"
+														name="firstName" value="${param.firstName}"
+														placeholder="Prénom" />
+												</div>
+												<span class="erreur">${errors['firstName']}</span>
 											</div>
-											<span class="erreur">${errors['lastName']}</span>
 										</div>
-										<div class="formDroite col-xs-5">
-											<div class="row">
-												<label>Prénom<span>*</span></label>
-											</div>
-											<div class="row">
-												<input class="form-control" type="text" id="firstName"
-													name="firstName" value="${param.firstName}"
-													placeholder="Prénom" />
-											</div>
-											<span class="erreur">${errors['firstName']}</span>
-										</div>
-										</div>
-										</div>
+									</div>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
 											<div class="row ">
@@ -275,42 +278,33 @@
 											<span class="erreur">${errors['adressPAC']}</span>
 										</div>
 									</div>
-<!--                     <input type="submit" value="Envoyer"class="sansLabel" />                   -->
-                                   <div class="row myBtn">
+									<!--      <input type="submit" value="Envoyer"class="sansLabel" />                   -->
+									<div class="row myBtn">
 										<input class="btn btn-danger " type="reset" value="Annuler" />
 										<input class="btn btn-info " type="submit" value="Inscription" />
 
 									</div>
-</form>
-                     <div class="fix scroll_to_top">
-						<a href="#scroll_top" class="floatright">Remonter </a>
-					 </div>
+								</form>
+								<div class="fix scroll_to_top">
+									<a href="#scroll_top" class="floatright">Remonter </a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			</div>
+		</div>
 	</section>
-	<%@ include file="piedsPage.jsp"%>
-
+	<c:import url="piedsPage.jsp"></c:import>
 </body>
 <script>
-		$(function() {
-			$("#overlay").click(function() {
-				$("#cadre").fadeOut();
-				$("#overlay").fadeOut();
-			});
+	$(function() {
+		$("#overlay").click(function() {
+			$("#cadre").fadeOut();
+			$("#overlay").fadeOut();
 		});
-	</script>
-<!-- JS -->
-<script type="text/javascript" src="Assets/js/selectnav.min.js"></script>
-<script type="text/javascript" src="Assets/js/jquery.min.js"
-	type="text/javascript"></script>
-<script type="text/javascript" src="Assets/js/bootstrap.min.js"
-	type="text/javascript"></script>
-<script type="text/javascript" src="Assets/js/bootstrap-datepicker.js"
-	type="text/javascript"></script>
+	});
+</script>
 <script type="text/javascript">
 	$(function getValueOption(valueOption) {
 		var selectedanswer = document.getElementById(valueOption).selectedIndex;

@@ -8,7 +8,7 @@
 <%
 	User user = (User) request.getSession().getAttribute("user");
 		if (user == null) {
-			response.sendRedirect("connexion");
+			response.sendRedirect("connection");
 		} 
 %>
 
@@ -116,7 +116,7 @@
 					      <ul>
 					      <c:set scope="session" var="student" value="${etudiantRecu}"></c:set>
  					           <li><a href="detail?studentSending=47">Profil</a></li> 
-							   <li><a href="home">Déconnexion</a></li>
+							   <li><a href="connection">Déconnexion</a></li>
 							</ul>
 					     </li>
 					    </div> 

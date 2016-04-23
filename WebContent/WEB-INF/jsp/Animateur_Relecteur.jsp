@@ -22,7 +22,7 @@
 								<div class="panel-heading">
 									<h2>Formulaire d'ajout Animateur ou relecteur</h2>
 								</div>
-								<form method="post" action="animateur" class="myForm">
+								<form method="post" action="animatorForm" class="myForm">
 									<h3>Information</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">

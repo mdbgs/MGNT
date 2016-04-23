@@ -22,7 +22,7 @@
 								<div class="panel-heading">
 									<h2>Formulaire d'inscription Enseignant</h2>
 								</div>
-								<form method="post" action="enseignant" class="myForm">
+								<form method="post" action="teacherForm" class="myForm">
 									<h3>Coordonnées Enseignant</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">

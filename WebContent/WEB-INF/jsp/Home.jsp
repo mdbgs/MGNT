@@ -1,27 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="ModelPackage.*"%>
-<%@ page import="BeanPackage.*"%>
-<%
-	User user = (User) request.getSession().getAttribute("user");
-
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>CeamiticSEV</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Css include -->
-<link rel="stylesheet" href="Assets/css/font-awesome.min.css">
-<link rel="stylesheet" href="Assets/fonts/HelveticaNeue/font.css">
-<link rel="stylesheet" href="Assets/css/style.css" media="screen">
-<link rel="shortcut icon" type="image/x-icon" href="Assets/images/slideshow/logoceamitic.png" sizes="16x16"/>
-<link rel="stylesheet" href="Assets/css/responsive.css" media="screen">
-<link rel="stylesheet" href="Assets/css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="Assets/css/nexus.css" rel="stylesheet">
 </head>
-
 <body id="scroll_top">
 	<!-- First image in the header -->
 	<section id="header_area">
@@ -63,33 +47,7 @@
 	<section id="header_bottom_area"></section>
 	<section id="content_area">
 	<div class="content center">
-		<div class="main_menu row">
-			<nav>
-			<ul id="nav2">
-				<div class="col-xs-9">
-					<li><a href="home">Accueil</a></li>
-					<li><a href="listeEtudiant">Etudiant</a></li>
-					<li><a href="activite">Activités</a></li>
-					<li><a href="indicateur">Indicateurs</li>
-					<li><a href="publication">Publication</a></li>
-					<li><a href="stage">Stage</a></li>
-				</div>
-				<div class="col-xs-2 ">
-					<%
-						if (user == null) {
-							System.out.println("Utilisateur inexistant!!!");
-					%>
-					<li><a href="connexion"> Se connecter</a></li>
-					<%
-						} else {
-					%>
-					<li><a href=""> Se Déconnecter</a></li>
-					<%
-						}
-					%></div>
-			</ul>
-			</nav>
-		</div>
+	<c:import url="entete.jsp"></c:import>
 		<div class="fix main_content_area row">
 			<div class="fix home_main_content">
 				<div class="main_contentBis floatleft">
@@ -177,39 +135,7 @@
 		</div>
 	</div>
 	</section>
-	<section id="footer_top_area">
-	<div class="fix footer_top center">
-		<div class="fix footer_top_container">
-			<div>
-				<ul class="col-xs-12">
-					<li class="col-xs-2 myFooter"><a href=""><span>A
-								propos</span></a></li>
-					<li class="col-xs-2 myFooter"><a href=""><span>Nous
-								contacter</span></a></li>
-					<li class="col-xs-2 myFooter"><a href=""><span>Aide</span></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	</section>
-	<section id="footer_bottom_area">
-	<div class="fix footer_bottom center">
-		<div class="fix copyright floatleft">
-			<p>&#169 2015 CEAMITIC</p>
-		</div>
-		<div class="fix footer_bottom_text floatright">
-			<p>
-				<a href="http://www.ceamitic.sn" title="Site web du centre"
-					target="_blank">www.ceamitic.sn</a>
-			</p>
-		</div>
-	</div>
-	</section>
-	<script src="http://code.jquery.com/jquery.js"></script>
-	<!-- Jessor slider Start-->
-	<script type="text/javascript" src="Assets/js/jssor.core.js"></script>
-	<script type="text/javascript" src="Assets/js/jssor.utils.js"></script>
-	<script type="text/javascript" src="Assets/js/jssor.slider.js"></script>
+	<c:import url="piedsPage.jsp"></c:import>
 	<script>
 		jQuery(document)
 				.ready(
@@ -261,12 +187,6 @@
 							}
 						});
 	</script>
-	<!-- JS -->
-	<script type="text/javascript" src="Assets/js/selectnav.min.js"></script>
-	<script type="text/javascript" src="Assets/js/jquery.min.js"
-		type="text/javascript"></script>
-	<script type="text/javascript" src="Assets/js/bootstrap.min.js"
-		type="text/javascript"></script>
 	<script type="text/javascript">
 		$(function() {
 			$("#pop").popover({
