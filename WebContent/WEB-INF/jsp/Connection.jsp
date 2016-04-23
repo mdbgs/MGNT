@@ -24,7 +24,7 @@
 <body>
 <div class="col-xs-4"></div>
 	<div class="col-xs-4 containerConnexion">
-		<h2 class="form-signin-heading">Page de connexion</h2>
+<!-- 		<h2 class="form-signin-heading">Page de connexion</h2> -->
 		<img alt="CEA-MITIC" src="Assets/images/slideshow/logoceamitic.png"
 			class="imgConnextion">
 		<c:if test="${connectionError==true}">
@@ -40,7 +40,7 @@
 				type="password" name="j_password" class="form-control"
 				placeholder="Mot de passe" required>
 			<button id="connexion" class="btn btn-lg btn-primary btn-block"
-				type="submit">Connecter</button>
+				type="submit">Connectez-vous!</button>
 		</form>
 	</div>
 <div class="col-xs-4"></div>
