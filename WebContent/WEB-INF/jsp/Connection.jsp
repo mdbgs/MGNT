@@ -31,7 +31,6 @@
 			<label class="errorConnected">Pseudo ou mot de passe
 				incorrecte veillez réessayer!</label>
 		</c:if>
-
 		<form class="form-signin" method="post" action="j_security_check">
 			<label for="inputEmail" class="sr-only">Adresse mail</label> <input
 				type="text" name="j_username" class="form-control"
