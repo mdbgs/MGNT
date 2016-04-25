@@ -70,6 +70,16 @@
 					<c:when test="${rolename=='enseignat'}">
 						<li><a href="administrator"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
+								 <div class="DeconProfil">
+					    <li >
+					    <a href="">Bonjour <%= user.getPseudo() %><span>.</span></a>
+					      <ul>
+					      <c:set scope="session" var="student" value="${etudiantRecu}"></c:set>
+ 					           <li><a href="detail?teacherSending=1">Profil</a></li> 
+							   <li><a href="home">Déconnexion</a></li>
+							</ul>
+					     </li>
+					    </div> 
 					</c:when>
 					<c:when test="${rolename=='coordonnateur'}">
 						<li><a href="administrator"><img alt="Accueil"
@@ -94,28 +104,30 @@
 							</ul>
 						</li>
 						<li><a href="indicateur">Indicateur</a></li>
-						<li><a href="publication">Publication<span>.</span></a>
+						<li><a href="listPublication">Publication<span>.</span></a>
 							<ul>
-								<li><a href="javascript:apprentissageActivite()">Mémoire</a></li>
-								<li><a href="javascript:rechercheActivite()">Thése</a></li>
-								<li><a href="javascript:rechercheActivite()">Article</a></li>
+								<li><a href="javascript:thesePublication">Mémoire</a></li>
+								<li><a href="javascript:memoirePublication">Thése</a></li>
+								<li><a href="javascript:articlePublication">Article</a></li>
 							</ul></li>
-						<li><a href="stage">Stage<span>.</span></a>
+						<li><a href="listStage">Stage<span>.</span></a>
 							<ul>
 								<li><a href="javascript:apprentissageActivite()">Enseignant</a></li>
 								<li><a href="javascript:rechercheActivite()">Etudiant</a></li>
 							</ul></li>
-						<li><a href="reunion">Reunion</a></li>
-						<li><a href="formation">Formation</a></li>
-						<li><a href="programme">Programme</a></li>
-						<li><a href="animateur">Animateur-Relecteur</a></li>
+						<li><a href="listReunion">Reunion</a></li>
+						<li><a href="listFormation">Formation</a></li>
+						<li><a href="listProgramme">Programme</a></li>
+						<li><a href="listPartenaire">Partenaire</a></li>
+						<li><a href="listAnimateur">Animateur-Relecteur</a></li>
 						
 					   <div class="DeconProfil">
+					   <c:set scope="session" var="student" value="${responsableRecu}"></c:set>
 					    <li >
-					    <a href="">Hello <%= user.getPseudo() %><span>.</span></a>
+					    <a href="">Bonjour <%= user.getPseudo() %><span>.</span></a>
+<%-- 					        <a href="">${studentRecu.pseudo}bonjour<span>.</span></a> --%>
 					      <ul>
-					      <c:set scope="session" var="student" value="${etudiantRecu}"></c:set>
- 					           <li><a href="detail?studentSending=47">Profil</a></li> 
+ 					           <li><a href="detail?studentSending=1">Profil</a></li> 
 							   <li><a href="home">Déconnexion</a></li>
 							</ul>
 					     </li>

@@ -111,6 +111,30 @@ function femEtudiant(){
 	$("#femEtud").fadeIn();
 	$("#regEtud").fadeOut();
 };
+function allPublication(){
+	$("#all").fadeIn();
+	$("#these").fadeOut();
+	$("#memoire").fadeOut();
+	$("#article").fadeOut();
+};
+function thesePublication(){
+	$("#all").fadeOut();
+	$("#these").fadeIn();
+	$("#memoire").fadeOut();
+	$("#article").fadeOut();
+};
+function memoirePublication(){
+	$("#all").fadeOut();
+	$("#these").fadeOut();
+	$("#memoire").fadeIn();
+	$("#article").fadeOut();
+};
+function articlePublication(){
+	$("#all").fadeOut();
+	$("#these").fadeOut();
+	$("#memoire").fadeOut();
+	$("#article").fadeIn();
+};
 /*End my code*/
 
 

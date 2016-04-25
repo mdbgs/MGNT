@@ -23,7 +23,7 @@
 								<div class="panel-heading">
 									<h2>Formulaire des programmes CEA</h2>
 								</div>
-								<form method="post" action="programme" class="myForm">
+								<form method="post" action="programmeFormulaire" class="myForm">
 									<h3>Programme</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">

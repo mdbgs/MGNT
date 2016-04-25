@@ -22,7 +22,7 @@
 								<div class="panel-heading">
 									<h2>Formulaire d'ajout Animateur ou relecteur</h2>
 								</div>
-								<form method="post" action="animateur" class="myForm">
+								<form method="post" action="animateurFormulaire" class="myForm">
 									<h3>Information</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
@@ -97,6 +97,18 @@
 											<span class="erreur">${errors['institutionAffiliation']}</span>
 										</div>
 									</div>
+									<div class="row">
+									<div class="formDroite col-xs-5">
+											<div class="row">
+												<label>Type <span>*</span></label>
+											</div>
+											<div class="row">
+												<input class="form-control" type="text" id="type" name="type"
+													value="${param.type}" placeholder="type" />
+											</div>
+											<span class="erreur">${errors['type']}</span>
+										</div>
+										</div>
 									<div class="row myBtn">
 										<input class="btn btn-danger " type="reset" value="Annuler" />
 										<input class="btn btn-info " type="submit" value="Valider" />

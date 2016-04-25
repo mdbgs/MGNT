@@ -22,7 +22,7 @@
 								<div class="panel-heading">
 									<h2>Formulaire des reunions</h2>
 								</div>
-								<form method="post" action="reunion" class="myForm">
+								<form method="post" action="reunionFormulaire" class="myForm">
 									<h3>Information</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">

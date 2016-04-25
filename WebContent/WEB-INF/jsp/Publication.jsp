@@ -22,7 +22,7 @@
 								<div class="panel-heading">
 									<h2>Publication</h2>
 								</div>
-								<form method="post" action="publication" enctype="multipart/form-data" class="myForm" >
+								<form method="post" action="publicationFormulaire" enctype="multipart/form-data" class="myForm" >
 									<h3>Information</h3>
 									
 									<div class="row">

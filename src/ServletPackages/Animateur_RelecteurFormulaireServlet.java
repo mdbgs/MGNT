@@ -49,7 +49,7 @@ public class Animateur_RelecteurFormulaireServlet extends ConnexionServlet imple
 		try {
 			connection = servlet.getDataSource().getConnection();
 			//date = dateFormat.parse(dateN);
-			String valueFormation="'"+nom+"'%'"+prenom+"'%"+"%'"+email+"'%'"+telephone+"'%'"+ "'"+boitePostal+"'%" + "'"+affliationInstitutionnelle+"'%" + "'"+type+"'%";
+			String valueFormation="%"+1+"%'"+nom+"'%'"+prenom+"'"+"%'"+email+"'%'"+telephone+"'%'"+boitePostal+"'%" + "'"+affliationInstitutionnelle+"'%" + "'"+type+"'";
 			int rs= ComputeQueryBean.insertDatabase(valueFormation, "Animateur_Relecteur",connection);
 			
 		} catch (SQLException e) {
