@@ -41,23 +41,6 @@ public class ConnexionServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
-	public String getPseudo() {
-		return pseudo;
-	}
-
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Connection.jsp").forward(request, response);
@@ -115,7 +98,7 @@ public class ConnexionServlet extends HttpServlet {
 				connectionError = false;
 					
 			} else {
-				response.sendRedirect("connexion");
+				response.sendRedirect("connection");
 				request.getSession().setAttribute("connectionError", connectionError);
 			}
 

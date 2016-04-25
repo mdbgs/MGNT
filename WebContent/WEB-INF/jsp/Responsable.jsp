@@ -24,7 +24,7 @@
 								<div class="panel-heading">
 									<h2>Formulaire d'inscription Responsable</h2>
 								</div>
-								<form method="post" action="responsable" class="myForm">
+								<form method="post" action="responsableForm" class="myForm">
 									<h3>Coordonnées Responsable</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">

@@ -24,7 +24,7 @@
 								<div class="panel-heading">
 									<h2>Formulaire d'inscription Partenaire</h2>
 								</div>
-								<form method="post" action="partenaire" class="myForm">
+								<form method="post" action="partnerForm" class="myForm">
 									<h3>Coordonnées Partenaire</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">

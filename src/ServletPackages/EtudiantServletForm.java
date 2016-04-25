@@ -1,15 +1,10 @@
 package ServletPackages;
 
 import java.io.BufferedInputStream;
-
-import BeanPackage.ComputeQueryBean;
-import BeanPackage.NumericConstant;
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -20,12 +15,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import BeanPackage.ComputeQueryBean;
+import BeanPackage.NumericConstant;
+
 public class EtudiantServletForm extends ConnexionServlet implements NumericConstant {
+	private static final long serialVersionUID = 1L;
+
 	public static final String VUE = "/WEB-INF/jsp/EtudiantFormulaire.jsp";
 
 	public static final String CHAMP_DESCRIPTION = "description";

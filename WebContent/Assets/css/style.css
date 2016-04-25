@@ -320,9 +320,10 @@ element.style{
 	width:100%;
 	border-radius:5px;
 	margin-bottom:17px;
+	margin-top:10px;
 }
 .errorConnected{
-	color:#ff0000;
+	color:#ff8080;
 	margin-left:17px;
 }
 .containerConnexion{

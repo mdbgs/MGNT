@@ -58,7 +58,7 @@
 					</div>
 				</div>
 				<input class="btn btn-info myBtnDetail"
-					onclick="location.href = 'enseignantFormulaire';" value="Ajouter" />
+					onclick="location.href = 'teacherForm';" value="Ajouter" />
 				<div class="fix scroll_to_top">
 					<a href="#scroll_top" class="floatright">Remonter </a>
 				</div>

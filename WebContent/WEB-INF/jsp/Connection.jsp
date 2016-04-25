@@ -24,14 +24,13 @@
 <body>
 <div class="col-xs-4"></div>
 	<div class="col-xs-4 containerConnexion">
-		<h2 class="form-signin-heading">Page de connexion</h2>
+<!-- 		<h2 class="form-signin-heading">Page de connexion</h2> -->
 		<img alt="CEA-MITIC" src="Assets/images/slideshow/logoceamitic.png"
 			class="imgConnextion">
 		<c:if test="${connectionError==true}">
 			<label class="errorConnected">Pseudo ou mot de passe
 				incorrecte veillez réessayer!</label>
 		</c:if>
-
 		<form class="form-signin" method="post" action="j_security_check">
 			<label for="inputEmail" class="sr-only">Adresse mail</label> <input
 				type="text" name="j_username" class="form-control"
@@ -40,7 +39,7 @@
 				type="password" name="j_password" class="form-control"
 				placeholder="Mot de passe" required>
 			<button id="connexion" class="btn btn-lg btn-primary btn-block"
-				type="submit">Connecter</button>
+				type="submit">Connectez-vous</button>
 		</form>
 	</div>
 <div class="col-xs-4"></div>

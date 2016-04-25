@@ -13,7 +13,6 @@
 			<div id="headerFrame">
 				<h2>Détails de l'activité</h2>
 			</div>
-			
 			<div class="fix home_main_content" id="bodyFrame">
 				<c:set var="myID" value="" target="Activite" scope="page"></c:set>
 				<div class="single_latest_postBis">
@@ -115,89 +114,10 @@
 															<img alt="action" src="Assets/images/icons/valider.jpg">
 														<span>Valider l'activité</span>
 															</button>
-
 														</td>
 													</tr>
 												</c:forEach>
 											</tbody>
-<!-- 											<tbody id="parAct"> -->
-<%-- 												<c:forEach items="${activiteRecu.activeList}" var="activit"> --%>
-<%-- 													<c:if test="${activit.composant == 'Partenariat'}"> --%>
-<!-- 														<tr> -->
-<%-- 															<td><c:out value="${activit.libelle}"></c:out></td> --%>
-<%-- 															<td><c:out value="${activit.periode}"></c:out></td> --%>
-<%-- 															<td><c:out value="${activit.echeancePrevu}"></c:out></td> --%>
-<%-- 															<td><c:out value="${activit.statutActivite}"></c:out></td> --%>
-<!-- 															<td><button type="submit" class=" btn btn-info" -->
-<!-- 																	id="detailBtn" -->
-<%-- 																onclick="location.href = 'detail?activiteSending=${activit.IDactivite}';" > --%>
-<!-- 															<img alt="action" src="Assets/images/icons/editer.jpg"> -->
-<!-- 														<span>Voir les détails</span></button> -->
-
-<!-- 															</td> -->
-<!-- 														</tr> -->
-<%-- 													</c:if> --%>
-<%-- 												</c:forEach> --%>
-<!-- 											</tbody> -->
-<!-- 											<tbody id="appAct"> -->
-<%-- 												<c:forEach items="${activiteRecu.activeList}" var="activit"> --%>
-<%-- 													<c:if --%>
-<%-- 														test="${activit.composant == 'Excellence en apprentissage'}"> --%>
-<!-- 														<tr> -->
-<%-- 															<td><c:out value="${activit.libelle}"></c:out></td> --%>
-<%-- 															<td><c:out value="${activit.periode}"></c:out></td> --%>
-<%-- 															<td><c:out value="${activit.echeancePrevu}"></c:out></td> --%>
-<%-- 															<td><c:out value="${activit.statutActivite}"></c:out></td> --%>
-<!-- 															<td> -->
-<!-- 																<button type="submit" class=" btn btn-info" -->
-<!-- 																		id="detailBtn" -->
-<%-- 																onclick="location.href = 'detail?activiteSending=${activit.IDactivite}';" > --%>
-<!-- 																<img alt="action" src="Assets/images/icons/editer.jpg"> -->
-<!-- 														<span>Voir les détails</span></button> -->
-<!-- 															</td> -->
-<!-- 														</tr> -->
-<%-- 													</c:if> --%>
-<%-- 												</c:forEach> --%>
-<!-- 											</tbody> -->
-<!-- 											<tbody id="recAct"> -->
-<%-- 												<c:forEach items="${activiteRecu.activeList}" var="activit"> --%>
-<%-- 													<c:if --%>
-<%-- 														test="${activit.composant == 'Excellence dans la recherche'}"> --%>
-<!-- 														<tr> -->
-<%-- 															<td><c:out value="${activit.libelle}"></c:out></td> --%>
-<%-- 															<td><c:out value="${activit.periode}"></c:out></td> --%>
-<%-- 															<td><c:out value="${activit.echeancePrevu}"></c:out></td> --%>
-<%-- 															<td><c:out value="${activit.statutActivite}"></c:out></td> --%>
-<!-- 															<td><button type="submit" class=" btn btn-info" -->
-<!-- 																	id="detailBtn" -->
-<%-- 																onclick="location.href = 'detail?activiteSending=${activit.IDactivite}';" > --%>
-<!-- 															<img alt="action" src="Assets/images/icons/editer.jpg"> -->
-<!-- 														<span>Voir les détails</span></button> -->
-<!-- 															</td> -->
-<!-- 														</tr> -->
-<%-- 													</c:if> --%>
-<%-- 												</c:forEach> --%>
-<!-- 											</tbody> -->
-<!-- 											<tbody id="gouvAct"> -->
-<%-- 												<c:forEach items="${activiteRecu.activeList}" var="activit"> --%>
-<%-- 													<c:if --%>
-<%-- 														test="${activit.composant == 'Gestion et Gouvernance'}"> --%>
-<!-- 														<tr> -->
-<%-- 															<td><c:out value="${activit.libelle}"></c:out></td> --%>
-<%-- 															<td><c:out value="${activit.periode}"></c:out></td> --%>
-<%-- 															<td><c:out value="${activit.echeancePrevu}"></c:out></td> --%>
-<%-- 															<td><c:out value="${activit.statutActivite}"></c:out></td> --%>
-<!-- 															<td><button type="submit" class=" btn btn-info" -->
-<!-- 																	id="detailBtn" -->
-<%-- 																onclick="location.href = 'detail?activiteSending=${activit.IDactivite}';" > --%>
-<!-- 															<img alt="action" src="Assets/images/icons/editer.jpg"> -->
-<!-- 														<span>Voir les détails</span></button> -->
-
-<!-- 															</td> -->
-<!-- 														</tr> -->
-<%-- 													</c:if> --%>
-<%-- 												</c:forEach> --%>
-<!-- 											</tbody> -->
 										</table>
 									</div>
 								</div>
@@ -205,7 +125,7 @@
 						</div>
 					</div>
 				</div>
-				<input class="btn btn-info myBtnDetail" onclick="location.href = 'activiteFormulaire';" value="Ajouter" />
+				<input class="btn btn-info myBtnDetail" onclick="location.href = 'activityForm';" value="Ajouter" />
 				<div class="fix scroll_to_top">
 					<a href="#scroll_top" class="floatright">Remonter </a>
 				</div>

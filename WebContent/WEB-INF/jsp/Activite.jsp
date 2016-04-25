@@ -8,12 +8,10 @@
 	<section id="header_areaBis"> </section>
 	<div id="overlay"></div>
 	<div id="cadre" class="row">
-			
 		<div id="frame">
 			<div id="headerFrame">
 				<h2>Détails de l'activité</h2>
 			</div>
-			
 			<div class="fix home_main_content" id="bodyFrame">
 				<c:set var="myID" value="" target="Activite" scope="page"></c:set>
 				<div class="single_latest_postBis">
@@ -196,7 +194,7 @@
 						</div>
 					</div>
 				</div>
-				<input class="btn btn-info myBtnDetail" onclick="location.href = 'activiteFormulaire';" value="Ajouter" />
+				<input class="btn btn-info myBtnDetail" onclick="location.href = 'activityForm';" value="Ajouter" />
 				<div class="fix scroll_to_top">
 					<a href="#scroll_top" class="floatright">Remonter </a>
 				</div>
