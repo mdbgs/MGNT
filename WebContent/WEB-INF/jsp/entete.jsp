@@ -38,7 +38,7 @@
 </head>
 <body>
 	<!-- First image in the header -->
-	<div class="main_;enu">
+	<div class="main_menu">
 		<ul id="nav2" class="barreOutil">
 			<div class="col-xs-12 barreValue">
 				<c:set scope="session" var="rolename" value="${rolename}"></c:set>
