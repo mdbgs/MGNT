@@ -269,6 +269,64 @@
 <!--%%%%%%%%%%%%%%%%%%%%% 	        Pages pour les listes           %%%%%%%%%%%%%%%%%-->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	
+  <servlet>
+    <servlet-name>ListPublication</servlet-name>
+    <servlet-class>ServletPackages.PublicationListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListPublication</servlet-name>
+    <url-pattern>/publicationList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListStage</servlet-name>
+    <servlet-class>ServletPackages.StageList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListStage</servlet-name>
+    <url-pattern>/stageList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListReunion</servlet-name>
+    <servlet-class>ServletPackages.ReunionListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListReunion</servlet-name>
+    <url-pattern>/meetingList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListFormation</servlet-name>
+    <servlet-class>ServletPackages.FormationListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListFormation</servlet-name>
+    <url-pattern>/formationList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListProgrammation</servlet-name>
+    <servlet-class>ServletPackages.ProgrammeListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListProgrammation</servlet-name>
+    <url-pattern>/programList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListPartenaire</servlet-name>
+    <servlet-class>ServletPackages.PartenaireListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListPartenaire</servlet-name>
+    <url-pattern>/partnerList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListAnimateur</servlet-name>
+    <servlet-class>ServletPackages.AnimateurListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListProgrammation</servlet-name>
+    <url-pattern>/animatorList</url-pattern>
+  </servlet-mapping>
+	
 	<servlet>
 		<servlet-name>Activite_liste</servlet-name>
 		<servlet-class>ServletPackages.ActiviteServlet</servlet-class>

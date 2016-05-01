@@ -48,7 +48,7 @@ public class ReunionFormulaireServlet extends ConnexionServlet implements Numeri
 		try {
 			connection = this.getDataSource().getConnection();
 			//date = dateFormat.parse(dateN);
-			String valueEtudiant="'"+type+"'%'"+dateDeb+"'%"+"%'"+dateFin+"'%'"+objet+"'%'"+nbreParticipant+"'%'" +lieu+"'%'"+compteRendu+"'%'" +pieceJustificatif+"'%'" +pieceJustificatif+"'%"; 
+			String valueEtudiant="%"+1+"%'"+type+"'%"+dateDeb+"%"+dateFin+"%'"+objet+"'%"+nbreParticipant+"%'" +lieu+"'%'"+compteRendu+"'%'" +pieceJustificatif+"'"; 
 			int rs= ComputeQueryBean.insertDatabase(valueEtudiant, "Reunion",connection);
 			
 		} catch (SQLException e) {
