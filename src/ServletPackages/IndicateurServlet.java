@@ -36,6 +36,7 @@ public class IndicateurServlet extends ConnexionServlet {
 			}
 			System.out.println("Taille de la liste : " + indicateur.getIndicateurList().size());
 			req.setAttribute("indicateurRecu", indicateur);
+			req.setAttribute("rowsCount", indicateur.getIndicateurList().size());
 		} catch (SQLException e) {
 
 			e.printStackTrace();

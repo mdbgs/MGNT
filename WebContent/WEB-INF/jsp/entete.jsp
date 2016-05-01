@@ -93,7 +93,7 @@
 								<li><a href="javascript:gouvernanceActivite()">Gouvernance</a></li>
 							</ul>
 						</li>
-						<li><a href="indicateur">Indicateur</a></li>
+						<li><a href="indicatorList">Indicateur</a></li>
 						<li><a href="publication">Publication<span>.</span></a>
 							<ul>
 								<li><a href="javascript:apprentissageActivite()">Mémoire</a></li>

@@ -219,15 +219,6 @@
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<servlet>
-		<servlet-name>Activite</servlet-name>
-		<servlet-class>ServletPackages.ActiviteServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Activite</servlet-name>
-		<url-pattern>/activity</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
 		<servlet-name>Indicateur</servlet-name>
 		<servlet-class>ServletPackages.IndicateurServlet</servlet-class>
 	</servlet>
