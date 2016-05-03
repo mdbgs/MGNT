@@ -24,7 +24,7 @@
 								<div class="panel-heading">
 									<h2>Formulaire des activités</h2>
 								</div>
-								<form method="post" action="activiteFormulaire" class="myForm">
+								<form method="post" action="activityForm" class="myForm">
 									<h3>Activité</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">

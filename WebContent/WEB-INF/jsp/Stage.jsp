@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +21,7 @@
 								<div class="panel-heading">
 									<h2>Formulaire des Stages</h2>
 								</div>
-								<form method="post" action="stage" class="myForm">
+								<form method="post" action="stageFormulaire" class="myForm">
 									<h3>Stage</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">

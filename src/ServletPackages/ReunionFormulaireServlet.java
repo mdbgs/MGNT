@@ -19,16 +19,19 @@ import BeanPackage.NumericConstant;
 /**
  * Servlet implementation class ReunionFormlaireServlet
  */
-public class ReunionFormulaireServlet extends ConnexionServlet implements NumericConstant {
+public class ReunionFormulaireServlet extends GetAuthorisationUsers implements NumericConstant {
 	private static final long serialVersionUID = 1L;
 	private Connection connection;
     
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Reunion.jsp").forward(req, resp);
+		try {
+			connection=this.getDataSource().getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	this.doGet(req, resp, "responsable_Suivi_Evaluation", "Enseignant.jsp", connection);
 	}
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String resultat;
 		
@@ -48,7 +51,7 @@ public class ReunionFormulaireServlet extends ConnexionServlet implements Numeri
 		try {
 			connection = this.getDataSource().getConnection();
 			//date = dateFormat.parse(dateN);
-			String valueEtudiant="'"+type+"'%'"+dateDeb+"'%"+"%'"+dateFin+"'%'"+objet+"'%'"+nbreParticipant+"'%'" +lieu+"'%'"+compteRendu+"'%'" +pieceJustificatif+"'%'" +pieceJustificatif+"'%"; 
+			String valueEtudiant="%"+1+"%'"+type+"'%"+dateDeb+"%"+dateFin+"%'"+objet+"'%"+nbreParticipant+"%'" +lieu+"'%'"+compteRendu+"'%'" +pieceJustificatif+"'"; 
 			int rs= ComputeQueryBean.insertDatabase(valueEtudiant, "Reunion",connection);
 			
 		} catch (SQLException e) {

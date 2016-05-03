@@ -5,12 +5,6 @@
 <%@ page import="ModelPackage.*"%>
 <%@ page import="BeanPackage.*"%>
 <%@ page import="java.util.List"%>
-<%
-	User user = (User) request.getSession().getAttribute("user");
-		if (user == null) {
-			response.sendRedirect("connexion");
-		} 
-%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,24 +29,37 @@
 <link href="Assets/plugins/dataTables/dataTables.bootstrap.css"
 	rel="stylesheet" />
 <link rel="stylesheet" href="Assets/css/nexus.css" rel="stylesheet" />
+<link rel="stylesheet" href="Assets/plugins/morris/morris-0.4.3.min.css"/>
 </head>
 <body>
+	<%
+		User user = (User) request.getSession().getAttribute("user");
+		if (user == null) {
+	%>
+	<c:redirect url="connection"></c:redirect>
+	<%
+		}
+	%>
 	<!-- First image in the header -->
-	<div class="main_;enu">
+	<div class="main_menu">
 		<ul id="nav2" class="barreOutil">
 			<div class="col-xs-12 barreValue">
 				<c:set scope="session" var="rolename" value="${rolename}"></c:set>
 				<c:choose>
 					<c:when test="${rolename=='admin'}">
-						<li><a href="administrator"><img alt="Accueil"
+						<li><a href="adminHome"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
 						<li><a href="listeCompte">Créer Compte<span>.</span></a>
 							<ul>
-								<li><a href="javascript:responsableSuivi()">Responsable Suivi</a></li>
-								<li><a href="javascript:responsableSaisie()">Responsable Saisie</a></li>
-								<li><a href="javascript:responsableControle()">Responsable Contrôle</a></li>
+								<li><a href="javascript:responsableSuivi()">Responsable
+										Suivi</a></li>
+								<li><a href="javascript:responsableSaisie()">Responsable
+										Saisie</a></li>
+								<li><a href="javascript:responsableControle()">Responsable
+										Contrôle</a></li>
 								<li><a href="javascript:coordonnateur()">Coordonnateur</a></li>
-								<li><a href="javascript:viceCoordonnateur()">Vice Coordonnateur</a></li>
+								<li><a href="javascript:viceCoordonnateur()">Vice
+										Coordonnateur</a></li>
 							</ul></li>
 						<li><a href="reunion">Liste des comptes<span>.</span></a>
 							<ul>
@@ -60,7 +67,8 @@
 								<li><a href="javascript:responsableSaisie()">Responsable</a></li>
 								<li><a href="javascript:responsableControle()">Enseignant</a></li>
 								<li><a href="javascript:coordonnateur()">Partenaire</a></li>
-								<li><a href="javascript:viceCoordonnateur()">Animateur relecteur</a></li>
+								<li><a href="javascript:viceCoordonnateur()">Animateur
+										relecteur</a></li>
 							</ul></li>
 					</c:when>
  		            <c:when test="${rolename=='tudiant'}"> 
@@ -68,55 +76,66 @@
 								src="Assets/images/slideshow/logoceamitic.png"></a></li> 
 					</c:when> 
 					<c:when test="${rolename=='enseignat'}">
-						<li><a href="administrator"><img alt="Accueil"
+						<li><a href="teacherHome"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
+						<div class="DeconProfil">
+							<li><a href="">Bonjour <%=user.getPseudo()%><span>.</span></a>
+								<ul>
+									<c:set scope="session" var="student" value="${etudiantRecu}"></c:set>
+									<li><a href="detail?teacherSending=1">Profil</a></li>
+									<li><a href="connection">Déconnexion</a></li>
+								</ul></li>
+						</div>
+
 					</c:when>
 					<c:when test="${rolename=='coordonnateur'}">
-						<li><a href="administrator"><img alt="Accueil"
+						<li><a href="coordonatorHome"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
 					</c:when>
 					
 					<c:when test="${rolename=='responsable_Suivi_Evaluation'}" >
-						<li><a href="listeEtudiant">Etudiant<span>.</span></a>
+						<li><a href="studentList">Etudiant<span>.</span></a>
 							<ul>
 								<li><a href="javascript:regEtudiant()">Régionaux</a></li>
 								<li><a href="javascript:natEtudiant()">Nationaux</a></li>
 								<li><a href="javascript:femEtudiant()">Féminins</a></li>
 								<li><a href="javascript:allEtudiant()">Tous</a></li>
 							</ul></li>
-						<li><a href="listEnseignant">Enseignant</a></li>
-						<li><a href="activite">Activités<span>.</span></a>
+						<li><a href="teacherList">Enseignant</a></li>
+						<li><a href="activityList">Activités<span>.</span></a>
 							<ul>
 								<li><a href="javascript:apprentissageActivite()">Apprentissage</a></li>
 								<li><a href="javascript:rechercheActivite()">Recherche</a></li>
 								<li><a href="javascript:partenaireActivite()">Partenariat</a></li>
 								<li><a href="javascript:gouvernanceActivite()">Gouvernance</a></li>
+							</ul></li>
 							</ul>
 						</li>
-						<li><a href="indicateur">Indicateur</a></li>
-						<li><a href="publication">Publication<span>.</span></a>
+						<li><a href="indicatorList">Indicateur</a></li>
+						<li><a href="publicationList">Publication<span>.</span></a>
 							<ul>
-								<li><a href="javascript:apprentissageActivite()">Mémoire</a></li>
-								<li><a href="javascript:rechercheActivite()">Thése</a></li>
-								<li><a href="javascript:rechercheActivite()">Article</a></li>
+								<li><a href="javascript:thesePublication">Mémoire</a></li>
+								<li><a href="javascript:memoirePublication">Thése</a></li>
+								<li><a href="javascript:articlePublication">Article</a></li>
 							</ul></li>
-						<li><a href="stage">Stage<span>.</span></a>
+						<li><a href="stageList">Stage<span>.</span></a>
 							<ul>
 								<li><a href="javascript:apprentissageActivite()">Enseignant</a></li>
 								<li><a href="javascript:rechercheActivite()">Etudiant</a></li>
 							</ul></li>
-						<li><a href="reunion">Reunion</a></li>
-						<li><a href="formation">Formation</a></li>
-						<li><a href="programme">Programme</a></li>
-						<li><a href="animateur">Animateur-Relecteur</a></li>
-						
+						<li><a href="meetingList">Reunion</a></li>
+						<li><a href="formationList">Formation</a></li>
+						<li><a href="programList">Programme</a></li>
+						<li><a href="partnerList">Partenaire</a></li>
+						<li><a href="animatorList">Animateur-Relecteur</a></li>
 					   <div class="DeconProfil">
+					   <c:set scope="session" var="student" value="${responsableRecu}"></c:set>
 					    <li >
-					    <a href="">Hello <%= user.getPseudo() %><span>.</span></a>
+					    <a href="">Bonjour <%= user.getPseudo() %><span>.</span></a>
+<%-- 					        <a href="">${studentRecu.pseudo}bonjour<span>.</span></a> --%>
 					      <ul>
-					      <c:set scope="session" var="student" value="${etudiantRecu}"></c:set>
- 					           <li><a href="detail?studentSending=47">Profil</a></li> 
-							   <li><a href="home">Déconnexion</a></li>
+ 					           <li><a href="detail?studentSending=1">Profil</a></li> 
+							   <li><a href="connection">Déconnexion</a></li>
 							</ul>
 					     </li>
 					    </div> 
@@ -138,52 +157,29 @@
 					    </div> 
 					</c:when>
 					
+
 					<c:when test="${rolename=='responsable_Saisie'}">
-						<li><a href="administrator"><img alt="Accueil"
+						<li><a href="RSHome"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
 					</c:when>
 					<c:when test="${rolename=='responsable_Controle'}">
-						<li><a href="administrator"><img alt="Accueil"
+						<li><a href="RCHome"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
 					</c:when>
 					<c:when test="${rolename=='partenaire'}">
-						<li><a href="administrator"><img alt="Accueil"
+						<li><a href="partnerHome"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
 					</c:when>
 					<c:when test="${rolename=='BanqueMondial'}">
-						<li><a href="administrator"><img alt="Accueil"
+						<li><a href="worldBankHome"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
 					</c:when>
 					<c:when test="${rolename=='viceCoordonnateur'}">
-						<li><a href="administrator"><img alt="Accueil"
-								src="Assets/images/slideshow/logoceamitic.png"></a></li>
+						<li><a href="coordinatorHome"><img alt="Accueil" src="Assets/images/slideshow/logoceamitic.png"></a></li>
 					</c:when>
 				</c:choose>
-				
 			</div>
 		</ul>
 	</div>
-	<script src="http://code.jquery.com/jquery.js"></script>
-	<!-- Jessor slider Start-->
-	<script type="text/javascript" src="Assets/js/jssor.core.js"></script>
-	<script type="text/javascript" src="Assets/js/jssor.utils.js"></script>
-	<script type="text/javascript" src="Assets/js/jssor.slider.js"></script>
-	<!-- JS -->
-	<script type="text/javascript" src="Assets/js/selectnav.min.js"></script>
-	<script type="text/javascript" src="Assets/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="Assets/js/myScript.js"></script>
-<!-- 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
-<!-- 	<script type="text/javascript" src="Assets/js/main.js"></script> -->
-	<script src="Assets/plugins/jquery-2.0.3.min.js"></script>
-	<!-- END GLOBAL SCRIPTS -->
-	<!-- PAGE LEVEL SCRIPTS -->
-	<script src="Assets/plugins/dataTables/jquery.dataTables.js"></script>
-	<script src="Assets/plugins/dataTables/dataTables.bootstrap.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('#myDataTable').dataTable();
-
-		});
-	</script>	
 </body>
 </html>

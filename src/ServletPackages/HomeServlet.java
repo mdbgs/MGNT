@@ -18,23 +18,14 @@ public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static DataSource dataSource;
 
-	public void init() throws ServletException {
-		try {
-			// Get DataSource
-			Context initContext = new InitialContext();
-			Context envContext = (Context) initContext.lookup("java:/comp/env");
-			dataSource = (DataSource) envContext.lookup("jdbc/Pooldb");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-	}
+	
 
 	public DataSource getDataSource() {
 		return this.dataSource;
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getSession().invalidate();
+		//req.getSession().invalidate();
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Home.jsp").forward(req, resp);
 	   req.getSession().invalidate();
 	}

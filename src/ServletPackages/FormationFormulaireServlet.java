@@ -22,12 +22,18 @@ import BeanPackage.NumericConstant;
  * Servlet implementation class FormationFormulaireServlet
  */
 @WebServlet("/FormationFormulaireServlet")
-public class FormationFormulaireServlet extends ConnexionServlet implements NumericConstant{
+public class FormationFormulaireServlet extends GetAuthorisationUsers implements NumericConstant{
 	private static final long serialVersionUID = 1L;
 	private Connection connection;
        
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Formation.jsp").forward(req, resp);
+		 try {
+				connection=this.getDataSource().getConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		this.doGet(req, resp, "responsable_Suivi_Evaluation", "Formation.jsp", connection);
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -43,9 +49,9 @@ public class FormationFormulaireServlet extends ConnexionServlet implements Nume
 		String position = request.getParameter(POSITION);
 		String contenu=request.getParameter(CONTENU);
 		
-		ConnexionServlet servlet = new ConnexionServlet();
+		//ConnexionServlet servlet = new ConnexionServlet();
 		try {
-			connection = servlet.getDataSource().getConnection();
+			connection = this.getDataSource().getConnection();
 			//date = dateFormat.parse(dateN);
 			String valueFormation="%'"+titre+"'%'"+institution+"'%'"+position+"'%'"+contenu+"'%";
 			int rs= ComputeQueryBean.insertDatabase(valueFormation, "Formation",connection);

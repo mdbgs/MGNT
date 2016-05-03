@@ -13,7 +13,7 @@ import BeanPackage.ActiviteBean;
 import BeanPackage.ComputeQueryBean;
 import ModelPackage.Activite;
 
-public class AccueilResponsableControleServlet extends ConnexionServlet {
+public class AccueilResponsableControleServlet extends GetAuthorisationUsers {
 	//
 	// FIELDS
 	//
@@ -22,7 +22,7 @@ public class AccueilResponsableControleServlet extends ConnexionServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/AccueilResponsableControle.jsp").forward(req, resp);
+		this.doGet(req, resp, "responsable_Controle", "AccueilResponsableControle.jsp", connection);
 	}
 
 	@Override

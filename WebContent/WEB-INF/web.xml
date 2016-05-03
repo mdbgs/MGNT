@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
@@ -8,6 +7,11 @@
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%% 	        Declaration de servlet          %%%%%%%%%%%%%%%%%-->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<servlet>
 		<servlet-name>detail</servlet-name>
 		<servlet-class>ServletPackages.DetailActivite</servlet-class>
@@ -32,121 +36,126 @@
 		<servlet-name>itex</servlet-name>
 		<url-pattern>/pdf</url-pattern>
 	</servlet-mapping>
+<servlet>
+    <servlet-name>imageList</servlet-name>
+    <servlet-class>ServletPackages.ImageCourbeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>imageList</servlet-name>
+    <url-pattern>/monImage</url-pattern>
+  </servlet-mapping>
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%% 	      Declaration de Utilisateurs       %%%%%%%%%%%%%%%%%-->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<servlet>
 		<servlet-name>Connexion</servlet-name>
 		<servlet-class>ServletPackages.ConnexionServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Connexion</servlet-name>
-		<url-pattern>/connexion</url-pattern>
+		<url-pattern>/connection</url-pattern>
 	</servlet-mapping>
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%% 	        Declaration de Formulaire       %%%%%%%%%%%%%%%%%-->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<servlet>
-		<servlet-name>Home</servlet-name>
-		<servlet-class>ServletPackages.HomeServlet</servlet-class>
+		<servlet-name>Etudiant_Formulaire</servlet-name>
+		<servlet-class>ServletPackages.EtudiantServletForm</servlet-class>
+		<init-param>
+			<param-name>chemin</param-name>
+			<param-value>C:\fic/</param-value>
+		</init-param>
+		<multipart-config>
+			<location>C:\fic/</location>
+			<max-file-size>10485760</max-file-size>
+			<max-request-size>52428800</max-request-size>
+			<file-size-threshold>1048576</file-size-threshold>
+		</multipart-config>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Home</servlet-name>
-		<url-pattern>/home</url-pattern>
+		<servlet-name>Etudiant_Formulaire</servlet-name>
+		<url-pattern>/studentForm</url-pattern>
 	</servlet-mapping>
+
 	<servlet>
-		<servlet-name>Activite</servlet-name>
-		<servlet-class>ServletPackages.ActiviteServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Activite</servlet-name>
-		<url-pattern>/activite</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>Indicateur</servlet-name>
-		<servlet-class>ServletPackages.IndicateurServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Indicateur</servlet-name>
-		<url-pattern>/indicateur</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>Etudiant</servlet-name>
-		<servlet-class>ServletPackages.EtudiantFormulaireServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Etudiant</servlet-name>
-		<url-pattern>/etudiantFormulaire</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>EtudiantList</servlet-name>
-		<servlet-class>ServletPackages.StudentListServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>EtudiantList</servlet-name>
-		<url-pattern>/listeEtudiant</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>ResponsableList</servlet-name>
-		<servlet-class>ServletPackages.ResponsableListServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ResponsableList</servlet-name>
-		<url-pattern>/listeResponsable</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>Enseignant</servlet-name>
+		<servlet-name>Enseignant_Formulaire</servlet-name>
 		<servlet-class>ServletPackages.EnseignantFormulaireServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Enseignant</servlet-name>
-		<url-pattern>/enseignantFormulaire</url-pattern>
+		<servlet-name>Enseignant_Formulaire</servlet-name>
+		<url-pattern>/teacherForm</url-pattern>
 	</servlet-mapping>
+
 	<servlet>
-		<servlet-name>Partenaire</servlet-name>
+		<servlet-name>Partenaire_Formulaire</servlet-name>
 		<servlet-class>ServletPackages.PartenaireFormulaireServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Partenaire</servlet-name>
-		<url-pattern>/partenaire</url-pattern>
+		<servlet-name>Partenaire_Formulaire</servlet-name>
+		<url-pattern>/partnerForm</url-pattern>
 	</servlet-mapping>
+
 	<servlet>
-		<servlet-name>Responsable</servlet-name>
+		<servlet-name>Responsable_Formulaire</servlet-name>
 		<servlet-class>ServletPackages.ResponsableFormulaireServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Responsable</servlet-name>
-		<url-pattern>/responsableFormulaire</url-pattern>
+		<servlet-name>Responsable_Formulaire</servlet-name>
+		<url-pattern>/responsableForm</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Animateur_Relecteur</servlet-name>
+		<servlet-class>ServletPackages.Animateur_RelecteurFormulaireServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Animateur_Relecteur</servlet-name>
+		<url-pattern>/animatorForm</url-pattern>
+	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>ActiviteFormulaire</servlet-name>
 		<servlet-class>ServletPackages.ActiviteFormulaireServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ActiviteFormulaire</servlet-name>
-		<url-pattern>/activiteFormulaire</url-pattern>
+		<url-pattern>/activityForm</url-pattern>
 	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>Formation</servlet-name>
 		<servlet-class>ServletPackages.FormationFormulaireServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Formation</servlet-name>
-		<url-pattern>/formation</url-pattern>
+		<url-pattern>/formationForm</url-pattern>
 	</servlet-mapping>
+
 	<servlet>
-		<servlet-name>Stage</servlet-name>
+		<servlet-name>Stage_Formulaire</servlet-name>
 		<servlet-class>ServletPackages.StageFormulaireServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Stage</servlet-name>
-		<url-pattern>/stageFormulaire</url-pattern>
+		<servlet-name>Stage_Formulaire</servlet-name>
+		<url-pattern>/stageForm</url-pattern>
 	</servlet-mapping>
+
 	<servlet>
-		<servlet-name>Reunion</servlet-name>
+		<servlet-name>Reunion_Formulaire</servlet-name>
 		<servlet-class>ServletPackages.ReunionFormulaireServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Reunion</servlet-name>
-		
-		<url-pattern>/reunionFormulaire</url-pattern>
+		<servlet-name>Reunion_Formulaire</servlet-name>
+		<url-pattern>/meetingForm</url-pattern>
 	</servlet-mapping>
+
 	<servlet>
-		<servlet-name>Publication</servlet-name>
+		<servlet-name>Publication_Formulaire</servlet-name>
 		<servlet-class>ServletPackages.PublicationFormulaireServlet</servlet-class>
 		<init-param>
 			<param-name>chemin</param-name>
@@ -160,25 +169,70 @@
 		</multipart-config>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Publication</servlet-name>
-		<url-pattern>/publicationFormulaire</url-pattern>
+		<servlet-name>Publication_Formulaire</servlet-name>
+		<url-pattern>/publicationForm</url-pattern>
 	</servlet-mapping>
+
 	<servlet>
-		<servlet-name>Animateur_Relecteur</servlet-name>
-		<servlet-class>ServletPackages.Animateur_RelecteurFormulaireServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Animateur_Relecteur</servlet-name>
-		<url-pattern>/animateurFormulaire</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>ProgrammeCEA</servlet-name>
+		<servlet-name>ProgrammeCEA_formulaire</servlet-name>
 		<servlet-class>ServletPackages.ProgrammeCEAFormulaireServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>ProgrammeCEA</servlet-name>
-		<url-pattern>/programmeFormulaire</url-pattern>
+		<servlet-name>ProgrammeCEA_formulaire</servlet-name>
+		<url-pattern>/programForm</url-pattern>
 	</servlet-mapping>
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%% 	             Pade d'accueil             %%%%%%%%%%%%%%%%%-->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<servlet>
+		<servlet-name>AdminAccueil</servlet-name>
+		<servlet-class>ServletPackages.AdminAccueilServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminAccueil</servlet-name>
+		<url-pattern>/adminHome</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>responsable_Suivi_Evaluation</servlet-name>
+		<servlet-class>ServletPackages.AccueilRespSuivuEvalServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>responsable_Suivi_Evaluation</servlet-name>
+		<url-pattern>/RSEHome</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Responsable_Controle</servlet-name>
+		<servlet-class>ServletPackages.ResponsableControleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Responsable_Controle</servlet-name>
+		<url-pattern>/RCHome</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Home</servlet-name>
+		<servlet-class>ServletPackages.HomeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Home</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%% 	              Autres pages              %%%%%%%%%%%%%%%%%-->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<servlet>
+		<servlet-name>Indicateur</servlet-name>
+		<servlet-class>ServletPackages.IndicateurServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Indicateur</servlet-name>
+		<url-pattern>/indicator</url-pattern>
+	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>GrapheIndicateur</servlet-name>
 		<servlet-class>ServletPackages.GrapheServlet</servlet-class>
@@ -187,21 +241,7 @@
 		<servlet-name>GrapheIndicateur</servlet-name>
 		<url-pattern>/graphe</url-pattern>
 	</servlet-mapping>
-	<login-config>
-		<auth-method>FORM</auth-method>
-		<form-login-config>
-			<form-login-page>/connexion</form-login-page>
-			<form-error-page>/connexion</form-error-page>
-		</form-login-config>
-	</login-config>
-	<filter>
-		<filter-name>ClickCounterFilter</filter-name>
-		<filter-class>FilterPackage.ClickCounterFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>ClickCounterFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+
 	<servlet>
 		<servlet-name>Excel</servlet-name>
 		<servlet-class>ServletPackages.ImportExcelServlet</servlet-class>
@@ -216,158 +256,7 @@
 		<servlet-name>Excel</servlet-name>
 		<url-pattern>/importExcel</url-pattern>
 	</servlet-mapping>
-	
-	<!--"""""""""""""" Administrateur """"""""""""""""""-->
-	<servlet>
-		<servlet-name>AdminAccueil</servlet-name>
-		<servlet-class>ServletPackages.AdminAccueilServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>AdminAccueil</servlet-name>
-		<url-pattern>/adminHome</url-pattern>
-	</servlet-mapping>
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>Page de l'administrateur</web-resource-name>
-<!-- 		<url-pattern>/adminHome</url-pattern> -->
-<url-pattern>/admiome</url-pattern> 
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>admin</role-name>
-		</auth-constraint>
-	</security-constraint>
-	
-	<!--""""""""""""""""""""""""" Etudiant """""""""""""""""""""""""-->
-	<servlet>
-		<servlet-name>EtudiantHome</servlet-name>
-		<servlet-class>ServletPackages.EtudiantHomeServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>EtudiantHome</servlet-name>
-		<url-pattern>/studentHome</url-pattern>
-	</servlet-mapping>
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>Page de l'etudiant</web-resource-name>
-			<url-pattern>/Hom</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>etudiant</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<!-- Banque mondiale -->
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>Page de la banque mondiale</web-resource-name>
-			<url-pattern>/worldBankHome</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>BanqueMondial</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<!-- Coordonnateur -->
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>Page du coordonnateur</web-resource-name>
-			<url-pattern>/coordinatorHome</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>coordonnateur</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<!-- Responsable de saisie -->
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>Page du responsable de saisie</web-resource-name>
-			<url-pattern>/RSHome</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>responsable_Saisie</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<!-- Responsable de controle -->
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>Page du responsable de contrôle</web-resource-name>
-			<url-pattern>/RCHome</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>responsable_Controle</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<!-- Vice coordonnateur -->
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>Page du vice coordonnateur</web-resource-name>
-			<url-pattern>/viceCoordinatorHome</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>viceCoordonnateur</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<!-- Enseignant -->
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>Page de l'enseignant</web-resource-name>
-			<url-pattern>/teacherHome</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>enseignat</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<!-- responsable suivi et évaluation -->
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>page d'accueil du responsable de suivi et
-				évaluation</web-resource-name>
-			<url-pattern>/stage</url-pattern>
-			<url-pattern>/publication</url-pattern>
-<!-- 			<url-pattern>/reunion</url-pattern> -->
-			<url-pattern>/partenaire</url-pattern>
-			<url-pattern>/etudiat</url-pattern>
-			<url-pattern>/enseignat</url-pattern>
-			<url-pattern>/responsable</url-pattern>
-			<url-pattern>/enseignat</url-pattern>
-			<url-pattern>/index.jsp</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>responsable_Suivi_Evaluation</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<servlet>
-		<servlet-name>responsableSE</servlet-name>
-		<servlet-class>ServletPackages.AccueilRespSuivuEvalServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>responsableSE</servlet-name>
-		<url-pattern>/RSEHome</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>ResponsableControle</servlet-name>
-		<servlet-class>ServletPackages.ResponsableControleServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ResponsableControle</servlet-name>
-		<url-pattern>/RCHome</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>Upload</servlet-name>
-		<servlet-class>ServletPackages.EtudiantServletForm</servlet-class>
-		<init-param>
-			<param-name>chemin</param-name>
-			<param-value>C:\fic/</param-value>
-		</init-param>
-		<multipart-config>
-			<location>C:\fic/</location>
-			<max-file-size>10485760</max-file-size>
-			<max-request-size>52428800</max-request-size>
-			<file-size-threshold>1048576</file-size-threshold>
-		</multipart-config>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Upload</servlet-name>
-		<url-pattern>/upload</url-pattern>
-	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>ImageServlet</servlet-name>
 		<servlet-class>ServletPackages.ImageServlet</servlet-class>
@@ -380,12 +269,282 @@
 		<servlet-name>ImageServlet</servlet-name>
 		<url-pattern>/image</url-pattern>
 	</servlet-mapping>
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%% 	        Pages pour les listes           %%%%%%%%%%%%%%%%%-->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	
+  <servlet>
+    <servlet-name>ListPublication</servlet-name>
+    <servlet-class>ServletPackages.PublicationListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListPublication</servlet-name>
+    <url-pattern>/publicationList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListStage</servlet-name>
+    <servlet-class>ServletPackages.StageList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListStage</servlet-name>
+    <url-pattern>/stageList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListReunion</servlet-name>
+    <servlet-class>ServletPackages.ReunionListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListReunion</servlet-name>
+    <url-pattern>/meetingList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListFormation</servlet-name>
+    <servlet-class>ServletPackages.FormationListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListFormation</servlet-name>
+    <url-pattern>/formationList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListProgrammation</servlet-name>
+    <servlet-class>ServletPackages.ProgrammeListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListProgrammation</servlet-name>
+    <url-pattern>/programList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListPartenaire</servlet-name>
+    <servlet-class>ServletPackages.PartenaireListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListPartenaire</servlet-name>
+    <url-pattern>/partnerList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListAnimateur</servlet-name>
+    <servlet-class>ServletPackages.AnimateurListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListProgrammation</servlet-name>
+    <url-pattern>/animatorList</url-pattern>
+  </servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Activite_liste</servlet-name>
+		<servlet-class>ServletPackages.ActiviteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Activite_liste</servlet-name>
+		<url-pattern>/activityList</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Indicateur_liste</servlet-name>
+		<servlet-class>ServletPackages.IndicateurServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Indicateur_liste</servlet-name>
+		<url-pattern>/indicatorList</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>EtudiantList</servlet-name>
+		<servlet-class>ServletPackages.StudentListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EtudiantList</servlet-name>
+		<url-pattern>/studentList</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ResponsableList</servlet-name>
+		<servlet-class>ServletPackages.ResponsableListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ResponsableList</servlet-name>
+		<url-pattern>/responsableList</url-pattern>
+	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>ListEnseignant</servlet-name>
 		<servlet-class>ServletPackages.TeacherList</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ListEnseignant</servlet-name>
-		<url-pattern>/listEnseignant</url-pattern>
+		<url-pattern>/teacherList</url-pattern>
 	</servlet-mapping>
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%% 	        Declaration de filter           %%%%%%%%%%%%%%%%%-->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<filter>
+		<filter-name>ClickCounterFilter</filter-name>
+		<filter-class>FilterPackage.ClickCounterFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ClickCounterFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%% 	Toucher surtout pas la sécurité svp!    %%%%%%%%%%%%%%%%%-->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	
+	<!--""""""""""""" declaration login config """""""""""""""""" -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/connection</form-login-page>
+			<form-error-page>/connection</form-error-page>
+		</form-login-config>
+	</login-config>
+	
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%% 	      Declaration de la sécurité        %%%%%%%%%%%%%%%%%-->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	
+<!-- 	<security-constraint> -->
+<!-- 		<web-resource-collection> -->
+<!-- 			<web-resource-name>Page de l'administrateur</web-resource-name> -->
+<!-- 			<url-pattern>/adminHome</url-pattern> -->
+<!-- 			<url-pattern>/responsableForm</url-pattern> -->
+<!-- 		</web-resource-collection> -->
+<!-- 		<auth-constraint> -->
+<!-- 			<role-name>etudiant</role-name> -->
+<!-- 			<role-name>BanqueMondial</role-name> -->
+<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
+<!-- 			<role-name>responsable_Controle</role-name> -->
+<!-- 			<role-name>responsable_Saisie</role-name> -->
+<!-- 			<role-name>enseignat</role-name> -->
+<!-- 			<role-name>partenaire</role-name> -->
+<!-- 			<role-name>coordonnateur</role-name> -->
+<!-- 			<role-name>viceCoordonnateur</role-name> -->
+<!-- 		</auth-constraint> -->
+<!-- 	</security-constraint> -->
+
+<!-- 	<security-constraint> -->
+<!-- 		<web-resource-collection> -->
+<!-- 			<web-resource-name>Page de l'etudiant</web-resource-name> -->
+<!-- 			<url-pattern>/studentHome</url-pattern> -->
+<!-- 		</web-resource-collection> -->
+<!-- 		<auth-constraint> -->
+<!-- 			<role-name>admin</role-name> -->
+<!-- 			<role-name>BanqueMondial</role-name> -->
+<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
+<!-- 			<role-name>responsable_Controle</role-name> -->
+<!-- 			<role-name>responsable_Saisie</role-name> -->
+<!-- 			<role-name>enseignat</role-name> -->
+<!-- 			<role-name>partenaire</role-name> -->
+<!-- 			<role-name>coordonnateur</role-name> -->
+<!-- 			<role-name>viceCoordonnateur</role-name> -->
+<!-- 		</auth-constraint> -->
+<!-- 	</security-constraint> -->
+	
+<!-- 	<security-constraint> -->
+<!-- 		<web-resource-collection> -->
+<!-- 			<web-resource-name>Page de la banque mondiale</web-resource-name> -->
+<!-- 			<url-pattern>/worldBankHome</url-pattern> -->
+<!-- 		</web-resource-collection> -->
+<!-- 		<auth-constraint> -->
+<!-- 			<role-name>etudiant</role-name> -->
+<!-- 			<role-name>admin</role-name> -->
+<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
+<!-- 			<role-name>responsable_Controle</role-name> -->
+<!-- 			<role-name>responsable_Saisie</role-name> -->
+<!-- 			<role-name>enseignat</role-name> -->
+<!-- 			<role-name>partenaire</role-name> -->
+<!-- 			<role-name>coordonnateur</role-name> -->
+<!-- 			<role-name>viceCoordonnateur</role-name> -->
+<!-- 		</auth-constraint> -->
+<!-- 	</security-constraint>  -->
+	
+<!-- 	<security-constraint> -->
+<!-- 		<web-resource-collection> -->
+<!-- 			<web-resource-name>Page du coordonnateur</web-resource-name> -->
+<!-- 			<url-pattern>/coordinatorHome</url-pattern> -->
+<!-- 		</web-resource-collection> -->
+<!-- 		<auth-constraint> -->
+<!-- 			<role-name>etudiant</role-name> -->
+<!-- 			<role-name>BanqueMondial</role-name> -->
+<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
+<!-- 			<role-name>responsable_Controle</role-name> -->
+<!-- 			<role-name>responsable_Saisie</role-name> -->
+<!-- 			<role-name>enseignat</role-name> -->
+<!-- 			<role-name>partenaire</role-name> -->
+<!-- 			<role-name>admin</role-name> -->
+<!-- 		</auth-constraint> -->
+<!-- 	</security-constraint> -->
+
+<!-- 	<security-constraint> -->
+<!-- 		<web-resource-collection> -->
+<!-- 			<web-resource-name>Page du responsable de saisie</web-resource-name> -->
+<!-- 			<url-pattern>/RSHome</url-pattern> -->
+<!-- 		</web-resource-collection> -->
+<!-- 		<auth-constraint> -->
+<!-- 			<role-name>etudiant</role-name> -->
+<!-- 			<role-name>BanqueMondial</role-name> -->
+<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
+<!-- 			<role-name>admin</role-name> -->
+<!-- 			<role-name>enseignat</role-name> -->
+<!-- 			<role-name>partenaire</role-name> -->
+<!-- 			<role-name>coordonnateur</role-name> -->
+<!-- 			<role-name>viceCoordonnateur</role-name> -->
+<!-- 		</auth-constraint> -->
+<!-- 	</security-constraint> -->
+
+<!-- 	<security-constraint> -->
+<!-- 		<web-resource-collection> -->
+<!-- 			<web-resource-name>Page de l'enseignant</web-resource-name> -->
+<!-- 			<url-pattern>/teacherHome</url-pattern> -->
+<!-- 		</web-resource-collection> -->
+<!-- 		<auth-constraint> -->
+<!-- 			<role-name>etudiant</role-name> -->
+<!-- 			<role-name>BanqueMondial</role-name> -->
+<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
+<!-- 			<role-name>responsable_Controle</role-name> -->
+<!-- 			<role-name>responsable_Saisie</role-name> -->
+<!-- 			<role-name>admin</role-name> -->
+<!-- 			<role-name>partenaire</role-name> -->
+<!-- 			<role-name>coordonnateur</role-name> -->
+<!-- 			<role-name>viceCoordonnateur</role-name> -->
+<!-- 		</auth-constraint> -->
+<!-- 	</security-constraint> -->
+
+<!-- 	<security-constraint> -->
+<!-- 		<web-resource-collection> -->
+<!-- 			<web-resource-name>page d'accueil du responsable de suivi et -->
+<!-- 				évaluation</web-resource-name> -->
+<!-- 			<url-pattern>/stageForm</url-pattern> -->
+<!-- 			<url-pattern>/publicationForm</url-pattern> -->
+<!-- 			<url-pattern>/meetingForm</url-pattern> -->
+<!-- 			<url-pattern>/partnerForm</url-pattern> -->
+<!-- 			<url-pattern>/studentForm</url-pattern> -->
+<!-- 			<url-pattern>/teacherForm</url-pattern> -->
+<!-- 			<url-pattern>/formationForm</url-pattern> -->
+<!-- 			<url-pattern>/programForm</url-pattern> -->
+<!-- 			<url-pattern>/animatorForm</url-pattern> -->
+<!-- 			<url-pattern>/RSEHome</url-pattern> -->
+<!-- 		</web-resource-collection> -->
+<!-- 		<auth-constraint> -->
+<!-- 			<role-name>etudiant</role-name> -->
+<!-- 			<role-name>BanqueMondial</role-name> -->
+<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
+<!-- 			<role-name>responsable_Controle</role-name> -->
+<!-- 			<role-name>responsable_Saisie</role-name> -->
+<!-- 			<role-name>admin</role-name> -->
+<!-- 			<role-name>partenaire</role-name> -->
+<!-- 			<role-name>coordonnateur</role-name> -->
+<!-- 			<role-name>viceCoordonnateur</role-name> -->
+<!-- 		</auth-constraint> -->
+<!-- 	</security-constraint> -->
 </web-app>

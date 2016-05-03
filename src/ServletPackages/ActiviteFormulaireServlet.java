@@ -23,12 +23,18 @@ import BeanPackage.NumericConstant;
  * Servlet implementation class ActiviteFormulaire
  */
 @WebServlet("/ActiviteFormulaireServlet")
-public class ActiviteFormulaireServlet extends ConnexionServlet implements NumericConstant{
+public class ActiviteFormulaireServlet extends GetAuthorisationUsers implements NumericConstant{
 	private static final long serialVersionUID = 1L;
 	private Connection connection;
        
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/ActiviteFormulaire.jsp").forward(req, resp);
+		try {
+			connection=this.getDataSource().getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	this.doGet(req, resp, "responsable_Suivi_Evaluation", "ActiviteFormulaire.jsp", connection);
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -54,10 +60,10 @@ public class ActiviteFormulaireServlet extends ConnexionServlet implements Numer
 		
 		Date date = new Date();
 		DateFormat dateFormat = new SimpleDateFormat("YYYY/MM/DD");
-		HomeServlet servlet = new HomeServlet();
+		//HomeServlet servlet = new HomeServlet();
 		try {
 			
-			connection = servlet.getDataSource().getConnection();
+			connection = this.getDataSource().getConnection();
 			date = dateFormat.parse(periode);
 			String valueActivite="%'"+libelle+"'%"+dateFormat.format(date)+"%'"+echeancePrevu+"'%'"+echeanceRealise+"'%'"+statutActivite+"'%'" +natureIndicateur+"'%'"+libelleIndicateur+"'%'" +referenceTabSaisie+"'%'" +pieceJustificatif+"'%'" +composant+"'%'"+objectif+"'%"
 			+ "'"+resultatAttendu+"'%"; 

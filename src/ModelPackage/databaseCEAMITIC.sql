@@ -93,7 +93,7 @@ create table Etudiant
    telephone            varchar(100)                   null,
    bp                   varchar(100)                   null,
    sexe                 integer                        null,
-   numeroEtudiant       varchar(100)                   null,
+   numeroEtudiant       varchar(100)                   null ,
    pacNom               varchar(100)                   null,
    pacPrenom            varchar(100)                   null,
    pacTel               varchar(100)                   null,
@@ -101,7 +101,8 @@ create table Etudiant
    programme            varchar(100)                        null,
    semestre             varchar(100)                        null,
    constraint PK_ETUDIANT primary key (iDEtudiant),
-   constraint AK_IDEtudiant unique (iDEtudiant)
+   constraint AK_IDEtudiant unique (iDEtudiant),
+   constraint AK_NumEtudiant unique (numeroEtudiant)
 );
 
 /*==============================================================*/
@@ -172,9 +173,11 @@ create table Publication
    iDResponsable        integer                        not null,
    titre                varchar(100)                   null,
    datePublication     datetime                    default null,
-   nomJournal           varchar(100)                   null,
-   auteurs              varchar(100)                   null,
-   impactFactor         varchar(100)                   null,
+   nomJournal           varchar(250)                   null,
+   auteurs              varchar(255)                   null,
+   impactFactor         varchar(255)                   null,
+   typePublication         varchar(255)                   null,
+   nomFichier         varchar(255)                   null,
    constraint PK_PUBLICATION primary key (iDpublication)
 );
 

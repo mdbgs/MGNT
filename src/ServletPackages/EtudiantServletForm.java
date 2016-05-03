@@ -1,15 +1,10 @@
 package ServletPackages;
 
 import java.io.BufferedInputStream;
-
-import BeanPackage.ComputeQueryBean;
-import BeanPackage.NumericConstant;
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -20,12 +15,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-public class EtudiantServletForm extends ConnexionServlet implements NumericConstant {
+import BeanPackage.ComputeQueryBean;
+import BeanPackage.NumericConstant;
+
+public class EtudiantServletForm extends GetAuthorisationUsers implements NumericConstant {
+	private static final long serialVersionUID = 1L;
+	private Connection connection;
+
 	public static final String VUE = "/WEB-INF/jsp/EtudiantFormulaire.jsp";
 
 	public static final String CHAMP_DESCRIPTION = "description";
@@ -36,8 +36,12 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 													// ko
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/* Affichage de la page d'envoi de fichiers */
-		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+		try {
+			connection=this.getDataSource().getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+        this.doGet(request, response, "responsable_Suivi_Evaluation","AdminHome.jsp", connection);		
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -145,7 +149,7 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 		 * getPart() pour traiter le champ d'envoi de fichiers.
 		 */
 
-		Connection connection;
+		
 		try {
 
 			System.out.println();

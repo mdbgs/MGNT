@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Formulaire Etudiant</title>
+<title>Formulaire Formation</title>
 </head>
 <body id="scroll_top">
 	<section id="header_areaBis"></section>
@@ -23,7 +23,7 @@
 								<div class="panel-heading">
 									<h2>Formation</h2>
 								</div>
-								<form method="post" action="formation" class="myForm">
+								<form method="post" action="formationForm" class="myForm">
 									<h3>Information</h3>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">

@@ -22,13 +22,18 @@ import BeanPackage.NumericConstant;
  * Servlet implementation class EnseignantFormulaireServlet
  */
 @WebServlet("/EnseignantFormulaireServlet")
-public class EnseignantFormulaireServlet extends ConnexionServlet implements  NumericConstant{
+public class EnseignantFormulaireServlet extends GetAuthorisationUsers implements  NumericConstant{
 	private static final long serialVersionUID = 1L;
 	private Connection connection;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Enseignant.jsp").forward(request, response);
+		 try {
+				connection=this.getDataSource().getConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		this.doGet(request, response, "responsable_Suivi_Evaluation", "Enseignant.jsp", connection);
 	}
 
 	/**
