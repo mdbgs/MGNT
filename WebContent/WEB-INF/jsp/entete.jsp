@@ -109,7 +109,6 @@
 								<li><a href="javascript:partenaireActivite()">Partenariat</a></li>
 								<li><a href="javascript:gouvernanceActivite()">Gouvernance</a></li>
 							</ul></li>
-							</ul>
 						</li>
 						<li><a href="indicatorList">Indicateur</a></li>
 						<li><a href="publicationList">Publication<span>.</span></a>
