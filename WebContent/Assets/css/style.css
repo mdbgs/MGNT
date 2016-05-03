@@ -36,9 +36,49 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 .formulDetail{
 	margin-left:70px;
 	padding:10px;
-	
 	text-align:center;
-}
+} 
+/*Ajout de ANNA******************************************************************/
+				.formulDetail1{
+					border:1px solid black;
+					margin:5px;
+					padding:5px;
+					background-color: lightblue;
+					text-align:center;
+					float:left; 
+				    width:100%;
+				    height : 100%;
+					font-family: Arial;
+					font-size:25px;
+				}
+				.formulDetail2{
+					border:1px solid black;
+					margin:5px;
+					padding:5px;
+					background-color:lightgrey;
+					text-align:center;
+					float:left; 
+					width:100%;
+					height : 100%;
+					font-family: Arial;
+					font-size:25px;
+					border-radius:25px;
+				}
+				  #form{
+					border:1px solid black;
+					width:300px;
+					margin-left:150px;
+					padding:10px;
+					
+				}
+				  #right
+				{
+					float:left
+				}
+				
+/* .h3form{ */
+/* 	color:gray; */
+/* } */
 .formulDetail label{
 	font-weight:bold;
 	margin-top:15px;
@@ -456,7 +496,18 @@ element.style{
 #formGauche, #formDroite {
 	height: 100%;
 }
+#fm2{
+	text-decoration: underline;
+}
+#fm{
+	height: 100%;
+	widht:100%;
+	padding-right:15px;
+	text-align:left;
+	font-size:large;
 
+
+}
 #formGauche input, #formDroite input, #formGauche select, #formDroite select
 	{
 	margin-bottom: 10px;
@@ -1557,6 +1608,10 @@ padding-bottom:-10px;
 .photoDetail{
 	width:120px;
 	height:130px;
+}
+#photoDetail{
+	width:150px;
+	height:150px;
 }
 .imageDiv{
 	width:100%;

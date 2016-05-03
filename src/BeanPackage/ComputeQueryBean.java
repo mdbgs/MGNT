@@ -164,6 +164,19 @@ public class ComputeQueryBean implements NumericConstant {
 		}
 		return result;
 	}
+	/** Select one rows of table by ID */
+	public static ResultSet selectAllByPseudo(String table, String pseudo, Connection connection) {
+		ResultSet result = null;
+		try {
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM " + table + " WHERE pseudo='" + pseudo + "';";
+			result = statement.executeQuery(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 
 	/** Select one rows of table by ID */
 	public static ResultSet selectIndicateurByNumero(int id, Connection connection) {

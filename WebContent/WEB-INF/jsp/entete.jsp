@@ -71,10 +71,10 @@
 										relecteur</a></li>
 							</ul></li>
 					</c:when>
-					<c:when test="${rolename=='etudiant'}">
-						<li><a href="studentHome"><img alt="Accueil"
-								src="Assets/images/slideshow/logoceamitic.png"></a></li>
-					</c:when>
+ 		            <c:when test="${rolename=='tudiant'}"> 
+ 						<li><a href="administrator"><img alt="Accueil" 
+								src="Assets/images/slideshow/logoceamitic.png"></a></li> 
+					</c:when> 
 					<c:when test="${rolename=='enseignat'}">
 						<li><a href="teacherHome"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
@@ -109,8 +109,6 @@
 								<li><a href="javascript:partenaireActivite()">Partenariat</a></li>
 								<li><a href="javascript:gouvernanceActivite()">Gouvernance</a></li>
 							</ul></li>
-							</ul>
-						</li>
 						<li><a href="indicatorList">Indicateur</a></li>
 						<li><a href="publicationList">Publication<span>.</span></a>
 							<ul>
@@ -140,7 +138,23 @@
 					     </li>
 					    </div> 
 					 </c:when>
-
+					<c:when test="${rolename=='etudiant'}" >
+						<li><a href="administrator"><img alt="Accueil" 
+								src="Assets/images/slideshow/logoceamitic.png"></a></li> 
+						
+						
+					   <div class="DeconProfil">
+					    <li >
+					    <a href="">Hello <%= user.getPseudo() %><span>.</span></a>
+					      <ul>
+					      <c:set scope="session" var="student" value="${etudiantRecu}"></c:set>
+ 					           <li><a href="detail?studentSending=<%= user.getPseudo() %>">Profil</a></li> 
+							   <li><a href="home">Déconnexion</a></li>
+							</ul>
+					     </li>
+					    </div> 
+					</c:when>
+					
 					<c:when test="${rolename=='responsable_Saisie'}">
 						<li><a href="RSHome"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
