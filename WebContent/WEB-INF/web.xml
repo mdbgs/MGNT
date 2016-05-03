@@ -142,6 +142,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Reunion</servlet-name>
+		
 		<url-pattern>/reunionFormulaire</url-pattern>
 	</servlet-mapping>
 	<servlet>
@@ -228,7 +229,8 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Page de l'administrateur</web-resource-name>
-			<url-pattern>/adminHome</url-pattern>
+<!-- 		<url-pattern>/adminHome</url-pattern> -->
+<url-pattern>/admiome</url-pattern> 
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>admin</role-name>
@@ -236,10 +238,18 @@
 	</security-constraint>
 	
 	<!--""""""""""""""""""""""""" Etudiant """""""""""""""""""""""""-->
+	<servlet>
+		<servlet-name>EtudiantHome</servlet-name>
+		<servlet-class>ServletPackages.EtudiantHomeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EtudiantHome</servlet-name>
+		<url-pattern>/studentHome</url-pattern>
+	</servlet-mapping>
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Page de l'etudiant</web-resource-name>
-			<url-pattern>/studentHome</url-pattern>
+			<url-pattern>/Hom</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>etudiant</role-name>
@@ -312,7 +322,7 @@
 				évaluation</web-resource-name>
 			<url-pattern>/stage</url-pattern>
 			<url-pattern>/publication</url-pattern>
-			<url-pattern>/reunion</url-pattern>
+<!-- 			<url-pattern>/reunion</url-pattern> -->
 			<url-pattern>/partenaire</url-pattern>
 			<url-pattern>/etudiat</url-pattern>
 			<url-pattern>/enseignat</url-pattern>

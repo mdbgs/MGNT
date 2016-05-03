@@ -50,7 +50,7 @@
 											<div class="row">
 												<div class="col-xs-5" id="formeGauche">
 													<div class="row ">
-														<label>Echéance Prévu <span>:</span></label>
+													<label>Echéance Prévu <span>:</span></label>
 													</div>
 													<div class="row">
 														<b>${activ.echeancePrevu}</b>
@@ -310,6 +310,7 @@
 												
 													<div class="row ">
 														<label>Numéro d'étudiant <span>:</span></label>
+														
 													</div>
 													<div class="row">
 														<b>${std.studentNumber}</b>
@@ -381,7 +382,7 @@
 											<div class="row">
 												<div class="col-xs-5" id="formeGauche">
 													<div class="row ">
-														<label>Email <span>:</span></label>
+														<label>Email <span>:</span><b>${std.mail}</b></label>
 													</div>
 													<div class="row">
 														<b>${std.mail}</b>

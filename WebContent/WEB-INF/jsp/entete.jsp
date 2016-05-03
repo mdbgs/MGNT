@@ -63,10 +63,10 @@
 								<li><a href="javascript:viceCoordonnateur()">Animateur relecteur</a></li>
 							</ul></li>
 					</c:when>
-					<c:when test="${rolename=='etudiant'}">
-						<li><a href="administrator"><img alt="Accueil"
-								src="Assets/images/slideshow/logoceamitic.png"></a></li>
-					</c:when>
+ 		            <c:when test="${rolename=='tudiant'}"> 
+ 						<li><a href="administrator"><img alt="Accueil" 
+								src="Assets/images/slideshow/logoceamitic.png"></a></li> 
+					</c:when> 
 					<c:when test="${rolename=='enseignat'}">
 						<li><a href="administrator"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
@@ -116,6 +116,22 @@
 					      <ul>
 					      <c:set scope="session" var="student" value="${etudiantRecu}"></c:set>
  					           <li><a href="detail?studentSending=47">Profil</a></li> 
+							   <li><a href="home">Déconnexion</a></li>
+							</ul>
+					     </li>
+					    </div> 
+					</c:when>
+					<c:when test="${rolename=='etudiant'}" >
+						<li><a href="administrator"><img alt="Accueil" 
+								src="Assets/images/slideshow/logoceamitic.png"></a></li> 
+						
+						
+					   <div class="DeconProfil">
+					    <li >
+					    <a href="">Hello <%= user.getPseudo() %><span>.</span></a>
+					      <ul>
+					      <c:set scope="session" var="student" value="${etudiantRecu}"></c:set>
+ 					           <li><a href="detail?studentSending=<%= user.getPseudo() %>">Profil</a></li> 
 							   <li><a href="home">Déconnexion</a></li>
 							</ul>
 					     </li>
