@@ -93,7 +93,7 @@
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
 					</c:when>
 					
-					<c:when test="${rolename=='responsable_Suivi_Evaluation'}" >
+					<c:when test="${rolename=='responsable_Suivi_Evaluation'}">
 						<li><a href="studentList">Etudiant<span>.</span></a>
 							<ul>
 								<li><a href="javascript:regEtudiant()">Régionaux</a></li>
@@ -139,7 +139,7 @@
 							</ul>
 					     </li>
 					    </div> 
-					</c:when>
+					 </c:when>
 
 					<c:when test="${rolename=='responsable_Saisie'}">
 						<li><a href="RSHome"><img alt="Accueil"
