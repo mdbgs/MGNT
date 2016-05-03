@@ -1,18 +1,23 @@
 package ServletPackages;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mysql.jdbc.Connection;
+
 /**
  * Servlet implementation class PartenaireListServlet
  */
 @WebServlet("/PartenaireListServlet")
-public class PartenaireListServlet extends HttpServlet {
+public class PartenaireListServlet extends GetAuthorisationUsers {
 	private static final long serialVersionUID = 1L;
+	private java.sql.Connection connection;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -26,9 +31,12 @@ public class PartenaireListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/partenaireList.jsp").forward(request, response);
+		 try {
+				connection=this.getDataSource().getConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		this.doGet(request, response, "responsable_Suivi_Evaluation", "partenaireList.jsp", connection);
 	}
 
 	/**

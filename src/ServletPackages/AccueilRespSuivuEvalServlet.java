@@ -1,6 +1,7 @@
 package ServletPackages;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -11,12 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-public class AccueilRespSuivuEvalServlet extends HttpServlet {
+import com.mysql.jdbc.Connection;
+
+public class AccueilRespSuivuEvalServlet extends GetAuthorisationUsers {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private static DataSource dataSource;
+	private java.sql.Connection connection;
 
 	public void init() throws ServletException {
 		try {
@@ -33,7 +37,12 @@ public class AccueilRespSuivuEvalServlet extends HttpServlet {
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/AccueilRespSuivuEval.jsp").forward(req, resp);
+		 try {
+				connection=this.getDataSource().getConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		this.doGet(req, resp,"responsable_Suivi_Evaluation","AccueilRespSuivuEval.jsp",connection);
 	}
   
 }

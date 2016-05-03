@@ -99,34 +99,6 @@
 			</div>
 		</div>
 	</section>
-	<section id="footer_top_area">
-	<div class="fix footer_top center">
-		<div class="fix footer_top_container">
-			<div>
-				<ul class="col-xs-12">
-					<li class="col-xs-2 myFooter"><a href=""><span>A
-								propos</span></a></li>
-					<li class="col-xs-2 myFooter"><a href=""><span>Nous
-								contacter</span></a></li>
-					<li class="col-xs-2 myFooter"><a href=""><span>Aide</span></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	</section>
 	<c:import url="piedsPage.jsp"></c:import>
-	<script>
-		$(document).ready(function() {
-			$('#myDataTable').dataTable();
-
-		});
-		$(function() {
-			$("#overlay").click(function() {
-				$("#cadre").fadeOut();
-				$("#overlay").fadeOut();
-			});
-		});
-	</script>
-
 </body>
 </html>

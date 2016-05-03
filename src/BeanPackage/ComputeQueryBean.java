@@ -126,6 +126,18 @@ public class ComputeQueryBean implements NumericConstant {
 		}
 		return result;
 	}
+	public static ResultSet selectnum(String table, Connection connection) {
+		ResultSet result = null;
+		try {
+			Statement statement = connection.createStatement();
+			String query = "SELECT referenceTableauDeSaisie, COUNT(referenceTableauDeSaisie) AS nombre FROM activite GROUP BY referenceTableauDeSaisie;";
+			System.out.println(query);
+			result = statement.executeQuery(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	//selectionne le nom du photo de 
 	public static ResultSet selectPseudo(Connection connection,String pseudo) {
 		ResultSet result = null;

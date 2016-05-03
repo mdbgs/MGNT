@@ -29,14 +29,19 @@ import ModelPackage.User;
  * Servlet implementation class PubllicationFromulaireServlet
  */
 @WebServlet("/PubllicationFromulaireServlet")
-public class PublicationFormulaireServlet extends ConnexionServlet implements NumericConstant {
+public class PublicationFormulaireServlet extends GetAuthorisationUsers implements NumericConstant {
 	private static final long serialVersionUID = 1L;
 	private static final String CHAMP_FICHIER = "fichier";
 	private Connection connection;
 	public static final String CHEMIN = "chemin";
 	public static final int TAILLE_TAMPON = 10240;
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Publication.jsp").forward(req, resp);
+		try {
+			connection=this.getDataSource().getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	    this.doGet(req, resp, "responsable_Suivi_Evaluation", "Publication.jsp", connection);
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

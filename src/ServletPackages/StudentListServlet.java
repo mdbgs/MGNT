@@ -14,11 +14,7 @@ import BeanPackage.ComputeQueryBean;
 import BeanPackage.StudentBean;
 import ModelPackage.Student;
 
-/**
- * Servlet implementation class StudentListServlet
- */
-@WebServlet("/StudentListServlet")
-public class StudentListServlet extends ConnexionServlet {
+public class StudentListServlet extends GetAuthorisationUsers {
 	//
 	// FIELDS
 	//
@@ -27,7 +23,7 @@ public class StudentListServlet extends ConnexionServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/ListEtudiant.jsp").forward(req, resp);
+		this.doGet(req, resp, "responsable_Suivi_Evaluation","ListEtudiant.jsp", connection);
 	}
 
 	@Override
@@ -44,9 +40,7 @@ public class StudentListServlet extends ConnexionServlet {
 			System.out.println("Taille de la liste : "+student.getStudentList().size());
 			req.setAttribute("studentRecu", student);
 		} catch (SQLException e){
-			
 			e.printStackTrace();
 		}
-
 	}
 }

@@ -22,8 +22,9 @@ import javax.servlet.http.Part;
 import BeanPackage.ComputeQueryBean;
 import BeanPackage.NumericConstant;
 
-public class EtudiantServletForm extends ConnexionServlet implements NumericConstant {
+public class EtudiantServletForm extends GetAuthorisationUsers implements NumericConstant {
 	private static final long serialVersionUID = 1L;
+	private Connection connection;
 
 	public static final String VUE = "/WEB-INF/jsp/EtudiantFormulaire.jsp";
 
@@ -35,8 +36,12 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 													// ko
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/* Affichage de la page d'envoi de fichiers */
-		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+		try {
+			connection=this.getDataSource().getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+        this.doGet(request, response, "responsable_Suivi_Evaluation","AdminHome.jsp", connection);		
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -144,7 +149,7 @@ public class EtudiantServletForm extends ConnexionServlet implements NumericCons
 		 * getPart() pour traiter le champ d'envoi de fichiers.
 		 */
 
-		Connection connection;
+		
 		try {
 
 			System.out.println();

@@ -23,18 +23,20 @@ import BeanPackage.NumericConstant;
  * Servlet implementation class PartenaireFormulaire
  */
 @WebServlet("/PartenaireFormulaireServelet")
-public class PartenaireFormulaireServlet extends ConnexionServlet implements NumericConstant{
+public class PartenaireFormulaireServlet extends GetAuthorisationUsers implements NumericConstant{
 	private static final long serialVersionUID = 1L;
 	private Connection connection ;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Partenaire.jsp").forward(request, response);
+		 try {
+				connection=this.getDataSource().getConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		this.doGet(request, response, "responsable_Suivi_Evaluation", "Partenaire.jsp", connection);		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String resultat;
 
@@ -59,10 +61,10 @@ public class PartenaireFormulaireServlet extends ConnexionServlet implements Num
 		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		 String dateNow = dateFormat.format(date);
 		 String pseudo = "'"+nom;
-		String valuePartenaire="'%'ceamitic2016'%"+dateNow+"%'inconnu'%";
-		ConnexionServlet servlet = new ConnexionServlet();
+		 String valuePartenaire="'%'ceamitic2016'%"+dateNow+"%'inconnu'%";
+		//ConnexionServlet servlet = new ConnexionServlet();
 		try {
-			connection = servlet.getDataSource().getConnection();
+			connection = this.getDataSource().getConnection();
 			int rs = ComputeQueryBean.insertDatabase(pseudo+valuePartenaire,"compte",connection);
 //			int number = 0;
 //			while(rs==0){

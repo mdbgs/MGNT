@@ -1,41 +1,70 @@
 package ServletPackages;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mysql.jdbc.Connection;
+
+import BeanPackage.ComputeQueryBean;
+import BeanPackage.FormationBean;
+import BeanPackage.ReunionBean;
+import ModelPackage.Formation;
+import ModelPackage.Reunion;
+
 /**
  * Servlet implementation class FormationListServlet
  */
 @WebServlet("/FormationListServlet")
-public class FormationListServlet extends HttpServlet {
+public class FormationListServlet extends GetAuthorisationUsers {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public FormationListServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private java.sql.Connection connection;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/formationList.jsp").forward(request, response);
+	public FormationListServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+		this.doGet(request, response, "responsable_Suivi_Evaluation", "formationList.jsp", connection);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		FormationBean formation = new FormationBean();
+		try {
+			connection = this.getDataSource().getConnection();
+			ResultSet result = ComputeQueryBean.selectAll("Formation", connection);
+			while (result.next()) {
+				formation.addFormationInList(new Formation(result.getInt(1), result.getString(2), result.getString(3),
+						result.getString(4), result.getString(5)));
+			}
+			System.out.println("Taille de la liste : " + formation.getFormationList().size());
+			request.setAttribute("FormationRecu", formation);
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
 	}
 
 }
