@@ -47,7 +47,7 @@
 				<c:set scope="session" var="rolename" value="${rolename}"></c:set>
 				<c:choose>
 					<c:when test="${rolename=='admin'}">
-						<li><a href="administrator"><img alt="Accueil"
+						<li><a href="adminHome"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
 						<li><a href="listeCompte">Créer Compte<span>.</span></a>
 							<ul>
@@ -86,13 +86,14 @@
 									<li><a href="connection">Déconnexion</a></li>
 								</ul></li>
 						</div>
+
 					</c:when>
 					<c:when test="${rolename=='coordonnateur'}">
 						<li><a href="coordonatorHome"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
 					</c:when>
-
-					<c:when test="${rolename=='responsable_Suivi_Evaluation'}">
+					
+					<c:when test="${rolename=='responsable_Suivi_Evaluation'}" >
 						<li><a href="studentList">Etudiant<span>.</span></a>
 							<ul>
 								<li><a href="javascript:regEtudiant()">Régionaux</a></li>
@@ -108,6 +109,8 @@
 								<li><a href="javascript:partenaireActivite()">Partenariat</a></li>
 								<li><a href="javascript:gouvernanceActivite()">Gouvernance</a></li>
 							</ul></li>
+							</ul>
+						</li>
 						<li><a href="indicatorList">Indicateur</a></li>
 						<li><a href="publicationList">Publication<span>.</span></a>
 							<ul>
@@ -125,15 +128,17 @@
 						<li><a href="programList">Programme</a></li>
 						<li><a href="partnerList">Partenaire</a></li>
 						<li><a href="animatorList">Animateur-Relecteur</a></li>
-						<div class="DeconProfil">
-							<c:set scope="session" var="student" value="${responsableRecu}"></c:set>
-							<li><a href="">Bonjour <%=user.getPseudo()%><span>.</span></a>
-								<%-- 					        <a href="">${studentRecu.pseudo}bonjour<span>.</span></a> --%>
-								<ul>
-									<li><a href="detail?studentSending=1">Profil</a></li>
-									<li><a href="connection">Déconnexion</a></li>
-								</ul></li>
-						</div>
+					   <div class="DeconProfil">
+					   <c:set scope="session" var="student" value="${responsableRecu}"></c:set>
+					    <li >
+					    <a href="">Bonjour <%= user.getPseudo() %><span>.</span></a>
+<%-- 					        <a href="">${studentRecu.pseudo}bonjour<span>.</span></a> --%>
+					      <ul>
+ 					           <li><a href="detail?studentSending=1">Profil</a></li> 
+							   <li><a href="connection">Déconnexion</a></li>
+							</ul>
+					     </li>
+					    </div> 
 					</c:when>
 
 					<c:when test="${rolename=='responsable_Saisie'}">
@@ -153,11 +158,9 @@
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
 					</c:when>
 					<c:when test="${rolename=='viceCoordonnateur'}">
-						<li><a href="coordinatorHome"><img alt="Accueil"
-								src="Assets/images/slideshow/logoceamitic.png"></a></li>
+						<li><a href="coordinatorHome"><img alt="Accueil" src="Assets/images/slideshow/logoceamitic.png"></a></li>
 					</c:when>
 				</c:choose>
-
 			</div>
 		</ul>
 	</div>
