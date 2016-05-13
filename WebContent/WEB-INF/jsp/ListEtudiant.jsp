@@ -41,7 +41,7 @@
 														<td>
 															<button type="submit" class=" btn btn-info"
 																id="detailBtn"
-																onclick="location.href = 'detail?studentSending=${student.idStudent}';">
+																onclick="location.href = 'detail?studentSending=${student.pseudo}';">
 																<img alt="action" src="Assets/images/icons/editer.jpg">
 															</button>
 														</td>
@@ -59,7 +59,7 @@
 														<td>
 															<button type="submit" class=" btn btn-info"
 																id="detailBtn"
-																onclick="location.href = 'detail?studentSending=${student.idStudent}';">
+																onclick="location.href = 'detail?studentSending=${student.pseudo}';">
 																<img alt="action" src="Assets/images/icons/editer.jpg">
 															</button>
 														</td>
@@ -78,7 +78,7 @@
 														<td>
 															<button type="submit" class=" btn btn-info"
 																id="detailBtn"
-																onclick="location.href = 'detail?studentSending=${student.idStudent}';">
+																onclick="location.href = 'detail?studentSending=${student.pseudo}';">
 																<img alt="action" src="Assets/images/icons/editer.jpg">
 															</button>
 														</td>
@@ -97,7 +97,7 @@
 														 <td>
 															<button type="submit" class=" btn btn-info"
 																id="detailBtn"
-																onclick="location.href = 'detail?studentSending=${student.idStudent}';">
+																onclick="location.href = 'detail?studentSending=${student.pseudo}';">
 																<img alt="action" src="Assets/images/icons/editer.jpg">
 															</button>
 														 </td>

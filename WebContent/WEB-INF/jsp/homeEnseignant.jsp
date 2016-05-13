@@ -26,7 +26,6 @@
 		<c:import url="entete.jsp"></c:import>
 		<div class="fix main_content_area">
 			<p>Rappel important</p>
-			
 			</div>
 		</div>
 	<c:import url="piedsPage.jsp"></c:import>

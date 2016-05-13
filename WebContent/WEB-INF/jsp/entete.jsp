@@ -49,19 +49,9 @@
 					<c:when test="${rolename=='admin'}">
 						<li><a href="adminHome"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
-						<li><a href="listeCompte">Créer Compte<span>.</span></a>
-							<ul>
-								<li><a href="javascript:responsableSuivi()">Responsable
-										Suivi</a></li>
-								<li><a href="javascript:responsableSaisie()">Responsable
-										Saisie</a></li>
-								<li><a href="javascript:responsableControle()">Responsable
-										Contrôle</a></li>
-								<li><a href="javascript:coordonnateur()">Coordonnateur</a></li>
-								<li><a href="javascript:viceCoordonnateur()">Vice
-										Coordonnateur</a></li>
-							</ul></li>
-						<li><a href="reunion">Liste des comptes<span>.</span></a>
+						<li><a href="responsableForm">Créer Compte<span>.</span></a>
+							</li>
+						<li><a href="accountList">Liste des comptes<span>.</span></a>
 							<ul>
 								<li><a href="javascript:responsableSuivi()">Etudiant</a></li>
 								<li><a href="javascript:responsableSaisie()">Responsable</a></li>
@@ -70,6 +60,17 @@
 								<li><a href="javascript:viceCoordonnateur()">Animateur
 										relecteur</a></li>
 							</ul></li>
+							 <div class="DeconProfil">
+					   <c:set scope="session" var="student" value="${responsableRecu}"></c:set>
+					     <li >
+					    <a href="">Bonjour <%= user.getPseudo() %><span>.</span></a>
+<%-- 					        <a href="">${studentRecu.pseudo}bonjour<span>.</span></a> --%>
+					      <ul>
+ 					           <li><a href="detail?studentSending=1">Profil</a></li> 
+							   <li><a href="connection">Déconnexion</a></li>
+							</ul>
+					     </li>
+					    </div> 
 					</c:when>
  		            <c:when test="${rolename=='tudiant'}"> 
  						<li><a href="administrator"><img alt="Accueil" 

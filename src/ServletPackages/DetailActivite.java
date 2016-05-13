@@ -26,7 +26,7 @@ public class DetailActivite extends ConnexionServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Details2.jsp").forward(req, resp);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Details.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

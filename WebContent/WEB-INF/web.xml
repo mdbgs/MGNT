@@ -183,12 +183,12 @@
 	</servlet-mapping>
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%% 	             Pade d'accueil             %%%%%%%%%%%%%%%%%-->
+<!--%%%%%%%%%%%%%%%%%%%%% 	             Page d'accueil             %%%%%%%%%%%%%%%%%-->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<servlet>
 		<servlet-name>AdminAccueil</servlet-name>
-		<servlet-class>ServletPackages.AdminAccueilServlet</servlet-class>
+		<servlet-class>ServletPackages.AdminHomeServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AdminAccueil</servlet-name>
@@ -218,6 +218,15 @@
 		<servlet-name>Home</servlet-name>
 		<url-pattern>/home</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>homeTeacher</servlet-name>
+		<servlet-class>ServletPackages.EnseignantHomeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>homeTeacher</servlet-name>
+		<url-pattern>/teacherHome</url-pattern>
+	</servlet-mapping>
+	
 
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -376,7 +385,14 @@
 		<servlet-name>ListEnseignant</servlet-name>
 		<url-pattern>/teacherList</url-pattern>
 	</servlet-mapping>
-
+    <servlet>
+		<servlet-name>ListCompte</servlet-name>
+		<servlet-class>ServletPackages.ListCompte</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListCompte</servlet-name>
+		<url-pattern>/accountList</url-pattern>
+	</servlet-mapping>
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!--%%%%%%%%%%%%%%%%%%%%% 	        Declaration de filter           %%%%%%%%%%%%%%%%%-->
@@ -420,7 +436,7 @@
 <!-- 			<url-pattern>/responsableForm</url-pattern> -->
 <!-- 		</web-resource-collection> -->
 <!-- 		<auth-constraint> -->
-<!-- 			<role-name>etudiant</role-name> -->
+<!-- 			<role-name>admin</role-name> -->
 <!-- 			<role-name>BanqueMondial</role-name> -->
 <!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
 <!-- 			<role-name>responsable_Controle</role-name> -->
@@ -431,7 +447,10 @@
 <!-- 			<role-name>viceCoordonnateur</role-name> -->
 <!-- 		</auth-constraint> -->
 <!-- 	</security-constraint> -->
-
+<!-- <security-role> -->
+<!-- <description>administrateur</description> -->
+<!-- <role-name>admin</role-name> -->
+<!-- </security-role> -->
 <!-- 	<security-constraint> -->
 <!-- 		<web-resource-collection> -->
 <!-- 			<web-resource-name>Page de l'etudiant</web-resource-name> -->

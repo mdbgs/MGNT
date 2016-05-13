@@ -22,7 +22,7 @@
 								<div class="panel-heading">
 									<h2>Formulaire d'inscription Etudiant</h2>
 								</div>
-								<form action="upload" method="post"
+								<form action="studentForm" method="post"
 									enctype="multipart/form-data" class="myForm">
 									<div class="fileupload fileupload-new"
 										data-provides="fileupload">

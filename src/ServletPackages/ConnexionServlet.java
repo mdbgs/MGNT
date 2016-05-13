@@ -1,5 +1,6 @@
 package ServletPackages;
 
+import java.beans.Encoder;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -87,7 +88,8 @@ public class ConnexionServlet extends HttpServlet {
 			Boolean connectionError = true;
 			pseudo = request.getParameter("j_username");
 			password = request.getParameter("j_password");
-			System.out.println("ConnexionServlet.doPost()");
+            Vernam passCrypt=new Vernam(password);
+			password = passCrypt.encry();
 			if (ComputeQueryBean.isUser(pseudo, password, connection)) {
 				role = ComputeQueryBean.userRole(pseudo, connection);
 				if(!role.isEmpty()){

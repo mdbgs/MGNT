@@ -54,7 +54,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		Date date = new Date();
 		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		 String dateNow = dateFormat.format(date);
-		 String pseudo = "'"+nom+"."+prenom;
+		 String pseudo = "'mme.sy";
 		String valueResponsable="'%'ceamitic2016'%"+dateNow+"%'inconnu'%";
 		ConnexionServlet servlet = new ConnexionServlet();
 		try {

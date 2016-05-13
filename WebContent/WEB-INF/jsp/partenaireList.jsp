@@ -32,9 +32,22 @@
 												</tr>
 											</thead>
 											<tbody >
-												
+												<c:forEach items="${partnerRecu.partnerList}" var="partenaire">
+														<tr>
+														<td><c:out value="${partenaire.nom}"></c:out></td>
+														<td><c:out value="${partenaire.type}"></c:out></td>
+														<td><c:out value="${partenaire.adresse}"></c:out></td>
+														<td><c:out value="${partenaire.telephone}"></c:out></td>
+														<td>
+															<button type="submit" class=" btn btn-info"
+																id="detailBtn"
+																onclick="location.href = 'detail?';">
+																<img alt="action" src="Assets/images/icons/editer.jpg">
+															</button>
+														</td>
+														</tr>
+												</c:forEach>		
 											</tbody>
-											
 										</table>
 									</div>
 								</div>
