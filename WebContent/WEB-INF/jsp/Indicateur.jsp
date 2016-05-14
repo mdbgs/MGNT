@@ -24,42 +24,42 @@
 								<div class="panel-heading">Tableau des Indicateurs</div>
 								<div class="panel-body">
 									<div class="table-responsive">
-<!-- 										<table class="table table-striped table-bordered table-hover" -->
-<!-- 											id="myDataTable"> -->
-<!-- 											<thead> -->
-<!-- 												<tr> -->
-<!-- 													<th>Num&eacutero</th> -->
-<!-- 													<th>Libell&eacute</th> -->
-<!-- 													<th>Objectif</th> -->
-<!-- 													<th>Sigle</th> -->
-<!-- 													<th>Graphe</th> -->
-<!-- 												</tr> -->
-<!-- 											</thead> -->
-<!-- 											<tbody id="indicateurTab"> -->
-<%-- 												<c:forEach items="${indicateurRecu.indicateurList}" --%>
-<%-- 													var="indicat"> --%>
-<!-- 													<tr> -->
-<%-- 														<td>Indicateur <c:out value="${indicat.numero}"></c:out></td> --%>
-<%-- 														<td><c:out value="${indicat.libelle}"></c:out></td> --%>
-<%-- 														<td><c:out value="${indicat.objectif}"></c:out></td> --%>
-<%-- 														<td><c:out value="${indicat.sigle}"></c:out></td> --%>
-<!-- 														<td class="row"><button type="submit" -->
-<!-- 																class=" btn btn-info" -->
-<%-- 																onclick="location.href = 'indicator?sendIndicateur=${indicat.numero}';" --%>
-<!-- 																id="detailBtn"> -->
-<!-- 																<img alt="action" src="Assets/images/icons/graphe.jpg"> -->
-<!-- 																<span>Voir le graphe</span> -->
-<!-- 															</button> -->
-<!-- 															<button type="submit" class=" btn btn-info" -->
-<!-- 																onclick="location.href = 'graphe';" id="detailBtn"> -->
-<!-- 																<img alt="action" src="Assets/images/icons/graphe1.jpg"> -->
-<!-- 																<span>Voir le graphe</span> -->
-<!-- 															</button></td> -->
-<!-- 													</tr> -->
-<%-- 												</c:forEach> --%>
-<!-- 											</tbody> -->
+										<table class="table table-striped table-bordered table-hover"
+											id="myDataTable">
+											<thead>
+												<tr>
+													<th>Num&eacutero</th>
+													<th>Libell&eacute</th>
+													<th>Objectif</th>
+													<th>Sigle</th>
+													<th>Graphe</th>
+												</tr>
+											</thead>
+											<tbody id="indicateurTab">
+												<c:forEach items="${indicateurRecu.indicateurList}"
+												var="indicat">
+													<tr>
+														<td>Indicateur <c:out value="${indicat.numero}"></c:out></td>
+														<td><c:out value="${indicat.libelle}"></c:out></td>
+														<td><c:out value="${indicat.objectif}"></c:out></td>
+														<td><c:out value="${indicat.sigle}"></c:out></td>
+														<td class="row"><button type="submit"
+																class=" btn btn-info"
+																onclick="location.href = 'indicator?sendIndicateur=${indicat.numero}';"
+																id="detailBtn">
+																<img alt="action" src="Assets/images/icons/graphe.jpg">
+																<span>Voir le graphe</span>
+															</button>
+															<button type="submit" class=" btn btn-info"
+																onclick="location.href = 'graphe';" id="detailBtn">
+																<img alt="action" src="Assets/images/icons/graphe1.jpg">
+																<span>Voir le graphe</span>
+															</button></td>
+													</tr>
+ 												</c:forEach> 
+											</tbody>
 
-<!-- 										</table> -->
+										</table>
 									</div>
 								</div>
 							</div>
@@ -74,71 +74,6 @@
 			</div>
 		</div>
 	</section>
-	<div>
-		<c:set var="listIndic" value="${indicateurRecu.indicateurList}"></c:set>
-		<c:set var="rowsCount" value="${rowsCount}" />
-		<c:set var="rowsPerPage" value="3" />
-		<c:set var="pageNumber" value="${param.pageNumber}" />
-		<c:set var="a">
-			<fmt:formatNumber value="${rowsCount/rowsPerPage}"
-				maxFractionDigits="0" />
-		</c:set>
-		<c:set var="b" value="${rowsCount/rowsPerPage}" />
-		<c:choose>
-			<c:when test="${a==0}">
-				<c:set var="numberOfPages" value="1" scope="session" />
-			</c:when>
-
-			<c:when test="${b>a}">
-				<c:set var="xxx" value="${b%a}" />
-				<c:if test="${xxx>0}">
-					<c:set var="numberOfPages" value="${b-xxx+1}" scope="session" />
-				</c:if>
-			</c:when>
-
-			<c:when test="${a>=b}">
-				<c:set var="numberOfPages" value="${a}" scope="session" />
-			</c:when>
-		</c:choose>
-		<c:set var="start" value="${pageNumber*rowsPerPage-rowsPerPage}" />
-		<c:set var="stop" value="${pageNumber*rowsPerPage-1}" />
-		<center>
-			<c:set var="columns" value="0" scope="session" />
-			<c:forEach items="${listIndic}" var="indic">
-				<c:set var="columns" value="${columns+1}" />
-			</c:forEach>
-			<c:set var="columns" value="${columns-1}" />
-
-			<c:forEach items="${listIndic}" var="indicat">
-					<div>
-				<label>Indicateur <c:out value="${indicat.numero}"></c:out></label>
-				<label>libelle<c:out value="${indicat.libelle}"></c:out></label>
-				<label>objectif<c:out value="${indicat.objectif}"></c:out></label>
-				<label>sigle<c:out value="${indicat.sigle}"></c:out></label>
-					</div>
-			</c:forEach>
-
-			<%--For displaying Previous link --%>
-			<c:if test="${pageNumber gt 1}">
-				<a href="dispresult.jsp?pageNumber=${pageNumber - 1}">Previous</a>
-			</c:if>
-			<c:forEach begin="1" end="${numberOfPages}" var="i">
-				<c:choose>
-					<c:when test="${i!=pageNumber}">
-						<a href="dispresult.jsp?pageNumber=<c:out value="${i}"/>"><c:out
-								value="${i}" /></a>
-					</c:when>
-					<c:otherwise>
-						<c:out value="${i}" />
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			<%--For displaying Next link --%>
-			<c:if test="${pageNumber lt numberOfPages}">
-				<a href="dispresult.jsp?pageNumber=${pageNumber + 1}">Next</a>
-			</c:if>
-		</center>
-	</div>
 	<c:import url="piedsPage.jsp"></c:import>
 	<script>
 		$(document).ready(function() {

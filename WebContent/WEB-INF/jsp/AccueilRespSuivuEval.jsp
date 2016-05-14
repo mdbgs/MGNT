@@ -7,13 +7,13 @@
 <html>
 <head>
 <body id="scroll_top">
+	<c:import url="sidebar.jsp"></c:import>
 	<section id="header_areaBis"> </section>
 	<section id="header_bottom_area"></section>
 	<section id="content_area">
 	<div class="content">
 		<c:import url="entete.jsp"></c:import>
 		<div class="fix main_content_area">
-			<p>Rappel important</p>
 			</div>
 		</div>
 	<c:import url="piedsPage.jsp"></c:import>

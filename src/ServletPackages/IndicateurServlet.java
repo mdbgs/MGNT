@@ -20,7 +20,13 @@ public class IndicateurServlet extends ConnexionServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req, resp);
+		doPost(req, resp);if (req.getParameter("pageNumber") == null){
+			System.err.println("je suis une valeur null!!!!!");
+			req.setAttribute("pageNumber", 1);}
+		else{
+			req.setAttribute("pageNumber", req.getParameter("pageNumber"));
+			System.err.println("je suis une valeur égale à : "+req.getParameter("pageNumber"));	
+		}
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Indicateur.jsp").forward(req, resp);
 	}
 
@@ -37,6 +43,7 @@ public class IndicateurServlet extends ConnexionServlet {
 			System.out.println("Taille de la liste : " + indicateur.getIndicateurList().size());
 			req.setAttribute("indicateurRecu", indicateur);
 			req.setAttribute("rowsCount", indicateur.getIndicateurList().size());
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();

@@ -41,21 +41,32 @@ jQuery(document).ready(function($) {
 });
 /* My code */
 
+function lockOpen() {
+	$("#lockOpen").fadeOut();
+	$("#lockClose").fadeIn();
+	$(".sidebarMenu").addStyle("margin-left:-50px;background-color:red;");
 
-function detailButton(id){
+};
+function lockClose() {
+	$("#lockClose").fadeOut();
+	$("#lockOpen").fadeIn();
+
+};
+
+function detailButton(id) {
 	$("#overlay").fadeIn();
 	$("#cadre").fadeIn();
 	var myID = id;
 };
 
-function allActivite(){
+function allActivite() {
 	$("#allAct").fadeIn();
 	$("#appAct").fadeOut();
 	$("#recAct").fadeOut();
 	$("#parAct").fadeOut();
 	$("#gouvAct").fadeOut();
 };
-function rechercheActivite(){
+function rechercheActivite() {
 	$("#allAct").fadeOut();
 	$("#appAct").fadeOut();
 	$("#recAct").fadeIn();
@@ -63,7 +74,7 @@ function rechercheActivite(){
 	$("#gouvAct").fadeOut();
 
 };
-function apprentissageActivite(){
+function apprentissageActivite() {
 	$("#allAct").fadeOut();
 	$("#appAct").fadeIn();
 	$("#recAct").fadeOut();
@@ -71,7 +82,7 @@ function apprentissageActivite(){
 	$("#gouvAct").fadeOut();
 
 };
-function partenaireActivite(){
+function partenaireActivite() {
 	$("#allAct").fadeOut();
 	$("#appAct").fadeOut();
 	$("#recAct").fadeOut();
@@ -79,7 +90,7 @@ function partenaireActivite(){
 	$("#gouvAct").fadeOut();
 
 };
-function gouvernanceActivite(){
+function gouvernanceActivite() {
 	$("#allAct").fadeOut();
 	$("#appAct").fadeOut();
 	$("#recAct").fadeOut();
@@ -87,57 +98,55 @@ function gouvernanceActivite(){
 	$("#gouvAct").fadeIn();
 
 };
-function allEtudiant(){
+function allEtudiant() {
 	$("#allEtud").fadeIn();
 	$("#natEtud").fadeOut();
 	$("#femEtud").fadeOut();
 	$("#regEtud").fadeOut();
 };
-function natEtudiant(){
+function natEtudiant() {
 	$("#allEtud").fadeOut();
 	$("#natEtud").fadeIn();
 	$("#femEtud").fadeOut();
 	$("#regEtud").fadeOut();
 };
-function regEtudiant(){
+function regEtudiant() {
 	$("#allEtud").fadeOut();
 	$("#natEtud").fadeOut();
 	$("#femEtud").fadeOut();
 	$("#regEtud").fadeIn();
 };
-function femEtudiant(){
+function femEtudiant() {
 	$("#allEtud").fadeOut();
 	$("#natEtud").fadeOut();
 	$("#femEtud").fadeIn();
 	$("#regEtud").fadeOut();
 };
-function allPublication(){
+function allPublication() {
 	$("#all").fadeIn();
 	$("#these").fadeOut();
 	$("#memoire").fadeOut();
 	$("#article").fadeOut();
 };
-function thesePublication(){
+function thesePublication() {
 	$("#all").fadeOut();
 	$("#these").fadeIn();
 	$("#memoire").fadeOut();
 	$("#article").fadeOut();
 };
-function memoirePublication(){
+function memoirePublication() {
 	$("#all").fadeOut();
 	$("#these").fadeOut();
 	$("#memoire").fadeIn();
 	$("#article").fadeOut();
 };
-function articlePublication(){
+function articlePublication() {
 	$("#all").fadeOut();
 	$("#these").fadeOut();
 	$("#memoire").fadeOut();
 	$("#article").fadeIn();
 };
-/*End my code*/
-
-
+/* End my code */
 
 $(function() {
 	$('a[href*=#]:not([href=#])').click(
@@ -170,6 +179,5 @@ selectnav('nav2', {
 });
 
 $('.dateShow').datepicker({
-    format: "dd/mm/yyyy"
+	format : "dd/mm/yyyy"
 });
-
