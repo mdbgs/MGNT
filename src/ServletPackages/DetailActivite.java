@@ -40,6 +40,7 @@ public class DetailActivite extends ConnexionServlet {
 		Indicateur indicateur=null;
 		Teacher teacher=null;
 		ResultSet result=null;
+		
 		try {
 			connection = this.getDataSource().getConnection();
 			//Indicateur

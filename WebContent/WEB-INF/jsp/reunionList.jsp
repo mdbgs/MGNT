@@ -41,7 +41,7 @@
 														<td>
 															<button type="submit" class=" btn btn-info"
 																id="detailBtn"
-																onclick="location.href = 'detail?';">
+																onclick="location.href = 'pdf?myID=${reunion.iDMeeting}';">
 																<img alt="action" src="Assets/images/icons/editer.jpg">
 															</button>
 														</td>
