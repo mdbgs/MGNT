@@ -50,8 +50,8 @@ create table Compte
    pseudo             varchar(255)                    not null,
    password             varchar(500)                    not null,
    dateinscription            datetime                    default null,
-   statut				varchar(10)						not null
    photo				VARCHAR(500) 							  null,
+   statut				varchar(10)						not null,
    constraint PK_COMPTE primary key clustered (pseudo),
    constraint AK_IDETUDIANT_ENSEIGNA unique (pseudo)
 );
@@ -347,40 +347,18 @@ alter table Stage
       on update cascade
       on delete cascade;
 
-alter table activiteResponsable
-   add constraint FK_ACTIVITE_ACTIVITER_ACTIVITE foreign key (IDactivite)
-      references Activite (IDactivite)
-      on update cascade
-      on delete cascade;
 
-alter table activiteResponsable
-   add constraint FK_ACTIVITE_ACTIVITER_RESPONSA foreign key (iDResponsable)
-      references Responsable (iDResponsable)
-      on update cascade
-      on delete cascade;
-
-alter table enseignantFormation
-   add constraint FK_ENSEIGNA_ENSEIGNAN_ENSEIGNA foreign key (iDEnseignat)
-      references Enseignant (iDEnseignat)
-      on update cascade
-      on delete cascade;
-
-alter table enseignantFormation
-   add constraint FK_ENSEIGNA_ENSEIGNAN_FORMATIO foreign key (IDFormation)
-      references Formation (IDFormation)
-      on update cascade
-      on delete cascade;
 /*Insertion des comptes d'utilisateur de la plateforme */
-insert into compte values('m.sall','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
-insert into compte values('mme.sy','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
-insert into compte values('mlle.thiam','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
-insert into compte values('m.dembele','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
-insert into compte values('m.lo','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
-insert into compte values('m.diop','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
-insert into compte values('m.ndiaye','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
-insert into compte values('ucad','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
-insert into compte values('woldBank','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
-insert into compte values('m.maiga','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
+insert into compte values('m.sall','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'','actif');
+insert into compte values('mme.sy','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'','actif');
+insert into compte values('mlle.thiam','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'','actif');
+insert into compte values('m.dembele','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'','actif');
+insert into compte values('m.lo','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'','actif');
+insert into compte values('m.diop','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'','actif');
+insert into compte values('m.ndiaye','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'','actif');
+insert into compte values('ucad','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'','actif');
+insert into compte values('worldBank','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'','actif');
+insert into compte values('m.maiga','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'','actif');
 /*Insertion des differentes roles de l'application*/
 INSERT INTO roles VALUES ('admin');
 INSERT INTO roles VALUES ('etudiant');
@@ -404,16 +382,16 @@ INSERT INTO users_roles  VALUES ('worldBank', 'BanqueMondial');
 INSERT INTO users_roles  VALUES ('m.maiga', 'viceCoordonnateur');
 INSERT INTO users_roles  VALUES ('mlle.thiam', 'etudiant');
 /* insertion des utilisateurs standard*/
-INSERT INTO responsable  VALUES (null, 'm.sall','Moussa','Sall','Aînoumady 5','sall.moussa@sanarsoft.com','1','Admin','admin');
-INSERT INTO responsable  VALUES (null, 'mme.sy','Ndeye Aminata Diagne','Sy','Saint-Louis','inconnue','0','Responsable de suivie et évaluation','responsable_Suivi_Evaluation');
-INSERT INTO responsable  VALUES (null, 'm.lo','Moussa','Lo','Ngallele','moussa.lo@ugb.edu.sn','1','Coordonnateur du CEAMITIC','coordonnateur');
-INSERT INTO responsable  VALUES (null, 'm.ndiaye','Diéne','Ndiaye','Saint-Louis','diene.ndiaye@ugb.edu.sn','1','responsable saisie','responsable_Saisie');
-INSERT INTO responsable  VALUES (null, 'm.diop','Cheikh Talibouya','Diop','Saint-Louis','cheikh.talibouya.diop@ugb.edu.sn','1','responsable contrôle','responsable_Controle');
-INSERT INTO responsable  VALUES (null, 'm.maiga','Monsieur','maiga','Saint-Louis','mamadou.maiga@ugb.edu.sn','1','vice Coordonnateur','viceCoordonnateur');
-insert into enseignant values(null,'m.dembele','Dembele','Jean Marie','Enseignant Chercheur','Sénégalaise','Dakar','m.dembele@gmail.com','inconnue','234','ugb');
+INSERT INTO responsable  VALUES (null, 'm.sall','Sall','Moussa','Aînoumady 5','772349186','sall.moussa@sanarsoft.com','1','Admin','admin');
+INSERT INTO responsable  VALUES (null, 'mme.sy','Ndeye Aminata Diagne','Sy','Saint-Louis','77777777','inconnue','0','Responsable de suivie et évaluation','responsable_Suivi_Evaluation');
+INSERT INTO responsable  VALUES (null, 'm.lo','Moussa','Lo','Ngallele','inconnue','moussa.lo@ugb.edu.sn','1','Coordonnateur du CEAMITIC','coordonnateur');
+INSERT INTO responsable  VALUES (null, 'm.ndiaye','Diéne','Ndiaye','Saint-Louis','inconnue','diene.ndiaye@ugb.edu.sn','1','responsable saisie','responsable_Saisie');
+INSERT INTO responsable  VALUES (null, 'm.diop','Cheikh Talibouya','Diop','Saint-Louis','inconnue','cheikh.talibouya.diop@ugb.edu.sn','1','responsable contrôle','responsable_Controle');
+INSERT INTO responsable  VALUES (null, 'm.maiga','Monsieur','maiga','Saint-Louis','inconnue','mamadou.maiga@ugb.edu.sn','1','vice Coordonnateur','viceCoordonnateur');
+insert into enseignant values(null,'m.dembele','Dembele','Jean Marie','Enseignant Chercheur','Sénégalaise','Dakar','m.dembele@gmail.com','inconnue','234',1,'ugb');
 insert into etudiant values (null,'mlle.thiam', 'Awa','Thiam','1992/12/12','ngnith','master II','Sénégalaise','ngnith','thiameva21@hotmail.com','776683547','234','0','P22101','Thiam','rokhaya','770175867','hlm dakar','Informatique','semestre 1');
 insert into partenaires values (null,'ucad', 'Université cheikh Anta Diop','pédagogique','Point E Dakar','inconnue','contact@ucad.sn','inconnu','partenariat','science de l''ingenierie','2016/12/12','2050/12/12','excellence dans les TICS','Etudes des maladies véhiculées par les rongeurs au sénégal');
-insert into partenaires values (null,'world', 'Banque Mondiale','financier','inconnu','inconnue','contact@ucad.sn','inconnu','partenariat','financière','2016/12/12','2050/12/12','excellence dans les TICS','Etudes des maladies véhiculées par les rongeurs au sénégal');
+insert into partenaires values (null,'worldBank', 'Banque Mondiale','financier','inconnu','inconnue','contact@ucad.sn','inconnu','partenariat','financière','2016/12/12','2050/12/12','excellence dans les TICS','Etudes des maladies véhiculées par les rongeurs au sénégal');
 
 INSERT INTO Activite VALUES
 	(null,
