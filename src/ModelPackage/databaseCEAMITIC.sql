@@ -29,6 +29,7 @@ create table Animateur_Relecteur
 (
    iDAnimateur          integer                        not null AUTO_INCREMENT,
    iDpartenaire         integer                        not null ,
+   pseudo             varchar(255)                    not null,
    nom                  varchar(100)                   not null,
    prenom               varchar(100)                   not null,
    mail                 varchar(100)                   not null,
@@ -46,9 +47,10 @@ create table Animateur_Relecteur
 /*==============================================================*/
 create table Compte 
 (
-   pseudo               varchar(100)                    not null,
+   pseudo             varchar(255)                    not null,
    password             varchar(500)                    not null,
    dateinscription            datetime                    default null,
+   statut				varchar(10)						not null
    photo				VARCHAR(500) 							  null,
    constraint PK_COMPTE primary key clustered (pseudo),
    constraint AK_IDETUDIANT_ENSEIGNA unique (pseudo)
@@ -60,10 +62,10 @@ create table Compte
 create table Enseignant 
 (
    iDEnseignat          integer                        not null AUTO_INCREMENT,
-   pseudo             varchar(100)                    not null,
+   pseudo             varchar(255)                    not null,
    nom                  varchar(100)                   null,
    prenom               varchar(100)                   null,
-   niveau               varchar(100)                   null,
+   grade               varchar(100)                   null,
    nationalite          varchar(100)                   null,
    adresse              varchar(500)                   null,
    email                varchar(100)                   null,
@@ -81,7 +83,7 @@ create table Enseignant
 create table Etudiant 
 (
    iDEtudiant           integer                        not null AUTO_INCREMENT,
-   pseudo             varchar(100)                    not null,
+   pseudo             varchar(255)                    not null,
    nom                  varchar(100)                   null,
    prenom               varchar(100)                   null,
    dateNaissance       datetime                    default null,
@@ -93,7 +95,7 @@ create table Etudiant
    telephone            varchar(100)                   null,
    bp                   varchar(100)                   null,
    sexe                 integer                        null,
-   numeroEtudiant       varchar(100)                   null,
+   numeroEtudiant       varchar(100)                  not null,
    pacNom               varchar(100)                   null,
    pacPrenom            varchar(100)                   null,
    pacTel               varchar(100)                   null,
@@ -101,9 +103,9 @@ create table Etudiant
    programme            varchar(100)                        null,
    semestre             varchar(100)                        null,
    constraint PK_ETUDIANT primary key (iDEtudiant),
-   constraint AK_IDEtudiant unique (iDEtudiant)
+   constraint AK_IDEtudiant unique (iDEtudiant),
+   constraint AK_NUmEtudiant unique (numeroEtudiant)
 );
-
 /*==============================================================*/
 /* Table : Formation                                            */
 /*==============================================================*/
@@ -124,7 +126,7 @@ create table Formation
 create table Partenaires 
 (
    iDpartenaire         integer                        not null AUTO_INCREMENT,
-   pseudo             varchar(100)                    not null,
+   pseudo             varchar(255)                    not null,
    nom                  varchar(100)                   null,
    type                 varchar(100)                   null,
    adresse              varchar(100)                   null,
@@ -139,6 +141,7 @@ create table Partenaires
    projetConjoint       varchar(100)                   null,
    constraint PK_PARTENAIRES primary key (iDpartenaire)
 );
+
 
 /*==============================================================*/
 /* Table : ProgrammeCea                                         */
@@ -184,7 +187,7 @@ create table Publication
 create table Responsable 
 (
    iDResponsable        integer                        not null AUTO_INCREMENT,
-   pseudo             varchar(100)                    not null,
+   pseudo             varchar(255)                    not null,
    nom                  varchar(100)                   null,
    prenom               varchar(100)                   null,
    adresse              varchar(100)                   null,
@@ -239,33 +242,11 @@ CREATE TABLE roles (
 rolename varchar(120) NOT NULL PRIMARY KEY
 );
 CREATE TABLE users_roles (
-pseudo varchar(100)                    not null,
-rolename varchar(120) NOT NULL,
+   pseudo             varchar(255)                    not null,
+   rolename varchar(120) NOT NULL,
 PRIMARY KEY (pseudo, rolename),
 CONSTRAINT users_roles_fk1 FOREIGN KEY (pseudo) REFERENCES compte (pseudo),
 CONSTRAINT users_roles_fk2 FOREIGN KEY (rolename) REFERENCES roles (rolename)
-);
-
-
-/*==============================================================*/
-/* Table : activiteResponsable                                  */
-/*==============================================================*/
-create table activiteResponsable 
-(
-   iDResponsable        integer                        not null ,
-   IDactivite         integer                        not null,
-   constraint PK_ACTIVITERESPONSABLE primary key clustered (iDResponsable, IDactivite)
-);
-
-
-/*==============================================================*/
-/* Table : enseignantFormation                                  */
-/*==============================================================*/
-create table enseignantFormation 
-(
-   iDEnseignat          integer                        not null,
-   IDFormation          integer                        not null,
-   constraint PK_ENSEIGNANTFORMATION primary key clustered (iDEnseignat, IDFormation)
 );
 
 /*==============================================================*/
@@ -280,7 +261,7 @@ create table relecteurProgramme
 );
 
 /*==============================================================*/
-/* Table : Indicateur                                   */
+/* Table : Indicateur                                           */
 /*==============================================================*/
 create table Indicateur 
 (
@@ -292,7 +273,7 @@ create table Indicateur
    constraint PK_indicateur primary key clustered (idIndicateur)
 );
 insert into Indicateur values 
-	(null,1,'SUIVI DES INSCRIPTIONS DES à‰TUDIANTS DU CEA','Regionalité','SIEC'),
+	(null,1,'SUIVI DES INSCRIPTIONS DES ETUDIANTS DU CEA','Regionalité','SIEC'),
 	(null,2,'SUIVI DES PROGRAMMES DU CEA','Qualité de la formation','SPC'),
 	(null,3,'SUIVI DES STAGES','Sensibilisation','SDS'),
 	(null,5,'SUIVI DE LA FORMATION DES ENSEIGNANTS','Qualité de la formation','SFE'),
@@ -302,6 +283,11 @@ insert into Indicateur values
 alter table Animateur_Relecteur
    add constraint FK_ANIMATEU_PARTENAIR_PARTENAI foreign key (iDpartenaire)
       references Partenaires (iDpartenaire)
+      on update cascade
+      on delete cascade;
+alter table Animateur_Relecteur
+   add constraint FK_ANIMATEU_Compte foreign key (pseudo)
+      references compte (pseudo)
       on update cascade
       on delete cascade;
 
@@ -385,16 +371,16 @@ alter table enseignantFormation
       on update cascade
       on delete cascade;
 /*Insertion des comptes d'utilisateur de la plateforme */
-insert into compte values('m.sall','ceamitic2016',2016/04/04,'');
-insert into compte values('mme.sy','ceamitic2016',2016/04/04,'');
-insert into compte values('mlle.thiam','ceamitic2016',2016/04/04,'');
-insert into compte values('m.dembele','ceamitic2016',2016/04/04,'');
-insert into compte values('m.lo','ceamitic2016',2016/04/04,'');
-insert into compte values('m.diop','ceamitic2016',2016/04/04,'');
-insert into compte values('m.ndiaye','ceamitic2016',2016/04/04,'');
-insert into compte values('ucad','ceamitic2016',2016/04/04,'');
-insert into compte values('woldBank','ceamitic2016',2016/04/04,'');
-insert into compte values('m.maiga','ceamitic2016',2016/04/04,'');
+insert into compte values('m.sall','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
+insert into compte values('mme.sy','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
+insert into compte values('mlle.thiam','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
+insert into compte values('m.dembele','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
+insert into compte values('m.lo','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
+insert into compte values('m.diop','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
+insert into compte values('m.ndiaye','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
+insert into compte values('ucad','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
+insert into compte values('woldBank','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
+insert into compte values('m.maiga','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµàl#HPA8',2016/04/04,'');
 /*Insertion des differentes roles de l'application*/
 INSERT INTO roles VALUES ('admin');
 INSERT INTO roles VALUES ('etudiant');
@@ -414,9 +400,20 @@ INSERT INTO users_roles  VALUES ('m.lo', 'coordonnateur');
 INSERT INTO users_roles  VALUES ('m.ndiaye', 'responsable_Saisie');
 INSERT INTO users_roles  VALUES ('m.diop', 'responsable_Controle');
 INSERT INTO users_roles  VALUES ('ucad', 'partenaire');
-INSERT INTO users_roles  VALUES ('woldBank', 'BanqueMondial');
+INSERT INTO users_roles  VALUES ('worldBank', 'BanqueMondial');
 INSERT INTO users_roles  VALUES ('m.maiga', 'viceCoordonnateur');
 INSERT INTO users_roles  VALUES ('mlle.thiam', 'etudiant');
+/* insertion des utilisateurs standard*/
+INSERT INTO responsable  VALUES (null, 'm.sall','Moussa','Sall','Aînoumady 5','sall.moussa@sanarsoft.com','1','Admin','admin');
+INSERT INTO responsable  VALUES (null, 'mme.sy','Ndeye Aminata Diagne','Sy','Saint-Louis','inconnue','0','Responsable de suivie et évaluation','responsable_Suivi_Evaluation');
+INSERT INTO responsable  VALUES (null, 'm.lo','Moussa','Lo','Ngallele','moussa.lo@ugb.edu.sn','1','Coordonnateur du CEAMITIC','coordonnateur');
+INSERT INTO responsable  VALUES (null, 'm.ndiaye','Diéne','Ndiaye','Saint-Louis','diene.ndiaye@ugb.edu.sn','1','responsable saisie','responsable_Saisie');
+INSERT INTO responsable  VALUES (null, 'm.diop','Cheikh Talibouya','Diop','Saint-Louis','cheikh.talibouya.diop@ugb.edu.sn','1','responsable contrôle','responsable_Controle');
+INSERT INTO responsable  VALUES (null, 'm.maiga','Monsieur','maiga','Saint-Louis','mamadou.maiga@ugb.edu.sn','1','vice Coordonnateur','viceCoordonnateur');
+insert into enseignant values(null,'m.dembele','Dembele','Jean Marie','Enseignant Chercheur','Sénégalaise','Dakar','m.dembele@gmail.com','inconnue','234','ugb');
+insert into etudiant values (null,'mlle.thiam', 'Awa','Thiam','1992/12/12','ngnith','master II','Sénégalaise','ngnith','thiameva21@hotmail.com','776683547','234','0','P22101','Thiam','rokhaya','770175867','hlm dakar','Informatique','semestre 1');
+insert into partenaires values (null,'ucad', 'Université cheikh Anta Diop','pédagogique','Point E Dakar','inconnue','contact@ucad.sn','inconnu','partenariat','science de l''ingenierie','2016/12/12','2050/12/12','excellence dans les TICS','Etudes des maladies véhiculées par les rongeurs au sénégal');
+insert into partenaires values (null,'world', 'Banque Mondiale','financier','inconnu','inconnue','contact@ucad.sn','inconnu','partenariat','financière','2016/12/12','2050/12/12','excellence dans les TICS','Etudes des maladies véhiculées par les rongeurs au sénégal');
 
 INSERT INTO Activite VALUES
 	(null,
