@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,43 +19,46 @@ import BeanPackage.NumericConstant;
 /**
  * Servlet implementation class Animateur_RelecteurFormulaireServlet
  */
-@WebServlet("/Animateur_RelecteurFormulaireServlet")
-public class Animateur_RelecteurFormulaireServlet extends ConnexionServlet implements NumericConstant {
+public class Animateur_RelecteurFormulaireServlet extends GetAuthorisationUsers implements NumericConstant {
 	private static final long serialVersionUID = 1L;
 	private Connection connection;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Animateur_Relecteur.jsp").forward(req, resp);
+		try {
+			connection = this.getDataSource().getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+   this.doGet(req, resp, "responsable_Suivi_Evaluation", "Animateur_Relecteur.jsp", connection);
 	}
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String resultat;
 		Map<String, String> errors = new HashMap<String, String>();
 		/* Récupération des champs du formulaire. */
 		String nom = request.getParameter(LASTNAME);
 		String prenom = request.getParameter(FIRSTNAME);
 		String email = request.getParameter(MAIL);
-		String telephone=request.getParameter(PHONE);
-		String boitePostal=request.getParameter(BP);
-		String affliationInstitutionnelle=request.getParameter(INSTITUTIONAFFILIATION);
-		String type=request.getParameter(TYPE);
-		
+		String telephone = request.getParameter(PHONE);
+		String boitePostal = request.getParameter(BP);
+		String affliationInstitutionnelle = request.getParameter(INSTITUTIONAFFILIATION);
+		String type = request.getParameter(TYPE);
+
 		Date date = new Date();
-		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		 ConnexionServlet servlet = new ConnexionServlet();
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		//ConnexionServlet servlet = new ConnexionServlet();
 		try {
-			connection = servlet.getDataSource().getConnection();
-			//date = dateFormat.parse(dateN);
-			String valueFormation="%"+1+"%'"+nom+"'%'"+prenom+"'"+"%'"+email+"'%'"+telephone+"'%'"+boitePostal+"'%" + "'"+affliationInstitutionnelle+"'%" + "'"+type+"'";
-			int rs= ComputeQueryBean.insertDatabase(valueFormation, "Animateur_Relecteur",connection);
-			
+			connection = this.getDataSource().getConnection();
+			// date = dateFormat.parse(dateN);
+			String valueFormation = "%" + 1 + "%'" + nom + "'%'" + prenom + "'" + "%'" + email + "'%'" + telephone
+					+ "'%'" + boitePostal + "'%" + "'" + affliationInstitutionnelle + "'%" + "'" + type + "'";
+			int rs = ComputeQueryBean.insertDatabase(valueFormation, "Animateur_Relecteur", connection);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} 
-	
-		
+		}
+
 		/* Validation du champ prenom. */
 		try {
 
@@ -67,7 +69,7 @@ public class Animateur_RelecteurFormulaireServlet extends ConnexionServlet imple
 			errors.put(FIRSTNAME, e.getMessage());
 
 		}
-		
+
 		/* Validation du champ nom. */
 		try {
 
@@ -78,7 +80,7 @@ public class Animateur_RelecteurFormulaireServlet extends ConnexionServlet imple
 			errors.put(LASTNAME, e.getMessage());
 
 		}
-		
+
 		/* Validation du champ email. */
 		try {
 
@@ -89,15 +91,15 @@ public class Animateur_RelecteurFormulaireServlet extends ConnexionServlet imple
 			errors.put(MAIL, e.getMessage());
 
 		}
-		/* Validation du champ téléphone*/
-		try{
+		/* Validation du champ téléphone */
+		try {
 			validationTelephone(telephone);
-			
-		} catch(Exception e){
-			
+
+		} catch (Exception e) {
+
 			errors.put(PHONE, e.getMessage());
 		}
-		
+
 		try {
 
 			validationBoitePostale(boitePostal);
@@ -117,7 +119,6 @@ public class Animateur_RelecteurFormulaireServlet extends ConnexionServlet imple
 
 		}
 
-		
 		if (errors.isEmpty()) {
 
 			resultat = "Succès de l'inscription.";
@@ -135,36 +136,33 @@ public class Animateur_RelecteurFormulaireServlet extends ConnexionServlet imple
 
 		/* Transmission de la paire d'objets request/response à notre JSP */
 
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Animateur_Relecteur.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Animateur_Relecteur.jsp").forward(request,
+				response);
 
 	}
-	
+
 	private void validationPrenom(String prenom) throws Exception {
-		if(prenom.trim().length()==0)
+		if (prenom.trim().length() == 0)
 			throw new Exception("Veuillez saisir le prénom svp");
-			else
-				if (prenom != null) {
-					if(!prenom.matches("^\\D+$" ))
-						throw new Exception("Le prenom doit uniquement contenir des lettres");
-				
-			}
-		
-		
-	}
-
-	private void validationNom(String nom) throws Exception {
-		if(nom.trim().length()==0)
-			throw new Exception("Veuillez saisir le nom svp");
-			else
-				if (nom != null) {
-					if(!nom.matches("^\\D+$" ))
-						throw new Exception("Le nom doit uniquement contenir des lettres");
+		else if (prenom != null) {
+			if (!prenom.matches("^\\D+$"))
+				throw new Exception("Le prenom doit uniquement contenir des lettres");
 
 		}
 
 	}
-	
-	
+
+	private void validationNom(String nom) throws Exception {
+		if (nom.trim().length() == 0)
+			throw new Exception("Veuillez saisir le nom svp");
+		else if (nom != null) {
+			if (!nom.matches("^\\D+$"))
+				throw new Exception("Le nom doit uniquement contenir des lettres");
+
+		}
+
+	}
+
 	private void validationEmail(String email) throws Exception {
 
 		if (email != null && email.trim().length() != 0) {
@@ -182,35 +180,35 @@ public class Animateur_RelecteurFormulaireServlet extends ConnexionServlet imple
 		}
 
 	}
-	private void validationTelephone(String telephone) throws Exception{
-		if ( telephone != null ) {
 
-            if ( !telephone.matches( "^\\d+$" ) ) {
+	private void validationTelephone(String telephone) throws Exception {
+		if (telephone != null) {
 
-                throw new Exception( "Le numéro de téléphone est incorrect." );
+			if (!telephone.matches("^\\d+$")) {
 
-            } else if ( telephone.length() < 9 ) {
+				throw new Exception("Le numéro de téléphone est incorrect.");
 
-                throw new Exception( "Le numéro de téléphone doit contenir au moins 9 chiffres." );
+			} else if (telephone.length() < 9) {
 
-            }
+				throw new Exception("Le numéro de téléphone doit contenir au moins 9 chiffres.");
 
-       } else 
-            throw new Exception( "Merci d'entrer un numéro de téléphone." );
-        
-		
+			}
+
+		} else
+			throw new Exception("Merci d'entrer un numéro de téléphone.");
+
 	}
 
-	private void validationAffiliationIns(String affliationIns) throws Exception{
-		if(affliationIns.trim().length()==0)
+	private void validationAffiliationIns(String affliationIns) throws Exception {
+		if (affliationIns.trim().length() == 0)
 			throw new Exception("Veuillez saisir l'affiliation institutionnelle svp");
-		
+
 	}
-	
-	private void validationBoitePostale(String boitePostale) throws Exception{
-		if(boitePostale.trim().length()==0)
+
+	private void validationBoitePostale(String boitePostale) throws Exception {
+		if (boitePostale.trim().length() == 0)
 			throw new Exception("Veuillez saisir la boite postale svp");
-		
+
 	}
-	
+
 }

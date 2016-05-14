@@ -24,7 +24,7 @@ public class ComputeQueryBean implements NumericConstant {
 			statement = connexion.createStatement();
 			String request = "INSERT INTO " + table + " values(";
 			if (!table.equals("compte"))
-			request += "null";
+				request += "null";
 			request += listRequest[0];
 			for (int i = 1; i < nbre; i++) {
 				request += "," + listRequest[i];
@@ -41,7 +41,8 @@ public class ComputeQueryBean implements NumericConstant {
 		}
 		return result;
 	}
-	//methode pour inserer dans users roles
+
+	// methode pour inserer dans users roles
 	public static int insertUsersRoles(String value, String table, Connection connexion) throws SQLException {
 		String[] listRequest = value.split("%");
 		int nbre = listRequest.length;
@@ -52,7 +53,7 @@ public class ComputeQueryBean implements NumericConstant {
 			statement = connexion.createStatement();
 			String request = "INSERT INTO " + table + " values(";
 			if (!table.equals("users_roles"))
-			request += "null";
+				request += "null";
 			request += listRequest[0];
 			for (int i = 1; i < nbre; i++) {
 				request += "," + listRequest[i];
@@ -126,12 +127,61 @@ public class ComputeQueryBean implements NumericConstant {
 		}
 		return result;
 	}
-	//selectionne le nom du photo de 
-	public static ResultSet selectPseudo(Connection connection,String pseudo) {
+
+	public static ResultSet selectnum(String table, Connection connection) {
 		ResultSet result = null;
 		try {
 			Statement statement = connection.createStatement();
-			String query = "SELECT photo FROM compte where pseudo="+"'"+pseudo+"';";
+			String query = "SELECT referenceTableauDeSaisie, COUNT(referenceTableauDeSaisie) AS nombre FROM activite GROUP BY referenceTableauDeSaisie;";
+			System.out.println(query);
+			result = statement.executeQuery(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	// selectionne le nom et le prenom de l'utilisation pour un pseudo donné
+	// :administrateur
+	public static ResultSet selectNomPrenom(Connection connection, String pseudo, String PseudoMOdifié) {
+		ResultSet result = null;
+		int result1 = 0;
+		int result2 = 0;
+		try {
+			Statement statement = connection.createStatement();
+			String query = "select nom,prenom from etudiant where pseudo=" + "'" + pseudo + "'"
+					+ " UNION ALL select nom,prenom from enseignant where pseudo=" + "'" + pseudo + "'"
+					+ "  UNION ALL select nom,prenom from responsable where pseudo=" + "'" + pseudo + "'" + ";";
+			System.out.println(query);
+			if (PseudoMOdifié != null) {
+				int taillePseudo = PseudoMOdifié.length() - 5;
+				if (PseudoMOdifié.substring(taillePseudo).equals("actif")) 
+				{
+					String query1 = "update compte SET statut='inactif' where pseudo=" + "'"
+							+ PseudoMOdifié.substring(0, PseudoMOdifié.length() - 6) + "'";
+					result1 = statement.executeUpdate(query1);
+				}
+				if (PseudoMOdifié.substring((PseudoMOdifié.length()-7)).equals("inactif"))
+					 {
+						String query2 = "update compte SET statut='actif' where pseudo=" + "'"
+								+ PseudoMOdifié.substring(0, PseudoMOdifié.length()-8) + "'";
+						result1 = statement.executeUpdate(query2);
+					
+					}
+			}
+			result = statement.executeQuery(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	// selectionne le nom du photo de
+	public static ResultSet selectPseudo(Connection connection, String pseudo) {
+		ResultSet result = null;
+		try {
+			Statement statement = connection.createStatement();
+			String query = "SELECT photo FROM compte where pseudo=" + "'" + pseudo + "';";
 			System.out.println(query);
 			result = statement.executeQuery(query);
 		} catch (SQLException e) {
@@ -146,6 +196,19 @@ public class ComputeQueryBean implements NumericConstant {
 		try {
 			Statement statement = connection.createStatement();
 			String query = "SELECT * FROM " + table + " WHERE " + getAttributID(table) + "=" + id + ";";
+			result = statement.executeQuery(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	/** Select one rows of table by ID */
+	public static ResultSet selectAllByPseudo(String table, String pseudo, Connection connection) {
+		ResultSet result = null;
+		try {
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM " + table + " WHERE pseudo='" + pseudo + "';";
 			result = statement.executeQuery(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -371,9 +434,11 @@ public class ComputeQueryBean implements NumericConstant {
 		String result = null;
 		try {
 			statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("Select rolename from users_roles where pseudo='" + pseudo + "';");
-			System.out.println("ComputeQueryBean.userRole() :" + "Select rolename from users_roles where pseudo='" + pseudo + "';");
-			while(resultSet.next()){
+			ResultSet resultSet = statement
+					.executeQuery("Select rolename from users_roles where pseudo='" + pseudo + "';");
+			System.out.println("ComputeQueryBean.userRole() :" + "Select rolename from users_roles where pseudo='"
+					+ pseudo + "';");
+			while (resultSet.next()) {
 				result = resultSet.getString("rolename");
 			}
 		} catch (SQLException e) {

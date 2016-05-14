@@ -1,41 +1,46 @@
 package ServletPackages;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class ProgrammeListServlet
- */
-@WebServlet("/ProgrammeListServlet")
-public class ProgrammeListServlet extends HttpServlet {
+import BeanPackage.ComputeQueryBean;
+import BeanPackage.ProgrammeBean;
+import BeanPackage.PublicationBean;
+import ModelPackage.Programme;
+import ModelPackage.Publication;
+
+public class ProgrammeListServlet extends GetAuthorisationUsers {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ProgrammeListServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private java.sql.Connection connection;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/programmeList.jsp").forward(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+		this.doGet(request, response, "responsable_Suivi_Evaluation", "programmeList.jsp", connection);
 	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		ProgrammeBean programme = new ProgrammeBean();
+		try {
+			connection = this.getDataSource().getConnection();
+			ResultSet result = ComputeQueryBean.selectAll("Programmecea", connection);
+			while (result.next()) {
+				programme.addProgramInList(new Programme(result.getInt(1), result.getString(2), result.getString(3),
+						result.getString(4), result.getString(5), result.getString(6), result.getString(7),
+						result.getString(8), result.getString(9),Integer.toString(result.getInt(10)),Integer.toString(result.getInt(11)),
+						result.getString(12), result.getString(13), result.getString(14), Integer.toString(result.getInt(15))));
+			}
+			System.out.println("Taille de la liste : " + programme.getProgramList().size());
+			request.setAttribute("programRecu", programme);
+		} catch (SQLException e) {
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+			e.printStackTrace();
+		}
 	}
-
 }

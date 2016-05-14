@@ -13,7 +13,7 @@ import BeanPackage.ComputeQueryBean;
 import BeanPackage.IndicateurBean;
 import ModelPackage.Indicateur;
 
-public class IndicateurServlet extends ConnexionServlet {
+public class IndicateurServlet extends GetAuthorisationUsers {
 
 	private Connection connection;
 	private static final long serialVersionUID = 1L;
@@ -29,6 +29,7 @@ public class IndicateurServlet extends ConnexionServlet {
 		}
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Indicateur.jsp").forward(req, resp);
 	}
+	
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

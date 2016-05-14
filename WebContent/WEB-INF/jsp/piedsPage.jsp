@@ -48,6 +48,9 @@
 	<script src="Assets/plugins/jquery-2.0.3.min.js"></script>
 	<script src="Assets/plugins/dataTables/jquery.dataTables.js"></script>
 	<script src="Assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+	<script src="Assets/plugins/morris/morris-demo.js"></script>
+	<script src="Assets/plugins/morris/morris.js"></script>
+	<script src="Assets/plugins/morris/raphael-2.1.0.min.js"></script>
 	<script>
 		$(document).ready(function() {
 			$('#myDataTable').dataTable();

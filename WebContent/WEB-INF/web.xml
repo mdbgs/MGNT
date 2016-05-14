@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
@@ -8,11 +7,11 @@
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%% 	        Declaration de servlet          %%%%%%%%%%%%%%%%%-->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%% Declaration de servlet %%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<servlet>
 		<servlet-name>detail</servlet-name>
 		<servlet-class>ServletPackages.DetailActivite</servlet-class>
@@ -20,6 +19,14 @@
 	<servlet-mapping>
 		<servlet-name>detail</servlet-name>
 		<url-pattern>/detail</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>pdfindicateur2</servlet-name>
+		<servlet-class>ServletPackages.PdfIndicator2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>pdfindicateur2</servlet-name>
+		<url-pattern>/indicateur2</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>GrapheIA</servlet-name>
@@ -37,12 +44,19 @@
 		<servlet-name>itex</servlet-name>
 		<url-pattern>/pdf</url-pattern>
 	</servlet-mapping>
-
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%% 	      Declaration de Utilisateurs       %%%%%%%%%%%%%%%%%-->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<servlet>
+		<servlet-name>imageList</servlet-name>
+		<servlet-class>ServletPackages.ImageCourbeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>imageList</servlet-name>
+		<url-pattern>/monImage</url-pattern>
+	</servlet-mapping>
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%% Declaration de Utilisateurs %%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<servlet>
 		<servlet-name>Connexion</servlet-name>
 		<servlet-class>ServletPackages.ConnexionServlet</servlet-class>
@@ -52,11 +66,11 @@
 		<url-pattern>/connection</url-pattern>
 	</servlet-mapping>
 
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%% 	        Declaration de Formulaire       %%%%%%%%%%%%%%%%%-->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%% Declaration de Formulaire %%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<servlet>
 		<servlet-name>Etudiant_Formulaire</servlet-name>
 		<servlet-class>ServletPackages.EtudiantServletForm</servlet-class>
@@ -177,16 +191,24 @@
 	</servlet-mapping>
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%% 	             Pade d'accueil             %%%%%%%%%%%%%%%%%-->
+<!--%%%%%%%%%%%%%%%%%%%%% 	             Page d'accueil             %%%%%%%%%%%%%%%%%-->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<servlet>
 		<servlet-name>AdminAccueil</servlet-name>
-		<servlet-class>ServletPackages.AdminAccueilServlet</servlet-class>
+		<servlet-class>ServletPackages.AdminHomeServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AdminAccueil</servlet-name>
 		<url-pattern>/adminHome</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>EtudiantAccueil</servlet-name>
+		<servlet-class>ServletPackages.EtudiantHomeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EtudiantAccueil</servlet-name>
+		<url-pattern>/studentHome</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>responsable_Suivi_Evaluation</servlet-name>
@@ -212,12 +234,21 @@
 		<servlet-name>Home</servlet-name>
 		<url-pattern>/home</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>homeTeacher</servlet-name>
+		<servlet-class>ServletPackages.EnseignantHomeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>homeTeacher</servlet-name>
+		<url-pattern>/teacherHome</url-pattern>
+	</servlet-mapping>
+	
 
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%% 	              Autres pages              %%%%%%%%%%%%%%%%%-->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%% Autres pages %%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<servlet>
 		<servlet-name>Indicateur</servlet-name>
 		<servlet-class>ServletPackages.IndicateurServlet</servlet-class>
@@ -264,69 +295,69 @@
 		<url-pattern>/image</url-pattern>
 	</servlet-mapping>
 
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%% 	        Pages pour les listes           %%%%%%%%%%%%%%%%%-->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	
-  <servlet>
-    <servlet-name>ListPublication</servlet-name>
-    <servlet-class>ServletPackages.PublicationListServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ListPublication</servlet-name>
-    <url-pattern>/publicationList</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>ListStage</servlet-name>
-    <servlet-class>ServletPackages.StageList</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ListStage</servlet-name>
-    <url-pattern>/stageList</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>ListReunion</servlet-name>
-    <servlet-class>ServletPackages.ReunionListServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ListReunion</servlet-name>
-    <url-pattern>/meetingList</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>ListFormation</servlet-name>
-    <servlet-class>ServletPackages.FormationListServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ListFormation</servlet-name>
-    <url-pattern>/formationList</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>ListProgrammation</servlet-name>
-    <servlet-class>ServletPackages.ProgrammeListServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ListProgrammation</servlet-name>
-    <url-pattern>/programList</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>ListPartenaire</servlet-name>
-    <servlet-class>ServletPackages.PartenaireListServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ListPartenaire</servlet-name>
-    <url-pattern>/partnerList</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>ListAnimateur</servlet-name>
-    <servlet-class>ServletPackages.AnimateurListServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ListProgrammation</servlet-name>
-    <url-pattern>/animatorList</url-pattern>
-  </servlet-mapping>
-	
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%% Pages pour les listes %%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+	<servlet>
+		<servlet-name>ListPublication</servlet-name>
+		<servlet-class>ServletPackages.PublicationListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListPublication</servlet-name>
+		<url-pattern>/publicationList</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ListStage</servlet-name>
+		<servlet-class>ServletPackages.StageList</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListStage</servlet-name>
+		<url-pattern>/stageList</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ListReunion</servlet-name>
+		<servlet-class>ServletPackages.ReunionListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListReunion</servlet-name>
+		<url-pattern>/meetingList</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ListFormation</servlet-name>
+		<servlet-class>ServletPackages.FormationListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListFormation</servlet-name>
+		<url-pattern>/formationList</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ListProgrammation</servlet-name>
+		<servlet-class>ServletPackages.ProgrammeListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListProgrammation</servlet-name>
+		<url-pattern>/programList</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ListPartenaire</servlet-name>
+		<servlet-class>ServletPackages.PartenaireListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListPartenaire</servlet-name>
+		<url-pattern>/partnerList</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ListAnimateur</servlet-name>
+		<servlet-class>ServletPackages.AnimateurListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListProgrammation</servlet-name>
+		<url-pattern>/animatorList</url-pattern>
+	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>Activite_liste</servlet-name>
 		<servlet-class>ServletPackages.ActiviteServlet</servlet-class>
@@ -343,7 +374,7 @@
 		<servlet-name>Indicateur_liste</servlet-name>
 		<url-pattern>/indicatorList</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>EtudiantList</servlet-name>
 		<servlet-class>ServletPackages.StudentListServlet</servlet-class>
@@ -352,7 +383,7 @@
 		<servlet-name>EtudiantList</servlet-name>
 		<url-pattern>/studentList</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>ResponsableList</servlet-name>
 		<servlet-class>ServletPackages.ResponsableListServlet</servlet-class>
@@ -370,7 +401,14 @@
 		<servlet-name>ListEnseignant</servlet-name>
 		<url-pattern>/teacherList</url-pattern>
 	</servlet-mapping>
-
+    <servlet>
+		<servlet-name>ListCompte</servlet-name>
+		<servlet-class>ServletPackages.ListCompte</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListCompte</servlet-name>
+		<url-pattern>/accountList</url-pattern>
+	</servlet-mapping>
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!--%%%%%%%%%%%%%%%%%%%%% 	        Declaration de filter           %%%%%%%%%%%%%%%%%-->
@@ -384,14 +422,14 @@
 		<filter-name>ClickCounterFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
-	
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%% 	Toucher surtout pas la sécurité svp!    %%%%%%%%%%%%%%%%%-->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	
+
+
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%% Toucher surtout pas la sécurité svp! %%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
 	<!--""""""""""""" declaration login config """""""""""""""""" -->
 	<login-config>
 		<auth-method>FORM</auth-method>
@@ -400,145 +438,143 @@
 			<form-error-page>/connection</form-error-page>
 		</form-login-config>
 	</login-config>
-	
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!--%%%%%%%%%%%%%%%%%%%%% 	      Declaration de la sécurité        %%%%%%%%%%%%%%%%%-->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	
-<!-- 	<security-constraint> -->
-<!-- 		<web-resource-collection> -->
-<!-- 			<web-resource-name>Page de l'administrateur</web-resource-name> -->
-<!-- 			<url-pattern>/adminHome</url-pattern> -->
-<!-- 			<url-pattern>/responsableForm</url-pattern> -->
-<!-- 		</web-resource-collection> -->
-<!-- 		<auth-constraint> -->
-<!-- 			<role-name>etudiant</role-name> -->
-<!-- 			<role-name>BanqueMondial</role-name> -->
-<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
-<!-- 			<role-name>responsable_Controle</role-name> -->
-<!-- 			<role-name>responsable_Saisie</role-name> -->
-<!-- 			<role-name>enseignat</role-name> -->
-<!-- 			<role-name>partenaire</role-name> -->
-<!-- 			<role-name>coordonnateur</role-name> -->
-<!-- 			<role-name>viceCoordonnateur</role-name> -->
-<!-- 		</auth-constraint> -->
-<!-- 	</security-constraint> -->
+	<!-- <security-constraint> -->
+	<!-- <web-resource-collection> -->
+	<!-- <web-resource-name>Page de l'administrateur</web-resource-name> -->
+	<!-- <url-pattern>/adminHome</url-pattern> -->
+	<!-- <url-pattern>/responsableForm</url-pattern> -->
+	<!-- </web-resource-collection> -->
+	<!-- <auth-constraint> -->
+	<!-- <role-name>etudiant</role-name> -->
+	<!-- <role-name>BanqueMondial</role-name> -->
+	<!-- <role-name>responsable_Suivi_Evaluation</role-name> -->
+	<!-- <role-name>responsable_Controle</role-name> -->
+	<!-- <role-name>responsable_Saisie</role-name> -->
+	<!-- <role-name>enseignat</role-name> -->
+	<!-- <role-name>partenaire</role-name> -->
+	<!-- <role-name>coordonnateur</role-name> -->
+	<!-- <role-name>viceCoordonnateur</role-name> -->
+	<!-- </auth-constraint> -->
+	<!-- </security-constraint> -->
 
-<!-- 	<security-constraint> -->
-<!-- 		<web-resource-collection> -->
-<!-- 			<web-resource-name>Page de l'etudiant</web-resource-name> -->
-<!-- 			<url-pattern>/studentHome</url-pattern> -->
-<!-- 		</web-resource-collection> -->
-<!-- 		<auth-constraint> -->
-<!-- 			<role-name>admin</role-name> -->
-<!-- 			<role-name>BanqueMondial</role-name> -->
-<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
-<!-- 			<role-name>responsable_Controle</role-name> -->
-<!-- 			<role-name>responsable_Saisie</role-name> -->
-<!-- 			<role-name>enseignat</role-name> -->
-<!-- 			<role-name>partenaire</role-name> -->
-<!-- 			<role-name>coordonnateur</role-name> -->
-<!-- 			<role-name>viceCoordonnateur</role-name> -->
-<!-- 		</auth-constraint> -->
-<!-- 	</security-constraint> -->
-	
-<!-- 	<security-constraint> -->
-<!-- 		<web-resource-collection> -->
-<!-- 			<web-resource-name>Page de la banque mondiale</web-resource-name> -->
-<!-- 			<url-pattern>/worldBankHome</url-pattern> -->
-<!-- 		</web-resource-collection> -->
-<!-- 		<auth-constraint> -->
-<!-- 			<role-name>etudiant</role-name> -->
-<!-- 			<role-name>admin</role-name> -->
-<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
-<!-- 			<role-name>responsable_Controle</role-name> -->
-<!-- 			<role-name>responsable_Saisie</role-name> -->
-<!-- 			<role-name>enseignat</role-name> -->
-<!-- 			<role-name>partenaire</role-name> -->
-<!-- 			<role-name>coordonnateur</role-name> -->
-<!-- 			<role-name>viceCoordonnateur</role-name> -->
-<!-- 		</auth-constraint> -->
-<!-- 	</security-constraint>  -->
-	
-<!-- 	<security-constraint> -->
-<!-- 		<web-resource-collection> -->
-<!-- 			<web-resource-name>Page du coordonnateur</web-resource-name> -->
-<!-- 			<url-pattern>/coordinatorHome</url-pattern> -->
-<!-- 		</web-resource-collection> -->
-<!-- 		<auth-constraint> -->
-<!-- 			<role-name>etudiant</role-name> -->
-<!-- 			<role-name>BanqueMondial</role-name> -->
-<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
-<!-- 			<role-name>responsable_Controle</role-name> -->
-<!-- 			<role-name>responsable_Saisie</role-name> -->
-<!-- 			<role-name>enseignat</role-name> -->
-<!-- 			<role-name>partenaire</role-name> -->
-<!-- 			<role-name>admin</role-name> -->
-<!-- 		</auth-constraint> -->
-<!-- 	</security-constraint> -->
+	<!-- <security-constraint> -->
+	<!-- <web-resource-collection> -->
+	<!-- <web-resource-name>Page de l'etudiant</web-resource-name> -->
+	<!-- <url-pattern>/studentHome</url-pattern> -->
+	<!-- </web-resource-collection> -->
+	<!-- <auth-constraint> -->
+	<!-- <role-name>admin</role-name> -->
+	<!-- <role-name>BanqueMondial</role-name> -->
+	<!-- <role-name>responsable_Suivi_Evaluation</role-name> -->
+	<!-- <role-name>responsable_Controle</role-name> -->
+	<!-- <role-name>responsable_Saisie</role-name> -->
+	<!-- <role-name>enseignat</role-name> -->
+	<!-- <role-name>partenaire</role-name> -->
+	<!-- <role-name>coordonnateur</role-name> -->
+	<!-- <role-name>viceCoordonnateur</role-name> -->
+	<!-- </auth-constraint> -->
+	<!-- </security-constraint> -->
 
-<!-- 	<security-constraint> -->
-<!-- 		<web-resource-collection> -->
-<!-- 			<web-resource-name>Page du responsable de saisie</web-resource-name> -->
-<!-- 			<url-pattern>/RSHome</url-pattern> -->
-<!-- 		</web-resource-collection> -->
-<!-- 		<auth-constraint> -->
-<!-- 			<role-name>etudiant</role-name> -->
-<!-- 			<role-name>BanqueMondial</role-name> -->
-<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
-<!-- 			<role-name>admin</role-name> -->
-<!-- 			<role-name>enseignat</role-name> -->
-<!-- 			<role-name>partenaire</role-name> -->
-<!-- 			<role-name>coordonnateur</role-name> -->
-<!-- 			<role-name>viceCoordonnateur</role-name> -->
-<!-- 		</auth-constraint> -->
-<!-- 	</security-constraint> -->
+	<!-- <security-constraint> -->
+	<!-- <web-resource-collection> -->
+	<!-- <web-resource-name>Page de la banque mondiale</web-resource-name> -->
+	<!-- <url-pattern>/worldBankHome</url-pattern> -->
+	<!-- </web-resource-collection> -->
+	<!-- <auth-constraint> -->
+	<!-- <role-name>etudiant</role-name> -->
+	<!-- <role-name>admin</role-name> -->
+	<!-- <role-name>responsable_Suivi_Evaluation</role-name> -->
+	<!-- <role-name>responsable_Controle</role-name> -->
+	<!-- <role-name>responsable_Saisie</role-name> -->
+	<!-- <role-name>enseignat</role-name> -->
+	<!-- <role-name>partenaire</role-name> -->
+	<!-- <role-name>coordonnateur</role-name> -->
+	<!-- <role-name>viceCoordonnateur</role-name> -->
+	<!-- </auth-constraint> -->
+	<!-- </security-constraint> -->
 
-<!-- 	<security-constraint> -->
-<!-- 		<web-resource-collection> -->
-<!-- 			<web-resource-name>Page de l'enseignant</web-resource-name> -->
-<!-- 			<url-pattern>/teacherHome</url-pattern> -->
-<!-- 		</web-resource-collection> -->
-<!-- 		<auth-constraint> -->
-<!-- 			<role-name>etudiant</role-name> -->
-<!-- 			<role-name>BanqueMondial</role-name> -->
-<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
-<!-- 			<role-name>responsable_Controle</role-name> -->
-<!-- 			<role-name>responsable_Saisie</role-name> -->
-<!-- 			<role-name>admin</role-name> -->
-<!-- 			<role-name>partenaire</role-name> -->
-<!-- 			<role-name>coordonnateur</role-name> -->
-<!-- 			<role-name>viceCoordonnateur</role-name> -->
-<!-- 		</auth-constraint> -->
-<!-- 	</security-constraint> -->
+	<!-- <security-constraint> -->
+	<!-- <web-resource-collection> -->
+	<!-- <web-resource-name>Page du coordonnateur</web-resource-name> -->
+	<!-- <url-pattern>/coordinatorHome</url-pattern> -->
+	<!-- </web-resource-collection> -->
+	<!-- <auth-constraint> -->
+	<!-- <role-name>etudiant</role-name> -->
+	<!-- <role-name>BanqueMondial</role-name> -->
+	<!-- <role-name>responsable_Suivi_Evaluation</role-name> -->
+	<!-- <role-name>responsable_Controle</role-name> -->
+	<!-- <role-name>responsable_Saisie</role-name> -->
+	<!-- <role-name>enseignat</role-name> -->
+	<!-- <role-name>partenaire</role-name> -->
+	<!-- <role-name>admin</role-name> -->
+	<!-- </auth-constraint> -->
+	<!-- </security-constraint> -->
 
-<!-- 	<security-constraint> -->
-<!-- 		<web-resource-collection> -->
-<!-- 			<web-resource-name>page d'accueil du responsable de suivi et -->
-<!-- 				évaluation</web-resource-name> -->
-<!-- 			<url-pattern>/stageForm</url-pattern> -->
-<!-- 			<url-pattern>/publicationForm</url-pattern> -->
-<!-- 			<url-pattern>/meetingForm</url-pattern> -->
-<!-- 			<url-pattern>/partnerForm</url-pattern> -->
-<!-- 			<url-pattern>/studentForm</url-pattern> -->
-<!-- 			<url-pattern>/teacherForm</url-pattern> -->
-<!-- 			<url-pattern>/formationForm</url-pattern> -->
-<!-- 			<url-pattern>/programForm</url-pattern> -->
-<!-- 			<url-pattern>/animatorForm</url-pattern> -->
-<!-- 			<url-pattern>/RSEHome</url-pattern> -->
-<!-- 		</web-resource-collection> -->
-<!-- 		<auth-constraint> -->
-<!-- 			<role-name>etudiant</role-name> -->
-<!-- 			<role-name>BanqueMondial</role-name> -->
-<!-- 			<role-name>responsable_Suivi_Evaluation</role-name> -->
-<!-- 			<role-name>responsable_Controle</role-name> -->
-<!-- 			<role-name>responsable_Saisie</role-name> -->
-<!-- 			<role-name>admin</role-name> -->
-<!-- 			<role-name>partenaire</role-name> -->
-<!-- 			<role-name>coordonnateur</role-name> -->
-<!-- 			<role-name>viceCoordonnateur</role-name> -->
-<!-- 		</auth-constraint> -->
-<!-- 	</security-constraint> -->
+	<!-- <security-constraint> -->
+	<!-- <web-resource-collection> -->
+	<!-- <web-resource-name>Page du responsable de saisie</web-resource-name> -->
+	<!-- <url-pattern>/RSHome</url-pattern> -->
+	<!-- </web-resource-collection> -->
+	<!-- <auth-constraint> -->
+	<!-- <role-name>etudiant</role-name> -->
+	<!-- <role-name>BanqueMondial</role-name> -->
+	<!-- <role-name>responsable_Suivi_Evaluation</role-name> -->
+	<!-- <role-name>admin</role-name> -->
+	<!-- <role-name>enseignat</role-name> -->
+	<!-- <role-name>partenaire</role-name> -->
+	<!-- <role-name>coordonnateur</role-name> -->
+	<!-- <role-name>viceCoordonnateur</role-name> -->
+	<!-- </auth-constraint> -->
+	<!-- </security-constraint> -->
+
+	<!-- <security-constraint> -->
+	<!-- <web-resource-collection> -->
+	<!-- <web-resource-name>Page de l'enseignant</web-resource-name> -->
+	<!-- <url-pattern>/teacherHome</url-pattern> -->
+	<!-- </web-resource-collection> -->
+	<!-- <auth-constraint> -->
+	<!-- <role-name>etudiant</role-name> -->
+	<!-- <role-name>BanqueMondial</role-name> -->
+	<!-- <role-name>responsable_Suivi_Evaluation</role-name> -->
+	<!-- <role-name>responsable_Controle</role-name> -->
+	<!-- <role-name>responsable_Saisie</role-name> -->
+	<!-- <role-name>admin</role-name> -->
+	<!-- <role-name>partenaire</role-name> -->
+	<!-- <role-name>coordonnateur</role-name> -->
+	<!-- <role-name>viceCoordonnateur</role-name> -->
+	<!-- </auth-constraint> -->
+	<!-- </security-constraint> -->
+
+	<!-- <security-constraint> -->
+	<!-- <web-resource-collection> -->
+	<!-- <web-resource-name>page d'accueil du responsable de suivi et -->
+	<!-- évaluation</web-resource-name> -->
+	<!-- <url-pattern>/stageForm</url-pattern> -->
+	<!-- <url-pattern>/publicationForm</url-pattern> -->
+	<!-- <url-pattern>/meetingForm</url-pattern> -->
+	<!-- <url-pattern>/partnerForm</url-pattern> -->
+	<!-- <url-pattern>/studentForm</url-pattern> -->
+	<!-- <url-pattern>/teacherForm</url-pattern> -->
+	<!-- <url-pattern>/formationForm</url-pattern> -->
+	<!-- <url-pattern>/programForm</url-pattern> -->
+	<!-- <url-pattern>/animatorForm</url-pattern> -->
+	<!-- <url-pattern>/RSEHome</url-pattern> -->
+	<!-- </web-resource-collection> -->
+	<!-- <auth-constraint> -->
+	<!-- <role-name>etudiant</role-name> -->
+	<!-- <role-name>BanqueMondial</role-name> -->
+	<!-- <role-name>responsable_Suivi_Evaluation</role-name> -->
+	<!-- <role-name>responsable_Controle</role-name> -->
+	<!-- <role-name>responsable_Saisie</role-name> -->
+	<!-- <role-name>admin</role-name> -->
+	<!-- <role-name>partenaire</role-name> -->
+	<!-- <role-name>coordonnateur</role-name> -->
+	<!-- <role-name>viceCoordonnateur</role-name> -->
+	<!-- </auth-constraint> -->
+	<!-- </security-constraint> -->
 </web-app>

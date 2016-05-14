@@ -20,7 +20,7 @@ import ModelPackage.Teacher;
  * Servlet implementation class StudentListServlet
  */
 @WebServlet("/TeacherList")
-public class TeacherList extends ConnexionServlet {
+public class TeacherList extends GetAuthorisationUsers {
 	//
 	// FIELDS
 	//
@@ -29,7 +29,7 @@ public class TeacherList extends ConnexionServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/ListEnseignant.jsp").forward(req, resp);
+     this.doGet(req, resp, "responsable_Suivi_Evaluation", "ListEnseignant.jsp", connection);
 	}
 
 	@Override

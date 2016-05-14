@@ -2,10 +2,8 @@
 <Context>
     <!-- Specify a JDBC datasource -->
     <Resource name="jdbc/Pooldb" auth="Container"
-        type="javax.sql.DataSource" username="root" password="CadreInfo1"
+        type="javax.sql.DataSource" username="root" password=""
         driverClassName="com.mysql.jdbc.Driver"
         url="jdbc:mysql://localhost:3306/ceamitic"
         maxActive="30" maxIdle="4" />
-    <!-- put your mysql username and password; in url put your port ex: my port is 3306 -->
-				
-</Context>
+ </Context>

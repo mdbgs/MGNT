@@ -1,5 +1,6 @@
 package ServletPackages;
 
+import java.beans.Encoder;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -41,8 +42,39 @@ public class ConnexionServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	public String getPseudo() {
+		return pseudo;
+	}
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public Statement getStatement() {
+		return statement;
+	}
+	public void setStatement(Statement statement) {
+		this.statement = statement;
+	}
+	public Connection getConnection() {
+		return connection;
+	}
+	public void setConnection(Connection connection) {
+		this.connection = connection;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public static void setDataSource(DataSource dataSource) {
+		ConnexionServlet.dataSource = dataSource;
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.getSession().invalidate();
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Connection.jsp").forward(request, response);
 	}
 
@@ -56,7 +88,8 @@ public class ConnexionServlet extends HttpServlet {
 			Boolean connectionError = true;
 			pseudo = request.getParameter("j_username");
 			password = request.getParameter("j_password");
-			System.out.println("ConnexionServlet.doPost()");
+            Vernam passCrypt=new Vernam(password);
+			password = passCrypt.encry();
 			if (ComputeQueryBean.isUser(pseudo, password, connection)) {
 				role = ComputeQueryBean.userRole(pseudo, connection);
 				if(!role.isEmpty()){
