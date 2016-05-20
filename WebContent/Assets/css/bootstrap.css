@@ -4765,6 +4765,7 @@ a.list-group-item-danger.active:focus {
   line-height: 1.3;
 }
 .panel {
+  min-height:500px;
   margin-bottom: 20px;
   background-color: #f4f4f4;
   border: 1px solid transparent;

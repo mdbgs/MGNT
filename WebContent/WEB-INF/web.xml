@@ -9,7 +9,7 @@
 	</welcome-file-list>
 	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	<!--%%%%%%%%%%%%%%%%%%%%% Declaration de servlet %%%%%%%%%%%%%%%%% -->
+	<!--%%%%%%%%%%%%%%%%%%%%% Declaration de servlet               %%%%%%%%%%%%%%%%% -->
 	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<servlet>
@@ -51,6 +51,62 @@
 	<servlet-mapping>
 		<servlet-name>imageList</servlet-name>
 		<url-pattern>/monImage</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>pdfIndicateur</servlet-name>
+		<servlet-class>ServletPackages.PdfIndicateur1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>pdfIndicateur</servlet-name>
+		<url-pattern>/indicateur1</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>pdfIndicateur3</servlet-name>
+		<servlet-class>ServletPackages.PdfIndicator3Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>pdfIndicateur3</servlet-name>
+		<url-pattern>/indicateur3</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>pdfIndicateur5</servlet-name>
+		<servlet-class>ServletPackages.PdfIndicateur5Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>pdfIndicateur5</servlet-name>
+		<url-pattern>/indicateur5</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>pdfIndicateur6</servlet-name>
+		<servlet-class>ServletPackages.PdfIndicateur6servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>pdfIndicateur6</servlet-name>
+		<url-pattern>/indicateur6</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>pdfIndicateur7</servlet-name>
+		<servlet-class>ServletPackages.PdfIndicateur7servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>pdfIndicateur7</servlet-name>
+		<url-pattern>/indicateur7</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>pdfIndicateur9</servlet-name>
+		<servlet-class>ServletPackages.PdfIndicateur9Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>pdfIndicateur9</servlet-name>
+		<url-pattern>/indicateur9</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>pdfIndicateur10</servlet-name>
+		<servlet-class>ServletPackages.PdfIndicateur10Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>pdfIndicateur10</servlet-name>
+		<url-pattern>/indicateur10</url-pattern>
 	</servlet-mapping>
 	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -220,7 +276,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>Responsable_Controle</servlet-name>
-		<servlet-class>ServletPackages.ResponsableControleServlet</servlet-class>
+		<servlet-class>ServletPackages.AccueilResponsableControleServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Responsable_Controle</servlet-name>

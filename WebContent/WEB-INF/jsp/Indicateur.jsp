@@ -33,6 +33,7 @@
 													<th>Objectif</th>
 													<th>Sigle</th>
 													<th>Graphe</th>
+													<th>Pdf Reporting</th>
 												</tr>
 											</thead>
 											<tbody id="indicateurTab">
@@ -55,6 +56,13 @@
 																<img alt="action" src="Assets/images/icons/graphe1.jpg">
 																<span>Voir le graphe</span>
 															</button></td>
+															<td>
+															   <button type="submit" class=" btn btn-info"
+																onclick="location.href = 'indicateur<c:out value="${indicat.numero}"></c:out>';" id="detailBtn">
+																<img alt="action" src="Assets/images/icons/pdf.jpg">
+																<span>voir le fichier pdf</span>
+															  </button>
+															</td>
 													</tr>
  												</c:forEach> 
 											</tbody>

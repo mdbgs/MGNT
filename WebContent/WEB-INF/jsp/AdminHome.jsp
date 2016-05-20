@@ -30,9 +30,9 @@
 								</div>
 							</div>
 						</div>
-					</div>
 					<div class="fix scroll_to_top">
 						<a href="#scroll_top" class="floatright">Remonter </a>
+					</div>
 					</div>
 				</div>
 			</div>

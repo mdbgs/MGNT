@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 
+import com.lowagie.text.Cell;
 //import com.lowagie.text.Document;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -31,6 +32,7 @@ import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
+import com.lowagie.text.Table;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
@@ -69,16 +71,15 @@ public class PdfIndicator2 extends ConnexionServlet {
 		   DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		   String dateNow = dateFormat.format(date);
 		try {
-			Image image=Image.getInstance("logoceamitic.png");
+//			Image image=Image.getInstance("logo.png");
 //			BaseFont baseFont3 = BaseFont.createFont(BaseFont.TIMES_ROMAN, null, false);
 //	        Font font2 = new Font(baseFont3, 12);
-			image.scalePercent(10f);
+//			image.scalePercent(10f);
 			//image.setAbsolutePosition(50f, 650f);
 			//image.setAbsolute();
 //			image.scaleToFit(5,5);
 			connection = this.getDataSource().getConnection();
-			 statement = connection.createStatement();
-					   
+			ResultSet result = ComputeQueryBean.selectAll("Programmecea", connection);					   
 			resp.setContentType("application/pdf");
 			PdfWriter.getInstance(document, resp.getOutputStream());
 			document.open();
@@ -100,9 +101,9 @@ public class PdfIndicator2 extends ConnexionServlet {
      	    table2.setWidthPercentage(100);
 			table2.addCell(getCell(" RECORD OF ACE PROGRAMME ACREDITATION ", PdfPCell.ALIGN_CENTER));
 			table2.setSpacingAfter(10);
-     	    PdfPTable table3 = new PdfPTable(7);
-     	   table3.setWidthPercentage(100);
-     	  table3.setWidths(new int[]{15, 5, 15,15,20,15,15});
+     	    Table table3 = new Table(7);
+     	  // table3.setWidthPercentage(100);
+     	 // table3.setWidths(new int[]{15, 5, 15,15,20,15,15});
 	     	   table3.addCell(getCell1("PROGRAMME TITLE"));
 	     	   table3.addCell(getCell1("LEVEL[1]"));
 	     	   table3.addCell(getCell1("TYPE OF ACCREDITATION[2]"));
@@ -111,32 +112,43 @@ public class PdfIndicator2 extends ConnexionServlet {
 	     	   table3.addCell(getCell1("DATE OF ACCREDITATION"));
 	     	   table3.addCell(getCell1("EXPIRY DATE OF ACCREDITATION"));
 	     	   
-	     	   table3.addCell("amy");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
+//	     	   table3.addCell("amy");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+//	     	   
+//	     	   table3.addCell("amy");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+//	     	   
+//	     	   table3.addCell("amy");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+//	     	   table3.addCell("");
+	     	  while (result.next()) {
+					table3.addCell(CellPourRemplirTableau(result.getString(2)));
+					table3.addCell(CellPourRemplirTableau(result.getString(3)));
+					table3.addCell(CellPourRemplirTableau(result.getString(4)));
+					table3.addCell(CellPourRemplirTableau(result.getString(5)));
+					table3.addCell(CellPourRemplirTableau(result.getString(6)));
+					table3.addCell(CellPourRemplirTableau(Integer.toString(result.getInt(10))));
+					table3.addCell(CellPourRemplirTableau(Integer.toString(result.getInt(11))));
+					
+	     	  }
+
+	     	 //  table3.setSpacingAfter(10);
 	     	   
-	     	   table3.addCell("amy");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
-	     	   
-	     	   table3.addCell("amy");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
-	     	   table3.addCell("");
-	     	   table3.setSpacingAfter(10);
-	     	   
-	     	  document.add(image);
+//	     	  document.add(image);
 	     	  document.add(table);
 	     	  document.add(tablee);
 	     	  document.add(table1);
@@ -175,13 +187,18 @@ document.add(new Paragraph( "[3] Provide the name and contacts (postal address, 
 	    cell.setBorder(PdfPCell.NO_BORDER);
 	    return cell;
 	}
-	public PdfPCell getCell1(String text )
-	{   
-	    PdfPCell cell = new PdfPCell(new Phrase(text,BlackFont));
-	    cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-	    cell.setBackgroundColor(new Color(242,242,242));
-	    
-	    return cell;
+	public Cell getCell1(String text) {
+		Cell cell = new Cell(text);
+		cell.setRowspan(2);
+		cell.setHorizontalAlignment(Cell.ALIGN_CENTER);
+		cell.setBackgroundColor(new Color(242, 242, 242));
+		return cell;
+
+	}
+	public Cell CellPourRemplirTableau(String text) {
+		Cell cell = new Cell(text);
+		cell.setHorizontalAlignment(Cell.ALIGN_CENTER);
+		return cell;
 	}
 }
 
