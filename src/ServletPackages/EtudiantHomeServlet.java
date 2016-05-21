@@ -13,6 +13,6 @@ public class EtudiantHomeServlet extends ConnexionServlet{
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/EtudiantHome.jsp").forward(req, resp);
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest  request, HttpServletResponse response) throws ServletException, IOException {
 	}
 }

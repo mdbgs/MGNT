@@ -10,7 +10,7 @@
 	<div id="cadre" class="row">
 		<div id="frame">
 			<div id="headerFrame">
-				<h2>Détails de l'activité</h2>
+				<h2>Détails  de l'activité</h2>
 			</div>
 			<div class="fix home_main_content" id="bodyFrame">
 				<c:set var="myID" value="" target="Activite" scope="page"></c:set>
