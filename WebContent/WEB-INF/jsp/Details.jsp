@@ -471,14 +471,18 @@
 													</div>
 												</div>
 											</div>
+<!-- 											<input class="btn btn-info myBtnDetail" -->
+<!-- 												onclick="location.href = 'studentForm';" value="Modifier"  /> -->
 											<input class="btn btn-danger myBtnDetail"
 												onclick="location.href = 'studentList';" value="Retour" />
+												
 										</div>
 									</c:if>
 								</div>
 								<div class="fix scroll_to_top">
 									<a href="#scroll_top" class="floatright">Remonter </a>
 								</div>
+								
 							</div>
 						</div>
 					</div>

@@ -52,29 +52,29 @@
 								<li><a href="javascript:coordonnateur()">Partenaire</a></li>
 								<li><a href="javascript:viceCoordonnateur()">Animateur
 										relecteur</a></li>
-							</ul>
-						</li>
+							</ul></li>
 						<div class="DeconProfil">
 							<c:set scope="session" var="student" value="${responsableRecu}"></c:set>
 							<li><a href="">Bonjour <%=user.getPseudo()%><span>.</span></a>
 								<ul>
 									<li><a href="detail?studentSending=1">Profil</a></li>
 									<li><a href="connection">Déconnexion</a></li>
-								</ul>
-							</li>
+								</ul></li>
 						</div>
 					</c:when>
 					<c:when test="${rolename=='etudiant'}">
 						<li><a href="studentHome"><img alt="Accueil"
 								src="Assets/images/slideshow/logoceamitic.png"></a></li>
-					   <div class="DeconProfil">
-							<c:set scope="session" var="student" value="${responsableRecu}"></c:set>
-							<li><a href="">Bonjour <%=user.getPseudo()%><span>.</span></a>
-								<ul>
-									<li><a href="detail?studentSending=1">Profil</a></li>
-									<li><a href="connection">Déconnexion</a></li>
-								</ul>
-							</li>
+						<div class="DeconProfil">
+							
+								<li><a href="">Bonjour <%=user.getPseudo()%><span>.</span></a>
+									
+									<ul>
+										<li><a href="detail?studentSending=<%=user.getPseudo()%>">Profil</a></li>
+										<li><a href="connection">Déconnexion</a></li>
+									</ul></li>
+
+						
 						</div>
 					</c:when>
 					<c:when test="${rolename=='enseignat'}">
@@ -148,8 +148,7 @@
 								<ul>
 									<li><a href="detail?studentSending=1">Profil</a></li>
 									<li><a href="connection">Déconnexion</a></li>
-								</ul>
-							</li>
+								</ul></li>
 						</div>
 					</c:when>
 					<c:when test="${rolename=='partenaire'}">

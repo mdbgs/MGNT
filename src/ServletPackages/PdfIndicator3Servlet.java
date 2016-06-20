@@ -53,7 +53,7 @@ public class PdfIndicator3Servlet extends ConnexionServlet {
 
 		Document document = new Document();
 
-		Rectangle two = new Rectangle(1800, 600);
+		Rectangle two = new Rectangle(1800,800);
 		document.setPageSize(two);
 		Connection connection;
 		Date date = new Date();
@@ -78,7 +78,7 @@ public class PdfIndicator3Servlet extends ConnexionServlet {
 			tablee.setSpacingAfter(10);
 
 			PdfPTable table1 = new PdfPTable(1);
-			table1.setWidthPercentage(200);
+			table1.setWidthPercentage(100);
 			table1.addCell(getCell("Reporting Period:" + dateNow, PdfPCell.ALIGN_LEFT));
 			table1.setSpacingAfter(10);
 			PdfPTable table2 = new PdfPTable(1);
@@ -88,7 +88,7 @@ public class PdfIndicator3Servlet extends ConnexionServlet {
 			Table table3 = new Table(11);
 			table3.setWidth(100);
 			Color couleur = new Color(242, 242, 242);
-			Cell cell = new Cell("CONTACT DETAILS (Postal, Tel, Email)");
+			Cell cell = new Cell("CONTACT DETAILS (Postal, Tel, Email)                                                                                                         ");
 			cell.setColspan(3);
 			cell.setHorizontalAlignment(cell.ALIGN_CENTER);
 			cell.setBackgroundColor(couleur);
@@ -104,7 +104,7 @@ public class PdfIndicator3Servlet extends ConnexionServlet {
 			cell.setHorizontalAlignment(cell.ALIGN_CENTER);
 			cell.setBackgroundColor(couleur);
 			table3.addCell(cell);
-			table3.addCell(CellSansSpan("Personal Email"));
+			table3.addCell(CellSansSpan("Personal Email                                                                                                             "));
 			table3.addCell(CellSansSpan("Tel No."));
 			table3.addCell(CellSansSpan("Address"));
 			table3.addCell(CellSansSpan("Start"));
@@ -162,6 +162,7 @@ public class PdfIndicator3Servlet extends ConnexionServlet {
 		Cell cell = new Cell(text);
 		cell.setRowspan(2);
 		cell.setHorizontalAlignment(Cell.ALIGN_CENTER);
+		cell.setVerticalAlignment(Cell.ALIGN_MIDDLE);
 		cell.setBackgroundColor(new Color(242, 242, 242));
 		return cell;
 	}

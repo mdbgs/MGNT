@@ -2,7 +2,8 @@ package ServletPackages;
 
 import java.awt.Color;
 import java.io.IOException;
-
+import java.net.URI;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -61,9 +62,7 @@ public class PdfIndicator2 extends ConnexionServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Document document = new Document();
-		
-		
-		Rectangle two = new Rectangle(1000,600);
+		Rectangle two = new Rectangle(1800,800);
 		document.setPageSize(two);
 		Connection connection;
 	    Statement statement;
@@ -71,13 +70,16 @@ public class PdfIndicator2 extends ConnexionServlet {
 		   DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		   String dateNow = dateFormat.format(date);
 		try {
-//			Image image=Image.getInstance("logo.png");
+			//Image image=Image.getInstance("logo.png");
 //			BaseFont baseFont3 = BaseFont.createFont(BaseFont.TIMES_ROMAN, null, false);
 //	        Font font2 = new Font(baseFont3, 12);
 //			image.scalePercent(10f);
-			//image.setAbsolutePosition(50f, 650f);
+//			image.setAbsolutePosition(50f, 650f);
 			//image.setAbsolute();
-//			image.scaleToFit(5,5);
+			//URL url = new URL("file:/C:/Users/awa/git/MGNT/logo.png");
+			//image.setUrl(url);
+			//System.out.println(image.getUrl()+"jjj");
+			//image.scaleToFit(5,5);
 			connection = this.getDataSource().getConnection();
 			ResultSet result = ComputeQueryBean.selectAll("Programmecea", connection);					   
 			resp.setContentType("application/pdf");
@@ -89,8 +91,8 @@ public class PdfIndicator2 extends ConnexionServlet {
 			table.setWidthPercentage(100);
 			table.setWidths(new int[]{30, 70});
 			table.addCell(getCell("INDICATOR2:", PdfPCell.ALIGN_LEFT));
-      		table.addCell(getCell("No. of internationally accredited education programs",PdfPCell.ALIGN_LEFT));
-      	    tablee.addCell(getCell(	"(with national accreditation and international evaluation counting 50%)  (→ Training Quality)", PdfPCell.ALIGN_RIGHT));
+      		table.addCell(getCell("No. of internationally accredited education programs",PdfPCell.ALIGN_CENTER));
+      	    tablee.addCell(getCell(	"(with national accreditation and international evaluation counting 50%)  (→ Training Quality)", PdfPCell.ALIGN_CENTER));
       	    tablee.setSpacingAfter(10);
       		
      	    PdfPTable table1 = new PdfPTable(1);
@@ -103,7 +105,7 @@ public class PdfIndicator2 extends ConnexionServlet {
 			table2.setSpacingAfter(10);
      	    Table table3 = new Table(7);
      	  // table3.setWidthPercentage(100);
-     	 // table3.setWidths(new int[]{15, 5, 15,15,20,15,15});
+     	  table3.setWidths(new int[]{15,5,15,15,30,15,15});
 	     	   table3.addCell(getCell1("PROGRAMME TITLE"));
 	     	   table3.addCell(getCell1("LEVEL[1]"));
 	     	   table3.addCell(getCell1("TYPE OF ACCREDITATION[2]"));
@@ -146,9 +148,9 @@ public class PdfIndicator2 extends ConnexionServlet {
 					
 	     	  }
 
-	     	 //  table3.setSpacingAfter(10);
+	     	 // table3.setSpacingAfter(10);
 	     	   
-//	     	  document.add(image);
+	     	 // document.add(image);
 	     	  document.add(table);
 	     	  document.add(tablee);
 	     	  document.add(table1);
@@ -185,12 +187,14 @@ document.add(new Paragraph( "[3] Provide the name and contacts (postal address, 
 	    //cell.setColspan(0);
 	    cell.setHorizontalAlignment(alignment);
 	    cell.setBorder(PdfPCell.NO_BORDER);
+	    
 	    return cell;
 	}
 	public Cell getCell1(String text) {
 		Cell cell = new Cell(text);
 		cell.setRowspan(2);
 		cell.setHorizontalAlignment(Cell.ALIGN_CENTER);
+		cell.setHorizontalAlignment(Cell.ALIGN_MIDDLE);
 		cell.setBackgroundColor(new Color(242, 242, 242));
 		return cell;
 
@@ -198,6 +202,7 @@ document.add(new Paragraph( "[3] Provide the name and contacts (postal address, 
 	public Cell CellPourRemplirTableau(String text) {
 		Cell cell = new Cell(text);
 		cell.setHorizontalAlignment(Cell.ALIGN_CENTER);
+		cell.setHorizontalAlignment(Cell.ALIGN_MIDDLE);
 		return cell;
 	}
 }

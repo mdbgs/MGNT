@@ -78,7 +78,8 @@ public class EtudiantServletForm extends GetAuthorisationUsers implements Numeri
 		String nomPAC = "null";
 		String prenomPAC = "null";
 		String fichier = "null";
-
+       
+        
 		if (request.getParameter(FIRSTNAME) != "") {
 			prenom = request.getParameter(FIRSTNAME);
 		}
@@ -131,6 +132,7 @@ public class EtudiantServletForm extends GetAuthorisationUsers implements Numeri
 			boitePostale = request.getParameter(BP);
 			System.out.println();
 		}
+		
 		fichier = getNomFichier(part);
 
 		Date date = new Date();
@@ -314,8 +316,9 @@ public class EtudiantServletForm extends GetAuthorisationUsers implements Numeri
 
 			request.setAttribute(nomChamp, nomFichier);
 		}
-
+ 
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+		
 	}
 
 	private void validationPhoto(Part part) throws Exception {

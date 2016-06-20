@@ -59,8 +59,7 @@ public class PdfIndicateur1 extends ConnexionServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		Document document = new Document();
-
-		Rectangle two = new Rectangle(1800, 600);
+		Rectangle two = new Rectangle(1800,800);
 		document.setPageSize(two);
 		Connection connection;
 		Statement statement;
@@ -86,7 +85,7 @@ public class PdfIndicateur1 extends ConnexionServlet {
 			tablee.setSpacingAfter(10);
 
 			PdfPTable table1 = new PdfPTable(1);
-			table1.setWidthPercentage(200);
+			table1.setWidthPercentage(100);
 			table1.addCell(getCell("Reporting Period:" + dateNow, PdfPCell.ALIGN_LEFT));
 			table1.setSpacingAfter(10);
 			PdfPTable table2 = new PdfPTable(1);
@@ -95,10 +94,11 @@ public class PdfIndicateur1 extends ConnexionServlet {
 			table2.setSpacingAfter(15);
 			Table table3 = new Table(13);
 			table3.setWidth(100);
+		    table3.setWidths(new int[]{16,23,45,30,40,40,30,30,40,30,30,40,20});
 			Color couleur = new Color(242, 242, 242);
-			Cell cell = new Cell("CONTACT DETAILS");
+			Cell cell = new Cell("CONTACT DETAILS                                                                                                                                              ");
+			cell.setHorizontalAlignment(Cell.ALIGN_CENTER);
 			cell.setColspan(3);
-			cell.setHorizontalAlignment(cell.ALIGN_CENTER);
 			cell.setBackgroundColor(couleur);
 			table3.addCell(getCell1("REGISTER"));
 			table3.addCell(getCell1("STUDENT NO."));
@@ -111,12 +111,12 @@ public class PdfIndicateur1 extends ConnexionServlet {
 			table3.addCell(getCell1("GENDER"));
 			cell = new Cell("COUNTRY");
 			cell.setColspan(2);
-			cell.setHorizontalAlignment(cell.ALIGN_CENTER);
+			cell.setHorizontalAlignment(Cell.ALIGN_CENTER);
 			cell.setBackgroundColor(couleur);
 			table3.addCell(cell);
 			table3.addCell(CellSansSpan("Personal Email"));
 			table3.addCell(CellSansSpan("Tel No."));
-			table3.addCell(CellSansSpan("Person to contact in case of emergency"));
+			table3.addCell(CellSansSpan("Person to contact in case of emergency                                            "));
 			table3.addCell(CellSansSpan("Country of Birth"));
 			table3.addCell(CellSansSpan("Nationality"));
 			while (result.next()) {
@@ -131,10 +131,14 @@ public class PdfIndicateur1 extends ConnexionServlet {
 				table3.addCell(CellPourRemplirTableau(result.getString(7)));
 				table3.addCell(CellPourRemplirTableau(result.getString(19)));
 				table3.addCell(CellPourRemplirTableau(result.getString(20)));
-				table3.addCell(CellPourRemplirTableau(result.getString(13)));
+				String genre="Na";
+				if(result.getString(13).equals(0)){
+					 genre="masculin";
+				}else 
+					 genre="féminin";
+				table3.addCell(CellPourRemplirTableau(genre));
 				table3.addCell(CellPourRemplirTableau(result.getString(6)));
 				table3.addCell(CellPourRemplirTableau(result.getString(8)));
-
 			}
 			document.add(table);
 			document.add(tablee);
@@ -171,7 +175,9 @@ public class PdfIndicateur1 extends ConnexionServlet {
 	public Cell getCell1(String text) {
 		Cell cell = new Cell(text);
 		cell.setRowspan(2);
+		cell.setWidth(505);
 		cell.setHorizontalAlignment(Cell.ALIGN_CENTER);
+		cell.setVerticalAlignment(Cell.ALIGN_MIDDLE);
 		cell.setBackgroundColor(new Color(242, 242, 242));
 		return cell;
 	}
@@ -179,6 +185,7 @@ public class PdfIndicateur1 extends ConnexionServlet {
 	public Cell CellSansSpan(String text) {
 		Cell cell = new Cell(text);
 		cell.setHorizontalAlignment(Cell.ALIGN_CENTER);
+		cell.setVerticalAlignment(Cell.ALIGN_MIDDLE);
 		cell.setBackgroundColor(new Color(242, 242, 242));
 		return cell;
 	}
@@ -186,6 +193,7 @@ public class PdfIndicateur1 extends ConnexionServlet {
 	public Cell CellPourRemplirTableau(String text) {
 		Cell cell = new Cell(text);
 		cell.setHorizontalAlignment(Cell.ALIGN_CENTER);
+		cell.setVerticalAlignment(Cell.ALIGN_MIDDLE);
 		return cell;
 	}
 }

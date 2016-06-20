@@ -24,7 +24,6 @@ public interface NumericConstant {
 	public static final String BP = "bp";
 	public static final String ERRORS = "errors";
 	public static final String RESULT = "result";
-
 	// Constant Enseignant
 
 	public static final String TEACHERNUMBER = "teacherNumber";
