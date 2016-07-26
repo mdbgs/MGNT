@@ -72,6 +72,7 @@ create table Enseignant
    telephone            varchar(100)                   null,
    bp                   varchar(100)                   null,
    sexe                 integer                        null,
+   anneeDenseignement	varchar(255)				   null,
    affliationInstitutionnel varchar(100)                        null,
    constraint PK_ENSEIGNANT primary key (iDEnseignat),
    constraint AK_IDETUDIANT_ENSEIGNA unique (iDEnseignat)
@@ -100,8 +101,9 @@ create table Etudiant
    pacPrenom            varchar(100)                   null,
    pacTel               varchar(100)                   null,
    pacAdresse           varchar(100)                   null,
-   programme            varchar(100)                        null,
-   semestre             varchar(100)                        null,
+   programme            varchar(100)                   null,
+   semestre             varchar(100)                   null,
+   anneeInscription		varchar(100)					null,
    constraint PK_ETUDIANT primary key (iDEtudiant),
    constraint AK_IDEtudiant unique (iDEtudiant),
    constraint AK_NUmEtudiant unique (numeroEtudiant)
@@ -198,7 +200,11 @@ create table Responsable
    type                 varchar(100)                   null,
    constraint PK_RESPONSABLE primary key (iDResponsable)
 );
-
+create table ResponsableActivite{
+	pseudo responsable varchar(255)  not null,
+	idActivite varchar(255)    not null,
+	constraint PK_ResponsableActivite primary key (pseudo,idActivite)
+};
 /*==============================================================*/
 /* Table : Reunion                                              */
 /*==============================================================*/
@@ -302,6 +308,18 @@ alter table Etudiant
       references Compte (pseudo)
       on update cascade
       on delete cascade;
+	  
+alter table Responsable_Activite
+   add constraint FK_ResponsableActivite_COMPTE foreign key (pseudo)
+      references Compte (pseudo)
+      on update cascade
+      on delete cascade;
+	  
+alter table Responsable_Activite
+   add constraint FK_ResponsableActivite_Activite foreign key (idActivite)
+      references Activite (idActivite)
+      on update cascade
+      on delete cascade;
 
 	  
 alter table Partenaires
@@ -388,8 +406,8 @@ INSERT INTO responsable  VALUES (null, 'm.lo','Moussa','Lo','Ngallele','inconnue
 INSERT INTO responsable  VALUES (null, 'm.ndiaye','Diéne','Ndiaye','Saint-Louis','inconnue','diene.ndiaye@ugb.edu.sn','1','responsable saisie','responsable_Saisie');
 INSERT INTO responsable  VALUES (null, 'm.diop','Cheikh Talibouya','Diop','Saint-Louis','inconnue','cheikh.talibouya.diop@ugb.edu.sn','1','responsable contrôle','responsable_Controle');
 INSERT INTO responsable  VALUES (null, 'm.maiga','Monsieur','maiga','Saint-Louis','inconnue','mamadou.maiga@ugb.edu.sn','1','vice Coordonnateur','viceCoordonnateur');
-insert into enseignant values(null,'m.dembele','Dembele','Jean Marie','Enseignant Chercheur','Sénégalaise','Dakar','m.dembele@gmail.com','inconnue','234',1,'ugb');
-insert into etudiant values (null,'mlle.thiam', 'Awa','Thiam','1992/12/12','ngnith','master II','Sénégalaise','ngnith','thiameva21@hotmail.com','776683547','234','0','P22101','Thiam','rokhaya','770175867','hlm dakar','Informatique','semestre 1');
+insert into enseignant values(null,'m.dembele','Dembele','Jean Marie','Enseignant Chercheur','Sénégalaise','Dakar','m.dembele@gmail.com','inconnue','234',1,'ugb','2015-2016');
+insert into etudiant values (null,'mlle.thiam', 'Awa','Thiam','1992/12/12','ngnith','master II','Sénégalaise','ngnith','thiameva21@hotmail.com','776683547','234','0','P22101','Thiam','rokhaya','770175867','hlm dakar','Informatique','semestre 1','2015-2016');
 insert into partenaires values (null,'ucad', 'Université cheikh Anta Diop','pédagogique','Point E Dakar','inconnue','contact@ucad.sn','inconnu','partenariat','science de l''ingenierie','2016/12/12','2050/12/12','excellence dans les TICS','Etudes des maladies véhiculées par les rongeurs au sénégal');
 insert into partenaires values (null,'worldBank', 'Banque Mondiale','financier','inconnu','inconnue','contact@ucad.sn','inconnu','partenariat','financière','2016/12/12','2050/12/12','excellence dans les TICS','Etudes des maladies véhiculées par les rongeurs au sénégal');
 
