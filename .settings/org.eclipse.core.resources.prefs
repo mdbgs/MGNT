@@ -1,8 +1,8 @@
 eclipse.preferences.version=1
-encoding//src/ServletPackages/PdfIndicateur1.java=UTF-8
-encoding//src/ServletPackages/PdfIndicateur10Servlet.java=UTF-8
-encoding//src/ServletPackages/PdfIndicateur5Servlet.java=UTF-8
-encoding//src/ServletPackages/PdfIndicateur6servlet.java=UTF-8
-encoding//src/ServletPackages/PdfIndicateur7servlet.java=UTF-8
-encoding//src/ServletPackages/PdfIndicateur9Servlet.java=UTF-8
-encoding//src/ServletPackages/PdfIndicator3Servlet.java=UTF-8
+encoding//src/ServletPackages/OutPut/PdfIndicateur1.java=UTF-8
+encoding//src/ServletPackages/OutPut/PdfIndicateur10Servlet.java=UTF-8
+encoding//src/ServletPackages/OutPut/PdfIndicateur5Servlet.java=UTF-8
+encoding//src/ServletPackages/OutPut/PdfIndicateur6servlet.java=UTF-8
+encoding//src/ServletPackages/OutPut/PdfIndicateur7servlet.java=UTF-8
+encoding//src/ServletPackages/OutPut/PdfIndicateur9Servlet.java=UTF-8
+encoding//src/ServletPackages/OutPut/PdfIndicator3Servlet.java=UTF-8

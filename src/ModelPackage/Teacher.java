@@ -12,6 +12,7 @@ public class Teacher {
 	private String mail;
 	private String bp;
 	private String gender;
+	private String anneeDenseignement;
 	private String affiliation;
 	public String getAffiliation() {
 		return affiliation;
@@ -85,9 +86,15 @@ public class Teacher {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	public String getAnneeDenseignement() {
+		return anneeDenseignement;
+	}
+	public void setAnneeDenseignement(String anneeDenseignement) {
+		this.anneeDenseignement = anneeDenseignement;
+	}
 	
 	public Teacher(int idTeacher, String pseudo, String lastName, String firstName, String phoneNumber, String level,
-			String nationality, String adress, String mail, String bp, String gender, String affiliation) {
+			String nationality, String adress, String mail, String bp, String gender, String anneeDenseignement, String affiliation) {
 		super();
 		this.idTeacher = idTeacher;
 		this.pseudo = pseudo;
@@ -101,10 +108,10 @@ public class Teacher {
 		this.bp = bp;
 		this.gender = gender;
 		this.affiliation = affiliation;
+		this.anneeDenseignement = anneeDenseignement;
 	}
 	public Teacher() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 }

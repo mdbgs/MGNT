@@ -16,6 +16,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 public class Upload extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	public static final String VUE = "/WEB-INF/jsp/upload.jsp";
 	public static final String CHAMP_DESCRIPTION = "description";
 	public static final String CHAMP_FICHIER     = "fichier";
@@ -33,7 +34,7 @@ public class Upload extends HttpServlet {
 		boolean isMultipart;
 		String filePath;
 		int maxFile=5000*1024;
-		int maxMem=5*1024;
+//		int maxMem=5*1024;
 		filePath=getServletContext().getInitParameter("file_upload");
 		isMultipart=ServletFileUpload.isMultipartContent(request);
 		response.setContentType("text/html");

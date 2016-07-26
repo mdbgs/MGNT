@@ -24,8 +24,10 @@ public class Student {
 	private String adressPAC;
 	private String program;
 	private String semester;
+	private String anneeDinscription;
 	//
 	//GETTERS & SETTERS
+	//
 	public int getIdStudent() {
 		return idStudent;
 	}public void setIdStudent(int idStudent) {
@@ -144,10 +146,17 @@ public class Student {
 	public void setBp(String bp) {
 		this.bp = bp;
 	}
+	public String getAnneeDinscription() {
+		return anneeDinscription;
+	}
+	public void setAnneeDinscription(String anneeDinscription) {
+		this.anneeDinscription = anneeDinscription;
+	}
+	
 	public Student(int idStudent, String pseudo, String lastName, String firstName, String birthday,
 			String countryOfBirth, String level, String nationality, String adress, String mail, String phone,
 			String bp, String gender, String studentNumber, String lastNamePAC, String firstNamePAC, String phonePAC,
-			String adressPAC, String program, String semester) {
+			String adressPAC, String program, String semester, String anneeDinscription) {
 		super();
 		this.idStudent = idStudent;
 		this.pseudo = pseudo;
@@ -169,6 +178,6 @@ public class Student {
 		this.adressPAC = adressPAC;
 		this.program = program;
 		this.semester = semester;
+		this.anneeDinscription = anneeDinscription;
 	}
-	
 }

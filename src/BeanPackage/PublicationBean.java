@@ -3,7 +3,6 @@ package BeanPackage;
 import java.util.ArrayList;
 import java.util.List;
 
-import ModelPackage.Indicateur;
 import ModelPackage.Publication;
 
 

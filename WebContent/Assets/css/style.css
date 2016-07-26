@@ -9,119 +9,165 @@ License: GPL 2.0 or Later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 */
-.panel{
-	
+.btn{
+	border-radius:5px;
 }
-.node3{
-	position:absolute;
-	width:100px;
-	background:#666;
-	color : #fff;
-	padding:10px;
-	cursor:pointer;
-	font-family:Georgia, "Times New Roman", Times, serif
+.menuDetail{
+	border-radius:5px;
+	background-color: transparent;
+	border:1px solid #ddd;	
+	padding:15px 0px;
 }
-.node4{
-	position:absolute;
-	width:100px;
-	background:#F99;
-	left: 300px;
-	padding:10px;
-	cursor:pointer;
-	font-family:Georgia, "Times New Roman", Times, serif
+.headerDetail{
+	margin-bottom: 10px;
 }
-.detail a{
-	size:18px;
+.headerDetail .col-md-9.col-sm-9.col-lg-9{
+	margin-top:18px;
 }
-.panel-body{
-	margin-left:5px;
+.headerDetail .col-md-12.col-sm-12.col-lg-12{
+	padding:0px 10px 0px 0px;
 }
-.formulDetail{
-	margin-left:70px;
-	padding:10px;
-	text-align:center;
-} 
-/*Ajout de ANNA******************************************************************/
-				.formulDetail1{
-					border:1px solid black;
-					margin:5px;
-					padding:5px;
-					background-color:white;
-					text-align:center;
-					float:left; 
-				    width:100%;
-				    height : 100%;
-					font-family: Arial;
-					font-size:25px;
-				}
-				.formulDetail2{
-					border:1px solid black;
-					margin:5px;
-					padding:5px;
-					background-color:lightgrey;
-					text-align:center;
-					float:left; 
-					width:100%;
-					height : 100%;
-					font-family: Arial;
-					font-size:25px;
-					border-radius:25px;
-				}
-				  #form{
-					border:1px solid black;
-					width:300px;
-					margin-left:150px;
-					padding:10px;
-					
-				}
-				  #right
-				{
-					float:left
-				}
-				
-/* .h3form{ */
-/* 	color:gray; */
-/* } */
-.formulDetail label{
-	font-weight:bold;
-	margin-top:15px;
-	width:100%;
-	size:24px;
-	padding:5px;
-	border-radius:10px;
-	color:white;
-	background-color:#31859C;
-	font-style: italic;
+.bodyDetail .col-md-12.col-sm-12.col-lg-12 {
+	padding-left: 10px;
+	padding-right: 15px;
 }
-.formulDetail label:hover{
-	color:orange;
+.headerDetail .col-md-12.col-sm-12.col-lg-12,.bodyDetail .col-md-12.col-sm-12.col-lg-12 {
+	display: table-cell;
+	border-bottom: 1px dashed #ddd;
+	margin-bottom: 10px;
 }
-.myBtnDetail{
-	margin-right:45px;
-	max-width:100px;
-	
+.headerDetail .col-md-12.col-sm-12.col-lg-12:hover,.bodyDetail .col-md-12.col-sm-12.col-lg-12:hover{
+	background-color: #ddd;
 }
-.panel-body a{
-	
-	padding:5px;
-	border-radius:10px;
-	margin-right:5px;
-	background-color:#31859C;
-	color:white;
+.headerDetail .col-md-12.col-sm-12.col-lg-12 label,.bodyDetail .col-md-12.col-sm-12.col-lg-12 label{
+	float: left;
+	margin-bottom: 0em;
+	font-family: LFTEtica, Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-weight: normal;
+}
+.headerDetail .col-md-12.col-sm-12.col-lg-12 b,.bodyDetail .col-md-12.col-sm-12.col-lg-12 b{
+	font-family: LFTEtica, Helvetica Neue, Helvetica, Arial, sans-serif;
+	float:right;
+}
+.homeimg{
+	margin-left:7px;	
+}
+.notificationHeading{
+	padding-left:30px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	padding-bottom: 15px;
+	color:#31859C;
+	font-weight: bold;
+	padding-top:20px; 
+}
+.notificationContent{
+	padding-left: 35px
+}
+.single_sideb .detailHeading h2{
+	font-family: roboto;
+	padding-bottom: 15px;
+	color:#31859C;
+	font-weight: bold;
+	padding-left:15px;
+}
+.uploadCSV {
+	margin: 15px;
+	float: right;
+	background-color: #31859C;
+	width: 300px;
+	color: white;
+	min-height: 50px;
+	padding: 15px;
+	border-radius: 10px;
 }
 
-.panel-body a:hover{
-	border:1px gray solid;
+.uploadCSV span {
+	font-size: 20px;
+	font-family: serif;
+}
+
+.uploadCSV button {
+	float: right;
+	border-radius: 8px;
+}
+
+.node3 {
+	position: absolute;
+	width: 100px;
+	background: #666;
+	color: #fff;
+	padding: 10px;
+	cursor: pointer;
+	font-family: Georgia, "Times New Roman", Times, serif
+}
+
+.node4 {
+	position: absolute;
+	width: 100px;
+	background: #F99;
+	left: 300px;
+	padding: 10px;
+	cursor: pointer;
+	font-family: Georgia, "Times New Roman", Times, serif
+}
+
+.detail a {
+	size: 18px;
+}
+
+.panel-body {
+	margin-left: 5px;
+}
+
+.formulDetail {
+	margin-left: 70px;
+	padding: 10px;
+	text-align: center;
+}
+
+.formulDetail label {
+	font-weight: bold;
+	margin-top: 15px;
+	width: 100%;
+	size: 24px;
+	padding: 5px;
+	border-radius: 10px;
+	color: white;
+	background-color: #31859C;
+	font-style: italic;
+}
+
+.formulDetail label:hover {
+	color: orange;
+}
+
+.myBtnDetail {
+	margin-right: 45px;
+	max-width: 100px;
+}
+
+.panel-body a {
+	padding: 5px;
+	border-radius: 10px;
+	margin-right: 5px;
+	background-color: #31859C;
+	color: white;
+}
+
+.panel-body a:hover {
+	border: 1px gray solid;
 	background-color: #eaece8;
-	color:#000000;
-	padding:5px;
-	margin-right:5px;
-	border-radius:10px;
+	color: #000000;
+	padding: 5px;
+	margin-right: 5px;
+	border-radius: 10px;
 }
-.panel-body p{
-	margin-left:15px;
-	margin-top:5px;
+
+.panel-body p {
+	margin-left: 15px;
+	margin-top: 5px;
 }
+
 .activ {
 	text-align: center;
 }
@@ -139,21 +185,24 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	margin-right: 75px;
 	border-radius: 25px;
 }
-.activ button{
-	margin-right:3px;
-	
+
+.activ button {
+	margin-right: 3px;
 }
-#indicInfo{
+
+#indicInfo {
 	z-index: 24;
 }
-#indicInfo:hover{
+
+#indicInfo:hover {
 	z-index: 25;
 }
-#indicInfo span{
+
+#indicInfo span {
 	display: none
 }
 
-#indicInfo:hover span{
+#indicInfo:hover span {
 	display: block;
 	position: absolute;
 	margin-left: -90px;
@@ -165,17 +214,20 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	font-weight: none;
 	padding: 5px;
 }
-#activInfo{
+
+#activInfo {
 	z-index: 24;
 }
-#activInfo:hover{
+
+#activInfo:hover {
 	z-index: 25;
 }
-#activInfo span{
+
+#activInfo span {
 	display: none
 }
 
-#activInfo:hover span{
+#activInfo:hover span {
 	display: block;
 	position: absolute;
 	margin-left: -90px;
@@ -187,7 +239,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	font-weight: none;
 	padding: 5px;
 }
-
 
 #detailBtn {
 	z-index: 24;
@@ -214,10 +265,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	padding: 5px;
 }
 /*TODO Moussa******************************************************************/
-
-element.style{
-	margin-bottom:0px;
+element.style {
+	margin-bottom: 0px;
 }
+
 #detailBtn {
 	overflow: hidden;
 	-webkit-border-radius: 50px;
@@ -228,7 +279,16 @@ element.style{
 	padding: 0;
 	margin-left: 25px;
 }
-
+#detailBtn1{
+	
+	overflow: hidden;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	width: 35px;
+	height: 35px;
+	padding: 0;
+}
 #detailBtn img {
 	width: 100%;
 	height: 100%;
@@ -359,24 +419,31 @@ element.style{
 	min-width: 300px;
 	max-width: 300px;
 }
-.imgConnextion{
+
+.imgConnextion {
+	width: 100%;
+	border-radius: 5px;
+	margin-bottom: 17px;
+	margin-top: 10px;
+}
+
+.errorConnected {
+	color: #ff8080;
+	margin-left: 17px;
+	margin-top:-8px;
+}
+.col-lg-4.col-md-4.col-sm-4 .containerConnexion{
+	max-width: 376 px;
+}
+.containerConnexion {
+	margin: 20% 0;
+	min-width:250px;
 	width:100%;
-	border-radius:5px;
-	margin-bottom:17px;
-	margin-top:10px;
-}
-.errorConnected{
-	color:#ff8080;
-	margin-left:17px;
-}
-.containerConnexion{
-	margin-top: 40px;
-	max-width : 376 px;
 	background-color: #31859C;
-	border-radius:10px; 
-	padding-top:10px;
-	
+	border-radius: 10px;
+	padding: 10px 20px;
 }
+
 .myFooter {
 	margin-left: -25px;
 	margin-top: -20px;
@@ -389,10 +456,11 @@ element.style{
 	margin-bottom: 20px;
 	background-color: #ffffff;
 }
+
 .form-signin-heading {
 	text-align: center;
 	color: #000000;
-	size:24px;
+	size: 24px;
 }
 
 .form-signin .form-signin-heading, .form-signin .checkbox {
@@ -411,6 +479,7 @@ element.style{
 	box-sizing: border-box;
 	padding: 10px;
 	font-size: 16px;
+	font-family: LFTEtica,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
 .form-signin .form-control:focus {
@@ -427,6 +496,7 @@ element.style{
 	margin-bottom: 10px;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
+	font-family: LFTEtica,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
 #connexion {
@@ -436,18 +506,22 @@ element.style{
 }
 
 .barreOutil {
-	padding-top:15px;
-	margin-bottom:0px;
+	padding-top: 15px;
+	margin-bottom: 0px;
 }
+
 .barreValue {
 	max-height: 40px;
 }
+
 .barreValue img {
-	margin-top:-8px;
-	margin-left:-25px;
-	margin-right:20px;
-	width : 85px;
-	border-radius:4px;
+	margin-top: -8px;
+	margin-left: -27px;
+	width: 85px;
+	border-radius: 4px;
+}
+.barreValue img:hover{
+	padding: 0
 }
 .composant {
 	padding-left: 50px;
@@ -472,10 +546,29 @@ element.style{
 }
 
 /*** Début Formulaire d'inscription********************/
-.panel-heading h1 {
+.panel-heading{
+	width: 100%;
+	text-align: center;
+}
+.inner .col-lg-12{
+	padding-left: 4px;
+	padding-right: 4px;
+}
+.inner .myPanel .panel-heading{
+	border-right-color:#f4f4f4;
+	border-top-color:#f4f4f4;
+	border-left-color:#f4f4f4;
+	margin-bottom: 10px;
+	
+}
+.inner .panel-default{
+	border-color:#f4f4f4;
+}
+.panel-heading h1,.panel-heading h2 {
 	text-align: center;
 	font-weight: bold;
 	color: #31859C;
+	padding:10px;
 }
 
 .myForm {
@@ -493,29 +586,37 @@ element.style{
 
 .erreur {
 	height: 100%;
-	color:red;
+	color: red;
 }
 
-#formGauche, #formDroite {
+.formGauche label, .formDroite label{
 	height: 100%;
+	font-size:16px;
+	font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+	font-weight: normal;
 }
-#fm2{
+
+#fm2 {
 	text-decoration: underline;
 }
-#fm{
+
+#fm {
 	height: 100%;
-	widht:100%;
-	padding-right:15px;
-	text-align:left;
-	font-size:large;
-
-
+	widht: 100%;
+	padding-right: 15px;
+	text-align: left;
+	font-size: large;
 }
+
 #formGauche input, #formDroite input, #formGauche select, #formDroite select
 	{
 	margin-bottom: 10px;
 }
-
+#formGauche select{
+	padding: 0px 15px;
+width: 92%;
+min-height: 40px;
+}
 #level, #sexe, #semester, #program, #Acteur {
 	width: 90%;
 }
@@ -523,8 +624,7 @@ element.style{
 
 /*Fnish TODO Moussa************************************************************************/
 #header_areaBis {
-	margin-top: 40px;
-	margin-left:0px;
+	margin-left: 0px;
 }
 
 * {
@@ -533,9 +633,9 @@ element.style{
 }
 
 body {
-	font-family: Arial;
+	font-family: B;
 	font-size: 12px;
-	line-height: 18px
+	line-height: 18px;
 }
 
 a {
@@ -574,6 +674,7 @@ img {
 	float: left;
 	margin-left: 0px
 }
+
 .aligncenter {
 	display: block;
 	margin: 10px auto
@@ -589,13 +690,13 @@ img {
 }
 
 .floatright {
-	float: right
+	float: right;
 }
 
 .center {
-	width:100%;
-	margin-right:25px;
-	margin-left:25px;
+	width: 100%;
+	margin-right: 25px;
+	margin-left: 25px;
 }
 
 .fix {
@@ -701,7 +802,7 @@ ul {
 }
 
 #nav2 div li {
-	color: #000000;
+	color: #ffffff;
 	float: left;
 	background: url(images/main_menu_separator.png) no-repeat right center;
 	position: relative;
@@ -710,6 +811,7 @@ ul {
 
 #nav2 div li:last-child {
 	background: none;
+	float:right;
 }
 
 #nav2 div li a {
@@ -718,11 +820,10 @@ ul {
 	font-size: 13px;
 	font-weight: bold;
 	padding: 13.2px;
-/* 	background-color:#8080c0; */
+	/* 	background-color:#8080c0; */
 }
 
-
-#nav2  div li a span {
+#nav2  div li a span,#nav2  div li a span:hover. {
 	color: #31859C;
 	display: block;
 	font-size: 11px;
@@ -734,7 +835,7 @@ ul {
 	padding-bottom: 5px;
 	margin-top: -5px;
 	border-radius: 5px 5px 0 0;
-/*   	background-color:#254b4b; */
+	/*   	background-color:#254b4b; */
 }
 
 #myDataTable {
@@ -746,13 +847,14 @@ ul {
 	background-color: #31859C;
 	border-radius: 0 0 5px 5px;
 	position: absolute;
-	top: 50px;
 	left: -999999px;
 	border-top: 5px solid #f38430;
 	z-index: 2000;
 	min-width: 160px;
+	min-height: 55px;
+	padding-top:5px;
+	padding-left: 5px;
 }
-
 #nav2 div li:hover ul {
 	left: 0;
 }
@@ -766,6 +868,7 @@ ul {
 	font-family: georgia;
 	font-size: 11px;
 	font-style: italic;
+	margin-top:4px;
 }
 
 #nav2 div li ul li:last-child a {
@@ -874,26 +977,33 @@ ul {
 	width: 468px;
 }
 
+.main-content {
+	margin-top:20px;
+	z-index: 1
+}
+
 .content {
-	background: none repeat scroll 0 0 #fff;
-	border-radius: 6px;
-	margin-top: -495px;
-	margin-left: 25px;
-	margin-right: 15px;
-	min-height:600px;
+	background: transparent;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	padding-bottom:7px;
+	height: 100%;
+	padding-left: 7px;
+	padding-right: 7px;
+}
+#scroll_top{
+	background-color: #F2F2F2;
+}
+.main_menu {
 	
 }
 
-.main_menu {
-padding-bottom:-10px;
-	}
-
 .main_content_area {
-	border-left: 2px solid #ddd;
-	border-right: 2px solid #ddd;
-	border-bottom: 2px solid #ddd;
-	padding: 25px;
-	min-height:500px;	
+	background-color:white;
+	padding: 5px;
+	min-height: 600px;
+	height: 100%;
 }
 
 .main_content_areaBis {
@@ -907,7 +1017,6 @@ padding-bottom:-10px;
 
 #content_area {
 	position: relative;
-	
 }
 
 .slider_area {
@@ -1136,18 +1245,12 @@ padding-bottom:-10px;
 }
 
 .single_sidebar {
-	margin-bottom: 20px;
+/* 	margin-bottom: 20px; */
 }
 
 .single_sidebar h2 {
-	background: url("images/title_bg.png") repeat scroll 0 0
-		rgba(0, 0, 0, 0);
-	color: #444444;
 	font-family: georgia !important;
-	font-size: 12px;
-	font-style: italic;
 	line-height: 16px;
-	margin-left: 100px;
 }
 
 .single_sidebar h2 span {
@@ -1155,6 +1258,11 @@ padding-bottom:-10px;
 	margin-left: -100px;
 }
 
+.single_sidebar .inner input{
+	padding:0px 15px;
+	width:92%;
+	min-height: 40px;
+}
 .single_sidebar input {
 	padding: 10px;
 	width: 92%;
@@ -1198,14 +1306,19 @@ padding-bottom:-10px;
 }
 
 .footer_top {
-	margin-top: 12px;
-	margin-bottom:-12px;
-	width:100%;
+	vertical-align: middle;
+	width: 100%;
 }
 
 .footer_top_container {
-	margin-left: -15px;
-	padding: 20px;
+	padding: 0px 20px;
+	width: 100%
+}
+.footer_top_container a{
+	color:#31859C;
+}
+.footer_top_container a:hover{
+	color:#f38430	
 }
 
 .single_footer_top {
@@ -1279,8 +1392,11 @@ padding-bottom:-10px;
 	
 }
 
-.footer_bottom_text {
-	
+.footer_bottom_text a{
+	color:#31859C
+}
+.footer_bottom_text a:hover {
+	color:#f38430
 }
 /* Jessor slider styles */
 #myslides>div>a>img {
@@ -1407,17 +1523,20 @@ padding-bottom:-10px;
 	
 }
 
-
-
 #footer_top_area {
 	background: url("images/footer_bg.png") repeat scroll 0 0
 		rgba(0, 0, 0, 0);
-	border-bottom: 2px solid #31859C;
-	border-top: 2px solid #31859C;
-	margin-left:25px;
-	width:100%;
+	border-bottom: 5px solid #31859C;
+	border-top: 5px solid #31859C;
+	width: 100%;
+	vertical-align: middle;
+	margin-top: -40px;
+	padding-top: 40px;
 }
-
+.footerContent.col-sm-12.col-md-12.col-xs-12{
+	padding-left:0px;
+	padding-right: 0px;
+}
 #footer_bottom_area {
 	
 }
@@ -1608,24 +1727,49 @@ padding-bottom:-10px;
 .post_meta a:hover {
 	color: #000;
 }
-.photoDetail{
-	width:120px;
-	height:130px;
+
+.photoDetail {
+	width: 100%;
+	height: 100%;
+	padding: 5px;
 }
-#photoDetail{
-	width:150px;
-	height:150px;
+
+
+.imageDiv {
+	width: 100%;
 }
-.imageDiv{
-	width:100%;
+
+.photoEntete {
+	width: 30px;
+	margin-left: 90%;
+	margin-top: 0%;
 }
-.photoEntete{
-	width:30px;
-	margin-left:90%;
-	margin-top:0%;
+
+.DeconProfil {
+/* 	margin-left: 83%; */
+/* 	margin-top: -50px; */
 }
-.DeconProfil{
-	margin-left:83%;
-	margin-top:-0.4%;
+
+.DeconProfil span,.DeconProfil span:hover{
+/* 	color:#31859C; */
+/* 	padding-left:5px; */
+/* 	text-decoration: none; */
+}
+#nav2 .DeconProfil li a{
+/* 	padding:0 */
+}
+.fileupload-preview{
+	width: 200px; height: 150px;
+}
+.fileupload .thumbnail img{
+	height: 135px
+}
+#nav2 div .DeconProfil a{
+	margin-top:-10px;
+	padding-bottom: 30px;
+}
+
+#nav2 div .DeconProfil a ul:hover{
+	padding-bottom: 30px;
 	
 }

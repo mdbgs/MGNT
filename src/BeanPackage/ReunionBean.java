@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ModelPackage.Reunion;
-import ModelPackage.Stage;
 
 public class ReunionBean {
 	private List<Reunion> reunionList = new ArrayList<Reunion>();

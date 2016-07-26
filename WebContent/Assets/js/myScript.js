@@ -26,6 +26,7 @@ jQuery(document).ready(function($) {
 			}
 		}
 	};
+	
 	var jssor_slider1 = new $JssorSlider$("slider1_container", options);
 	function ScaleSlider() {
 		var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
@@ -40,11 +41,11 @@ jQuery(document).ready(function($) {
 	}
 });
 /* My code */
-
 function lockOpen() {
 	$("#lockOpen").fadeOut();
 	$("#lockClose").fadeIn();
-	$(".sidebarMenu").addStyle("margin-left:-50px;background-color:red;");
+//	$(".lockClose").addStyle("opacity:10;");
+//	$(".sidebarMenu").addStyle("margin-left:-50px;background-color:red;");
 
 };
 function lockClose() {
@@ -82,6 +83,7 @@ function apprentissageActivite() {
 	$("#gouvAct").fadeOut();
 
 };
+
 function partenaireActivite() {
 	$("#allAct").fadeOut();
 	$("#appAct").fadeOut();

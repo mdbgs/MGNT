@@ -15,6 +15,7 @@ import ModelPackage.Activite;
 import ModelPackage.Indicateur;
 import ModelPackage.Student;
 import ModelPackage.Teacher;
+import ServletPackages.Formulaires.ConnexionServlet;
 
 /**
  * Servlet implementation class detailActivite
@@ -26,7 +27,7 @@ public class DetailActivite extends ConnexionServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Details.jsp").forward(req, resp);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/OutPut/Details.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -60,7 +61,8 @@ public class DetailActivite extends ConnexionServlet {
 				while (result.next()) {
 					student= new Student(result.getInt(1), result.getString(2),result.getString(3), result.getString(4), Integer.toString(result.getInt(5)), result.getString(6),
 							result.getString(7), result.getString(8), result.getString(9), result.getString(10),
-							result.getString(11), result.getString(12), Integer.toString(result.getInt(13)), result.getString(14), result.getString(15), result.getString(16), result.getString(17), result.getString(18), result.getString(19), result.getString(20));
+							result.getString(11), result.getString(12), Integer.toString(result.getInt(13)), result.getString(14), result.getString(15),
+							result.getString(16), result.getString(17), result.getString(18), result.getString(19), result.getString(20), result.getString(21));
 				}
 				req.setAttribute("etudiantRecu", student);
 				System.out.println(result.getString(2));
@@ -86,7 +88,7 @@ public class DetailActivite extends ConnexionServlet {
 				while (result.next()) {
 					teacher=new Teacher(result.getInt(1), result.getString(2),result.getString(3), result.getString(4), result.getString(9), result.getString(5),
 							result.getString(6), result.getString(7), result.getString(8), result.getString(10),
-							result.getString(11),result.getString(12));
+							result.getString(11),result.getString(12),result.getString(13));
 				}
 				req.setAttribute("teacherRecu", teacher);
 			}

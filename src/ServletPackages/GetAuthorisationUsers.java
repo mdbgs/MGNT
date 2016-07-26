@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import BeanPackage.ComputeQueryBean;
 import ModelPackage.User;
+import ServletPackages.Formulaires.ConnexionServlet;
 
 public class GetAuthorisationUsers extends ConnexionServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,7 +27,6 @@ public class GetAuthorisationUsers extends ConnexionServlet {
 				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Connection.jsp").forward(request, response);
 			}
 		} else {
-
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Connection.jsp").forward(request, response);
 		}
 	}

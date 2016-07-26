@@ -7,7 +7,7 @@ import ModelPackage.Indicateur;
 
 public class IndicateurBean {
 	//
-	// FIELDS
+	// FIELD
 	//
 	private List<Indicateur> indicateurList = new ArrayList<Indicateur>();
  	//

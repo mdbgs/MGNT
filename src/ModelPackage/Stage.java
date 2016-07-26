@@ -1,6 +1,5 @@
 package ModelPackage;
 
-import java.util.Date;
 
 public class Stage {
 	private int idStage;

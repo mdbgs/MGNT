@@ -7,14 +7,17 @@ import ModelPackage.Activite;
 
 public class ActiviteBean {
 	protected List<Activite> activeList = new ArrayList<>();
+
 	public List<Activite> getActiveList() {
 		return activeList;
 	}
-	public void addActiviteinList(Activite activite){
+
+	public void addActiviteinList(Activite activite) {
 		this.activeList.add(activite);
 	}
-	public Activite oneActivite(){
-		if (!activeList.isEmpty()){
+
+	public Activite oneActivite() {
+		if (!activeList.isEmpty()) {
 			return activeList.get(0);
 		}
 		return null;
