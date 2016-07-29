@@ -197,14 +197,13 @@ create table Responsable
    mail                 varchar(100)                   null,
    sexe                 integer                   null,
    poste                varchar(100)                   null,
-   type                 varchar(100)                   null,
    constraint PK_RESPONSABLE primary key (iDResponsable)
 );
-create table ResponsableActivite{
-	pseudo responsable varchar(255)  not null,
-	idActivite varchar(255)    not null,
+create table ResponsableActivite(
+	pseudo				varchar(255)				not null,
+	idActivite			integer				not null,
 	constraint PK_ResponsableActivite primary key (pseudo,idActivite)
-};
+);
 /*==============================================================*/
 /* Table : Reunion                                              */
 /*==============================================================*/
@@ -309,14 +308,14 @@ alter table Etudiant
       on update cascade
       on delete cascade;
 	  
-alter table Responsable_Activite
+alter table ResponsableActivite
    add constraint FK_ResponsableActivite_COMPTE foreign key (pseudo)
       references Compte (pseudo)
       on update cascade
       on delete cascade;
 	  
-alter table Responsable_Activite
-   add constraint FK_ResponsableActivite_Activite foreign key (idActivite)
+alter table ResponsableActivite
+   add constraint FK_ResponsablActivite_Activite foreign key (idActivite)
       references Activite (idActivite)
       on update cascade
       on delete cascade;
@@ -400,12 +399,12 @@ INSERT INTO users_roles  VALUES ('worldBank', 'BanqueMondial');
 INSERT INTO users_roles  VALUES ('m.maiga', 'viceCoordonnateur');
 INSERT INTO users_roles  VALUES ('mlle.thiam', 'etudiant');
 /* insertion des utilisateurs standard*/
-INSERT INTO responsable  VALUES (null, 'm.sall','Sall','Moussa','Aînoumady 5','772349186','sall.moussa@sanarsoft.com','1','Admin','admin');
-INSERT INTO responsable  VALUES (null, 'mme.sy','Ndeye Aminata Diagne','Sy','Saint-Louis','77777777','inconnue','0','Responsable de suivie et évaluation','responsable_Suivi_Evaluation');
-INSERT INTO responsable  VALUES (null, 'm.lo','Moussa','Lo','Ngallele','inconnue','moussa.lo@ugb.edu.sn','1','Coordonnateur du CEAMITIC','coordonnateur');
-INSERT INTO responsable  VALUES (null, 'm.ndiaye','Diéne','Ndiaye','Saint-Louis','inconnue','diene.ndiaye@ugb.edu.sn','1','responsable saisie','responsable_Saisie');
-INSERT INTO responsable  VALUES (null, 'm.diop','Cheikh Talibouya','Diop','Saint-Louis','inconnue','cheikh.talibouya.diop@ugb.edu.sn','1','responsable contrôle','responsable_Controle');
-INSERT INTO responsable  VALUES (null, 'm.maiga','Monsieur','maiga','Saint-Louis','inconnue','mamadou.maiga@ugb.edu.sn','1','vice Coordonnateur','viceCoordonnateur');
+INSERT INTO responsable  VALUES (null, 'm.sall','Sall','Moussa','Aînoumady 5','772349186','sall.moussa@sanarsoft.com','1','Admin');
+INSERT INTO responsable  VALUES (null, 'mme.sy','Ndeye Aminata Diagne','Sy','Saint-Louis','77777777','inconnue','0','Responsable suivie-évaluation');
+INSERT INTO responsable  VALUES (null, 'm.lo','Moussa','Lo','Ngallele','inconnue','moussa.lo@ugb.edu.sn','1','coordonnateur');
+INSERT INTO responsable  VALUES (null, 'm.ndiaye','Diéne','Ndiaye','Saint-Louis','inconnue','diene.ndiaye@ugb.edu.sn','1','responsable laboratoire');
+INSERT INTO responsable  VALUES (null, 'm.diop','Cheikh Talibouya','Diop','Saint-Louis','inconnue','cheikh.talibouya.diop@ugb.edu.sn','1','chercheur principal');
+INSERT INTO responsable  VALUES (null, 'm.maiga','Monsieur','maiga','Saint-Louis','inconnue','mamadou.maiga@ugb.edu.sn','1','coordonnateur Adjoint');
 insert into enseignant values(null,'m.dembele','Dembele','Jean Marie','Enseignant Chercheur','Sénégalaise','Dakar','m.dembele@gmail.com','inconnue','234',1,'ugb','2015-2016');
 insert into etudiant values (null,'mlle.thiam', 'Awa','Thiam','1992/12/12','ngnith','master II','Sénégalaise','ngnith','thiameva21@hotmail.com','776683547','234','0','P22101','Thiam','rokhaya','770175867','hlm dakar','Informatique','semestre 1','2015-2016');
 insert into partenaires values (null,'ucad', 'Université cheikh Anta Diop','pédagogique','Point E Dakar','inconnue','contact@ucad.sn','inconnu','partenariat','science de l''ingenierie','2016/12/12','2050/12/12','excellence dans les TICS','Etudes des maladies véhiculées par les rongeurs au sénégal');

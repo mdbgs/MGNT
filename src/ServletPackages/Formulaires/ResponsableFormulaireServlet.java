@@ -25,63 +25,65 @@ import Enumeration.EnumResponsable;
  * Servlet implementation class ResponsableFormulaireServlet
  */
 @WebServlet("/ResponsableFormulaireServlet")
-public class ResponsableFormulaireServlet extends ConnexionServlet implements NumericConstant{
+public class ResponsableFormulaireServlet extends ConnexionServlet implements NumericConstant {
 	private static final long serialVersionUID = 1L;
 	private Connection connection;
-   
-	
-protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	List<String> poste=new ArrayList<String>();
-	for(EnumResponsable responsable:EnumResponsable.values()){
-		poste.add(responsable.toString());
-	}
-	request.setAttribute("responsablePoste", poste);
-	
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Formulaire/Responsable.jsp").forward(request, response);
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		List<String> poste = new ArrayList<String>();
+		for (EnumResponsable responsable : EnumResponsable.values()) {
+			poste.add(responsable.toString());
+		}
+		request.setAttribute("responsablePoste", poste);
+
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Formulaire/Responsable.jsp").forward(request,
+				response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String resultat;
 
 		Map<String, String> erreurs = new HashMap<String, String>();
 
 		/* Récupération des champs du formulaire. */
-		
+
 		String prenom = request.getParameter(FIRSTNAME);
 		String nom = request.getParameter(LASTNAME);
 		String email = request.getParameter(MAIL);
-		String telephone=request.getParameter(PHONE);
-		String poste= request.getParameter(POST);
-		String sexe= request.getParameter(GENDER);
-		String adresse= request.getParameter(ADRESS);
-		String type=request.getParameter(TYPE);
-		
+		String telephone = request.getParameter(PHONE);
+		String poste = request.getParameter(POST);
+		String sexe = request.getParameter(GENDER);
+		String adresse = request.getParameter(ADRESS);
+
 		Date date = new Date();
-		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		 String dateNow = dateFormat.format(date);
-		 String pseudo = "'mme.sy";
-		String valueResponsable="'%'ceamitic2016'%"+dateNow+"%'inconnu'%";
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		String dateNow = dateFormat.format(date);
+		String pseudo = ("'" + nom + "." + prenom).replaceAll("\\s", ".");
+		String valueResponsable = "'%'ceamitic2016'%" + dateNow + "%'inconnu'%"+ "'actif'";
 		ConnexionServlet servlet = new ConnexionServlet();
 		try {
 			connection = servlet.getDataSource().getConnection();
-			int rs = ComputeQueryBean.insertInAllTable(pseudo+valueResponsable, "compte",connection);
-//			int number = 0;
-//			while(rs==0){
-//				number++;
-//				pseudo+=number;
-//				rs = ComputeQueryBean.insertDatabase(pseudo+valueResponsable, "compte",connection);
-//			}
-			valueResponsable="%"+pseudo+"'%" + "'"+nom+"'%" + "'"+prenom+"'%" + "'"+adresse+"'%" + "'"+telephone+"'%"
-					 + "'"+email+"'%" + "'"+sexe+"'%" + "'"+poste+"'%" + "'"+type+"'%";
-			rs= ComputeQueryBean.insertInAllTable(valueResponsable, "Responsable",connection);
-			
+			int rs = ComputeQueryBean.insertInAllTable(pseudo + valueResponsable, "compte", connection);
+			int number = 0;
+			while (rs == 0) {
+				number++;
+				pseudo += number;
+				rs = ComputeQueryBean.insertInAllTable(pseudo + valueResponsable, "compte", connection);
+			}
+			valueResponsable = "%" + pseudo + "'%" + "'" + nom + "'%" + "'" + prenom + "'%" + "'" + adresse + "'%" + "'"
+					+ telephone + "'%" + "'" + email + "'%" + "'" + sexe + "'%" + "'" + poste + "'";
+			rs = ComputeQueryBean.insertInAllTable(valueResponsable, "Responsable", connection);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} 
-		
+		}
+
 		/* Validation du champ prenom. */
 		try {
 
@@ -92,7 +94,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			erreurs.put(FIRSTNAME, e.getMessage());
 
 		}
-		
+
 		/* Validation du champ nom. */
 		try {
 
@@ -103,7 +105,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			erreurs.put(LASTNAME, e.getMessage());
 
 		}
-		
+
 		/* Validation du champ email. */
 		try {
 
@@ -114,16 +116,15 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			erreurs.put(MAIL, e.getMessage());
 
 		}
-		/* Validation du champ téléphone*/
-		try{
+		/* Validation du champ téléphone */
+		try {
 			validationTelephone(telephone);
-			
-		} catch(Exception e){
-			
+
+		} catch (Exception e) {
+
 			erreurs.put(PHONE, e.getMessage());
 		}
-		
-		
+
 		try {
 
 			validationAdresse(adresse);
@@ -133,7 +134,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			erreurs.put(ADRESS, e.getMessage());
 
 		}
-		
+
 		try {
 
 			validationPoste(poste);
@@ -143,10 +144,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			erreurs.put(POST, e.getMessage());
 
 		}
-		
-		
 
-		
 		if (erreurs.isEmpty()) {
 
 			resultat = "Succès de l'inscription.";
@@ -164,35 +162,33 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 		/* Transmission de la paire d'objets request/response à notre JSP */
 
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Responsable.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/List/List/ListResponsable.jsp").forward(request,
+				response);
 
 	}
+
 	private void validationPrenom(String prenom) throws Exception {
-		if(prenom.trim().length()==0)
+		if (prenom.trim().length() == 0)
 			throw new Exception("Veuillez saisir le prénom svp");
-			else
-				if (prenom != null) {
-					if(!prenom.matches("^\\D+$" ))
-						throw new Exception("Le prenom doit uniquement contenir des lettres");
-				
-			}
-		
-		
-	}
-
-	private void validationNom(String nom) throws Exception {
-		if(nom.trim().length()==0)
-			throw new Exception("Veuillez saisir le nom svp");
-			else
-				if (nom != null) {
-					if(!nom.matches("^\\D+$" ))
-						throw new Exception("Le nom doit uniquement contenir des lettres");
+		else if (prenom != null) {
+			if (!prenom.matches("^\\D+$"))
+				throw new Exception("Le prenom doit uniquement contenir des lettres");
 
 		}
 
 	}
-	
-	
+
+	private void validationNom(String nom) throws Exception {
+		if (nom.trim().length() == 0)
+			throw new Exception("Veuillez saisir le nom svp");
+		else if (nom != null) {
+			if (!nom.matches("^\\D+$"))
+				throw new Exception("Le nom doit uniquement contenir des lettres");
+
+		}
+
+	}
+
 	private void validationEmail(String email) throws Exception {
 
 		if (email != null && email.trim().length() != 0) {
@@ -210,37 +206,37 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		}
 
 	}
-	private void validationTelephone(String telephone) throws Exception{
-		if ( telephone != null ) {
 
-            if ( !telephone.matches( "^\\d+$" ) ) {
+	private void validationTelephone(String telephone) throws Exception {
+		if (telephone != null) {
 
-                throw new Exception( "Le numéro de téléphone est incorrect." );
+			if (!telephone.matches("^\\d+$")) {
 
-            } else if ( telephone.length() < 9 ) {
+				throw new Exception("Le numéro de téléphone est incorrect.");
 
-                throw new Exception( "Le numéro de téléphone doit contenir au moins 9 chiffres." );
+			} else if (telephone.length() < 9) {
 
-            }
+				throw new Exception("Le numéro de téléphone doit contenir au moins 9 chiffres.");
 
-        } else {
+			}
 
-            throw new Exception( "Merci d'entrer un numéro de téléphone." );
-        }
-		
+		} else {
+
+			throw new Exception("Merci d'entrer un numéro de téléphone.");
+		}
+
 	}
-	
-	
-	private void validationAdresse(String adresse) throws Exception{
-		if(adresse.trim().length()==0)
+
+	private void validationAdresse(String adresse) throws Exception {
+		if (adresse.trim().length() == 0)
 			throw new Exception("Veuillez saisir  une adresse svp");
-		
+
 	}
-	
-	private void validationPoste(String poste) throws Exception{
-		if(poste.trim().length()==0)
+
+	private void validationPoste(String poste) throws Exception {
+		if (poste.trim().length() == 0)
 			throw new Exception("Veuillez saisir le poste svp");
-		
+
 	}
 
 }

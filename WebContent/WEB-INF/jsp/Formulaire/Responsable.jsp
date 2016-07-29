@@ -96,23 +96,6 @@
 									</div>
 									<div class="row">
 										<div class="col-xs-5" id="formGauche">
-											<div class="row ">
-												<label>Type</label>
-											</div>
-											<div class="row">
-												<select id="type"
-													<input class="form-control" type="text" name="type" value="${param.type}" />>
-													<option value="" disabled selected>Choisir le type</option>
-													<option>Responsable suivi-évaluation</option>
-													<option>Responsable de controle</option>
-													<option>Responsable de saisie</option>
-													<option>Coordonnateur</option>
-													<option>Coordonnateur adjoint</option>
-												</select>
-											</div>
-											<span class="erreur">${errors['type']}</span>
-										</div>
-										<div class="formDroite col-xs-5">
 											<div class="row">
 												<label>Poste <span>*</span></label>
 											</div>

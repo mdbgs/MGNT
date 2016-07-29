@@ -2,17 +2,18 @@ package Enumeration;
 
 //All categorie of responsable in CEA-MITIC institute
 public enum EnumResponsable {
-	Resp_Labo("Responsable Laboratoire"),
-	ChercPrincipal("Chercheur Principal"),
-	DirUfr("Directeur UFR"),
-	Coordonnateur("Coordonnateur"),
-	DirED("Directeur ED"),
-	RespMaster("Responsable de Master"),
-	ChefsSection("Chef de Section"),
-	DA("DA"),
-	CordAdjt("Coordonnateur Adjoint"),
 	CSEP("Chargé du Suivi des étudiants et Partenaire"),
+	ChefsSection("Chef de Section"),
+	ChercPrincipal("Chercheur Principal"),
 	Comptable("Comptable"),
+	Coordonnateur("Coordonnateur"),
+	CordAdjt("Coordonnateur Adjoint"),
+	DA("DA"),
+	DirED("Directeur ED"),
+	DirUfr("Directeur UFR"),
+	Resp_Labo("Responsable Laboratoire"),
+	Resp_SV("Responsable Suivi-évaluation"),
+	RespMaster("Responsable de Master"),
 	RPM("RPM"),
 	RSE("RSE");
 	

@@ -13,7 +13,6 @@ public class Responsable {
 	private String phone;
 	private String gender;
 	private String post;
-	private String type;
 	//
 	//GETTERS & SETTERS
 	
@@ -105,20 +104,8 @@ public class Responsable {
 		public void setPost(String post) {
 			this.post = post;
 		}
-
-
-		public String getType() {
-			return type;
-		}
-
-
-		public void setType(String type) {
-			this.type = type;
-		}
-
-
 		public Responsable(int idResponsable, String pseudo, String lastName, String firstName, String adress, String mail,
-				String phone, String gender, String post, String type) {
+				String phone, String gender, String post) {
 			super();
 			this.idResponsable = idResponsable;
 			this.pseudo=pseudo;
@@ -129,7 +116,6 @@ public class Responsable {
 			this.phone = phone;
 			this.gender = gender;
 			this.post = post;
-			this.type = type;
 		}
 	
 

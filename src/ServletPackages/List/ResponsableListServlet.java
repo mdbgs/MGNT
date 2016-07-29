@@ -39,7 +39,7 @@ public class ResponsableListServlet extends ConnexionServlet {
 			while (result.next()) {
 				if(result.getString(10).equals("responsable_Saisie")){
 					responsable.AddResponsable(new Responsable(result.getInt(1), result.getString(2), result.getString(3),result.getString(4), result.getString(5), result.getString(6), result.getString(7),
-							Integer.toString(result.getInt(8)), result.getString(9), result.getString(10)));
+							Integer.toString(result.getInt(8)), result.getString(9)));
 				}
 			}
 			System.out.println("Taille de la liste : "+responsable.getResponsableList().size());
