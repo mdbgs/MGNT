@@ -11,7 +11,7 @@ public enum EnumResponsable {
 	ChefsSection("Chef de Section"),
 	DA("DA"),
 	CordAdjt("Coordonnateur Adjoint"),
-	CSEP("Chargé du SEP"),
+	CSEP("Chargé du Suivi des étudiants et Partenaire"),
 	Comptable("Comptable"),
 	RPM("RPM"),
 	RSE("RSE");

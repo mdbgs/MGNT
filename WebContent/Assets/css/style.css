@@ -612,7 +612,7 @@ element.style {
 	{
 	margin-bottom: 10px;
 }
-#formGauche select{
+#formGauche select,.formDroite select{
 	padding: 0px 15px;
 width: 92%;
 min-height: 40px;

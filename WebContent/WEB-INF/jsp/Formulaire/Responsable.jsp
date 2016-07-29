@@ -102,7 +102,7 @@
 											<div class="row">
 												<select id="type"
 													<input class="form-control" type="text" name="type" value="${param.type}" />>
-													<option value="" disabled selected>sélectionner</option>
+													<option value="" disabled selected>Choisir le type</option>
 													<option>Responsable suivi-évaluation</option>
 													<option>Responsable de controle</option>
 													<option>Responsable de saisie</option>
@@ -117,8 +117,14 @@
 												<label>Poste <span>*</span></label>
 											</div>
 											<div class="row">
-												<input class="form-control" type="text" id="post"
-													name="post" value="${param.post}" placeholder="poste" />
+												<c:set var="postes" value="${responsablePoste}"></c:set>
+												<select id="post"
+													<input class="form-control" id="post" type="text" name="post" />>
+													<option disabled selected>Choisir le poste</option>
+													<c:forEach items="${postes}" var="onePoste">
+															<option>${onePoste}</option>
+													</c:forEach>
+												</select>
 											</div>
 											<span class="erreur">${errors['post']}</span>
 										</div>
