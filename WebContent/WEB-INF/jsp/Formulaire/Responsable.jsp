@@ -77,8 +77,8 @@
 												<select id="sexe"
 													<input class="form-control" type="text" name="gender" value=getValueOption(gender) />>
 													<option value="" disabled selected>sexe</option>
-													<option value="0">Masculin</option>
-													<option value="1">Féminin</option>
+													<option value="1">Masculin</option>
+													<option value="0">Féminin</option>
 												</select>
 											</div>
 											<span class="erreur">${errors['gender']}</span>

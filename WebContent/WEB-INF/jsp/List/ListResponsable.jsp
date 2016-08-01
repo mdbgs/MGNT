@@ -41,7 +41,6 @@
 														<th>Sexe</th>
 														<th>Email</th>
 														<th>Poste</th>
-														<th>Type</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -52,9 +51,15 @@
 															<td><c:out value="${responsable.firstName}"></c:out></td>
 															<td><c:out value="${responsable.mail}"></c:out></td>
 															<td><c:out value="${responsable.adress}"></c:out></td>
-															<td><c:out value="${responsable.gender}"></c:out></td>
+															<td>
+																<c:if test="${responsable.gender==0}">
+																	Feminin
+																</c:if>
+																<c:if test="${responsable.gender==1}">
+																	Masculin
+																</c:if>
+															</td>
 															<td><c:out value="${responsable.phone}"></c:out></td>
-															<td><c:out value="${responsable.type}"></c:out></td>
 															<td><c:out value="${responsable.post}"></c:out></td>
 															<td>
 																<button type="submit" class=" btn btn-info"
