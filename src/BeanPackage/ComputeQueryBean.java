@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import Enumeration.EnumResponsable;
+
 public class ComputeQueryBean implements NumericConstant {
 	//
 	// FUNCTIONS
@@ -94,6 +96,21 @@ public class ComputeQueryBean implements NumericConstant {
 		return result;
 	}
 
+	/** Select All rows of table by ID */
+	public static ResultSet selectAllWritter(Connection connection) {
+		ResultSet result = null;
+		EnumResponsable poste = null;
+		try {
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM responsable where poste not in (select poste from responsable where poste=" + "'" + poste.Resp_SV.toString() + "'"
+					+ " UNION select poste from responsable where poste=" + "'" + poste.Coordonnateur.toString() + "'"
+					+ " UNION select poste from responsable where poste=" + "'admin'" +") ;";
+			result = statement.executeQuery(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	/** Select All rows of table by ID */
 	public static ResultSet selectAll(String table, Connection connection) {
 		ResultSet result = null;

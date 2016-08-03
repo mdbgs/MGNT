@@ -290,7 +290,7 @@
 									</div>
 									<!--      <input type="submit" value="Envoyer"class="sansLabel" />                   -->
 									<div class="row myBtn">
-										<input class="btn btn-danger myBtnDetail" style="margin-bottom: 10px;" onclick="location.href = 'studentHome';"
+										<input class="btn btn-danger myBtnDetail" style="margin-bottom: 10px;" onclick="location.href = 'studentList';"
 								value="Annuler" />
 										<input class="btn btn-info " type="submit" value="Valider" />
 

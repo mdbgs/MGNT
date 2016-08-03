@@ -171,6 +171,23 @@
 											<span class="erreur">${errors['resultatAttendu']}</span>
 										</div>
 									</div>
+									<div class="row">
+										<div class="col-xs-5" id="formGauche">
+											<div class="row ">
+												<label>D&eacute;signer les responsables de Saisie</label>
+											</div>
+											<div class="row">
+												<select id="level" multiple="multiple" size="5"
+													<input class="form-control" type="text" name="level" />>
+													<option disabled>Choisir le(s) responsable(s)</option>
+													<c:forEach items="${responsableRecu.responsableList}" var="responsable">
+															<option class="checkbox checkbox-success"/><input type="checkbox"/> ${responsable.pseudo}</option>
+													</c:forEach>
+												</select>
+											</div>
+											<span class="erreur">${errors['objectif']}</span>
+										</div>
+									</div>
 
 									<div class="row myBtn">
 										<input class="btn btn-danger " type="reset" value="Annuler" />

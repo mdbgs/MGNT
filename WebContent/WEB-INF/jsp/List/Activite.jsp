@@ -12,67 +12,10 @@
 		<c:import url="../MenuBar.jsp"></c:import>
 		<div class="content">
 			<div class="fix main_content_area">
-				<div id="overlay"></div>
-				<div id="cadre" class="row">
-					<div id="frame">
-						<div id="headerFrame">
-							<h2>Détails de l'activité</h2>
-						</div>
-						<div class="fix home_main_content" id="bodyFrame">
-							<c:set var="myID" value="" target="Activite" scope="page"></c:set>
-							<div class="single_latest_postBis">
-								<label class="labelActivite">Composant</label>
-								<p id="composant">
-									<c:out value="${myID}"></c:out>
-								</p>
-							</div>
-							<div class="single_latest_postBis">
-								<label class="labelActivite">Objectif</label>
-								<p id=""></p>
-							</div>
-							<div class="single_latest_postBis">
-								<label class="labelActivite">Résultat attendu</label>
-								<p id=""></p>
-							</div>
-							<div class="single_latest_postBis">
-								<label class="labelActivite">Libellé</label>
-								<p id=""></p>
-							</div>
-							<div class="single_latest_postBis">
-								<label class="labelActivite">Période</label>
-								<p id=""></p>
-							</div>
-							<div class="single_latest_postBis">
-								<label class="labelActivite">Echéance prévu</label>
-								<p id=""></p>
-							</div>
-							<div class="single_latest_postBis">
-								<label class="labelActivite">Echéance réaliser</label>
-								<p id=""></p>
-							</div>
-							<div class="single_latest_postBis">
-								<label class="labelActivite">Statut</label>
-								<p id=""></p>
-							</div>
-							<div class="single_latest_postBis">
-								<label class="labelActivite">Nature de l'indicateur</label>
-								<p id=""></p>
-							</div>
-							<div class="single_latest_postBis">
-								<label class="labelActivite">Libellé de l'indicateur</label>
-								<p id=""></p>
-							</div>
-							<div class="single_latest_postBis">
-								<label class="labelActivite">Réference</label>
-								<p id=""></p>
-							</div>
-							<input id="quitterActivite" class="btn btn-danger" type="submit"
-								value="quitter" />
-						</div>
-					</div>
-				</div>
 				<div class="fix allSearch"></div>
 				<div class="fix single_sidebar">
+				<input class="btn btn-info myBtnDetail"
+						onclick="location.href = 'activityForm';" value="Ajouter" />
 					<div class="inner">
 						<div class="row">
 							<div class="col-lg-12">
@@ -191,8 +134,6 @@
 							</div>
 						</div>
 					</div>
-					<input class="btn btn-info myBtnDetail"
-						onclick="location.href = 'activityForm';" value="Ajouter" />
 					<div class="fix scroll_to_top">
 						<a href="#scroll_top" class="floatright">Remonter </a>
 					</div>

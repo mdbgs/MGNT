@@ -124,7 +124,7 @@ class Vernam implements NumericConstant {
 		String hexadecimale = null;
 		switch (bin) {
 		case "0000":
-			hexadecimale = "%k";
+			hexadecimale = "&k";
 			break;
 		case "0001":
 			hexadecimale = "#H";
@@ -151,10 +151,10 @@ class Vernam implements NumericConstant {
 			hexadecimale = "Q";
 			break;
 		case "1001":
-			hexadecimale = "Z";
+			hexadecimale = "ÈZ";
 			break;
 		case "1010":
-			hexadecimale = "P";
+			hexadecimale = "£P";
 			break;
 		case "1011":
 			hexadecimale = "K";

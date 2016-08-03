@@ -113,7 +113,7 @@
 										</div>
 									</div>
 									<div class="row myBtn">
-										<input class="btn btn-danger " type="reset" value="Annuler" />
+										<input class="btn btn-danger " type="reset" value="Annuler" onclick="location.href = 'responsableList';"/>
 										<input class="btn btn-info " type="submit" value="Inscription" />
 
 									</div>

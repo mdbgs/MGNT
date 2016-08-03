@@ -74,13 +74,14 @@ public class ResponsableFormulaireServlet extends ConnexionServlet implements Nu
 		try {
 			connection = servlet.getDataSource().getConnection();
 			int rs = ComputeQueryBean.insertInAllTable(pseudo + valueResponsable, "compte", connection);
+			System.err.println();
 			int number = 0;
 			while (rs == 0) {
 				number++;
 				pseudo += number;
 				rs = ComputeQueryBean.insertInAllTable(pseudo + valueResponsable, "compte", connection);
 			}
-			valueResponsable = "%" + pseudo + "'%" + "'" + nom + "'%" + "'" + prenom + "'%" + "'" + adresse + "'%" + "'"
+			valueResponsable = "null%" + pseudo + "'%" + "'" + nom + "'%" + "'" + prenom + "'%" + "'" + adresse + "'%" + "'"
 					+ telephone + "'%" + "'" + email + "'%" + "'" + sexe + "'%" + "'" + poste + "'";
 			rs = ComputeQueryBean.insertInAllTable(valueResponsable, "Responsable", connection);
 
@@ -166,7 +167,7 @@ public class ResponsableFormulaireServlet extends ConnexionServlet implements Nu
 
 		/* Transmission de la paire d'objets request/response à notre JSP */
 
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/List/List/ListResponsable.jsp").forward(request,
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/List/ListResponsable.jsp").forward(request,
 				response);
 
 	}
