@@ -48,13 +48,14 @@ public class CsvGenerator implements NumericConstant {
 			rows[i].setHeightInPoints(30);
 		}
 		sheet.addMergedRegion(new CellRangeAddress(1,1,0,11));
-		Cell cell= rows[1].createCell(0); 
-		
+		Cell cellRow1= rows[1].createCell(0); 
+		/** Style for cells*/
 		cellStyle.setFillForegroundColor(IndexedColors.AQUA.getIndex());
 		cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
 		cellStyle.setBorderBottom(CellStyle.SOLID_FOREGROUND);
 		cellStyle.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-		cell.setCellStyle(cellStyle);
+		
+		cellRow1.setCellStyle(cellStyle);
 		Cell[] cells=new Cell[12];
 		for(int i=0;i<12;i++){
 			cells[i]= rows[2].createCell(i);
