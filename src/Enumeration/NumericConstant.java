@@ -1,4 +1,4 @@
-package BeanPackage;
+package Enumeration;
 
 public interface NumericConstant {
 	public static final String KEYGEN = "0011010111110111100000010000011010001010011110011101011110111001000110111101110001000000100100110011000100101011001110101011011110000101110010000110000000010110111110010011111101100011010011100100010111110110111100011000010100110100110010001001101110100001111111111101100000101101000101001011001010000100100111100010111001100111011111001101000101100101111000000000101010000110101101000110000000110001";
@@ -112,5 +112,12 @@ public interface NumericConstant {
 	public static final String STATUT = "statut";
 	public static final String OFFERT_PAR = "offert_par";
 	public static final String DATE_CREATION = "date_creation";
+
+	public static final String urlOutPut="../Uploads/";
+	public static final String CsvUrl="data_CSV/";
+	public static final String imageUrl="pictures/";
+	public static final String pdfUrl="data_pdf/";
+	public static final String fileReportName="UGB_CEA-MITIC_Cadre_de_résultats_N°";
+	
 
 }

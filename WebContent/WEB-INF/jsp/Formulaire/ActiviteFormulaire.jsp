@@ -176,14 +176,15 @@
 											<div class="row ">
 												<label>D&eacute;signer les responsables de Saisie</label>
 											</div>
-											<div class="row">
-												<select id="level" multiple="multiple" size="5"
-													<input class="form-control" type="text" name="level" />>
-													<option disabled>Choisir le(s) responsable(s)</option>
-													<c:forEach items="${responsableRecu.responsableList}" var="responsable">
-															<option class="checkbox checkbox-success"/><input type="checkbox"/> ${responsable.pseudo}</option>
-													</c:forEach>
-												</select>
+											<div class="row contentResponsable">
+												<c:forEach items="${responsableRecu.responsableList}" var="responsable">
+												<div class="row">
+													<aside class="checkbox checkbox-success">
+														<input id="${responsable.idResponsable}" type="checkbox"/>
+													</aside>
+													<b> ${responsable.pseudo}</b>
+												</div>
+												</c:forEach>
 											</div>
 											<span class="erreur">${errors['objectif']}</span>
 										</div>

@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import BeanPackage.ComputeQueryBean;
-import BeanPackage.NumericConstant;
 import Enumeration.EnumResponsable;
+import Enumeration.NumericConstant;
 
 /**
  * Servlet implementation class ResponsableFormulaireServlet

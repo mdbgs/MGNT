@@ -1,108 +1,75 @@
 package ServletPackages.OutPut;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
-public class CsvGenerator {
-	private String $DOSSIER = "c:/";
-	private String fileName = "";
-	private PrintWriter printer;
-	public int numRun = 0;
-	//
-	// CONSTRUCTOR
-	//
-	/** Create a new output data file */
-	public CsvGenerator(String fileNameOrUrlPlusFileName, boolean incrementNameOrNot) {
-		// Création du dossier (s'il n'existe pas encore)
-		if (fileNameOrUrlPlusFileName.contains("/")) // if the complete url is given
-			buildFolders(fileNameOrUrlPlusFileName);
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.ss.util.WorkbookUtil;
+
+import Enumeration.NumericConstant;
+
+public class CsvGenerator implements NumericConstant {
+
+	public void mergeInSheet(Sheet sheet, int firstRow, int secondRow, int firstColumn, int secondColumn) {
+		sheet.addMergedRegion(new CellRangeAddress(firstRow, secondRow, firstColumn, secondColumn));
+	}
+
+	/** Create a report for year */
+	public void yearReport(String year) {
+		Workbook workbook = new HSSFWorkbook();
+		Sheet sheet = workbook.createSheet(WorkbookUtil.createSafeSheetName("YEAR " + year + " REPORT"));
+ 		CellStyle cellStyle = workbook.createCellStyle();
+		sheet.setColumnWidth(0, 7000);
+		sheet.setColumnWidth(1, 2000);
+		sheet.setColumnWidth(2, 4500);
+		sheet.setColumnWidth(3, 2500);
+		sheet.setColumnWidth(4, 2500);
+		sheet.setColumnWidth(5, 2500);
+		sheet.setColumnWidth(6, 2500);
+		sheet.setColumnWidth(7, 2500);
+		sheet.setColumnWidth(8, 2500);
+		sheet.setColumnWidth(9, 4500);
+		sheet.setColumnWidth(10, 5500);
+		sheet.setColumnWidth(11, 8500);
+		Row[] rows = new Row[45];
+		for (int i = 0; i < 44; i++) {
+			rows[i] = sheet.createRow(i);
+		}
+		rows[1].setHeightInPoints(30);
+		for(int i=3;i<9;i++){
+			rows[i].setHeightInPoints(30);
+		}
+		sheet.addMergedRegion(new CellRangeAddress(1,1,0,11));
+		Cell cell= rows[1].createCell(0); 
 		
-		// Création du fichier, récupération de la dernière partie de l'URL Ex: titre.extension dans rep1/rep1.1/titre.extension
-		fileNameOrUrlPlusFileName = fileNameOrUrlPlusFileName.split("/")[fileNameOrUrlPlusFileName.split("/").length - 1];
-		File file = new File($DOSSIER + numRun + fileNameOrUrlPlusFileName);
-		if (incrementNameOrNot) { // En incrémentant le nom
-			while (file.exists()) {
-				numRun++;
-				file = new File($DOSSIER + numRun + fileNameOrUrlPlusFileName + "");
-			}
+		cellStyle.setFillForegroundColor(IndexedColors.AQUA.getIndex());
+		cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+		cellStyle.setBorderBottom(CellStyle.SOLID_FOREGROUND);
+		cellStyle.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+		cell.setCellStyle(cellStyle);
+		Cell[] cells=new Cell[12];
+		for(int i=0;i<12;i++){
+			cells[i]= rows[2].createCell(i);
+			cells[i].setCellStyle(cellStyle);
 		}
-		else // En écrasant l'ancien de meme nom : PAMboup 27/12/2012
-		file = new File($DOSSIER + fileNameOrUrlPlusFileName);
-		this.fileName = $DOSSIER + file.getName();
-		// Ouverture d'un flux d'écriture du fichier créé (écriture en écrasant, pr ecire en ajout: new FileWriter(file, true))
+		
 		try {
-			printer = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+			FileOutputStream file = new FileOutputStream(urlOutPut + fileReportName + 4 + ".xls");
+			workbook.write(file);
+			file.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	//
-	// METHODS
-	//
-	/** Build folders, for exemple : if url = "folder1/forder2/ or url = "folder1/forder2/file.extension, this method build the
-	 * folder1 and inside it build the folder2 (and don't build file.extension)
-	 * @param url
-	 * @author pamboup 20/06/2014 */
-	private void buildFolders(String url) {
-		String folders[] = url.split("/");
-		$DOSSIER = "";
-		int n;
-		if (url.charAt(url.length() - 1) == '/') n = folders.length;// if l'url is finished by "/" (just folders and not file name)
-		else n = folders.length - 1;// else the url contains folders name and file name
-		for (int i = 0; i < n; i++) {
-			$DOSSIER += folders[i] + "/";
-			new File($DOSSIER).mkdir();
-		}
-	}
-	// ECRITURE FICHIERS //
-	/** Ecrit le String en paramètre */
-	public void write(String str) {
-		printer.print(str);
-		printer.flush();
-	}
-	/** Ecrit le String en paramètre et saute une ligne */
-	public void writeln(String str) {
-		printer.println(str);
-		printer.flush();
-	}
-	/** Constructs a FileWriter object given a file name and append the data written.
-	 * @param urlAndfileName - String The filename.
-	 * @param multiLine - ArrayList of String . author mboup 03/2014 */
-	public static void writeMultiLineAndClose(String urlAndfileName, List<String> multiLine) {
-		PrintWriter buffer = null;
-		try {
-			buffer = new PrintWriter(new BufferedWriter(new FileWriter(urlAndfileName, true)));
-		} catch (IOException e) {
-			System.err.println("C_OutputData.writeMultiLineAndClose() : Error openning " + urlAndfileName + "in writing");
-			e.printStackTrace();
-		}
-		try {
-			for (String line : multiLine)
-				buffer.println(line);
-		} catch (Exception e) {
-			System.err.println("C_OutputData.writeMultiLineAndClose() : Erreur d'écriture sur le fichier " + e.getMessage());
-			e.printStackTrace();
-		} finally {
-			try {
-				buffer.close();
-			} catch (Exception e) {
-				System.err.println("C_OutputData.writeMultiLineAndClose() : buffer closing error" + e.getMessage());
-			}
-		}
-	}
-
-	/** Ferme le fichier (à utiliser une fois que l'on a terminé d'écrire */
-	public void closeFile() {
-		printer.close();
-	}
-	public String getName() {
-		return fileName;
-	}
-	public int getNumRun() {
-		return numRun;
+		System.out.println("Done!!!");
 	}
 }

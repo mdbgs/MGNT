@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import BeanPackage.ComputeQueryBean;
-import BeanPackage.NumericConstant;
+import Enumeration.NumericConstant;
 import ModelPackage.User;
 import ServletPackages.GetAuthorisationUsers;
 

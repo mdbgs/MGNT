@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import BeanPackage.ComputeQueryBean;
-import BeanPackage.NumericConstant;
 import BeanPackage.ResponsableBean;
+import Enumeration.NumericConstant;
 import ModelPackage.Responsable;
 import ServletPackages.GetAuthorisationUsers;
 

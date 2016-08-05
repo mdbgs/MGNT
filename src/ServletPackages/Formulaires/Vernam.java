@@ -1,6 +1,6 @@
 package ServletPackages.Formulaires;
 
-import BeanPackage.NumericConstant;
+import Enumeration.NumericConstant;
 
 class Vernam implements NumericConstant {
 	String plainBit, cipher, plain;

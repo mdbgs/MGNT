@@ -23,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import BeanPackage.ComputeQueryBean;
-import BeanPackage.NumericConstant;
 import Enumeration.EnumNiveau;
+import Enumeration.NumericConstant;
 import ModelPackage.Student;
 import ServletPackages.GetAuthorisationUsers;
 

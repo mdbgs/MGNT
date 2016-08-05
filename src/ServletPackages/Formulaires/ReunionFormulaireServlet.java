@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import BeanPackage.ComputeQueryBean;
-import BeanPackage.NumericConstant;
+import Enumeration.NumericConstant;
 import ServletPackages.GetAuthorisationUsers;
 
 /**

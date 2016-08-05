@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import Enumeration.EnumResponsable;
+import Enumeration.NumericConstant;
 
 public class ComputeQueryBean implements NumericConstant {
 	//

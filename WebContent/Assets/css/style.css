@@ -9,6 +9,21 @@ License: GPL 2.0 or Later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 */
+.contentResponsable{
+	border:1px solid gray;
+	padding: 0px 15px;
+	width: 92%;
+	height:150px;
+	overflow-x: auto;
+	background-color: #fff; 
+	border-radius:6px;
+}
+.contentResponsable .row{
+	padding:10px;
+	margin: 0;
+	border-bottom:1px dashed;
+	
+}
 .btn{
 	border-radius:5px;
 }
