@@ -90,6 +90,7 @@ public class ConnexionServlet extends HttpServlet {
 			password = request.getParameter("j_password");
             Vernam passCrypt=new Vernam(password);
 			password = passCrypt.encry();
+			System.out.println(password);
 			if (ComputeQueryBean.isUser(pseudo, password, connection)) {
 				role = ComputeQueryBean.userRole(pseudo, connection);
 				if(!role.isEmpty()){

@@ -400,7 +400,7 @@ INSERT INTO users_roles  VALUES ('m.maiga', 'viceCoordonnateur');
 INSERT INTO users_roles  VALUES ('mlle.thiam', 'etudiant');
 /* insertion des utilisateurs standard*/
 INSERT INTO responsable  VALUES (null, 'm.sall','Sall','Moussa','Aînoumady 5','772349186','sall.moussa@sanarsoft.com','1','Admin');
-INSERT INTO responsable  VALUES (null, 'mme.sy','Ndeye Aminata Diagne','Sy','Saint-Louis','77777777','inconnue','0','Responsable suivie-évaluation');
+INSERT INTO responsable  VALUES (null, 'mme.sy','Ndeye Aminata Diagne','Sy','Saint-Louis','77777777','inconnue','0','Responsable Suivi-évaluation');
 INSERT INTO responsable  VALUES (null, 'm.lo','Moussa','Lo','Ngallele','inconnue','moussa.lo@ugb.edu.sn','1','coordonnateur');
 INSERT INTO responsable  VALUES (null, 'm.ndiaye','Diéne','Ndiaye','Saint-Louis','inconnue','diene.ndiaye@ugb.edu.sn','1','responsable laboratoire');
 INSERT INTO responsable  VALUES (null, 'm.diop','Cheikh Talibouya','Diop','Saint-Louis','inconnue','cheikh.talibouya.diop@ugb.edu.sn','1','chercheur principal');

@@ -54,6 +54,10 @@ public class CsvGenerator implements NumericConstant {
 		cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
 		cellStyle.setBorderBottom(CellStyle.SOLID_FOREGROUND);
 		cellStyle.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+		cellStyle.setBorderTop(CellStyle.SOLID_FOREGROUND);
+		cellStyle.setTopBorderColor(IndexedColors.BLACK.getIndex());
+		cellStyle.setBorderRight(CellStyle.SOLID_FOREGROUND);
+		cellStyle.setRightBorderColor(IndexedColors.BLACK.getIndex());
 		
 		cellRow1.setCellStyle(cellStyle);
 		Cell[] cells=new Cell[12];
