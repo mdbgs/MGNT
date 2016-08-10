@@ -4,10 +4,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.apache.poi.common.usermodel.Hyperlink;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Color;
+import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -116,6 +118,12 @@ public class CsvGenerator implements NumericConstant {
 		sheet1.setColumnWidth(11, 9000);
 
 		Row[] rows = new Row[100];
+		rows[0]= sheet0.createRow(0);
+		Cell test= rows[0].createCell(0);
+		test.setCellValue("test link");
+		org.apache.poi.ss.usermodel.Hyperlink link = workbook.getCreationHelper().createHyperlink(Hyperlink.LINK_DOCUMENT);
+		link.setAddress("INDICATOR 1");
+		test.setHyperlink(link);
 		for (int i = 0; i < 99; i++) {
 			rows[i] = sheet1.createRow(i);
 		}
