@@ -65,8 +65,8 @@ public class GeneratorStyle {
 		}
 			break;
 		case "titre10": {
-			cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
-			cellStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+			cellStyle.setAlignment(CellStyle.ALIGN_GENERAL);
+			cellStyle.setVerticalAlignment(CellStyle.VERTICAL_TOP);
 		}
 			break;
 		}
@@ -80,7 +80,6 @@ public class GeneratorStyle {
 		case "titre1": {
 			fontTitle.setColor(IndexedColors.WHITE.getIndex());
 			fontTitle.setBoldweight(Font.BOLDWEIGHT_BOLD);
-			fontTitle.setFontHeight((short) 260);
 			fontTitle.setUnderline(Font.U_SINGLE);
 			fontTitle.setFontName("Candara");
 			fontTitle.setFontHeight((short) 200);
@@ -116,7 +115,7 @@ public class GeneratorStyle {
 		}
 			break;
 		case "titre10": {
-			fontTitle.setFontHeight((short) 260);
+			fontTitle.setFontHeight((short) 240);
 			fontTitle.setFontName("Calibri");
 		}
 			break;

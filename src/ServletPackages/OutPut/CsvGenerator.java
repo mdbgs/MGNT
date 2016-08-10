@@ -25,7 +25,17 @@ public class CsvGenerator implements NumericConstant {
 	/** Create a report for year */
 	public void yearReport(String year) {
 		HSSFWorkbook workbook = new HSSFWorkbook();
-		Sheet sheet = workbook.createSheet(WorkbookUtil.createSafeSheetName("YEAR " + year + " REPORT"));
+		Sheet sheet0 = workbook.createSheet(WorkbookUtil.createSafeSheetName("NAVIGATION PAGE"));
+		Sheet sheet1 = workbook.createSheet(WorkbookUtil.createSafeSheetName("YEAR " + year + " REPORT"));
+		Sheet sheet2 = workbook.createSheet(WorkbookUtil.createSafeSheetName("INDICATOR 1"));
+		Sheet sheet3 = workbook.createSheet(WorkbookUtil.createSafeSheetName("INDICATOR 2"));
+		Sheet sheet4 = workbook.createSheet(WorkbookUtil.createSafeSheetName("INDICATOR 3"));
+		Sheet sheet5 = workbook.createSheet(WorkbookUtil.createSafeSheetName("INDICATOR 5"));
+		Sheet sheet6 = workbook.createSheet(WorkbookUtil.createSafeSheetName("INDICATOR 6"));
+		Sheet sheet7 = workbook.createSheet(WorkbookUtil.createSafeSheetName("INDICATOR 7"));
+		Sheet sheet8 = workbook.createSheet(WorkbookUtil.createSafeSheetName("INDICATOR 9"));
+		Sheet sheet9 = workbook.createSheet(WorkbookUtil.createSafeSheetName("INDICATOR 10"));
+		Sheet sheet10 = workbook.createSheet(WorkbookUtil.createSafeSheetName("COMMENTAIRES AUA"));
 		CellStyle cellStyle = GeneratorStyle.createCellStyle(workbook, "titre1");
 		cellStyle.setFont(GeneratorStyle.createFont(workbook, "titre1"));
 		CellStyle style2 = GeneratorStyle.createCellStyle(workbook, "titre2");
@@ -92,22 +102,22 @@ public class CsvGenerator implements NumericConstant {
 		Cell[] cells43 = new Cell[12];
 		Cell[] cells44 = new Cell[12];
 
-		sheet.setColumnWidth(0, 7500);
-		sheet.setColumnWidth(1, 2500);
-		sheet.setColumnWidth(2, 5000);
-		sheet.setColumnWidth(3, 3000);
-		sheet.setColumnWidth(4, 3000);
-		sheet.setColumnWidth(5, 3000);
-		sheet.setColumnWidth(6, 3000);
-		sheet.setColumnWidth(7, 3000);
-		sheet.setColumnWidth(8, 3000);
-		sheet.setColumnWidth(9, 5000);
-		sheet.setColumnWidth(10, 6000);
-		sheet.setColumnWidth(11, 9000);
+		sheet1.setColumnWidth(0, 7500);
+		sheet1.setColumnWidth(1, 2500);
+		sheet1.setColumnWidth(2, 5000);
+		sheet1.setColumnWidth(3, 3000);
+		sheet1.setColumnWidth(4, 3000);
+		sheet1.setColumnWidth(5, 3000);
+		sheet1.setColumnWidth(6, 3000);
+		sheet1.setColumnWidth(7, 3000);
+		sheet1.setColumnWidth(8, 3000);
+		sheet1.setColumnWidth(9, 5000);
+		sheet1.setColumnWidth(10, 6000);
+		sheet1.setColumnWidth(11, 9000);
 
 		Row[] rows = new Row[100];
 		for (int i = 0; i < 99; i++) {
-			rows[i] = sheet.createRow(i);
+			rows[i] = sheet1.createRow(i);
 		}
 		/**TEST COULEUR*/
 		GeneratorStyle.testColor(rows, workbook);
@@ -121,62 +131,64 @@ public class CsvGenerator implements NumericConstant {
 		}
 		rows[9].setHeightInPoints(55);
 		rows[11].setHeightInPoints(25);
-		rows[12].setHeightInPoints(25);
-		rows[13].setHeightInPoints(37);
+		rows[12].setHeightInPoints(30);
+		rows[13].setHeightInPoints(45);
 		rows[14].setHeightInPoints(25);
 		rows[15].setHeightInPoints(25);
-		rows[16].setHeightInPoints(37);
+		rows[16].setHeightInPoints(45);
 		rows[17].setHeightInPoints(25);
 		rows[18].setHeightInPoints(60);
+		rows[19].setHeightInPoints(25);
+		rows[20].setHeightInPoints(25);
+		rows[21].setHeightInPoints(25);
 		
 		rows[22].setHeightInPoints(65);
 		rows[23].setHeightInPoints(65);
-		rows[24].setHeightInPoints(25);
-		rows[25].setHeightInPoints(25);
-		rows[26].setHeightInPoints(115);
-		rows[27].setHeightInPoints(25);
+		rows[24].setHeightInPoints(30);
+		rows[25].setHeightInPoints(30);
+		rows[26].setHeightInPoints(90);
 		
-		rows[29].setHeightInPoints(60);
+		rows[29].setHeightInPoints(70);
 		for (int i = 30; i <=33; i++) {
-			rows[i].setHeightInPoints(25);
+			rows[i].setHeightInPoints(30);
 		}
 		rows[34].setHeightInPoints(50);
-		rows[35].setHeightInPoints(80);
-		rows[36].setHeightInPoints(60);
+		rows[35].setHeightInPoints(110);
+		rows[36].setHeightInPoints(70);
 		for (int i = 37; i <=40; i++) {
-			rows[i].setHeightInPoints(25);
+			rows[i].setHeightInPoints(30);
 		}
 		for (int i = 41; i < 44; i++) {
 			rows[i].setHeightInPoints(65);
 		}
 		/** Fusion des colonnes*/
-		sheet.addMergedRegion(new CellRangeAddress(1, 1, 0, 11));
-		sheet.addMergedRegion(new CellRangeAddress(10, 10, 0, 11));
+		sheet1.addMergedRegion(new CellRangeAddress(1, 1, 0, 11));
+		sheet1.addMergedRegion(new CellRangeAddress(10, 10, 0, 11));
 		
 		for (int i = 3; i < 10; i++) {
-			sheet.addMergedRegion(new CellRangeAddress(i, i, 1, 8));
-			sheet.addMergedRegion(new CellRangeAddress(i, i, 10, 11));
+			sheet1.addMergedRegion(new CellRangeAddress(i, i, 1, 8));
+			sheet1.addMergedRegion(new CellRangeAddress(i, i, 10, 11));
 		}
 		for(int i=0;i<5;i++){
-			sheet.addMergedRegion(new CellRangeAddress(11,12 , i, i));
+			sheet1.addMergedRegion(new CellRangeAddress(11,12 , i, i));
 		}
-		sheet.addMergedRegion(new CellRangeAddress(11,11 , 5, 8));
+		sheet1.addMergedRegion(new CellRangeAddress(11,11 , 5, 8));
 		for(int i=9;i<12;i++){
-			sheet.addMergedRegion(new CellRangeAddress(11,12 , i, i));
+			sheet1.addMergedRegion(new CellRangeAddress(11,12 , i, i));
 		}
 		for(int i=0;i<3;i++){
-			sheet.addMergedRegion(new CellRangeAddress(13,17 , i, i));
-			sheet.addMergedRegion(new CellRangeAddress(18,21 , i, i));
-			sheet.addMergedRegion(new CellRangeAddress(23,25 , i, i));
-			sheet.addMergedRegion(new CellRangeAddress(29,33 , i, i));
-			sheet.addMergedRegion(new CellRangeAddress(36,40 , i, i));
+			sheet1.addMergedRegion(new CellRangeAddress(13,17 , i, i));
+			sheet1.addMergedRegion(new CellRangeAddress(18,21 , i, i));
+			sheet1.addMergedRegion(new CellRangeAddress(23,25 , i, i));
+			sheet1.addMergedRegion(new CellRangeAddress(29,33 , i, i));
+			sheet1.addMergedRegion(new CellRangeAddress(36,40 , i, i));
 		}
-		sheet.addMergedRegion(new CellRangeAddress(13,17 , 11, 11));
-		sheet.addMergedRegion(new CellRangeAddress(18,21 , 11, 11));
-		sheet.addMergedRegion(new CellRangeAddress(23,25 , 11, 11));
-		sheet.addMergedRegion(new CellRangeAddress(28,28 , 0, 2));
-		sheet.addMergedRegion(new CellRangeAddress(29,33 , 11, 11));
-		sheet.addMergedRegion(new CellRangeAddress(36,40 , 11, 11));
+		sheet1.addMergedRegion(new CellRangeAddress(13,17 , 11, 11));
+		sheet1.addMergedRegion(new CellRangeAddress(18,21 , 11, 11));
+		sheet1.addMergedRegion(new CellRangeAddress(23,25 , 11, 11));
+		sheet1.addMergedRegion(new CellRangeAddress(28,28 , 0, 2));
+		sheet1.addMergedRegion(new CellRangeAddress(29,33 , 11, 11));
+		sheet1.addMergedRegion(new CellRangeAddress(36,40 , 11, 11));
 		
 		
 		/** Creation de cellule */
@@ -478,7 +490,7 @@ public class CsvGenerator implements NumericConstant {
 		cells26[10].setCellFormula("J26-F26");
 
 		cells27[0].setCellValue("Indicator 4:  Amount of externally generated revenue by the ACEs  as paid into the designated ACE-Programme account  (→ Training & Research Quality)");
-		cells27[2].setCellValue("US Dollars    (Indicator Definition: Amount of US Dollars  generated from outside ACE as percentage of total US Dollars generated by ACE)");
+		cells27[2].setCellValue("US Dollars (Indicator Definition: Amount of US Dollars  generated from outside ACE as percentage of total US Dollars generated by ACE)");
 		cells27[3].setCellValue("");
 		cells27[4].setCellValue(243000);
 		cells27[5].setCellValue(267500);
@@ -553,7 +565,7 @@ public class CsvGenerator implements NumericConstant {
 		cells35[11].setCellValue("");
 
 		cells36[0].setCellValue("Indicator 7. Increase of internationally recognized research publications by the ACEs(→ Research Quantity and Quality)");
-		cells36[2].setCellValue("Percentage     (Indicator Definition: # of Internationally recognized ACE publications as % of total number of publications produced by ACE)");
+		cells36[2].setCellValue("Percentage(Indicator Definition: # of Internationally recognized ACE publications as % of total number of publications produced by ACE)");
 		cells36[3].setCellValue("NA");
 		cells36[4].setCellValue(14);
 		cells36[5].setCellValue(18);
@@ -565,7 +577,7 @@ public class CsvGenerator implements NumericConstant {
 		cells36[11].setCellValue("");
 
 		cells37[0].setCellValue("Indicator 8. % (number) of regional students studying for a longer-term (at least 1 semester/ academic term) in ACEs, in a discipline supported through the ACE-Programme  (→Regionality)");
-		cells37[2].setCellValue("Percentage (number)     (Indicator Definition: Count of non-national students studying for at least 1 semester at ACE on programme supported course as % of total # of Students studying for at laest one year)");
+		cells37[2].setCellValue("Percentage (number) (Indicator Definition: Count of non-national students studying for at least 1 semester at ACE on programme supported course as % of total # of Students studying for at laest one year)");
 		cells37[3].setCellValue("Total number of students studying for a longer-term in ACEs");
 		cells37[4].setCellValue(2);
 		cells37[5].setCellValue(50);
@@ -613,7 +625,7 @@ public class CsvGenerator implements NumericConstant {
 		cells41[10].setCellFormula("J41-F41");
 
 		cells42[0].setCellValue("Indicator 9. No of partnership agreements between ACEs and engaged Partner Institutions (→ Outreach/ Regionality)");
-		cells42[2].setCellValue("Number         (Indicator Definition: Count of partnership agreements )");
+		cells42[2].setCellValue("Number (Indicator Definition: Count of partnership agreements )");
 		cells42[3].setCellValue("NA");
 		cells42[4].setCellValue(0);
 		cells42[5].setCellValue(10);
@@ -624,7 +636,7 @@ public class CsvGenerator implements NumericConstant {
 		cells42[10].setCellFormula("J42-F42");
 
 		cells43[0].setCellValue("Indicator 10. ACE-Programme Implementation team meetings with openly disclosed minutes (→ Admin./Governance Quality)");
-		cells43[2].setCellValue("Number         (Indicator Definition: Count of ACE Implementation team meetings)");
+		cells43[2].setCellValue("Number (Indicator Definition: Count of ACE Implementation team meetings)");
 		cells43[3].setCellValue("NA");
 		cells43[4].setCellValue(0);
 		cells43[5].setCellValue(4);
