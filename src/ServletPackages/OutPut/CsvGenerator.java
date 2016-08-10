@@ -35,77 +35,88 @@ public class CsvGenerator implements NumericConstant {
 		Sheet sheet8 = workbook.createSheet(WorkbookUtil.createSafeSheetName("INDICATOR 9"));
 		Sheet sheet9 = workbook.createSheet(WorkbookUtil.createSafeSheetName("INDICATOR 10"));
 		Sheet sheet10 = workbook.createSheet(WorkbookUtil.createSafeSheetName("COMMENTAIRES AUA"));
-		CellStyle cellStyle = GeneratorStyle.createCellStyle(workbook, "titre1");
-		cellStyle.setFont(GeneratorStyle.createFont(workbook, "titre1"));
-		CellStyle style2 = GeneratorStyle.createCellStyle(workbook, "titre2");
-		style2.setFont(GeneratorStyle.createFont(workbook, "titre2"));
-		CellStyle style3 = GeneratorStyle.createCellStyle(workbook, "titre3");
-		style3.setFont(GeneratorStyle.createFont(workbook, "titre3"));
-		CellStyle style4 = GeneratorStyle.createCellStyle(workbook, "titre4");
-		style4.setFont(GeneratorStyle.createFont(workbook, "titre4"));
-		CellStyle style5 = GeneratorStyle.createCellStyle(workbook, "titre5");
-		style5.setFont(GeneratorStyle.createFont(workbook, "titre5"));
-		CellStyle style6 = GeneratorStyle.createCellStyle(workbook, "titre6");
-		style6.setFont(GeneratorStyle.createFont(workbook, "titre6"));
-		CellStyle style7 = GeneratorStyle.createCellStyle(workbook, "titre7");
-		style7.setFont(GeneratorStyle.createFont(workbook, "titre6"));
-		CellStyle style8 = GeneratorStyle.createCellStyle(workbook, "titre8");
-		style8.setFont(GeneratorStyle.createFont(workbook, "titre6"));
-		CellStyle style9 = GeneratorStyle.createCellStyle(workbook, "titre9");
-		style9.setFont(GeneratorStyle.createFont(workbook, "titre9"));
-		CellStyle style10 = GeneratorStyle.createCellStyle(workbook, "titre10");
-		style10.setFont(GeneratorStyle.createFont(workbook, "titre10"));
-		CellStyle style11 = GeneratorStyle.createCellStyle(workbook, "titre11");
-		CellStyle style12 = GeneratorStyle.createCellStyle(workbook, "titre12");
-		CellStyle style13 = GeneratorStyle.createCellStyle(workbook, "titre10");
-		style13.setFont(GeneratorStyle.createFont(workbook, "titre13"));
-		CellStyle style14 = GeneratorStyle.createCellStyle(workbook, "titre13");
-		CellStyle style15 = GeneratorStyle.createCellStyle(workbook, "titre14");
+		CellStyle cellStyle = GeneratorStyle.createCellStyle(workbook, "yearReport1");
+		cellStyle.setFont(GeneratorStyle.createFont(workbook, "yearReport1"));
+		CellStyle style2 = GeneratorStyle.createCellStyle(workbook, "yearReport2");
+		style2.setFont(GeneratorStyle.createFont(workbook, "yearReport2"));
+		CellStyle style3 = GeneratorStyle.createCellStyle(workbook, "yearReport3");
+		style3.setFont(GeneratorStyle.createFont(workbook, "yearReport3"));
+		CellStyle style4 = GeneratorStyle.createCellStyle(workbook, "yearReport4");
+		style4.setFont(GeneratorStyle.createFont(workbook, "yearReport4"));
+		CellStyle style5 = GeneratorStyle.createCellStyle(workbook, "yearReport5");
+		style5.setFont(GeneratorStyle.createFont(workbook, "yearReport5"));
+		CellStyle style6 = GeneratorStyle.createCellStyle(workbook, "yearReport6");
+		style6.setFont(GeneratorStyle.createFont(workbook, "yearReport6"));
+		CellStyle style7 = GeneratorStyle.createCellStyle(workbook, "yearReport7");
+		style7.setFont(GeneratorStyle.createFont(workbook, "yearReport6"));
+		CellStyle style8 = GeneratorStyle.createCellStyle(workbook, "yearReport8");
+		style8.setFont(GeneratorStyle.createFont(workbook, "yearReport6"));
+		CellStyle style9 = GeneratorStyle.createCellStyle(workbook, "yearReport9");
+		style9.setFont(GeneratorStyle.createFont(workbook, "yearReport9"));
+		CellStyle style10 = GeneratorStyle.createCellStyle(workbook, "yearReport10");
+		style10.setFont(GeneratorStyle.createFont(workbook, "yearReport10"));
+		CellStyle style11 = GeneratorStyle.createCellStyle(workbook, "yearReport11");
+		CellStyle style12 = GeneratorStyle.createCellStyle(workbook, "yearReport12");
+		CellStyle style13 = GeneratorStyle.createCellStyle(workbook, "yearReport10");
+		style13.setFont(GeneratorStyle.createFont(workbook, "yearReport13"));
+		CellStyle style14 = GeneratorStyle.createCellStyle(workbook, "yearReport13");
+		CellStyle style15 = GeneratorStyle.createCellStyle(workbook, "yearReport14");
+		style15.setFont(GeneratorStyle.createFont(workbook, "yearReport6"));
+		CellStyle navig1 = GeneratorStyle.createCellStyle(workbook, "navigation1");
+		navig1.setFont(GeneratorStyle.createFont(workbook, "navigation1"));
+		CellStyle navig2 = GeneratorStyle.createCellStyle(workbook, "navigation2");
+		navig2.setFont(GeneratorStyle.createFont(workbook, "navigation2"));
+		CellStyle navig3 = GeneratorStyle.createCellStyle(workbook, "navigation3");
+		navig3.setFont(GeneratorStyle.createFont(workbook, "navigation3"));
+		CellStyle navig4 = GeneratorStyle.createCellStyle(workbook, "navigation4");
+		navig4.setFont(GeneratorStyle.createFont(workbook, "navigation4"));
+		CellStyle navig5 = GeneratorStyle.createCellStyle(workbook, "navigation5");
 		// row 4
-		Cell[] cells1 = new Cell[12];
-		Cell[] cells2 = new Cell[12];
-		Cell[] cells3 = new Cell[12];
-		Cell[] cells4 = new Cell[12];
-		Cell[] cells5 = new Cell[12];
-		Cell[] cells6 = new Cell[12];
-		Cell[] cells7 = new Cell[12];
-		Cell[] cells8 = new Cell[12];
-		Cell[] cells9 = new Cell[12];
-		Cell[] cells10 = new Cell[12];
-		Cell[] cells11 = new Cell[12];
-		Cell[] cells12 = new Cell[12];
-		Cell[] cells13 = new Cell[12];
-		Cell[] cells14 = new Cell[12];
-		Cell[] cells15 = new Cell[12];
-		Cell[] cells16 = new Cell[12];
-		Cell[] cells17 = new Cell[12];
-		Cell[] cells18 = new Cell[12];
-		Cell[] cells19 = new Cell[12];
-		Cell[] cells20 = new Cell[12];
-		Cell[] cells21 = new Cell[12];
-		Cell[] cells22 = new Cell[12];
-		Cell[] cells23 = new Cell[12];
-		Cell[] cells24 = new Cell[12];
-		Cell[] cells25 = new Cell[12];
-		Cell[] cells26 = new Cell[12];
-		Cell[] cells27 = new Cell[12];
-		Cell[] cells28 = new Cell[12];
-		Cell[] cells29 = new Cell[12];
-		Cell[] cells30 = new Cell[12];
-		Cell[] cells31 = new Cell[12];
-		Cell[] cells32 = new Cell[12];
-		Cell[] cells33 = new Cell[12];
-		Cell[] cells34 = new Cell[12];
-		Cell[] cells35 = new Cell[12];
-		Cell[] cells36 = new Cell[12];
-		Cell[] cells37 = new Cell[12];
-		Cell[] cells38 = new Cell[12];
-		Cell[] cells39 = new Cell[12];
-		Cell[] cells40 = new Cell[12];
-		Cell[] cells41 = new Cell[12];
-		Cell[] cells42 = new Cell[12];
-		Cell[] cells43 = new Cell[12];
-		Cell[] cells44 = new Cell[12];
+		Cell[] cells0 = new Cell[19];
+		Cell[] cells1 = new Cell[19];
+		Cell[] cells2 = new Cell[19];
+		Cell[] cells3 = new Cell[19];
+		Cell[] cells4 = new Cell[19];
+		Cell[] cells5 = new Cell[19];
+		Cell[] cells6 = new Cell[19];
+		Cell[] cells7 = new Cell[19];
+		Cell[] cells8 = new Cell[19];
+		Cell[] cells9 = new Cell[19];
+		Cell[] cells10 = new Cell[19];
+		Cell[] cells11 = new Cell[19];
+		Cell[] cells12 = new Cell[19];
+		Cell[] cells13 = new Cell[19];
+		Cell[] cells14 = new Cell[19];
+		Cell[] cells15 = new Cell[19];
+		Cell[] cells16 = new Cell[19];
+		Cell[] cells17 = new Cell[19];
+		Cell[] cells18 = new Cell[19];
+		Cell[] cells19 = new Cell[19];
+		Cell[] cells20 = new Cell[19];
+		Cell[] cells21 = new Cell[19];
+		Cell[] cells22 = new Cell[19];
+		Cell[] cells23 = new Cell[19];
+		Cell[] cells24 = new Cell[19];
+		Cell[] cells25 = new Cell[19];
+		Cell[] cells26 = new Cell[19];
+		Cell[] cells27 = new Cell[19];
+		Cell[] cells28 = new Cell[19];
+		Cell[] cells29 = new Cell[19];
+		Cell[] cells30 = new Cell[19];
+		Cell[] cells31 = new Cell[19];
+		Cell[] cells32 = new Cell[19];
+		Cell[] cells33 = new Cell[19];
+		Cell[] cells34 = new Cell[19];
+		Cell[] cells35 = new Cell[19];
+		Cell[] cells36 = new Cell[19];
+		Cell[] cells37 = new Cell[19];
+		Cell[] cells38 = new Cell[19];
+		Cell[] cells39 = new Cell[19];
+		Cell[] cells40 = new Cell[19];
+		Cell[] cells41 = new Cell[19];
+		Cell[] cells42 = new Cell[19];
+		Cell[] cells43 = new Cell[19];
+		Cell[] cells44 = new Cell[19];
 
 		sheet1.setColumnWidth(0, 7500);
 		sheet1.setColumnWidth(1, 2500);
@@ -119,20 +130,93 @@ public class CsvGenerator implements NumericConstant {
 		sheet1.setColumnWidth(9, 5000);
 		sheet1.setColumnWidth(10, 6000);
 		sheet1.setColumnWidth(11, 9000);
-
+		sheet0.setColumnWidth(1, 4000);
+		sheet0.setColumnWidth(2, 5000);
 		Row[] rows = new Row[100];
-		Row row = sheet0.createRow(0);
-		Cell test= row.createCell(0);
+		/** Begin treatment of sheet 0*/
+		for (int i = 0; i < 99; i++) {
+			rows[i] = sheet0.createRow(i);
+		}
+		Cell test= rows[0].createCell(0);
 		test.setCellValue("test link");
 		org.apache.poi.ss.usermodel.Hyperlink link = workbook.getCreationHelper().createHyperlink(Hyperlink.LINK_DOCUMENT);
 		link.setAddress("'INDICATOR 1'!A1");
 		test.setHyperlink(link);
-		for (int i = 0; i < 99; i++) {
-			rows[i] = sheet1.createRow(i);
+		sheet0.addMergedRegion(new CellRangeAddress(0, 2, 1, 18));
+		
+		for(int i=3;i<28;i++){
+			sheet0.addMergedRegion(new CellRangeAddress(i, i+1, 1, 2));
+			rows[i].setHeightInPoints(20);
+			rows[i+1].setHeightInPoints(20);
+			i+=2;
+			if(i<29)
+				sheet0.addMergedRegion(new CellRangeAddress(i, i, 1, 2));
 		}
+		sheet0.addMergedRegion(new CellRangeAddress(3, 22, 3, 18));
+//		sheet0.setDisplayGridlines(false);
+		/** Creation de cellule */
+		
+		for (int i = 0; i < 19; i++) {
+			cells0[i] = rows[0].createCell(i);
+			cells1[i] = rows[1].createCell(i);
+			cells2[i] = rows[2].createCell(i);
+			cells3[i] = rows[3].createCell(i);
+			cells4[i] = rows[4].createCell(i);
+			cells5[i] = rows[5].createCell(i);
+			cells6[i] = rows[6].createCell(i);
+			cells7[i] = rows[7].createCell(i);
+			cells8[i] = rows[8].createCell(i);
+			cells9[i] = rows[9].createCell(i);
+			cells10[i] = rows[9].createCell(i);
+			cells11[i] = rows[10].createCell(i);
+			cells12[i] = rows[11].createCell(i);
+			cells13[i] = rows[12].createCell(i);
+			cells14[i] = rows[13].createCell(i);
+			cells15[i] = rows[14].createCell(i);
+			cells16[i] = rows[15].createCell(i);
+			cells17[i] = rows[16].createCell(i);
+			cells18[i] = rows[17].createCell(i);
+			cells19[i] = rows[18].createCell(i);
+			cells20[i] = rows[19].createCell(i);
+			cells21[i] = rows[20].createCell(i);
+			cells22[i] = rows[21].createCell(i);
+			cells23[i] = rows[22].createCell(i);
+			cells24[i] = rows[23].createCell(i);
+			cells25[i] = rows[24].createCell(i);
+			cells26[i] = rows[25].createCell(i);
+			cells27[i] = rows[26].createCell(i);
+			cells28[i] = rows[27].createCell(i);
+			cells29[i] = rows[28].createCell(i);
+			cells30[i] = rows[29].createCell(i);
+			if(i>0){
+				cells0[i].setCellStyle(navig1);
+				cells1[i].setCellStyle(navig1);
+				cells2[i].setCellStyle(navig1);
+			}
+		}
+		
+		
+		for(int i=3;i<23;i++){
+			for(int j=3;j<19;j++){
+				rows[i].getCell(j).setCellStyle(navig4);
+			}
+		}
+		for(int i=23;i<29;i++){
+			for(int j=3;j<19;j++){
+				rows[i].getCell(j).setCellStyle(navig5);
+			}
+		}
+		
+
 		/**TEST COULEUR*/
 		GeneratorStyle.testColor(rows, workbook);
 		/**TEST COULEUR*/
+		/** END of Sheet 0*/
+		
+		/** Begin treatment of sheet 1*/
+		for (int i = 0; i < 99; i++) {
+			rows[i] = sheet1.createRow(i);
+		}
 		
 		/** Hauteur des lignes Height */
 		rows[1].setHeightInPoints(25);
@@ -201,7 +285,6 @@ public class CsvGenerator implements NumericConstant {
 		sheet1.addMergedRegion(new CellRangeAddress(29,33 , 11, 11));
 		sheet1.addMergedRegion(new CellRangeAddress(36,40 , 11, 11));
 		
-		
 		/** Creation de cellule */
 		for (int i = 0; i < 12; i++) {
 			cells1[i] = rows[1].createCell(i);
@@ -248,9 +331,9 @@ public class CsvGenerator implements NumericConstant {
 			cells42[i] = rows[41].createCell(i);
 			cells43[i] = rows[42].createCell(i);
 			cells44[i] = rows[43].createCell(i);
-			/** Add style*/
-			cells1[i].setCellStyle(cellStyle);
-			cells2[i].setCellStyle(cellStyle);
+//			/** Add style*/
+//			cells1[i].setCellStyle(cellStyle);
+//			cells2[i].setCellStyle(cellStyle);
 			cells11[i].setCellStyle(cellStyle);
 			cells12[i].setCellStyle(style6);
 			if(i==10){
@@ -310,7 +393,6 @@ public class CsvGenerator implements NumericConstant {
 			}
 				break;
 			}
-			cells24[i].setCellStyle(style15);
 		}
 		for(int i=13;i<44;i++){
 			rows[i].getCell(0).setCellStyle(style8);
@@ -328,6 +410,10 @@ public class CsvGenerator implements NumericConstant {
 			cells22[i].setCellStyle(style12);
 		}
 		cells24[11].setCellStyle(style13);
+		for(int i=0;i<12;i++){
+			cells28[i].setCellStyle(style15);
+			cells29[i].setCellStyle(style15);
+		}
 
 		/** Add contained in the cell */
 		cells1[0].setCellValue("ACE PROGRAMME - RESULTS FRAMEWORK");
