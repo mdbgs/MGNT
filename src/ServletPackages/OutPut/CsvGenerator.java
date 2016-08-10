@@ -7,6 +7,8 @@ import java.io.IOException;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Color;
+import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.util.CellRangeAddress;
@@ -108,7 +110,7 @@ public class CsvGenerator implements NumericConstant {
 			rows[i] = sheet.createRow(i);
 		}
 		/**TEST COULEUR*/
-//		GeneratorStyle.testColor(rows, workbook);
+		GeneratorStyle.testColor(rows, workbook);
 		/**TEST COULEUR*/
 		
 		/** Hauteur des lignes Height */
@@ -229,7 +231,7 @@ public class CsvGenerator implements NumericConstant {
 			cells11[i].setCellStyle(cellStyle);
 			cells12[i].setCellStyle(style6);
 			if(i==10){
-				for(int j=13; j<43;j++){
+				for(int j=13; j<44;j++){
 					rows[j].getCell(i).setCellStyle(style6);
 				}
 			}
@@ -286,7 +288,12 @@ public class CsvGenerator implements NumericConstant {
 				break;
 			}
 		}
-		for(int i=13;i<43;i++){
+		CellStyle colorStyle=workbook.createCellStyle();
+		colorStyle.setFillForegroundColor((short)34);
+		for(int i=4;i<9;i++){
+			rows[13].getCell(i).setCellStyle(colorStyle);
+		}
+		for(int i=13;i<44;i++){
 			rows[i].getCell(0).setCellStyle(style8);
 			for(int j=1;j<10;j++){
 				rows[i].getCell(j).setCellStyle(style9);
@@ -303,7 +310,7 @@ public class CsvGenerator implements NumericConstant {
 		cells3[10].setCellValue("8.000.000 $US");
 		
 		cells4[0].setCellValue("Grant ID #:");
-		cells4[1].setCellValue("036");
+		cells4[1].setCellValue(036);
 		cells4[9].setCellValue("Total Disbursement:");
 
 		cells5[0].setCellValue("Beneficiary Institution:");
@@ -349,7 +356,7 @@ public class CsvGenerator implements NumericConstant {
 		cells14[0].setCellValue("Indicator 1: No of regional and national students (disaggregated) enrolled in  specialized short-term courses, Master, PhD, programs [No of which are females] (→ Regionality)");
 		cells14[2].setCellValue("Number/ % \n (Indicator Definition: Count of non –national students in new ACE courses)");
 		cells14[3].setCellValue("Total number of enrolled students");
-		cells14[4].setCellValue("300");
+		cells14[4].setCellValue(300);
 		cells14[5].setCellFormula("F15+F17");
 		cells14[6].setCellFormula("G15+G17");
 		cells14[7].setCellFormula("H15+H17");
@@ -636,7 +643,7 @@ public class CsvGenerator implements NumericConstant {
 		cells44[7].setCellValue("Done");
 		cells44[8].setCellValue("Done");
 		cells44[9].setCellValue("Done");
-		cells44[10].setCellFormula("Done");
+		cells44[10].setCellValue("Done");
 		
 		
 		try {

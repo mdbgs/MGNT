@@ -54,9 +54,9 @@ public class GeneratorStyle {
 			cellStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
 		}
 			break;
-		case "titre8 ": {
-			cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
-			cellStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+		case "titre8": {
+			cellStyle.setAlignment(CellStyle.ALIGN_GENERAL);
+			cellStyle.setVerticalAlignment(CellStyle.VERTICAL_TOP);
 		}
 			break;
 		case "titre9": {
@@ -80,51 +80,46 @@ public class GeneratorStyle {
 		case "titre1": {
 			fontTitle.setColor(IndexedColors.WHITE.getIndex());
 			fontTitle.setBoldweight(Font.BOLDWEIGHT_BOLD);
-			fontTitle.setFontHeight((short) 280);
+			fontTitle.setFontHeight((short) 260);
 			fontTitle.setUnderline(Font.U_SINGLE);
 			fontTitle.setFontName("Candara");
+			fontTitle.setFontHeight((short) 200);
+
 		}
 			break;
 		case "titre2": {
-			fontTitle.setFontHeight((short) 220);
 			fontTitle.setFontName("Candara");
 		}
 			break;
 		case "titre3": {
-			fontTitle.setFontHeight((short) 220);
 			fontTitle.setFontName("Calibri");
 		}
 			break;
 		case "titre4": {
-			fontTitle.setFontHeight((short) 220);
 			fontTitle.setFontName("Candara");
 			fontTitle.setBoldweight(Font.BOLDWEIGHT_BOLD);
 		}
 			break;
 		case "titre5": {
-			fontTitle.setFontHeight((short) 220);
 			fontTitle.setFontName("Candara");
 			fontTitle.setColor(IndexedColors.BLUE.getIndex());
 			fontTitle.setItalic(true);
 		}
 			break;
 		case "titre6": {
-			fontTitle.setFontHeight((short) 200);
 			fontTitle.setFontName("Calibri");
 			fontTitle.setBoldweight(Font.BOLDWEIGHT_BOLD);
 		}
 			break;
 		case "titre9": {
-			fontTitle.setFontHeight((short) 200);
 			fontTitle.setFontName("Calibri");
 		}
 			break;
 		case "titre10": {
-			fontTitle.setFontHeight((short) 280);
+			fontTitle.setFontHeight((short) 260);
 			fontTitle.setFontName("Calibri");
 		}
 			break;
-
 		}
 		return fontTitle;
 	}
