@@ -8,9 +8,6 @@ import org.apache.poi.common.usermodel.Hyperlink;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Color;
-import org.apache.poi.ss.usermodel.CreationHelper;
-import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.util.CellRangeAddress;
@@ -58,6 +55,12 @@ public class CsvGenerator implements NumericConstant {
 		style9.setFont(GeneratorStyle.createFont(workbook, "titre9"));
 		CellStyle style10 = GeneratorStyle.createCellStyle(workbook, "titre10");
 		style10.setFont(GeneratorStyle.createFont(workbook, "titre10"));
+		CellStyle style11 = GeneratorStyle.createCellStyle(workbook, "titre11");
+		CellStyle style12 = GeneratorStyle.createCellStyle(workbook, "titre12");
+		CellStyle style13 = GeneratorStyle.createCellStyle(workbook, "titre10");
+		style13.setFont(GeneratorStyle.createFont(workbook, "titre13"));
+		CellStyle style14 = GeneratorStyle.createCellStyle(workbook, "titre13");
+		CellStyle style15 = GeneratorStyle.createCellStyle(workbook, "titre14");
 		// row 4
 		Cell[] cells1 = new Cell[12];
 		Cell[] cells2 = new Cell[12];
@@ -118,11 +121,11 @@ public class CsvGenerator implements NumericConstant {
 		sheet1.setColumnWidth(11, 9000);
 
 		Row[] rows = new Row[100];
-		rows[0]= sheet0.createRow(0);
-		Cell test= rows[0].createCell(0);
+		Row row = sheet0.createRow(0);
+		Cell test= row.createCell(0);
 		test.setCellValue("test link");
 		org.apache.poi.ss.usermodel.Hyperlink link = workbook.getCreationHelper().createHyperlink(Hyperlink.LINK_DOCUMENT);
-		link.setAddress("INDICATOR 1");
+		link.setAddress("'INDICATOR 1'!A1");
 		test.setHyperlink(link);
 		for (int i = 0; i < 99; i++) {
 			rows[i] = sheet1.createRow(i);
@@ -246,8 +249,8 @@ public class CsvGenerator implements NumericConstant {
 			cells43[i] = rows[42].createCell(i);
 			cells44[i] = rows[43].createCell(i);
 			/** Add style*/
-			cells2[i].setCellStyle(cellStyle);
 			cells1[i].setCellStyle(cellStyle);
+			cells2[i].setCellStyle(cellStyle);
 			cells11[i].setCellStyle(cellStyle);
 			cells12[i].setCellStyle(style6);
 			if(i==10){
@@ -307,20 +310,25 @@ public class CsvGenerator implements NumericConstant {
 			}
 				break;
 			}
-		}
-		CellStyle colorStyle=workbook.createCellStyle();
-		colorStyle.setFillForegroundColor((short)34);
-		for(int i=4;i<9;i++){
-			rows[13].getCell(i).setCellStyle(colorStyle);
+			cells24[i].setCellStyle(style15);
 		}
 		for(int i=13;i<44;i++){
 			rows[i].getCell(0).setCellStyle(style8);
 			for(int j=1;j<10;j++){
 				rows[i].getCell(j).setCellStyle(style9);
+				rows[i].getCell(11).setCellStyle(style10);
 			}
-			rows[i].getCell(11).setCellStyle(style10);
+			rows[i].getCell(1).setCellStyle(style14);
 		}
-		
+		for(int i=4;i<9;i++){
+			cells15[i].setCellStyle(style11);
+			cells19[i].setCellStyle(style12);
+			cells20[i].setCellStyle(style12);
+			cells21[i].setCellStyle(style12);
+			cells22[i].setCellStyle(style12);
+		}
+		cells24[11].setCellStyle(style13);
+
 		/** Add contained in the cell */
 		cells1[0].setCellValue("ACE PROGRAMME - RESULTS FRAMEWORK");
 		cells3[0].setCellValue("Project Title:");

@@ -69,6 +69,34 @@ public class GeneratorStyle {
 			cellStyle.setVerticalAlignment(CellStyle.VERTICAL_TOP);
 		}
 			break;
+		case "titre11": {
+			cellStyle.setFillForegroundColor((short) 5);
+			cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+			cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
+			cellStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+		}
+			break;
+		case "titre12": {
+			cellStyle.setFillForegroundColor((short) 31);
+			cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+			cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
+			cellStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+		}
+			break;
+		case "titre13": {
+			cellStyle.setBorderRight(CellStyle.BORDER_DOUBLE);
+			cellStyle.setRightBorderColor(IndexedColors.BLACK.getIndex());
+			cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
+			cellStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+		}
+			break;
+		case "titre14": {
+			cellStyle.setFillForegroundColor((short) 27);
+			cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+			cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
+			cellStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+		}
+			break;
 		}
 		return cellStyle;
 
@@ -82,8 +110,7 @@ public class GeneratorStyle {
 			fontTitle.setBoldweight(Font.BOLDWEIGHT_BOLD);
 			fontTitle.setUnderline(Font.U_SINGLE);
 			fontTitle.setFontName("Candara");
-			fontTitle.setFontHeight((short) 200);
-
+			fontTitle.setFontHeight((short) 280);
 		}
 			break;
 		case "titre2": {
@@ -115,6 +142,12 @@ public class GeneratorStyle {
 		}
 			break;
 		case "titre10": {
+			fontTitle.setFontHeight((short) 240);
+			fontTitle.setFontName("Calibri");
+		}
+			break;
+		case "titre13": {
+			fontTitle.setColor(IndexedColors.RED.getIndex());
 			fontTitle.setFontHeight((short) 240);
 			fontTitle.setFontName("Calibri");
 		}
