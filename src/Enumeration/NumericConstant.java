@@ -113,7 +113,7 @@ public interface NumericConstant {
 	public static final String OFFERT_PAR = "offert_par";
 	public static final String DATE_CREATION = "date_creation";
 
-	public static final String urlOutPut="../Uploads/";
+	public static final String urlOutPut="c:/CeamiticFile/";
 	public static final String CsvUrl="data_CSV/";
 	public static final String imageUrl="pictures/";
 	public static final String pdfUrl="data_pdf/";

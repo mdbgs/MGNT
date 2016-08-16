@@ -24,7 +24,7 @@ public class ImportExcelServlet extends ConnexionServlet {
     }
     public static final String VUE = "/WEB-INF/jsp/Home/AdminAccueil.jsp";
     public static final int TAILLE_TAMPON = 10240;
-    public static final String CHEMIN_FICHIERS = "D:/fichiers/"; 
+    public static final String CHEMIN_FICHIERS = "c:/CeamiticFile/"; 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

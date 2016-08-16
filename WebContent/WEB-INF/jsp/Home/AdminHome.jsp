@@ -25,8 +25,7 @@
 									<div class="panel-heading">Accueil Administrateur</div>
 									<div class="uploadCSV">
 										<span>Charger la liste des étudiants</span>
-										<form enctype="multipart/form-data" method="post"
-											action="importExcel">
+										<form enctype="multipart/form-data" method="post" action="importExcel">
 											<input type="file" id="source" name="source" />
 											<button type="submit" class="btn btn-success">Valider</button>
 										</form>

@@ -22,6 +22,16 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">Tableau des Indicateurs</div>
 								<div class="panel-body">
+								<form method="post" action="indicatorList" class="generator">
+									<select class="form-control col-lg-3 col-sm-3 col-md-3" name="annee">							
+										<option>Choisir l'ann&eacutee</option>
+										<option>2015</option>
+										<option>2016</option>
+										<option>2017</option>
+										<option>2018</option>
+									</select>
+									<button class="btn btn-default" type="submit">G&eacuten&eacuterer le rapport</button>
+								</form>
 									<div class="table-responsive">
 										<table class="table table-striped table-bordered table-hover"
 											id="myDataTable">

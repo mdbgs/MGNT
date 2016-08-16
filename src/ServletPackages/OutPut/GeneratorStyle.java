@@ -98,78 +98,97 @@ public class GeneratorStyle {
 		}
 			break;
 		case "navigation1": {
-			cellStyle.setFillForegroundColor((short) 22);
-			cellStyle.setTopBorderColor((short)16);
+			cellStyle.setFillForegroundColor((short) 55);
+			cellStyle.setTopBorderColor((short)23);
 			cellStyle.setBorderTop(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setRightBorderColor((short)16);
+			cellStyle.setRightBorderColor((short)23);
 			cellStyle.setBorderRight(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setBottomBorderColor((short)16);
+			cellStyle.setBottomBorderColor((short)23);
 			cellStyle.setBorderBottom(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setLeftBorderColor((short)16);
+			cellStyle.setLeftBorderColor((short)23);
 			cellStyle.setBorderLeft(CellStyle.SOLID_FOREGROUND);
+			cellStyle.setLeftBorderColor((short)23);
 			cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
 			cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
 			cellStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
 		}
 			break;
 		case "navigation2": {
-			cellStyle.setFillForegroundColor((short) 55);
-			cellStyle.setTopBorderColor((short)16);
+			cellStyle.setFillForegroundColor((short) 22);
+			cellStyle.setTopBorderColor((short)23);
 			cellStyle.setBorderTop(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setRightBorderColor((short)16);
+			cellStyle.setRightBorderColor((short)23);
 			cellStyle.setBorderRight(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setBottomBorderColor((short)16);
+			cellStyle.setBottomBorderColor((short)23);
 			cellStyle.setBorderBottom(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setLeftBorderColor((short)16);
+			cellStyle.setLeftBorderColor((short)23);
 			cellStyle.setBorderLeft(CellStyle.SOLID_FOREGROUND);
+			cellStyle.setLeftBorderColor((short)23);
 			cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
+			cellStyle.setAlignment(CellStyle.ALIGN_LEFT);
 			cellStyle.setVerticalAlignment(CellStyle.ALIGN_LEFT);
 		}
 			break;
 		case "navigation3": {
-			cellStyle.setFillForegroundColor((short) 73);
-			cellStyle.setTopBorderColor((short)16);
+			cellStyle.setFillForegroundColor((short) 55);
+			cellStyle.setTopBorderColor((short)23);
 			cellStyle.setBorderTop(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setRightBorderColor((short)16);
+			cellStyle.setRightBorderColor((short)23);
 			cellStyle.setBorderRight(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setBottomBorderColor((short)16);
+			cellStyle.setBottomBorderColor((short)23);
 			cellStyle.setBorderBottom(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setLeftBorderColor((short)16);
-			cellStyle.setBorderLeft(CellStyle.SOLID_FOREGROUND);
+			cellStyle.setLeftBorderColor((short)23);
+			cellStyle.setBorderLeft(CellStyle.BORDER_DOUBLE);
+			cellStyle.setLeftBorderColor((short)23);
 			cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
 			cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
 			cellStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
 		}
 			break;
 		case "navigation4": {
-			cellStyle.setFillForegroundColor((short) 27);
-			cellStyle.setTopBorderColor((short)16);
+			cellStyle.setFillForegroundColor((short) 67);
+			cellStyle.setTopBorderColor((short)23);
 			cellStyle.setBorderTop(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setRightBorderColor((short)16);
+			cellStyle.setRightBorderColor((short)23);
 			cellStyle.setBorderRight(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setBottomBorderColor((short)16);
+			cellStyle.setBottomBorderColor((short)23);
 			cellStyle.setBorderBottom(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setLeftBorderColor((short)16);
+			cellStyle.setLeftBorderColor((short)23);
 			cellStyle.setBorderLeft(CellStyle.SOLID_FOREGROUND);
+			cellStyle.setLeftBorderColor((short)23);
 			cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
 			cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
 			cellStyle.setVerticalAlignment(CellStyle.ALIGN_LEFT);
 		}
 			break;
 		case "navigation5": {
-			cellStyle.setFillForegroundColor((short) 22);
-			cellStyle.setTopBorderColor((short)16);
+			cellStyle.setFillForegroundColor((short) 55);
+			cellStyle.setTopBorderColor((short)23);
 			cellStyle.setBorderTop(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setRightBorderColor((short)16);
+			cellStyle.setRightBorderColor((short)23);
 			cellStyle.setBorderRight(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setBottomBorderColor((short)16);
+			cellStyle.setBottomBorderColor((short)23);
 			cellStyle.setBorderBottom(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setLeftBorderColor((short)16);
+			cellStyle.setLeftBorderColor((short)23);
 			cellStyle.setBorderLeft(CellStyle.SOLID_FOREGROUND);
+			cellStyle.setLeftBorderColor((short)23);
 			cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
-			cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
 			cellStyle.setVerticalAlignment(CellStyle.ALIGN_LEFT);
+		}break;
+		case "indic11": {
+			cellStyle.setBorderBottom(CellStyle.BORDER_NONE);
+			cellStyle.setBorderRight(CellStyle.BORDER_NONE);
+			cellStyle.setBorderTop(CellStyle.BORDER_NONE);
+			cellStyle.setVerticalAlignment(CellStyle.ALIGN_CENTER);
+			cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
+		}break;
+		case "indic13":{
+			cellStyle.setBorderTop(CellStyle.SOLID_FOREGROUND);
+			cellStyle.setBorderRight(CellStyle.SOLID_FOREGROUND);
+			cellStyle.setBorderBottom(CellStyle.SOLID_FOREGROUND);
+			cellStyle.setBorderLeft(CellStyle.SOLID_FOREGROUND);
+			cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
+			cellStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
 		}break;
 		}
 		return cellStyle;
@@ -242,7 +261,6 @@ public class GeneratorStyle {
 		}
 			break;
 		case "navigation3": {
-			fontTitle.setFontHeight((short) 480);
 			fontTitle.setFontName("Arial Black");
 			fontTitle.setBoldweight(Font.BOLDWEIGHT_BOLD);
 		}
@@ -253,6 +271,16 @@ public class GeneratorStyle {
 			fontTitle.setBoldweight(Font.BOLDWEIGHT_BOLD);
 		}
 			break;
+		case "indic11": {
+			fontTitle.setFontHeight((short) 400);
+			fontTitle.setFontName("Calibri");
+			fontTitle.setBoldweight(Font.BOLDWEIGHT_BOLD);
+		}break;
+		case "indic12": {
+			fontTitle.setFontHeight((short) 280);
+			fontTitle.setFontName("Calibri");
+			fontTitle.setBoldweight(Font.BOLDWEIGHT_BOLD);
+		}break;
 		}
 		
 		return fontTitle;
