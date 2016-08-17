@@ -18,7 +18,7 @@ public class StudentListServlet extends GetAuthorisationUsers {
 	//
 	// FIELDS
 	//
-	private Connection connection;
+	private static Connection connection;
 	private static final long serialVersionUID = 1L;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,8 +30,7 @@ public class StudentListServlet extends GetAuthorisationUsers {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		StudentBean student = new StudentBean();
 		try {
-			connection = this.getDataSource().getConnection();
-			ResultSet result = ComputeQueryBean.selectAll("Etudiant", connection);
+			ResultSet result = allStudent();
 			while (result.next()) {
 				student.AddStudent(new Student(result.getInt(1), result.getString(2),result.getString(3), result.getString(4), Integer.toString(result.getInt(5)), result.getString(6),
 						result.getString(7), result.getString(8), result.getString(9), result.getString(10),
@@ -42,5 +41,8 @@ public class StudentListServlet extends GetAuthorisationUsers {
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
+	}
+	public static ResultSet allStudent(){
+		return ComputeQueryBean.selectAll("Etudiant", connection);
 	}
 }

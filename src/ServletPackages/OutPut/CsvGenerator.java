@@ -3,6 +3,8 @@ package ServletPackages.OutPut;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -13,7 +15,10 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.WorkbookUtil;
 
+import BeanPackage.ComputeQueryBean;
+import BeanPackage.StudentBean;
 import Enumeration.NumericConstant;
+import ServletPackages.List.StudentListServlet;
 
 public class CsvGenerator implements NumericConstant {
 
@@ -968,7 +973,14 @@ public class CsvGenerator implements NumericConstant {
 		cells12[15].setCellValue("Internationaux");
 		cells13[15].setCellValue("Régionaux");
 		cells14[15].setCellValue("Total");
-
+//		ResultSet results = StudentListServlet.allStudent();
+//		try {
+//			while(results.next()){
+//				System.out.println(results.getString(2)+" 11111111111111111111111");
+//			}
+//		} catch (SQLException e1) {
+//			e1.printStackTrace();
+//		}
 		/******** End Sheet 2 ************/
 
 		try {

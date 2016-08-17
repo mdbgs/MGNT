@@ -24,7 +24,7 @@
 								<div class="panel-body">
 								<form method="post" action="indicatorList" class="generator">
 									<select class="form-control col-lg-3 col-sm-3 col-md-3" name="annee">							
-										<option>Choisir l'ann&eacutee</option>
+										<option disabled>Choisir l'ann&eacutee</option>
 										<option>2015</option>
 										<option>2016</option>
 										<option>2017</option>
