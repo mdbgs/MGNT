@@ -22,31 +22,32 @@ import javax.servlet.http.Part;
 public class ImportExcel {
 	public static final String VUE = "/WEB-INF/jsp/Home/AdminAccueil.jsp";
     public static final int TAILLE_TAMPON = 10240;
-    public static final String CHEMIN_FICHIERS = "D:/fichiers/"; 
+    public static final String CHEMIN_FICHIERS = "c:/CeamiticFile/"; 
 	private static ArrayList<String> listRow = new ArrayList<String>();
 	public static void chronogram(String file,Connection connection) {
 		
 		System.out.println("Nom du fichier : "+file);
 		BufferedReader buffer = openBufferReader(file);
-		String readLine;
+		String readLine = null;
 		ArrayList<String> values=new ArrayList<String>();
 	    Statement statement;
 		try 
 		       {
-			readLine = buffer.readLine();
-			readLine = buffer.readLine();
+			for(int i=0;i<4;i++)
+				readLine = buffer.readLine();
 		if (readLine != null)
 		       {
-			//int k=8;
+			int k=3;
 			System.err.println("****************************Affichage par ligne du fichier CSV ***************************");
 				do {
 					listRow.add(readLine);
+					System.out.println(readLine);
 					} while ((readLine = buffer.readLine()) != null); 
 			System.err.println("****************************Fin de l'affichage ***************************");
-			//readLine = buffer.readLine(); 
-		    //while (k<325){
+			readLine = buffer.readLine(); 
+		    while (k<listRow.size()){
 			    values.clear();
-				String[] listeColumn  = listRow.get(35).split(";");
+				String[] listeColumn  = listRow.get(k).split(";");
 				for(int i=0;i<listeColumn.length;i++)
 				              {
 						System.out.print(listeColumn[i]+" ");
@@ -89,9 +90,9 @@ public class ImportExcel {
 					   e.printStackTrace();
 				               }
 				 System.out.println();
-				       //k++;
+				       k++;
 				       }
-			//}
+			}
 			} 
 		catch (Exception e)
 		         {
@@ -155,14 +156,12 @@ public class ImportExcel {
 			part = request.getPart(source);
 			 // On vérifie qu'on a bien reçu un fichier
 	        String nomFichier = getNomFichier(part);
-
 	        // Si on a bien un fichier
 	        if (nomFichier != null && !nomFichier.isEmpty()) {
 	            String nomChamp = part.getName();
 	            // Corrige un bug du fonctionnement d'Internet Explorer
 	             nomFichier = nomFichier.substring(nomFichier.lastIndexOf('/') + 1)
 	                    .substring(nomFichier.lastIndexOf('\\') + 1);
-
 	            // On écrit définitivement le fichier sur le disque
 	            ecrireFichier(part, nomFichier, CHEMIN_FICHIERS);
 

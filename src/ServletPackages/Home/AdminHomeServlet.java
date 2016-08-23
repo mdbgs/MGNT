@@ -21,7 +21,7 @@ public class AdminHomeServlet extends GetAuthorisationUsers{
 		}
 		this.doGet(req, resp, "admin","Home/AdminHome.jsp", connection);
 	}
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
 }

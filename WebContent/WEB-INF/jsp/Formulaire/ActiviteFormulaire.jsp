@@ -47,7 +47,7 @@
 											<span class="erreur">${errors['periode']}</span>
 										</div>
 									</div>
-									<div class="row ">
+									<div class="row">
 										<div class="col-xs-5" id="formGauche">
 											<div class="row ">
 												<label>Echéance Prévu</label>
@@ -189,11 +189,9 @@
 											<span class="erreur">${errors['objectif']}</span>
 										</div>
 									</div>
-
 									<div class="row myBtn">
 										<input class="btn btn-danger " type="reset" value="Annuler" />
 										<input class="btn btn-info " type="submit" value="Valider" />
-
 									</div>
 									<p class="${empty errors ? 'succes' : 'erreur'}">${resultat}</p>
 								</form>
