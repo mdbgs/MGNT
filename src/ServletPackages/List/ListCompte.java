@@ -31,11 +31,11 @@ public class ListCompte extends GetAuthorisationUsers {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		CompteBean compte = new CompteBean();
 		String pseudoRecu = req.getParameter("actionButton");
-		//doGet(req, resp);
 		try {
+			System.out.println();
 			connection = this.getDataSource().getConnection();
 			ResultSet result = ComputeQueryBean.selectAll("Compte", connection);
-			while (result.next()) {
+ 			while (result.next()) {
 				ResultSet result1 = ComputeQueryBean.selectNameOfUser(connection, result.getString(1), pseudoRecu);
 				if (result1.first()) {
 					compte.addInListCompte(new Compte(result.getString(1), result.getString(2),

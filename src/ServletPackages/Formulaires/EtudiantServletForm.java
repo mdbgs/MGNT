@@ -38,8 +38,7 @@ public class EtudiantServletForm extends GetAuthorisationUsers implements Numeri
 	public static final String CHAMP_FICHIER = "fichier";
 
 	public static final String CHEMIN = "chemin";
-	public static final int TAILLE_TAMPON = 10240; // 10
-													// ko
+	public static final int TAILLE_TAMPON = 10240; // 10ko
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
