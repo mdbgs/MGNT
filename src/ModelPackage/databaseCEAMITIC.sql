@@ -366,16 +366,16 @@ alter table Stage
 
 
 /*Insertion des comptes d'utilisateur de la plateforme */
-insert into compte values('m.sall','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµ‡l#HPA8',2016/04/04,'','actif');
-insert into compte values('mme.sy','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµ‡l#HPA8',2016/04/04,'','actif');
-insert into compte values('mlle.thiam','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµ‡l#HPA8',2016/04/04,'','actif');
-insert into compte values('m.dembele','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµ‡l#HPA8',2016/04/04,'','actif');
-insert into compte values('m.lo','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµ‡l#HPA8',2016/04/04,'','actif');
-insert into compte values('m.diop','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµ‡l#HPA8',2016/04/04,'','actif');
-insert into compte values('m.ndiaye','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµ‡l#HPA8',2016/04/04,'','actif');
-insert into compte values('ucad','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµ‡l#HPA8',2016/04/04,'','actif');
-insert into compte values('worldBank','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµ‡l#HPA8',2016/04/04,'','actif');
-insert into compte values('m.maiga','A80ZKµµ%k0Kµµ5%kRKµµRPKZµµ‡l#HPA8',2016/04/04,'','actif');
+insert into compte values('m.sall','A80ÈZKµµ&k0Kµµ5&kRKµµR£PKÈZµµ‡l#H£PA8',2016/04/04,'','actif');
+insert into compte values('mme.sy','A80ÈZKµµ&k0Kµµ5&kRKµµR£PKÈZµµ‡l#H£PA8',2016/04/04,'','actif');
+insert into compte values('mlle.thiam','A80ÈZKµµ&k0Kµµ5&kRKµµR£PKÈZµµ‡l#H£PA8',2016/04/04,'','actif');
+insert into compte values('m.dembele','A80ÈZKµµ&k0Kµµ5&kRKµµR£PKÈZµµ‡l#H£PA8',2016/04/04,'','actif');
+insert into compte values('m.lo','A80ÈZKµµ&k0Kµµ5&kRKµµR£PKÈZµµ‡l#H£PA8',2016/04/04,'','actif');
+insert into compte values('m.diop','A80ÈZKµµ&k0Kµµ5&kRKµµR£PKÈZµµ‡l#H£PA8',2016/04/04,'','actif');
+insert into compte values('m.ndiaye','A80ÈZKµµ&k0Kµµ5&kRKµµR£PKÈZµµ‡l#H£PA8',2016/04/04,'','actif');
+insert into compte values('ucad','A80ÈZKµµ&k0Kµµ5&kRKµµR£PKÈZµµ‡l#H£PA8',2016/04/04,'','actif');
+insert into compte values('worldBank','A80ÈZKµµ&k0Kµµ5&kRKµµR£PKÈZµµ‡l#H£PA8',2016/04/04,'','actif');
+insert into compte values('m.maiga','A80ÈZKµµ&k0Kµµ5&kRKµµR£PKÈZµµ‡l#H£PA8',2016/04/04,'','actif');
 /*Insertion des differentes roles de l'application*/
 INSERT INTO roles VALUES ('admin');
 INSERT INTO roles VALUES ('etudiant');
