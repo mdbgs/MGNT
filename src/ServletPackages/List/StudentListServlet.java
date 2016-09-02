@@ -30,6 +30,7 @@ public class StudentListServlet extends GetAuthorisationUsers {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		StudentBean student = new StudentBean();
 		try {
+			connection = this.getDataSource().getConnection();
 			ResultSet result = allStudent();
 			while (result.next()) {
 				student.AddStudent(new Student(result.getInt(1), result.getString(2),result.getString(3), result.getString(4), Integer.toString(result.getInt(5)), result.getString(6),

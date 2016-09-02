@@ -379,7 +379,7 @@ insert into compte values('m.maiga','A80ÈZKµµ&k0Kµµ5&kRKµµR£PKÈZµµ‡l#H£PA8',2016
 /*Insertion des differentes roles de l'application*/
 INSERT INTO roles VALUES ('admin');
 INSERT INTO roles VALUES ('etudiant');
-INSERT INTO roles VALUES ('enseignat');
+INSERT INTO roles VALUES ('enseignant');
 INSERT INTO roles VALUES ('coordonnateur');
 INSERT INTO roles VALUES ('responsable_Suivi_Evaluation');
 INSERT INTO roles VALUES ('responsable_Saisie');

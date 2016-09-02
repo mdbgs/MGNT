@@ -19,6 +19,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
+import BeanPackage.ComputeQueryBean;
+
 public class ImportExcel {
 	public static final String VUE = "/WEB-INF/jsp/Home/AdminAccueil.jsp";
 	public static final int TAILLE_TAMPON = 10240;
@@ -50,11 +52,13 @@ public class ImportExcel {
 						String dateNow = dateFormat.format(date);
 						String pseudo =(listeColumn[2] + "." + listeColumn[3]).replaceAll("\\s", "");
 						String password = "A80ÈZKµµ&k0Kµµ5&kRKµµR£PKÈZµµ‡l#H£PA8";
-						String query = "INSERT INTO compte(pseudo,password,dateinscription,photo,statut) VALUES('"+pseudo+"','"+password+"',"+ dateNow+",'inconnue','actif');";
+						String query = "'"+pseudo+"'%'"+password+"'%"+ dateNow+"%'inconnue'%'actif'";
 						String sexe = listeColumn[10];
-						int count = statement.executeUpdate(query);
-						query = "INSERT INTO users_roles values ('"+pseudo+"','etudiant');";
-						count = statement.executeUpdate(query);
+						System.err.println(query);
+						int count = ComputeQueryBean.insertInAllTable(query,"compte",connection);
+						query = "'"+pseudo+"'%'etudiant'";
+						System.err.println(query);
+						count = ComputeQueryBean.insertInAllTable(query,"users_roles",connection);
 						// Ajout des Ètudiants dans la BDD
 						int sexeInt = 0;
 						if (listeColumn[10] == "Masculin")
